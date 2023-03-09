@@ -15,6 +15,11 @@ import { RouterLink } from '@angular/router';
   ],
   imports: [
     CommonModule, bm, RouterLink
+  ],
+  exports : [
+    BackButtonComponent,
+    RoutingButtonComponent,
+    DeleteButtonComponent
   ]
 })
 export class ButtonModule { }

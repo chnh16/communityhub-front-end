@@ -5,13 +5,17 @@ import { RoutingButtonComponent } from './routing-button/routing-button.componen
 import { DeleteButtonComponent } from './delete-button/delete-button.component';
 import {ButtonModule as bm} from 'primeng/button';
 import { RouterLink } from '@angular/router';
+import { TextIconButtonComponent } from './text-button/text-icon-button.component';
+import { CategoryButtonComponent } from './category-button/category-button.component';
 
 
 @NgModule({
   declarations: [
     BackButtonComponent,
     RoutingButtonComponent,
-    DeleteButtonComponent
+    DeleteButtonComponent,
+    TextIconButtonComponent,
+    CategoryButtonComponent
   ],
   imports: [
     CommonModule, bm, RouterLink
@@ -19,7 +23,9 @@ import { RouterLink } from '@angular/router';
   exports : [
     BackButtonComponent,
     RoutingButtonComponent,
-    DeleteButtonComponent
+    DeleteButtonComponent,
+    TextIconButtonComponent,
+    CategoryButtonComponent
   ]
 })
 export class ButtonModule { }

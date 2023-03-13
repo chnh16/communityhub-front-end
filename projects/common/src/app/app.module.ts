@@ -1,18 +1,25 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
 import { ButtonModule } from './component/button/button.module';
+import {MenubarModule} from 'primeng/menubar';
+import { MenuBarComponent } from './component/navbar/navbar.component';
+import {AvatarModule} from 'primeng/avatar';
+import {AvatarGroupModule} from 'primeng/avatargroup';
+import { AppRouting } from 'projects/admin-area/src/app/app.routing';
+import { CommonModule } from '@angular/common';
+import {SidebarModule} from 'primeng/sidebar';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent, MenuBarComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule, MenubarModule, AvatarModule, AvatarGroupModule, AppRouting, CommonModule, SidebarModule,
   ],
   exports : [
-    ButtonModule
+    ButtonModule, MenuBarComponent 
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -8,12 +8,13 @@ import { TableModule } from "primeng/table";
 import { ToastModule } from "primeng/toast";
 import { ToolbarModule } from "primeng/toolbar";
 import { MenuBarComponent } from "projects/common/src/app/component/navbar/navbar.component";
+import { CreateVoucherComponent } from "./create-voucher/create-voucher.component";
 import { VoucherComponent } from "./list-voucher/voucher.component";
 import { VoucherRouting } from "./voucher.routing";
 
 @NgModule ({
     declarations: [
-        VoucherComponent
+        VoucherComponent, CreateVoucherComponent
     ],
     imports: [
        VoucherRouting, CommonModule,TableModule, ButtonModule, ToolbarModule, ToastModule,

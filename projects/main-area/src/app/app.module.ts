@@ -17,6 +17,7 @@ import { ButtonModule } from 'projects/common/src/app/component/button/button.mo
 import { RegisterComponent } from './pages/register/register.component';
 import {StepsModule} from 'primeng/steps';
 import { CodeComponent } from './pages/code-register/code-register.component';
+import {DividerModule} from 'primeng/divider';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { CodeComponent } from './pages/code-register/code-register.component';
   ],
   imports: [
     BrowserModule, CommonModule, AppRouting, BrowserAnimationsModule, AutoCompleteModule,
-    InputTextModule, CardModule, ButtonModule, StepsModule
+    InputTextModule, CardModule, ButtonModule, StepsModule, DividerModule
   ],
   providers: [
     {provide : HTTP_INTERCEPTORS, useClass : TokenInterceptor, multi : true},

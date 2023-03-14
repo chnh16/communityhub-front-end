@@ -7,18 +7,19 @@ import { MenubarModule } from "primeng/menubar";
 import { TableModule } from "primeng/table";
 import { ToastModule } from "primeng/toast";
 import { ToolbarModule } from "primeng/toolbar";
-import { CreateIndustryComponent } from "./create-industry/create-industry.component";
-import { IndustryRouting } from "./industry.routing";
-import { ListIndustriComponent } from "./list-industry/list-industry.component";
+import { CreateMembershipComponent } from "./createa-membership.componehtmlnt/create-membership.component";
+import { ListMembershipComponent } from "./list-membership/list-membership.comonent";
+import { MembershipRouting } from "./membership.routing";
+;
 
 
 @NgModule ({
     declarations: [
-        ListIndustriComponent, CreateIndustryComponent
+        ListMembershipComponent, CreateMembershipComponent
     ],
     imports: [
-       IndustryRouting, CommonModule,TableModule, ButtonModule, ToolbarModule, ToastModule,
+        MembershipRouting, CommonModule,TableModule, ButtonModule, ToolbarModule, ToastModule,
        AvatarModule, AvatarGroupModule, MenubarModule
     ]
 })
-export class IndustryModule {}
+export class MembershipModule {}

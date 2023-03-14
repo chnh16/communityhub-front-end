@@ -8,8 +8,42 @@
     </div>
 </div> -->
 
+<div class="card">
+    <p-card class="mt-8 flex flex-wrap align-items-center justify-content-center ">
 
-<div class="flex justify-content-start">
+        <div class="grid">
+            <div class="col-5 flex align-items-center justify-content-center">
+                <div class="pl-5 p-fluid">
+                    <div class="pt-2 align-items-center justify-content-center">
+                        <h3>LOGIN</h3>
+                    </div>
+                    <div class="pt-4 field">
+                        <label for="username">Username</label>
+                        <input pInputText id="username" type="text" />
+                    </div>
+                    <div class="field">
+                        <label for="password">Password</label>
+                        <input pInputText id="password" type="password" />
+                    </div>
+                    <app-routing-button clasz="mt-2 w-27rem p-button-rounded bg-blue-400" label="Login"></app-routing-button>
+                    <p class="mt-1 underline text-center">Forget password</p>
+                </div>
+            </div>
+
+            <div class="col-2">
+                <p-divider layout="vertical">
+                    <b>OR</b>
+                </p-divider>
+            </div>
+            <div class="col-5 flex align-items-center justify-content-center">
+                <app-routing-button clasz="mt-2 w-27rem p-button-rounded bg-blue-400" label="SIGN U"></app-routing-button>
+            </div>
+        </div>
+    </p-card>
+</div>
+
+
+<!-- <div class="flex justify-content-start">
     <div class="absolute top-0 left-0 bg-blue-400 w-25rem h-full">
         <div class="relative">
             <h2 class="text-center text-white">WELCOME BACK!</h2>
@@ -36,4 +70,4 @@
     <app-routing-button clasz="mt-2 w-27rem p-button-rounded bg-blue-400" label="Login"></app-routing-button>
     <p class="mt-1 underline text-center">Forget password</p>
 
-</p-card>
+</p-card> -->

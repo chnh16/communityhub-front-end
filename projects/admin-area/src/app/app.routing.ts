@@ -24,6 +24,11 @@ const appRouter : Routes = [
         path : '',
         loadChildren : () => import('./pages/position/position.module').then(c => c.PositionModule),
         component : MenuBarComponent
+    },
+    {
+        path : '',
+        loadChildren : () => import('./pages/membership/membership.module').then(c => c.MembershipModule),
+        component : MenuBarComponent
     }
 
 ];

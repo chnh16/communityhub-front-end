@@ -3,16 +3,42 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
-  HttpInterceptor
+  HttpInterceptor,
+  HttpResponse,
+  HttpErrorResponse
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
+import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 
 @Injectable()
 export class ResponseInterceptor implements HttpInterceptor {
 
-  constructor() {}
+  constructor(
+    private router : Router,
+    private messageService : MessageService
+    ) {}
 
-  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    return next.handle(request);
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    return next.handle(request).pipe(
+      tap({
+        next: (event) => {
+          if(event instanceof HttpResponse){
+            if(event.body.message){
+              this.messageService.add({severity : 'success', summary : 'Berhasil', detail : event.body.message})
+            }
+          }
+        },
+        error: (event) => {
+          if(event instanceof HttpErrorResponse){
+            this.messageService.add({severity : 'danger', summary : 'Gagal', detail : event.error})
+            if(event.status == 401){
+              this.router.navigateByUrl('/login')
+            }
+          }
+        },
+        complete: () => {}
+      })
+    );
   }
 }

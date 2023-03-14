@@ -5,9 +5,9 @@ import { DeleteRes } from "projects/common/src/app/pojo/DeleteRes";
 import { InsertRes } from "projects/common/src/app/pojo/InsertRes";
 import { UpdateRes } from "projects/common/src/app/pojo/UpdateRes";
 import { Observable } from "rxjs";
-import { VoucherGetAllRes } from "../../../../admin-area/src/app/pojo/voucher/VoucherGetAllRes";
-import { VoucherInsertReq } from "../../../../admin-area/src/app/pojo/voucher/VoucherInsertReq";
-import { VoucherUpdateReq } from "../../../../admin-area/src/app/pojo/voucher/VoucherUpdateReq";
+import { VoucherGetAllRes } from "../../../../common/src/app/pojo/voucher/VoucherGetAllRes";
+import { VoucherInsertReq } from "../../../../common/src/app/pojo/voucher/VoucherInsertReq";
+import { VoucherUpdateReq } from "../../../../common/src/app/pojo/voucher/VoucherUpdateReq";
 
 @Injectable()
 export class VoucherService{

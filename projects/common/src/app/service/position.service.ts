@@ -5,9 +5,9 @@ import { DeleteRes } from "projects/common/src/app/pojo/DeleteRes";
 import { InsertRes } from "projects/common/src/app/pojo/InsertRes";
 import { UpdateRes } from "projects/common/src/app/pojo/UpdateRes";
 import { Observable } from "rxjs";
-import { PositionGetAllRes } from "../../../../admin-area/src/app/pojo/position/PositionGetAllRes";
-import { PositionInsertReq } from "../../../../admin-area/src/app/pojo/position/PositionInsertReq";
-import { PositionUpdateReq } from "../../../../admin-area/src/app/pojo/position/PositionUpdateReq";
+import { PositionGetAllRes } from "../../../../common/src/app/pojo/position/PositionGetAllRes";
+import { PositionInsertReq } from "../../../../common/src/app/pojo/position/PositionInsertReq";
+import { PositionUpdateReq } from "../../../../common/src/app/pojo/position/PositionUpdateReq";
 
 @Injectable()
 export class PositionService{

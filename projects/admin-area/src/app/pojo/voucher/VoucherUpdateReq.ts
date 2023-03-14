@@ -1,4 +1,4 @@
-export interface VoucherGetAllRes{
+export interface VoucherUpdateReq{
     id : string
     voucherCode : string
     expiredDate : Date

@@ -5,9 +5,9 @@ import { DeleteRes } from "projects/common/src/app/pojo/DeleteRes";
 import { InsertRes } from "projects/common/src/app/pojo/InsertRes";
 import { UpdateRes } from "projects/common/src/app/pojo/UpdateRes";
 import { Observable } from "rxjs";
-import { MembershipGetAllRes } from "../../../../admin-area/src/app/pojo/membership/MembershipGetAllRes";
-import { MembershipInsertReq } from "../../../../admin-area/src/app/pojo/membership/MembershipInsertReq";
-import { MembershipUpdateReq } from "../../../../admin-area/src/app/pojo/membership/MembershipUpdateReq";
+import { MembershipGetAllRes } from "../../../../common/src/app/pojo/membership/MembershipGetAllRes";
+import { MembershipInsertReq } from "../../../../common/src/app/pojo/membership/MembershipInsertReq";
+import { MembershipUpdateReq } from "../../../../common/src/app/pojo/membership/MembershipUpdateReq";
 
 @Injectable()
 export class MembershipService{

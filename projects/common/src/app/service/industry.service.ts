@@ -5,9 +5,9 @@ import { DeleteRes } from "projects/common/src/app/pojo/DeleteRes";
 import { InsertRes } from "projects/common/src/app/pojo/InsertRes";
 import { UpdateRes } from "projects/common/src/app/pojo/UpdateRes";
 import { Observable } from "rxjs";
-import { IndustryGetAllRes } from "../../../../admin-area/src/app/pojo/industry/IndustryGetAllRes";
-import { IndustryInsertReq } from "../../../../admin-area/src/app/pojo/industry/IndustryInsertReq";
-import { IndustryUpdateReq } from "../../../../admin-area/src/app/pojo/industry/IndustryUpdateReq";
+import { IndustryGetAllRes } from "../../../../common/src/app/pojo/industry/IndustryGetAllRes";
+import { IndustryInsertReq } from "../../../../common/src/app/pojo/industry/IndustryInsertReq";
+import { IndustryUpdateReq } from "../../../../common/src/app/pojo/industry/IndustryUpdateReq";
 
 @Injectable()
 export class IndustryService{

@@ -29,7 +29,14 @@ const appRouter : Routes = [
         path : '',
         loadChildren : () => import('./pages/membership/membership.module').then(c => c.MembershipModule),
         component : MenuBarComponent
-    }
+    },
+    // {
+    //     path : '',
+    //     component : MenuBarComponent, children : [{
+    //         path : 'voucher',
+    //         component : VoucherModule,
+    //     }]
+    // }
 
 ];
 

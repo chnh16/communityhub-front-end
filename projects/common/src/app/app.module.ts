@@ -16,7 +16,7 @@ import {SidebarModule} from 'primeng/sidebar';
     AppComponent, MenuBarComponent
   ],
   imports: [
-    BrowserModule, MenubarModule, AvatarModule, AvatarGroupModule, AppRouting, CommonModule, SidebarModule,
+    BrowserModule, MenubarModule, AvatarModule, AvatarGroupModule, AppRouting, CommonModule, SidebarModule
   ],
   exports : [
     ButtonModule, MenuBarComponent 

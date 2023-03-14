@@ -19,6 +19,23 @@ export class UserService{
     }
 
     setData(data : LoginRes){
+        localStorage.setItem('dataLogin', JSON.stringify(data))
 
+    }
+
+    get token() : string {
+        const data = localStorage.getItem('dataLogin')
+        if(data) {
+            return JSON.parse(data).token;
+        }
+        throw new Error('Token is emty')
+    }
+
+    get roleCode() : string {
+        const data = localStorage.getItem('dataLogin')
+        if(data) {
+            return JSON.parse(data).roleCode
+        }
+        throw new Error('Role Code')
     }
 }

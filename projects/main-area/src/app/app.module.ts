@@ -17,6 +17,8 @@ import { ButtonModule } from 'projects/common/src/app/component/button/button.mo
 import { RegisterComponent } from './pages/register/register.component';
 import {StepsModule} from 'primeng/steps';
 import { CodeComponent } from './pages/code-register/code-register.component';
+
+import {DividerModule} from 'primeng/divider';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import {TabViewModule} from 'primeng/tabview';
 import {AvatarGroupModule} from 'primeng/avatargroup';

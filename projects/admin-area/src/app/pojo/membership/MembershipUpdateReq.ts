@@ -1,4 +1,4 @@
-export interface MembershipGetAllRes{
+export interface MembershipUpdateReq{
     id : string
     membershipCode : string
     membershipName : string

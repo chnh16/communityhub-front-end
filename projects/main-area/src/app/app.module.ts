@@ -17,10 +17,11 @@ import { ButtonModule } from 'projects/common/src/app/component/button/button.mo
 import { RegisterComponent } from './pages/register/register.component';
 import {StepsModule} from 'primeng/steps';
 import { CodeComponent } from './pages/code-register/code-register.component';
-
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import {TabViewModule} from 'primeng/tabview';
 import {AvatarGroupModule} from 'primeng/avatargroup';
+import {ToastModule} from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 
 
 @NgModule({
@@ -29,11 +30,12 @@ import {AvatarGroupModule} from 'primeng/avatargroup';
   ],
   imports: [
     BrowserModule, CommonModule, AppRouting, BrowserAnimationsModule, AutoCompleteModule,
-    InputTextModule, CardModule, ButtonModule, StepsModule, AvatarModule, DividerModule, TabViewModule, AvatarGroupModule
+    InputTextModule, CardModule, ButtonModule, StepsModule, AvatarModule, DividerModule, TabViewModule, AvatarGroupModule, ToastModule
   ],
   providers: [
     {provide : HTTP_INTERCEPTORS, useClass : TokenInterceptor, multi : true},
-    {provide : HTTP_INTERCEPTORS, useClass : ResponseInterceptor, multi : true}
+    {provide : HTTP_INTERCEPTORS, useClass : ResponseInterceptor, multi : true}, 
+    MessageService
   ],
   bootstrap: [AppComponent]
 })

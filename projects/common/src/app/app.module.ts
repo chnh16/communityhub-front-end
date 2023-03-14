@@ -9,6 +9,7 @@ import {AvatarGroupModule} from 'primeng/avatargroup';
 import { AppRouting } from 'projects/admin-area/src/app/app.routing';
 import { CommonModule } from '@angular/common';
 import {SidebarModule} from 'primeng/sidebar';
+import {ToastModule} from 'primeng/toast';
 
 
 @NgModule({
@@ -16,7 +17,7 @@ import {SidebarModule} from 'primeng/sidebar';
     AppComponent, MenuBarComponent
   ],
   imports: [
-    BrowserModule, MenubarModule, AvatarModule, AvatarGroupModule, AppRouting, CommonModule, SidebarModule
+    BrowserModule, MenubarModule, AvatarModule, AvatarGroupModule, AppRouting, CommonModule, SidebarModule, ToastModule
   ],
   exports : [
     ButtonModule, MenuBarComponent 

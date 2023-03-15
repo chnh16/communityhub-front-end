@@ -4,7 +4,7 @@ import { Subscription } from "rxjs";
 
 
 @Component ({
-    selector : 'app-category',
+    selector : 'app-create-position',
     templateUrl : './create-position.component.html'
 })
 export class CreatePositionComponent implements OnInit {

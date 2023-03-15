@@ -1,5 +1,6 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
+import { ReactiveFormsModule } from "@angular/forms";
 import { AvatarModule } from "primeng/avatar";
 import { AvatarGroupModule } from "primeng/avatargroup";
 import { ButtonModule } from "primeng/button";
@@ -10,6 +11,7 @@ import { ToolbarModule } from "primeng/toolbar";
 import { CategoryRouting } from "./category.routing";
 import { CreateCategoryComponent } from "./create-category/create-category.component";
 import { ListCategoryComponent } from "./list-category/list-category.component";
+import { ButtonModule as bm } from "projects/common/src/app/component/button/button.module";
 
 
 @NgModule ({
@@ -18,7 +20,7 @@ import { ListCategoryComponent } from "./list-category/list-category.component";
     ],
     imports: [
        CategoryRouting, CommonModule,TableModule, ButtonModule, ToolbarModule, ToastModule,
-       AvatarModule, AvatarGroupModule, MenubarModule
+       AvatarModule, AvatarGroupModule, MenubarModule, ReactiveFormsModule, bm
     ]
 })
 export class CategoryModule {}

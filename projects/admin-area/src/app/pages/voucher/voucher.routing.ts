@@ -11,7 +11,7 @@ const appRouter : Routes = [
         component : VoucherComponent, 
     },
     {
-        path : 'create-voucher',
+        path : 'voucher/add',
         component : CreateVoucherComponent
     }
 ];

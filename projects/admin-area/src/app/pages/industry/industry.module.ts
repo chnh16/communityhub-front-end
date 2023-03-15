@@ -9,12 +9,12 @@ import { ToastModule } from "primeng/toast";
 import { ToolbarModule } from "primeng/toolbar";
 import { CreateIndustryComponent } from "./create-industry/create-industry.component";
 import { IndustryRouting } from "./industry.routing";
-import { ListIndustriComponent } from "./list-industry/list-industry.component";
+import { ListIndustryComponent } from "./list-industry/list-industry.component";
 
 
 @NgModule ({
     declarations: [
-        ListIndustriComponent, CreateIndustryComponent
+        ListIndustryComponent, CreateIndustryComponent
     ],
     imports: [
        IndustryRouting, CommonModule,TableModule, ButtonModule, ToolbarModule, ToastModule,

@@ -12,7 +12,7 @@ const appRouter : Routes = [
         component : ListCategoryComponent, 
     },
     {
-        path : 'create-category',
+        path : 'category/add',
         component : CreateCategoryComponent, 
     },
 ];

@@ -12,7 +12,7 @@ const appRouter : Routes = [
         component : ListMembershipComponent,
     },
     {
-        path : 'create-membership',
+        path : 'membership/add',
         component : CreateMembershipComponent,
     }
 ];

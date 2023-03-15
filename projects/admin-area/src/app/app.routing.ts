@@ -2,9 +2,24 @@ import {Component, NgModule} from "@angular/core"
 import {RouterModule, Routes} from "@angular/router"
 import { CanLoad } from "@angular/router";
 import { MenuBarComponent } from "projects/common/src/app/component/navbar/navbar.component";
+import { CodeAdminComponent } from "./pages/code-register/code-admin.component";
+import { LoginAdminComponent } from "./pages/login/login-admin.component";
+import { RegisterAdminComponent } from "./pages/register/register-admin.component";
 
 
 const appRouter : Routes = [
+    {
+        path: 'login',
+        component : LoginAdminComponent
+    },
+    {
+        path: 'register',
+        component : RegisterAdminComponent
+    },
+    {
+        path: 'code',
+        component : CodeAdminComponent
+    },
     {
         path : '',
         loadChildren : () => import('./pages/voucher/voucher.module').then(c => c.VoucherModule),

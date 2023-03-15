@@ -11,7 +11,7 @@ const appRouter : Routes = [
         component : ListIndustriComponent,
     },
     {
-        path : 'create-industry',
+        path : 'industry/add',
         component : CreateIndustryComponent,
     }
 ];

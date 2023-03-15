@@ -8,14 +8,16 @@ import { Observable, skip } from "rxjs";
 import { LoginReq } from "../pojo/user/LoginReq";
 import { LoginRes } from "../pojo/user/LoginRes";
 
-@Injectable()
+@Injectable({
+    providedIn : 'root'
+})
 export class UserService{
     constructor(
        private http : HttpClient
     ){}
 
     login(data : LoginReq) : Observable<LoginRes>{
-        return this.http.post<LoginRes>(`${BASE_URL}/login`, data, { headers : { 'skip' : 'true' } });
+        return this.http.post<LoginRes>(`${BASE_URL}/users/login`, data, { headers : { 'skip' : 'true' } });
     }
 
     setData(data : LoginRes){

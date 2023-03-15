@@ -5,9 +5,9 @@ import { DeleteRes } from "projects/common/src/app/pojo/DeleteRes";
 import { InsertRes } from "projects/common/src/app/pojo/InsertRes";
 import { UpdateRes } from "projects/common/src/app/pojo/UpdateRes";
 import { Observable } from "rxjs";
-import { CategoryGetAllRes } from "../../../../admin-area/src/app/pojo/category/CategoryGetAllRes";
-import { CategoryInsertReq } from "../../../../admin-area/src/app/pojo/category/CategoryInsertReq";
-import { CategoryUpdateReq } from "../../../../admin-area/src/app/pojo/category/CategoryUpdateReq";
+import { CategoryGetAllRes } from "../pojo/category/CategoryGetAllRes";
+import { CategoryInsertReq } from "../pojo/category/CategoryInsertReq";
+import { CategoryUpdateReq } from "../pojo/category/CategoryUpdateReq";
 
 @Injectable()
 export class CategoryService{

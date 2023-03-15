@@ -4,7 +4,7 @@ import { Subscription } from "rxjs";
 
 
 @Component ({
-    selector : 'app-position',
+    selector : 'app-membership',
     templateUrl : './list-membership.component.html'
 })
 export class ListMembershipComponent implements OnInit {

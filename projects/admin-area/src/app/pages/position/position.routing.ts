@@ -10,7 +10,7 @@ const appRouter : Routes = [
         component : ListPositionComponent,
     },
     {
-        path : 'create-position',
+        path : 'position/add',
         component : CreatePositionComponent,
     }
 ];

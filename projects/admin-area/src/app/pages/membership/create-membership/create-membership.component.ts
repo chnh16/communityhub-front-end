@@ -4,10 +4,10 @@ import { Subscription } from "rxjs";
 
 
 @Component ({
-    selector : 'app-create-voucher',
-    templateUrl : './create-voucher.component.html'
+    selector : 'app-create-membership',
+    templateUrl : './create-membership.component.html'
 })
-export class CreateVoucherComponent implements OnInit {
+export class CreateMembershipComponent implements OnInit {
 
     ngOnInit(): void {
     }

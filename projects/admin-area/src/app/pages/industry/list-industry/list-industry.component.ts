@@ -4,10 +4,10 @@ import { Subscription } from "rxjs";
 
 
 @Component ({
-    selector : 'app-voucher',
+    selector : 'app-industry',
     templateUrl : './list-industry.component.html'
 })
-export class ListIndustriComponent implements OnInit {
+export class ListIndustryComponent implements OnInit {
     data!: any[];
 
 

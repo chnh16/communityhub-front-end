@@ -9,18 +9,20 @@ import { MembershipGetAllRes } from "../../../../common/src/app/pojo/membership/
 import { MembershipInsertReq } from "../../../../common/src/app/pojo/membership/MembershipInsertReq";
 import { MembershipUpdateReq } from "../../../../common/src/app/pojo/membership/MembershipUpdateReq";
 
-@Injectable()
+@Injectable({
+    providedIn : 'root'
+})
 export class MembershipService{
     constructor(
        private http : HttpClient
     ){}
 
     getAll() : Observable<MembershipGetAllRes[]>{
-        return this.http.get<MembershipGetAllRes[]>(`${BASE_URL}/membership`);
+        return this.http.get<MembershipGetAllRes[]>(`${BASE_URL}/memberships`);
     }
 
     insert(data : MembershipInsertReq) : Observable<InsertRes>{
-        return this.http.post<InsertRes>(`${BASE_URL}/membership/add`, data);
+        return this.http.post<InsertRes>(`${BASE_URL}/memberships/add`, data);
     }
 
     update(data : MembershipUpdateReq) : Observable<UpdateRes>{

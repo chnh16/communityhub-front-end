@@ -27,7 +27,9 @@ export class CreateCategoryComponent implements OnInit, OnDestroy {
             categoryCode : this.data.value.categoryCode!,
             categoryName : this.data.value.categoryName!
         }
-        this.createCategory$ = this.categoryService.insert(insert).subscribe()
+        this.createCategory$ = this.categoryService.insert(insert).subscribe(res => {
+            
+        })
     }
 
     ngOnInit(): void {

@@ -1,3 +1,7 @@
+<pre>
+    {{data.value | json}}
+</pre>
+
 <div class="flex flex-wrap align-items-center justify-content-center">
     <div class="mt-6">
         <h2>CREATE INDUSTRY</h2>
@@ -5,19 +9,26 @@
 </div>
 <div class="flex flex-wrap align-items-center justify-content-center">
     <div class="mt-8">
-        <div class="field grid">
-            <label for="firstname3" class="col-fixed" style="width:200px">Industry Name</label>
-            <div class="col">
-                <input id="firstname3" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary">
+        <form [formGroup]="data" (ngSubmit)="submit()">
+            <div class="field grid">
+                <label for="industryCode" class="col-fixed" style="width:200px">Industry Code</label>
+                <div class="col">
+                    <input id="industryCode" formControlName="industryCode" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary">
+                </div>
             </div>
-
-        </div>
-    </div>
-</div>
-<div class="flex flex-wrap align-items-end justify-content-end col-8">
-    <div class="mt-8">
-        <div class="col-6">
-            <button pButton pRipple label="Create" class="p-button-rounded mr-2"></button>
-        </div>
+            <div class="mt-4">
+                <div class="field grid">
+                    <label for="industryName" class="col-fixed" style="width:200px">Industry Name</label>
+                    <div class="col">
+                        <input id="industryName" formControlName="industryName" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary">
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8">
+                <div class="col-6">
+                    <app-submit-button label="Create" clasz="p-button-rounded mr-2"></app-submit-button>
+                </div>
+            </div>
+        </form>
     </div>
 </div>

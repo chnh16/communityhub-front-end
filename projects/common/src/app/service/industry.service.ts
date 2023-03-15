@@ -9,7 +9,9 @@ import { IndustryGetAllRes } from "../../../../common/src/app/pojo/industry/Indu
 import { IndustryInsertReq } from "../../../../common/src/app/pojo/industry/IndustryInsertReq";
 import { IndustryUpdateReq } from "../../../../common/src/app/pojo/industry/IndustryUpdateReq";
 
-@Injectable()
+@Injectable({
+    providedIn : 'root'
+})
 export class IndustryService{
     constructor(
        private http : HttpClient

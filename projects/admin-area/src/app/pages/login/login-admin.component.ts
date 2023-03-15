@@ -3,6 +3,7 @@ import { Component, OnDestroy } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
 import { Title } from "@angular/platform-browser";
 import { Router } from "@angular/router";
+import { MessageService } from "primeng/api";
 import { Role } from "projects/common/src/app/constant/UserRole";
 import { LoginReq } from "projects/common/src/app/pojo/user/LoginReq";
 import { UserService } from "projects/common/src/app/service/user.service";
@@ -11,7 +12,7 @@ import { Subscription } from "rxjs";
 
 @Component ({
     selector : 'app-login',
-    templateUrl : './login-admin.component.html'
+    templateUrl : './login-admin.component.html',
 })
 export class LoginAdminComponent implements OnDestroy {
 
@@ -60,6 +61,5 @@ export class LoginAdminComponent implements OnDestroy {
     ngOnDestroy(): void {
         this.login$?.unsubscribe()
     }
-    
-    
+      
 }

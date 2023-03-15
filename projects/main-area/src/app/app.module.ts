@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ResponseInterceptor } from 'projects/common/src/app/interceptor/response.interceptor';
@@ -32,7 +32,7 @@ import {ImageModule} from 'primeng/image';
   imports: [
     BrowserModule, CommonModule, AppRouting, BrowserAnimationsModule, AutoCompleteModule,
     InputTextModule, CardModule, ButtonModule, StepsModule, AvatarModule, DividerModule, TabViewModule, AvatarGroupModule, ToastModule,
-    ImageModule
+    ImageModule, HttpClientModule
   ],
   providers: [
     {provide : HTTP_INTERCEPTORS, useClass : TokenInterceptor, multi : true},

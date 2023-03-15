@@ -30,8 +30,18 @@ export class MenuBarComponent {
                 ]
             },
             {
-                label: 'Approved'
-            }
+                label: 'Approval'
+            },
+            {
+                label: 'Master Data',
+                items: [
+                    {label: 'Category', routerLink: '/category'},
+                    {label: 'Industry', routerLink: '/industry'},
+                    {label: 'Membership', routerLink: '/membership'},
+                    {label: 'Position', routerLink: '/position'},
+                    {label: 'Voucher', routerLink: '/voucher'}
+                ]
+            },
         ];
     }
     

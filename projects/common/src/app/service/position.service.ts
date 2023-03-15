@@ -9,7 +9,9 @@ import { PositionGetAllRes } from "../../../../common/src/app/pojo/position/Posi
 import { PositionInsertReq } from "../../../../common/src/app/pojo/position/PositionInsertReq";
 import { PositionUpdateReq } from "../../../../common/src/app/pojo/position/PositionUpdateReq";
 
-@Injectable()
+@Injectable({
+    providedIn : 'root'
+})
 export class PositionService{
     constructor(
        private http : HttpClient

@@ -1,0 +1,23 @@
+<div class="m-3">
+    <div>
+        <app-back-button label="Kembali" link="../"></app-back-button>
+    </div>
+    <div>
+        <p-card header="courseName" subheader="category" [style]="{width : '860px'}" styleClass="p-card-shadow">
+            <ng-template pTemplate="header">
+                <img alt="Card" src="https://primefaces.org/cdn/primeng/images/usercard.png">
+            </ng-template>
+            <div>
+                <span>Penyelenggara : organizerName</span>
+                <span>Trainer : trainerName</span>
+                <span>Tanggal Mulai : startDate</span>
+                <span>Tanggal Selesai : endDate</span>
+                <span>Harga : Rp price</span>
+                <span>Lokasi : location</span>
+            </div>
+            <ng-template pTemplate="footer">
+                <app-action-button label="Beli Course"></app-action-button>
+            </ng-template>
+        </p-card>
+    </div>
+</div>

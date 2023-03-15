@@ -27,8 +27,7 @@ const appRouter : Routes = [
     // {
     //     path : 'e-class',
     //     loadChildren : ()  => import('./pages/classElearning/class-elearning.module').then(c => c.ClassListModule), component : MenubarComponent
-    //     // canLoad : [OutLoadGuard]
-        
+    //     canLoad : [OutLoadGuard]
     // },
          
 

@@ -31,7 +31,7 @@ import { UserService } from 'projects/common/src/app/service/user.service';
 
 @NgModule({
   declarations: [
-    AppComponent, MenuBarComponent, LoginAdminComponent, RegisterAdminComponent, CodeAdminComponent
+    AppComponent, LoginAdminComponent, RegisterAdminComponent, CodeAdminComponent
   ],
   imports: [
     BrowserModule, TableModule, ButtonModule, ToolbarModule, ToastModule, CommonModule, AppRouting,

@@ -6,11 +6,17 @@
 <div class="flex flex-wrap align-items-center justify-content-center">
     <div class="mt-8">
         <div class="field grid">
-            <label for="firstname3" class="col-fixed" style="width:200px">Category Name</label>
-            <div class="col">
-                <input id="firstname3" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary">
-            </div>
-
+            <form [formGroup]="data" (ngSubmit)="submit()">
+                <label for="categoryCode" class="col-fixed" style="width:200px">Category Code</label>
+                <div class="col">
+                    <input id="categoryCode" formControlName="categoryCode" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary">
+                </div>
+                <label for="categoryName" class="col-fixed" style="width:200px">Category Name</label>
+                <div class="col">
+                    <input id="categoryName" formControlName="categoryName" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary">
+                </div>
+                <app-submit-button label="Create"></app-submit-button>
+            </form>
         </div>
     </div>
 </div>

@@ -21,7 +21,7 @@ export class TokenInterceptor implements HttpInterceptor {
       return next.handle(request)
     }
 
-    const reqClone = request.clone({headers : new HttpHeaders().append('Authorization', `Bearer ${this.userService.setData}`)})
+    const reqClone = request.clone({headers : new HttpHeaders().append('Authorization', `Bearer ${this.userService.token}`)})
 
     return next.handle(reqClone)
   }

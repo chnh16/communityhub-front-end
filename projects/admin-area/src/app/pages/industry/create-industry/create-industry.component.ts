@@ -4,7 +4,7 @@ import { Subscription } from "rxjs";
 
 
 @Component ({
-    selector : 'app-category',
+    selector : 'app-create-industry',
     templateUrl : './create-industry.component.html'
 })
 export class CreateIndustryComponent implements OnInit {

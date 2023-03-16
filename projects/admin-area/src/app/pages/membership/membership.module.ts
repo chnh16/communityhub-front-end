@@ -21,7 +21,7 @@ import { ReactiveFormsModule } from "@angular/forms";
     ],
     imports: [
         MembershipRouting, CommonModule,TableModule, ButtonModule, ToolbarModule, ToastModule,
-       AvatarModule, AvatarGroupModule, MenubarModule, bm, InputNumberModule, ReactiveFormsModule, CalendarModule
+        AvatarModule, AvatarGroupModule, MenubarModule, bm, InputNumberModule, ReactiveFormsModule, CalendarModule
     ]
 })
 export class MembershipModule {}

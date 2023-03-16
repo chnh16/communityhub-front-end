@@ -4,7 +4,7 @@ import { Subscription } from "rxjs";
 
 
 @Component ({
-    selector : 'app-login',
+    selector : 'app-register',
     templateUrl : './register-member.component.html'
 })
 export class RegisterMemberComponent {

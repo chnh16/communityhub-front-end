@@ -10,8 +10,8 @@ import { Subscription } from "rxjs";
     templateUrl : './list-category.component.html'
 })
 export class ListCategoryComponent implements OnInit, OnDestroy {
-    data!: any[]
-    resCategory! : CategoryGetAllRes[]
+ 
+    resCategory : CategoryGetAllRes[] = []
     category$? : Subscription
 
     constructor(
@@ -22,9 +22,6 @@ export class ListCategoryComponent implements OnInit, OnDestroy {
         this.category$ = this.categoryService.getAll().subscribe(res => {
             this.resCategory = res
         })
-        this.data = [
-            {code: '12AB1', expired: '13-03-2023', amount: '500000' }
-        ]
     }
 
     ngOnDestroy(): void {

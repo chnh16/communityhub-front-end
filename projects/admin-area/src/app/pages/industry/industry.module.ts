@@ -10,7 +10,8 @@ import { ToolbarModule } from "primeng/toolbar";
 import { CreateIndustryComponent } from "./create-industry/create-industry.component";
 import { IndustryRouting } from "./industry.routing";
 import { ListIndustryComponent } from "./list-industry/list-industry.component";
-
+import { ButtonModule as bm } from "projects/common/src/app/component/button/button.module";
+import { ReactiveFormsModule } from "@angular/forms";
 
 @NgModule ({
     declarations: [
@@ -18,7 +19,7 @@ import { ListIndustryComponent } from "./list-industry/list-industry.component";
     ],
     imports: [
        IndustryRouting, CommonModule,TableModule, ButtonModule, ToolbarModule, ToastModule,
-       AvatarModule, AvatarGroupModule, MenubarModule
+       AvatarModule, AvatarGroupModule, MenubarModule, bm, ReactiveFormsModule
     ]
 })
 export class IndustryModule {}

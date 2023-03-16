@@ -1,19 +1,31 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
+import { PositionService } from "projects/common/src/app/service/position.service";
 import { Subscription } from "rxjs";
+import { PositionGetAllRes } from "../../../pojo/position/PositionGetAllRes";
 
 
 @Component ({
     selector : 'app-position',
     templateUrl : './list-position.component.html'
 })
-export class ListPositionComponent implements OnInit {
-    data!: any[];
+export class ListPositionComponent implements OnInit, OnDestroy {
+    
+    resPosition : PositionGetAllRes[] = []
+    position$? : Subscription
 
-
+    constructor (
+        private positionService : PositionService
+    ){}
+    
     ngOnInit(): void {
-        this.data = [
-            {code: '12AB1', expired: '13-03-2023', amount: '500000' }
-        ]
+        this.position$ = this.positionService.getAll().subscribe(res => {
+            this.resPosition = res
+        })
     }
+
+    ngOnDestroy(): void {
+        this.position$?.unsubscribe()
+    }
+
 }

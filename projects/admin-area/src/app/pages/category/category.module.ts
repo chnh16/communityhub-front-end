@@ -12,6 +12,8 @@ import { CategoryRouting } from "./category.routing";
 import { CreateCategoryComponent } from "./create-category/create-category.component";
 import { ListCategoryComponent } from "./list-category/list-category.component";
 import { ButtonModule as bm } from "projects/common/src/app/component/button/button.module";
+import { HttpClientModule } from "@angular/common/http";
+import { AppModule } from "../../app.module";
 
 
 @NgModule ({
@@ -19,8 +21,9 @@ import { ButtonModule as bm } from "projects/common/src/app/component/button/but
         ListCategoryComponent, CreateCategoryComponent
     ],
     imports: [
-       CategoryRouting, CommonModule,TableModule, ButtonModule, ToolbarModule, ToastModule,
-       AvatarModule, AvatarGroupModule, MenubarModule, ReactiveFormsModule, bm
+       CategoryRouting, CommonModule,TableModule, ButtonModule, ToolbarModule,
+       AvatarModule, AvatarGroupModule, MenubarModule, ReactiveFormsModule, bm, 
+       HttpClientModule
     ]
 })
 export class CategoryModule {}

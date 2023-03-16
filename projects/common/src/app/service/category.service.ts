@@ -9,7 +9,9 @@ import { CategoryGetAllRes } from "../pojo/category/CategoryGetAllRes";
 import { CategoryInsertReq } from "../pojo/category/CategoryInsertReq";
 import { CategoryUpdateReq } from "../pojo/category/CategoryUpdateReq";
 
-@Injectable()
+@Injectable({
+    providedIn : 'root'
+})
 export class CategoryService{
     constructor(
        private http : HttpClient

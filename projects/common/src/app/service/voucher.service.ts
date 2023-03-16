@@ -9,7 +9,9 @@ import { VoucherGetAllRes } from "../../../../common/src/app/pojo/voucher/Vouche
 import { VoucherInsertReq } from "../../../../common/src/app/pojo/voucher/VoucherInsertReq";
 import { VoucherUpdateReq } from "../../../../common/src/app/pojo/voucher/VoucherUpdateReq";
 
-@Injectable()
+@Injectable({
+    providedIn : 'root'
+})
 export class VoucherService{
     constructor(
        private http : HttpClient

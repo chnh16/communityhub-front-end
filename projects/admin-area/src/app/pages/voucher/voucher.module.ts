@@ -11,6 +11,10 @@ import { MenuBarComponent } from "projects/common/src/app/component/navbar/navba
 import { CreateVoucherComponent } from "./create-voucher/create-voucher.component";
 import { VoucherComponent } from "./list-voucher/voucher.component";
 import { VoucherRouting } from "./voucher.routing";
+import { ButtonModule as bm } from "projects/common/src/app/component/button/button.module";
+import {InputNumberModule} from 'primeng/inputnumber';
+import {CalendarModule} from 'primeng/calendar';
+import { ReactiveFormsModule } from "@angular/forms";
 
 @NgModule ({
     declarations: [
@@ -18,7 +22,8 @@ import { VoucherRouting } from "./voucher.routing";
     ],
     imports: [
        VoucherRouting, CommonModule,TableModule, ButtonModule, ToolbarModule, ToastModule,
-       AvatarModule, AvatarGroupModule, MenubarModule
+       AvatarModule, AvatarGroupModule, MenubarModule, bm, InputNumberModule, CalendarModule,
+       ReactiveFormsModule
     ]
 })
 export class VoucherModule {}

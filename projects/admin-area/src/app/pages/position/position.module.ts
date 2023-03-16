@@ -10,6 +10,8 @@ import { ToolbarModule } from "primeng/toolbar";
 import { CreatePositionComponent } from "./create-position/create-position.component";
 import { ListPositionComponent } from "./list-position/list-position.component";
 import { PositionRouting } from "./position.routing";
+import { ButtonModule as bm } from "projects/common/src/app/component/button/button.module";
+import { ReactiveFormsModule } from "@angular/forms";
 
 
 @NgModule ({
@@ -17,8 +19,8 @@ import { PositionRouting } from "./position.routing";
         ListPositionComponent, CreatePositionComponent
     ],
     imports: [
-        PositionRouting, CommonModule,TableModule, ButtonModule, ToolbarModule, ToastModule,
-       AvatarModule, AvatarGroupModule, MenubarModule
+       PositionRouting, CommonModule,TableModule, ButtonModule, ToolbarModule, ToastModule,
+       AvatarModule, AvatarGroupModule, MenubarModule, bm, ReactiveFormsModule
     ]
 })
 export class PositionModule {}

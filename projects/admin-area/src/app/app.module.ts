@@ -5,7 +5,6 @@ import { ResponseInterceptor } from 'projects/common/src/app/interceptor/respons
 import { TokenInterceptor } from 'projects/common/src/app/interceptor/token.interceptor';
 import { AppComponent } from './app.component';
 import {TableModule} from 'primeng/table';
-import { VoucherComponent } from './pages/voucher/list-voucher/voucher.component';
 import {ToolbarModule} from 'primeng/toolbar';
 import {ToastModule} from 'primeng/toast';
 import { CommonModule } from '@angular/common';
@@ -26,7 +25,10 @@ import { ImageModule } from 'primeng/image';
 import { RegisterAdminComponent } from './pages/register/register-admin.component';
 import { CodeAdminComponent } from './pages/code-register/code-admin.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { UserService } from 'projects/common/src/app/service/user.service';
+import { MessageService } from 'primeng/api';
+import { CategoryModule } from './pages/category/category.module';
+
+
 
 
 @NgModule({
@@ -36,11 +38,12 @@ import { UserService } from 'projects/common/src/app/service/user.service';
   imports: [
     BrowserModule, TableModule, ButtonModule, ToolbarModule, ToastModule, CommonModule, AppRouting,
     AvatarModule, AvatarGroupModule, MenubarModule, DividerModule, CardModule, InputTextModule, AutoCompleteModule,
-    TabViewModule, StepsModule, ImageModule, FormsModule, ReactiveFormsModule, HttpClientModule
+    TabViewModule, StepsModule, ImageModule, FormsModule, ReactiveFormsModule, HttpClientModule, CategoryModule
   ],
   providers: [
     {provide : HTTP_INTERCEPTORS, useClass : TokenInterceptor, multi : true},
-    {provide : HTTP_INTERCEPTORS, useClass : ResponseInterceptor, multi : true}
+    {provide : HTTP_INTERCEPTORS, useClass : ResponseInterceptor, multi : true},
+    MessageService
   ],
   bootstrap: [AppComponent]
 })

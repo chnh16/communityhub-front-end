@@ -7,7 +7,7 @@ import { LoginAdminComponent } from "./pages/login/login-admin.component";
 import { RegisterAdminComponent } from "./pages/register/register-admin.component";
 
 
-const appRouter : Routes = [
+export const adminRouter : Routes = [
     {
         path: 'login',
         component : LoginAdminComponent
@@ -57,7 +57,7 @@ const appRouter : Routes = [
 
 @NgModule ({
     imports : [
-        RouterModule.forRoot(appRouter)
+        RouterModule.forRoot(adminRouter)
     ],
     exports : [
         RouterModule

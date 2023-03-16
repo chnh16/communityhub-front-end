@@ -8,6 +8,7 @@ import { RouterLink } from '@angular/router';
 import { TextIconButtonComponent } from './text-button/text-icon-button.component';
 import { CategoryButtonComponent } from './category-button/category-button.component';
 import { SubmitButtonComponent } from './submit-button/submit-button.component';
+import { ActionButtonComponent } from './action-button/action-button.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { SubmitButtonComponent } from './submit-button/submit-button.component';
     DeleteButtonComponent,
     TextIconButtonComponent,
     CategoryButtonComponent,
-    SubmitButtonComponent
+    SubmitButtonComponent,
+    ActionButtonComponent
   ],
   imports: [
     CommonModule, bm, RouterLink
@@ -28,7 +30,8 @@ import { SubmitButtonComponent } from './submit-button/submit-button.component';
     DeleteButtonComponent,
     TextIconButtonComponent,
     CategoryButtonComponent,
-    SubmitButtonComponent
+    SubmitButtonComponent,
+    ActionButtonComponent
   ]
 })
 export class ButtonModule { }

@@ -4,7 +4,7 @@ import { MenuItem } from "primeng/api";
 import { Subscription } from "rxjs";
 
 @Component ({
-    selector : 'app-login',
+    selector : 'app-navbar',
     templateUrl : './navbar.component.html'
 })
 export class MenuBarComponent {

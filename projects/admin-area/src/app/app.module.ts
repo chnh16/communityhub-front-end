@@ -33,7 +33,7 @@ import { CategoryModule } from './pages/category/category.module';
 
 @NgModule({
   declarations: [
-    AppComponent, MenuBarComponent, LoginAdminComponent, RegisterAdminComponent, CodeAdminComponent
+    AppComponent, LoginAdminComponent, RegisterAdminComponent, CodeAdminComponent
   ],
   imports: [
     BrowserModule, TableModule, ButtonModule, ToolbarModule, ToastModule, CommonModule, AppRouting,

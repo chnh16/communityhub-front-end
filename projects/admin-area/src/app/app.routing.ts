@@ -21,37 +21,30 @@ export const adminRouter : Routes = [
         component : CodeAdminComponent
     },
     {
-        path : '',
+        path : 'voucher',
         loadChildren : () => import('./pages/voucher/voucher.module').then(c => c.VoucherModule),
         component : MenuBarComponent
     },
     {
-        path : '',
+        path : 'category',
         loadChildren : () => import('./pages/category/category.module').then(c => c.CategoryModule),
         component : MenuBarComponent
     },
     {
-        path : '',
+        path : 'industry',
         loadChildren : () => import('./pages/industry/industry.module').then(c => c.IndustryModule),
         component : MenuBarComponent
     },
     {
-        path : '',
+        path : 'position',
         loadChildren : () => import('./pages/position/position.module').then(c => c.PositionModule),
         component : MenuBarComponent
     },
     {
-        path : '',
+        path : 'membership',
         loadChildren : () => import('./pages/membership/membership.module').then(c => c.MembershipModule),
         component : MenuBarComponent
-    },
-    // {
-    //     path : '',
-    //     component : MenuBarComponent, children : [{
-    //         path : 'voucher',
-    //         component : VoucherModule,
-    //     }]
-    // }
+    }
 
 ];
 

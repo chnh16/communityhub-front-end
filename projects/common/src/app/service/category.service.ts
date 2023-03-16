@@ -32,4 +32,8 @@ export class CategoryService{
     delete(id : string) : Observable<DeleteRes>{
         return this.http.delete<DeleteRes>(`${BASE_URL}/category/${id}`);
     }
+
+    getById(id : string) : Observable<CategoryGetAllRes>{
+        return this.http.get<CategoryGetAllRes>(`${BASE_URL}/category/${id}`);
+    }
 }

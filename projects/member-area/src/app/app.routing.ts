@@ -6,6 +6,7 @@ import { CanLoad } from "@angular/router";
 import { CodeMemberComponent } from "./pages/code-member/code-member.component";
 import { LoginMemberComponent } from "./pages/login/login-member.component";
 import { RegisterMemberComponent } from "./pages/register/register-member.component";
+import { ProfileMemberComponent } from "./pages/user-profile/user-profile.component";
 
 const appRouter : Routes = [
     {
@@ -19,6 +20,10 @@ const appRouter : Routes = [
     {
         path : 'code-member',
         component : CodeMemberComponent
+    },
+    {
+        path : 'profile-member',
+        component : ProfileMemberComponent
     }
 
 ];

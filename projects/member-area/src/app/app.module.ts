@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AutoCompleteModule } from 'primeng/autocomplete';
@@ -24,15 +24,17 @@ import { AppRouting } from './app.routing';
 import { CodeMemberComponent } from './pages/code-member/code-member.component';
 import { LoginMemberComponent } from './pages/login/login-member.component';
 import { RegisterMemberComponent } from './pages/register/register-member.component';
+import { ProfileMemberComponent } from './pages/user-profile/user-profile.component';
+import {FileUploadModule} from 'primeng/fileupload';
 
 @NgModule({
   declarations: [
-    AppComponent, LoginMemberComponent, RegisterMemberComponent, CodeMemberComponent
+    AppComponent, LoginMemberComponent, RegisterMemberComponent, CodeMemberComponent, ProfileMemberComponent
   ],
   imports: [
     BrowserModule, TableModule, ButtonModule, ToolbarModule, ToastModule, CommonModule, AppRouting,
     AvatarModule, AvatarGroupModule, MenubarModule, DividerModule, CardModule, InputTextModule, AutoCompleteModule,
-    TabViewModule, StepsModule, ImageModule
+    TabViewModule, StepsModule, ImageModule, FileUploadModule, HttpClientModule
   ],
   providers: [
     {provide : HTTP_INTERCEPTORS, useClass : TokenInterceptor, multi : true},

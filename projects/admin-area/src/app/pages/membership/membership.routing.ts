@@ -8,11 +8,11 @@ import { ListMembershipComponent } from "./list-membership/list-membership.comon
 
 const appRouter : Routes = [
     {
-        path : 'membership',
+        path : '',
         component : ListMembershipComponent,
     },
     {
-        path : 'membership/add',
+        path : 'add',
         component : CreateMembershipComponent,
     }
 ];

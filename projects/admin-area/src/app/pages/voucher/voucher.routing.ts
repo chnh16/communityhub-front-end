@@ -7,11 +7,11 @@ import { VoucherComponent } from "./list-voucher/voucher.component";
 
 const appRouter : Routes = [
     {
-        path : 'voucher',
+        path : '',
         component : VoucherComponent, 
     },
     {
-        path : 'voucher/add',
+        path : 'add',
         component : CreateVoucherComponent
     }
 ];

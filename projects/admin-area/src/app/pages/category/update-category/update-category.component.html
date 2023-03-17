@@ -1,0 +1,41 @@
+<pre>
+    {{resCategoryId | json}}
+    {{data.value | json}}
+</pre>
+
+
+<div class="flex flex-wrap align-items-center justify-content-center">
+    <div class="mt-6">
+        <h2>UPDATE CATEGORY</h2>
+    </div>
+</div>
+<div class="flex flex-wrap align-items-center justify-content-center">
+    <div class="mt-8">
+        <form [formGroup]="data" (ngSubmit)="submit()">
+            <div class="field grid">
+                <!-- <div class="col">
+                    <input name="id" id="id" formControlName="id" type="hidden" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary">
+                </div> -->
+            </div>
+            <div class="field grid">
+                <label for="categoryCode" class="col-fixed" style="width:200px">Category Code</label>
+                <div class="col">
+                    <input name="categoryCode" id="categoryCode" formControlName="categoryCode" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary">
+                </div>
+            </div>
+            <div class="mt-4">
+                <div class="field grid">
+                    <label for="categoryName" class="col-fixed" style="width:200px">Category Name</label>
+                    <div class="col">
+                        <input name="categoryName" id="categoryName" formControlName="categoryName" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary">
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8">
+                <div class="col-6">
+                    <app-submit-button label="Update" clasz="p-button-rounded mr-2"></app-submit-button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -12,11 +12,20 @@ import { Subscription } from "rxjs";
 export class ListCategoryComponent implements OnInit, OnDestroy {
  
     resCategory : CategoryGetAllRes[] = []
-    category$? : Subscription
+    private category$? : Subscription
+    private categoryDelete$? : Subscription
 
     constructor(
         private categoryService : CategoryService
     ){}
+
+    deleteCategory(category:CategoryGetAllRes) {
+        console.log("Delete")
+        this.categoryDelete$ = this.categoryService.delete(category.id).subscribe(res => {
+            alert('Berhasil di hapus')
+            this.ngOnInit()
+        })
+    }
 
     ngOnInit(): void {
         this.category$ = this.categoryService.getAll().subscribe(res => {

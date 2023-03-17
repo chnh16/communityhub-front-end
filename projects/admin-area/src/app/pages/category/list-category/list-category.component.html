@@ -26,8 +26,8 @@
                     <td>{{item.categoryCode}}</td>
                     <td>{{item.categoryName}}</td>
                     <td>
-                        <button pButton pRipple type="button" icon="pi pi-file-edit" class="p-button-rounded p-button-success"></button>
-                        <button pButton pRipple type="button" icon="pi pi-trash" class="ml-3 p-button-rounded p-button-danger"></button>
+                        <button pButton pRipple type="button" icon="pi pi-file-edit" class="p-button-rounded p-button-success" routerLink="/category/update/{{item.id}}"></button>
+                        <button pButton pRipple type="button" icon="pi pi-trash" class="ml-3 p-button-rounded p-button-danger" (click)="deleteCategory(item)"></button>
                     </td>
                 </tr>
             </ng-template>

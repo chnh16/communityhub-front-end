@@ -6,11 +6,11 @@ import { ListPositionComponent } from "./list-position/list-position.component";
 
 const appRouter : Routes = [
     {
-        path : 'position',
+        path : '',
         component : ListPositionComponent,
     },
     {
-        path : 'position/add',
+        path : 'add',
         component : CreatePositionComponent,
     }
 ];

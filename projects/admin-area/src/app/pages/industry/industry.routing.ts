@@ -7,11 +7,11 @@ import { ListIndustryComponent } from "./list-industry/list-industry.component";
 
 const appRouter : Routes = [
     {
-        path : 'industry',
+        path : '',
         component : ListIndustryComponent,
     },
     {
-        path : 'industry/add',
+        path : 'add',
         component : CreateIndustryComponent,
     }
 ];

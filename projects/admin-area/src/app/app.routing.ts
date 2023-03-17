@@ -1,24 +1,33 @@
+import { CommonModule } from "@angular/common";
 import {Component, NgModule} from "@angular/core"
+import { ReactiveFormsModule } from "@angular/forms";
 import {RouterModule, Routes} from "@angular/router"
 import { CanLoad } from "@angular/router";
+import { AvatarModule } from "primeng/avatar";
+import { CardModule } from "primeng/card";
+import { DividerModule } from "primeng/divider";
+import { ImageModule } from "primeng/image";
+import { MenubarModule } from "primeng/menubar";
+import { ButtonModule } from "projects/common/src/app/component/button/button.module";
 import { MenuBarComponent } from "projects/common/src/app/component/navbar/navbar.component";
+import { SharedModule } from "projects/common/src/app/shared.module";
 import { CodeAdminComponent } from "./pages/code-register/code-admin.component";
 import { LoginAdminComponent } from "./pages/login/login-admin.component";
 import { RegisterAdminComponent } from "./pages/register/register-admin.component";
 
 
-export const adminRouter : Routes = [
+export const adminRouter: Routes = [
     {
         path: 'login',
-        component : LoginAdminComponent
+        component: LoginAdminComponent
     },
     {
         path: 'register',
-        component : RegisterAdminComponent
+        component: RegisterAdminComponent
     },
     {
         path: 'code',
-        component : CodeAdminComponent
+        component: CodeAdminComponent
     },
     {
         path : 'voucher',
@@ -49,11 +58,15 @@ export const adminRouter : Routes = [
 ];
 
 @NgModule ({
+    declarations : [
+        LoginAdminComponent, RegisterAdminComponent, CodeAdminComponent
+    ],
     imports : [
-        RouterModule.forRoot(adminRouter)
+        RouterModule.forRoot(adminRouter),
+        SharedModule
     ],
     exports : [
-        RouterModule
+        RouterModule, LoginAdminComponent, RegisterAdminComponent, CodeAdminComponent
     ]
 })
 

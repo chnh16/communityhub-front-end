@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { IndustryService } from "projects/common/src/app/service/industry.service";
 import { Subscription } from "rxjs";
-import { IndustryGetAllRes } from "../../../pojo/industry/IndustryGetAllRes";
+import { IndustryGetAllRes } from "../../../../../../common/src/app/pojo/industry/IndustryGetAllRes";
 
 
 @Component ({

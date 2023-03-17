@@ -16,6 +16,7 @@ import { TabViewModule } from 'primeng/tabview';
 import { ToastModule } from 'primeng/toast';
 import { ToolbarModule } from 'primeng/toolbar';
 import { ButtonModule } from 'projects/common/src/app/component/button/button.module';
+import { MenuBarComponent } from 'projects/common/src/app/component/navbar/navbar.component';
 import { ResponseInterceptor } from 'projects/common/src/app/interceptor/response.interceptor';
 import { TokenInterceptor } from 'projects/common/src/app/interceptor/token.interceptor';
 
@@ -29,17 +30,21 @@ import {FileUploadModule} from 'primeng/fileupload';
 
 @NgModule({
   declarations: [
+<<<<<<< HEAD
+    AppComponent, LoginMemberComponent, CodeMemberComponent
+=======
     AppComponent, LoginMemberComponent, RegisterMemberComponent, CodeMemberComponent, ProfileMemberComponent
+>>>>>>> 4b1762695b4e0e0a4672c3137f408e1a9f6cbc49
   ],
   imports: [
-    BrowserModule, TableModule, ButtonModule, ToolbarModule, ToastModule, CommonModule, AppRouting,
+    BrowserModule, TableModule, ButtonModule, ToolbarModule, ToastModule, CommonModule,
     AvatarModule, AvatarGroupModule, MenubarModule, DividerModule, CardModule, InputTextModule, AutoCompleteModule,
     TabViewModule, StepsModule, ImageModule, FileUploadModule, HttpClientModule
   ],
   providers: [
-    {provide : HTTP_INTERCEPTORS, useClass : TokenInterceptor, multi : true},
-    {provide : HTTP_INTERCEPTORS, useClass : ResponseInterceptor, multi : true}
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ResponseInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class MemberModule { }

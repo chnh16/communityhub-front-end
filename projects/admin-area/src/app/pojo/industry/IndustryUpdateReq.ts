@@ -1,6 +1,5 @@
-export interface IndustryUpdateReq{
-    id : string
-    industryCode : string
-    industryName : string
-    ver : number
+export interface IndustryUpdateReq {
+    id: string
+    industryName: string
+    ver: number
 }

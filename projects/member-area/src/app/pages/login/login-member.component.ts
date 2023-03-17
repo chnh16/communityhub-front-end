@@ -1,10 +1,8 @@
 import { Component } from "@angular/core";
-import { Router } from "@angular/router";
-import { Subscription } from "rxjs";
 
 
 @Component ({
-    selector : 'app-login',
+    selector : 'app-login-member',
     templateUrl : './login-member.component.html'
 })
 export class LoginMemberComponent {

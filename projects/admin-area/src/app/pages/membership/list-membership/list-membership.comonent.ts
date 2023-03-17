@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { MembershipService } from "projects/common/src/app/service/membership.service";
 import { Subscription } from "rxjs";
-import { MembershipGetAllRes } from "../../../pojo/membership/MembershipGetAllRes";
+import { MembershipGetAllRes } from "../../../../../../common/src/app/pojo/membership/MembershipGetAllRes";
 
 
 @Component ({

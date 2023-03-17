@@ -30,6 +30,11 @@ export const memberRouter : Routes = [
         component : MenuBarComponent
     },
     {
+        path : 'event',
+        loadChildren : () => import('./pages/event/event.module').then(e => e.EventModule),
+        component : MenuBarComponent
+    },
+    {
         path: 'code-member',
         component: CodeMemberComponent
     },

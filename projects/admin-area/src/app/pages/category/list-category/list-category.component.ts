@@ -12,8 +12,8 @@ import { Subscription } from "rxjs";
 export class ListCategoryComponent implements OnInit, OnDestroy {
  
     resCategory : CategoryGetAllRes[] = []
-    private category$? : Subscription
-    private categoryDelete$? : Subscription
+    category$? : Subscription
+    categoryDelete$? : Subscription
 
     constructor(
         private categoryService : CategoryService

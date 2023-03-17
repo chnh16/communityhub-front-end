@@ -9,11 +9,11 @@ const appRouter : Routes = [
     ...memberRouter
 ];
 
-@NgModule ({
-    imports : [
+@NgModule({
+    imports: [
         RouterModule.forRoot(appRouter)
     ],
-    exports : [
+    exports: [
         RouterModule
     ]
 })

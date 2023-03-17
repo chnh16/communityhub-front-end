@@ -10,26 +10,30 @@ import { MembershipInsertReq } from "../../../../common/src/app/pojo/membership/
 import { MembershipUpdateReq } from "../../../../common/src/app/pojo/membership/MembershipUpdateReq";
 
 @Injectable({
-    providedIn : 'root'
+    providedIn: 'root'
 })
-export class MembershipService{
+export class MembershipService {
     constructor(
-       private http : HttpClient
-    ){}
+        private http: HttpClient
+    ) { }
 
-    getAll() : Observable<MembershipGetAllRes[]>{
+    getAll(): Observable<MembershipGetAllRes[]> {
         return this.http.get<MembershipGetAllRes[]>(`${BASE_URL}/memberships`);
     }
 
-    insert(data : MembershipInsertReq) : Observable<InsertRes>{
+    getById(id: string): Observable<MembershipGetAllRes> {
+        return this.http.get<MembershipGetAllRes>(`${BASE_URL}/memberships/${id}`);
+    }
+
+    insert(data: MembershipInsertReq): Observable<InsertRes> {
         return this.http.post<InsertRes>(`${BASE_URL}/memberships/add`, data);
     }
 
-    update(data : MembershipUpdateReq) : Observable<UpdateRes>{
-        return this.http.put<UpdateRes>(`${BASE_URL}/membership/edit`, data);
+    update(data: MembershipUpdateReq): Observable<UpdateRes> {
+        return this.http.put<UpdateRes>(`${BASE_URL}/memberships/edit`, data);
     }
 
-    delete(id : string) : Observable<DeleteRes>{
-        return this.http.delete<DeleteRes>(`${BASE_URL}/membership/${id}`);
+    delete(id: string): Observable<DeleteRes> {
+        return this.http.delete<DeleteRes>(`${BASE_URL}/memberships/${id}`);
     }
 }

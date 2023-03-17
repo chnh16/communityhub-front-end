@@ -16,18 +16,18 @@ import { LoginAdminComponent } from "./pages/login/login-admin.component";
 import { RegisterAdminComponent } from "./pages/register/register-admin.component";
 
 
-export const adminRouter : Routes = [
+export const adminRouter: Routes = [
     {
         path: 'login',
-        component : LoginAdminComponent
+        component: LoginAdminComponent
     },
     {
         path: 'register',
-        component : RegisterAdminComponent
+        component: RegisterAdminComponent
     },
     {
         path: 'code',
-        component : CodeAdminComponent
+        component: CodeAdminComponent
     },
     {
         path : 'voucher',

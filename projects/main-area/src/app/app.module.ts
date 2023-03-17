@@ -21,8 +21,8 @@ import { AppRouting } from './app.routing';
    SharedModule, BrowserModule, AppRouting, BrowserAnimationsModule
   ],
   providers: [
-    {provide : HTTP_INTERCEPTORS, useClass : TokenInterceptor, multi : true},
-    {provide : HTTP_INTERCEPTORS, useClass : ResponseInterceptor, multi : true}, 
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ResponseInterceptor, multi: true },
     MessageService
   ],
   bootstrap: [AppComponent]

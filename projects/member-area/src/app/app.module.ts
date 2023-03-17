@@ -23,7 +23,6 @@ import { TokenInterceptor } from 'projects/common/src/app/interceptor/token.inte
 import { AppComponent } from './app.component';
 import { AppRouting } from './app.routing';
 import { CodeMemberComponent } from './pages/code-member/code-member.component';
-import { CourseModule } from './pages/course/course.module';
 import { LoginMemberComponent } from './pages/login/login-member.component';
 import { RegisterMemberComponent } from './pages/register/register-member.component';
 import { ProfileMemberComponent } from './pages/user-profile/user-profile.component';
@@ -34,7 +33,7 @@ import {FileUploadModule} from 'primeng/fileupload';
     AppComponent, LoginMemberComponent, RegisterMemberComponent, CodeMemberComponent, ProfileMemberComponent
   ],
   imports: [
-    BrowserModule, TableModule, ButtonModule, ToolbarModule, ToastModule, CommonModule, AppRouting,
+    BrowserModule, TableModule, ButtonModule, ToolbarModule, ToastModule, CommonModule,
     AvatarModule, AvatarGroupModule, MenubarModule, DividerModule, CardModule, InputTextModule, AutoCompleteModule,
     TabViewModule, StepsModule, ImageModule, FileUploadModule, HttpClientModule
   ],

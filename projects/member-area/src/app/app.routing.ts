@@ -8,6 +8,7 @@ import { SharedModule } from "projects/common/src/app/shared.module";
 import { CodeMemberComponent } from "./pages/code-member/code-member.component";
 import { LoginMemberComponent } from "./pages/login/login-member.component";
 import { RegisterMemberComponent } from "./pages/register/register-member.component";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProfileMemberComponent } from "./pages/user-profile/user-profile.component";
 
 export const memberRouter : Routes = [
@@ -22,6 +23,11 @@ export const memberRouter : Routes = [
     {
         path : 'profile-member',
         component : ProfileMemberComponent
+    },
+    {
+        path : 'dashboard',
+        loadChildren : () => import('./pages/dashboard/dashboard.module').then(d => d.DashboardModule),
+        component : MenuBarComponent
     },
     {
         path: 'code-member',

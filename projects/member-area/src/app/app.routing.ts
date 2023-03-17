@@ -8,11 +8,8 @@ import { SharedModule } from "projects/common/src/app/shared.module";
 import { CodeMemberComponent } from "./pages/code-member/code-member.component";
 import { LoginMemberComponent } from "./pages/login/login-member.component";
 import { RegisterMemberComponent } from "./pages/register/register-member.component";
-<<<<<<< HEAD
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-=======
 import { ProfileMemberComponent } from "./pages/user-profile/user-profile.component";
->>>>>>> 4b1762695b4e0e0a4672c3137f408e1a9f6cbc49
 
 export const memberRouter : Routes = [
     {
@@ -28,7 +25,6 @@ export const memberRouter : Routes = [
         component : ProfileMemberComponent
     },
     {
-<<<<<<< HEAD
         path : 'dashboard',
         loadChildren : () => import('./pages/dashboard/dashboard.module').then(d => d.DashboardModule),
         component : MenuBarComponent
@@ -37,10 +33,10 @@ export const memberRouter : Routes = [
         path : 'event',
         loadChildren : () => import('./pages/event/event.module').then(e => e.EventModule),
         component : MenuBarComponent
-=======
+    },
+    {
         path: 'code-member',
         component: CodeMemberComponent
->>>>>>> 4b1762695b4e0e0a4672c3137f408e1a9f6cbc49
     },
     {
         path: 'event',

@@ -10,26 +10,30 @@ import { IndustryInsertReq } from "../../../../common/src/app/pojo/industry/Indu
 import { IndustryUpdateReq } from "../../../../common/src/app/pojo/industry/IndustryUpdateReq";
 
 @Injectable({
-    providedIn : 'root'
+    providedIn: 'root'
 })
-export class IndustryService{
+export class IndustryService {
     constructor(
-       private http : HttpClient
-    ){}
+        private http: HttpClient
+    ) { }
 
-    getAll() : Observable<IndustryGetAllRes[]>{
+    getAll(): Observable<IndustryGetAllRes[]> {
         return this.http.get<IndustryGetAllRes[]>(`${BASE_URL}/industry`);
     }
 
-    insert(data : IndustryInsertReq) : Observable<InsertRes>{
+    getById(id: string): Observable<IndustryGetAllRes> {
+        return this.http.get<IndustryGetAllRes>(`${BASE_URL}/industry/${id}`);
+    }
+
+    insert(data: IndustryInsertReq): Observable<InsertRes> {
         return this.http.post<InsertRes>(`${BASE_URL}/industry/add`, data);
     }
 
-    update(data : IndustryUpdateReq) : Observable<UpdateRes>{
+    update(data: IndustryUpdateReq): Observable<UpdateRes> {
         return this.http.put<UpdateRes>(`${BASE_URL}/industry/edit`, data);
     }
 
-    delete(id : string) : Observable<DeleteRes>{
+    delete(id: string): Observable<DeleteRes> {
         return this.http.delete<DeleteRes>(`${BASE_URL}/industry/${id}`);
     }
 }

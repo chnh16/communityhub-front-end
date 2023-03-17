@@ -13,7 +13,7 @@ import { Subscription } from "rxjs";
     templateUrl : './update-category.component.html'
 })
 export class UpdateCategoryComponent implements OnInit, OnDestroy {
-    resCategory : CategoryGetAllRes[] = []
+    id! : string
     resCategoryId! : CategoryGetAllRes
     category$? : Subscription
     updateCategory$? : Subscription
@@ -32,42 +32,47 @@ export class UpdateCategoryComponent implements OnInit, OnDestroy {
     constructor(
         private categoryService : CategoryService,
         private fb : FormBuilder,
-        private router : ActivatedRoute
+        private activatedRouter : ActivatedRoute,
+        private router : Router
     ){}
 
     data = this.fb.group({
+        id : [''],
         categoryCode : [''],
-        categoryName : ['']
+        categoryName : [''],
+        ver : [0]
     })
 
-    submit(){
-        const data : CategoryUpdateReq = {
-            id : this.resCategoryId.id!,
+    onUpdate(){
+        const update : CategoryUpdateReq = {
+            id : this.data.value.id!,
             categoryCode : this.data.value.categoryCode!,
             categoryName : this.data.value.categoryName!,
-            ver : this.resCategoryId.ver!
+            ver : this.data.value.ver!
         }
-        this.updateCategory$ = this.categoryService.update(data).subscribe(res => {
-            this.ngOnInit()
+        this.updateCategory$ = this.categoryService.update(update).subscribe(res => {
+            this.router.navigateByUrl(`category`)
         })
     }
 
     ngOnInit(): void {
-        this.router.params.subscribe(result => {
-            this.category$ = this.categoryService.getById(result['id']).subscribe(res => {
-                this.resCategoryId = res
-                console.log(res)
+        this.activatedRouter.params.subscribe(result => {
+            const params = result as any
+            this.id = params.id
+            this.category$ = this.categoryService.getById(params.id).subscribe(result1 => {
                 this.data.patchValue({
-                    categoryCode : res.categoryCode,
-                    categoryName : res.categoryName
+                    id : result1.id,
+                    categoryCode : result1.categoryCode,
+                    categoryName : result1.categoryName,
+                    ver : result1.ver
                 })
-                console.log(this.data.value)
             })
-        })    
+
+        })   
 
     }
 
     ngOnDestroy(): void {
-        this.updateCategory$?.unsubscribe()
+       // this.updateCategory$?.unsubscribe()
     }
 }

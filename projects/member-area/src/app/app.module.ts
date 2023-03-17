@@ -16,6 +16,7 @@ import { TabViewModule } from 'primeng/tabview';
 import { ToastModule } from 'primeng/toast';
 import { ToolbarModule } from 'primeng/toolbar';
 import { ButtonModule } from 'projects/common/src/app/component/button/button.module';
+import { MenuBarComponent } from 'projects/common/src/app/component/navbar/navbar.component';
 import { ResponseInterceptor } from 'projects/common/src/app/interceptor/response.interceptor';
 import { TokenInterceptor } from 'projects/common/src/app/interceptor/token.interceptor';
 
@@ -28,7 +29,7 @@ import { RegisterMemberComponent } from './pages/register/register-member.compon
 
 @NgModule({
   declarations: [
-    AppComponent, LoginMemberComponent, RegisterMemberComponent, CodeMemberComponent
+    AppComponent, LoginMemberComponent, RegisterMemberComponent, CodeMemberComponent, MenuBarComponent
   ],
   imports: [
     BrowserModule, TableModule, ButtonModule, ToolbarModule, ToastModule, CommonModule, AppRouting,
@@ -36,9 +37,9 @@ import { RegisterMemberComponent } from './pages/register/register-member.compon
     TabViewModule, StepsModule, ImageModule
   ],
   providers: [
-    {provide : HTTP_INTERCEPTORS, useClass : TokenInterceptor, multi : true},
-    {provide : HTTP_INTERCEPTORS, useClass : ResponseInterceptor, multi : true}
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ResponseInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class MemberModule { }

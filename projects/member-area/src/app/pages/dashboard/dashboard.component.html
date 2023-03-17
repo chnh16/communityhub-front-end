@@ -33,10 +33,15 @@
         </div>
         <p-card>
             <form [formGroup]="data">
-                <textarea [style]="{'resize' : 'none', 'border' : 'none'}" [rows]="5" [cols]="109" [autoResize]="true" formControlName="postContent" placeholder="Tulis sesuatu" pInputTextarea></textarea>
+                <textarea [style]="{'resize' : 'none', 'border' : 'none'}" [rows]="5" [cols]="109" [autoResize]="true"
+                    formControlName="postContent" placeholder="Tulis sesuatu" pInputTextarea></textarea>
+                <div *ngIf="showImageUpload" class="grid mt-2">
+                    <p-fileUpload [multiple]="true" accept="image/*" (onSelect)="onSelect($event)" (onRemove)="onRemove($event)" (maxFileSize)="1000000">
+                    </p-fileUpload>
+                </div>
                 <div class="grid mt-2">
                     <div class="col-auto mx-1">
-                        <app-icon-button icon="pi pi-image" label="Image"></app-icon-button>
+                        <app-icon-button icon="pi pi-image" label="Image" (click)="onShowImageUpload()"></app-icon-button>
                     </div>
                     <div class="col-auto mx-1">
                         <app-icon-button icon="pi pi-chart-bar" label="Polling"></app-icon-button>
@@ -50,7 +55,7 @@
         <p-card class="flex align-items-center flex-wrap" styleClass="p-card-shadow">
             <p-tabView>
                 <p-tabPanel>
-                    <ng-template pTemplate = "header">
+                    <ng-template pTemplate="header">
                         <i class="pi pi-list"></i>
                         <span>Thread</span>
                     </ng-template>
@@ -206,7 +211,7 @@
                     </div>
                 </p-tabPanel>
                 <p-tabPanel>
-                    <ng-template pTemplate = "header">
+                    <ng-template pTemplate="header">
                         <i class="pi pi-heart"></i>
                         <span>Like</span>
                     </ng-template>
@@ -312,7 +317,7 @@
                     </div>
                 </p-tabPanel>
                 <p-tabPanel>
-                    <ng-template pTemplate = "header">
+                    <ng-template pTemplate="header">
                         <i class="pi pi-bookmark"></i>
                         <span>Bookmark</span>
                     </ng-template>

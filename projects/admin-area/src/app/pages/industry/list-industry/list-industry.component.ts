@@ -13,10 +13,19 @@ export class ListIndustryComponent implements OnInit, OnDestroy {
     
     resIndustry : IndustryGetAllRes[] = []
     industry$? : Subscription
+    industryDelete$? : Subscription
 
     constructor (
         private industryService : IndustryService
     ){}
+
+    deleteIndustry(industry:IndustryGetAllRes) {
+        console.log("Delete")
+        this.industryDelete$ = this.industryService.delete(industry.id).subscribe(res => {
+            alert('Berhasil di hapus')
+            this.ngOnInit()
+        })
+    }
 
     ngOnInit(): void {
         this.industry$ = this.industryService.getAll().subscribe(res => {

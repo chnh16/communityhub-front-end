@@ -1,8 +1,7 @@
-export interface MembershipUpdateReq{
-    id : string
-    membershipCode : string
-    membershipName : string
-    duration : number
-    amount : number
-    ver : number
+export interface MembershipUpdateReq {
+    id: string
+    membershipName: string
+    duration: number
+    amount: number
+    ver: number
 }

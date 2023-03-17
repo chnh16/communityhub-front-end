@@ -1,27 +1,32 @@
-import {NgModule} from "@angular/core"
-import {RouterModule, Routes} from "@angular/router"
+import { NgModule } from "@angular/core"
+import { RouterModule, Routes } from "@angular/router"
 import { MenuBarComponent } from "projects/common/src/app/component/navbar/navbar.component";
 import { CreateMembershipComponent } from "./create-membership/create-membership.component";
 import { ListMembershipComponent } from "./list-membership/list-membership.comonent";
+import { UpdateMembershipComponent } from "./update-membership/update-membership.component";
 
 
 
-const appRouter : Routes = [
+const appRouter: Routes = [
     {
-        path : 'membership',
-        component : ListMembershipComponent,
+        path: '',
+        component: ListMembershipComponent,
     },
     {
-        path : 'membership/add',
-        component : CreateMembershipComponent,
+        path: 'add',
+        component: CreateMembershipComponent,
+    },
+    {
+        path: 'edit/:id',
+        component: UpdateMembershipComponent,
     }
 ];
 
-@NgModule ({
-    imports : [
+@NgModule({
+    imports: [
         RouterModule.forChild(appRouter)
     ],
-    exports : [
+    exports: [
         RouterModule
     ]
 })

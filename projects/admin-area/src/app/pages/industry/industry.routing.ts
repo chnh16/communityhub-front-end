@@ -1,26 +1,30 @@
-import {NgModule} from "@angular/core"
-import {RouterModule, Routes} from "@angular/router"
+import { NgModule } from "@angular/core"
+import { RouterModule, Routes } from "@angular/router"
 import { MenuBarComponent } from "projects/common/src/app/component/navbar/navbar.component";
 import { CreateIndustryComponent } from "./create-industry/create-industry.component";
 import { ListIndustryComponent } from "./list-industry/list-industry.component";
+import { UpdateIndustryComponent } from "./update-industry/update.industry.component";
 
 
-const appRouter : Routes = [
+const appRouter: Routes = [
     {
-        path : 'industry',
-        component : ListIndustryComponent,
+        path: 'industry',
+        component: ListIndustryComponent
     },
     {
-        path : 'industry/add',
-        component : CreateIndustryComponent,
+        path: 'add',
+        component: CreateIndustryComponent
+    }, {
+        path: 'edit/:id',
+        component: UpdateIndustryComponent
     }
 ];
 
-@NgModule ({
-    imports : [
+@NgModule({
+    imports: [
         RouterModule.forChild(appRouter)
     ],
-    exports : [
+    exports: [
         RouterModule
     ]
 })

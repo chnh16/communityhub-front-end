@@ -5,21 +5,21 @@ import { Subscription } from "rxjs";
 import { MembershipGetAllRes } from "../../../pojo/membership/MembershipGetAllRes";
 
 
-@Component ({
-    selector : 'app-membership',
-    templateUrl : './list-membership.component.html'
+@Component({
+    selector: 'app-membership',
+    templateUrl: './list-membership.component.html'
 })
 export class ListMembershipComponent implements OnInit, OnDestroy {
-    resMembership : MembershipGetAllRes[] = []
-    membership$? : Subscription
+    resMembership: MembershipGetAllRes[] = []
+    membership$?: Subscription
 
     constructor(
-        private membershipService : MembershipService
-    ) {}
-    
+        private membershipService: MembershipService
+    ) { }
+
 
     ngOnInit(): void {
-        this.membership$= this.membershipService.getAll().subscribe(res => {
+        this.membership$ = this.membershipService.getAll().subscribe(res => {
             this.resMembership = res
         })
     }

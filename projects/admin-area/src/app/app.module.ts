@@ -27,18 +27,17 @@ import { CodeAdminComponent } from './pages/code-register/code-admin.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { CategoryModule } from './pages/category/category.module';
+import { SharedModule } from 'projects/common/src/app/shared.module';
 
 
 
 
 @NgModule({
   declarations: [
-    AppComponent, MenuBarComponent, LoginAdminComponent, RegisterAdminComponent, CodeAdminComponent
+    AppComponent
   ],
   imports: [
-    BrowserModule, TableModule, ButtonModule, ToolbarModule, ToastModule, CommonModule, AppRouting,
-    AvatarModule, AvatarGroupModule, MenubarModule, DividerModule, CardModule, InputTextModule, AutoCompleteModule,
-    TabViewModule, StepsModule, ImageModule, FormsModule, ReactiveFormsModule, HttpClientModule, CategoryModule
+    SharedModule
   ],
   providers: [
     {provide : HTTP_INTERCEPTORS, useClass : TokenInterceptor, multi : true},

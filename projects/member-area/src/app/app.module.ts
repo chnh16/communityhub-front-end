@@ -22,6 +22,7 @@ import { TokenInterceptor } from 'projects/common/src/app/interceptor/token.inte
 import { AppComponent } from './app.component';
 import { AppRouting } from './app.routing';
 import { CodeMemberComponent } from './pages/code-member/code-member.component';
+import { CourseModule } from './pages/course/course.module';
 import { LoginMemberComponent } from './pages/login/login-member.component';
 import { RegisterMemberComponent } from './pages/register/register-member.component';
 

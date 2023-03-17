@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { PositionService } from "projects/common/src/app/service/position.service";
 import { Subscription } from "rxjs";
-import { PositionGetAllRes } from "../../../pojo/position/PositionGetAllRes";
+import { PositionGetAllRes } from "../../../../../../common/src/app/pojo/position/PositionGetAllRes";
 
 
 @Component ({

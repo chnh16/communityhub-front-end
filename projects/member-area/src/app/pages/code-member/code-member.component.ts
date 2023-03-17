@@ -4,7 +4,7 @@ import { Subscription } from "rxjs";
 
 
 @Component ({
-    selector : 'app-login',
+    selector : 'app-code-member',
     templateUrl : './code-member.component.html'
 })
 export class CodeMemberComponent {

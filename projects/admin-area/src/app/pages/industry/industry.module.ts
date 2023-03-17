@@ -12,14 +12,15 @@ import { IndustryRouting } from "./industry.routing";
 import { ListIndustryComponent } from "./list-industry/list-industry.component";
 import { ButtonModule as bm } from "projects/common/src/app/component/button/button.module";
 import { ReactiveFormsModule } from "@angular/forms";
+import { UpdateIndustryComponent } from "./update-industry/update.industry.component";
 
-@NgModule ({
+@NgModule({
     declarations: [
-        ListIndustryComponent, CreateIndustryComponent
+        ListIndustryComponent, CreateIndustryComponent, UpdateIndustryComponent
     ],
     imports: [
-       IndustryRouting, CommonModule,TableModule, ButtonModule, ToolbarModule, ToastModule,
-       AvatarModule, AvatarGroupModule, MenubarModule, bm, ReactiveFormsModule
+        IndustryRouting, CommonModule, TableModule, ButtonModule, ToolbarModule, ToastModule,
+        AvatarModule, AvatarGroupModule, MenubarModule, bm, ReactiveFormsModule
     ]
 })
-export class IndustryModule {}
+export class IndustryModule { }

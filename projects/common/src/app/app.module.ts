@@ -14,13 +14,13 @@ import {ToastModule} from 'primeng/toast';
 
 @NgModule({
   declarations: [
-    AppComponent, MenuBarComponent
+    AppComponent
   ],
   imports: [
-    BrowserModule, MenubarModule, AvatarModule, AvatarGroupModule, AppRouting, CommonModule, SidebarModule, ToastModule
+    
   ],
   exports : [
-    ButtonModule, MenuBarComponent 
+    ButtonModule 
   ],
   providers: [],
   bootstrap: [AppComponent]

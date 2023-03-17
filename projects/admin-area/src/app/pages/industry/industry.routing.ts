@@ -8,15 +8,12 @@ import { UpdateIndustryComponent } from "./update-industry/update.industry.compo
 
 const appRouter: Routes = [
     {
-        path: 'industry',
-        component: ListIndustryComponent
+        path : '',
+        component : ListIndustryComponent,
     },
     {
-        path: 'add',
-        component: CreateIndustryComponent
-    }, {
-        path: 'edit/:id',
-        component: UpdateIndustryComponent
+        path : 'add',
+        component : CreateIndustryComponent,
     }
 ];
 

@@ -14,11 +14,12 @@ import { ListCategoryComponent } from "./list-category/list-category.component";
 import { ButtonModule as bm } from "projects/common/src/app/component/button/button.module";
 import { HttpClientModule } from "@angular/common/http";
 import { AppModule } from "../../app.module";
+import { UpdateCategoryComponent } from "./update-category/update-category.component";
 
 
 @NgModule ({
     declarations: [
-        ListCategoryComponent, CreateCategoryComponent
+        ListCategoryComponent, CreateCategoryComponent, UpdateCategoryComponent
     ],
     imports: [
        CategoryRouting, CommonModule,TableModule, ButtonModule, ToolbarModule,

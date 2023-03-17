@@ -21,7 +21,7 @@ import { UpdateMembershipComponent } from "./update-membership/update-membership
         ListMembershipComponent, CreateMembershipComponent, UpdateMembershipComponent
     ],
     imports: [
-        MembershipRouting, CommonModule, TableModule, ButtonModule, ToolbarModule, ToastModule,
+        MembershipRouting, CommonModule,TableModule, ButtonModule, ToolbarModule, ToastModule,
         AvatarModule, AvatarGroupModule, MenubarModule, bm, InputNumberModule, ReactiveFormsModule, CalendarModule
     ]
 })

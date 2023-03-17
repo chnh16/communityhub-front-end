@@ -4,11 +4,12 @@ import { RouterModule, Routes } from "@angular/router"
 // import { OutLoadGuard } from "./guard/out-load.guard"
 import { CanLoad } from "@angular/router";
 import { MenuBarComponent } from "projects/common/src/app/component/navbar/navbar.component";
+import { SharedModule } from "projects/common/src/app/shared.module";
 import { CodeMemberComponent } from "./pages/code-member/code-member.component";
 import { LoginMemberComponent } from "./pages/login/login-member.component";
 import { RegisterMemberComponent } from "./pages/register/register-member.component";
 
-export const memberRouter: Routes = [
+export const memberRouter : Routes = [
     {
         path: 'login-member',
         component: LoginMemberComponent
@@ -33,12 +34,19 @@ export const memberRouter: Routes = [
     }
 ];
 
-@NgModule({
-    imports: [
-        RouterModule.forRoot(memberRouter)
+@NgModule ({
+    declarations : [
+        LoginMemberComponent, RegisterMemberComponent, CodeMemberComponent
     ],
-    exports: [
-        RouterModule
+    imports : [
+        RouterModule.forRoot(memberRouter),
+        SharedModule
+    ],
+    exports : [
+        RouterModule,
+        LoginMemberComponent,
+        RegisterMemberComponent,
+        CodeMemberComponent
     ]
 })
 

@@ -52,7 +52,7 @@ export const memberRouter : Routes = [
 
 @NgModule ({
     declarations : [
-        LoginMemberComponent, RegisterMemberComponent, CodeMemberComponent
+        LoginMemberComponent, RegisterMemberComponent, CodeMemberComponent, ProfileMemberComponent
     ],
     imports : [
         RouterModule.forRoot(memberRouter),
@@ -62,7 +62,8 @@ export const memberRouter : Routes = [
         RouterModule,
         LoginMemberComponent,
         RegisterMemberComponent,
-        CodeMemberComponent
+        CodeMemberComponent,
+        ProfileMemberComponent
     ]
 })
 

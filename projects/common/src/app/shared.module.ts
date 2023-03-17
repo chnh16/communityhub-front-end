@@ -18,6 +18,7 @@ import { ScrollTopModule } from 'primeng/scrolltop';
 import { EditorModule } from 'primeng/editor';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { SpeedDialModule } from 'primeng/speeddial';
+import {FileUploadModule} from 'primeng/fileupload';
 
 @NgModule({
     declarations : [
@@ -41,7 +42,8 @@ import { SpeedDialModule } from 'primeng/speeddial';
         ScrollTopModule,
         EditorModule,
         InputTextareaModule,
-        SpeedDialModule
+        SpeedDialModule,
+        FileUploadModule
     ],
     exports : [
         ButtonModule,
@@ -61,7 +63,8 @@ import { SpeedDialModule } from 'primeng/speeddial';
         ScrollTopModule,
         EditorModule,
         InputTextareaModule,
-        SpeedDialModule
+        SpeedDialModule,
+        FileUploadModule
     ]
 })
 

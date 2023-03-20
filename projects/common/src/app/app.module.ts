@@ -2,14 +2,14 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { ButtonModule } from './component/button/button.module';
-import {MenubarModule} from 'primeng/menubar';
+import { MenubarModule } from 'primeng/menubar';
 import { MenuBarComponent } from './component/navbar/navbar.component';
-import {AvatarModule} from 'primeng/avatar';
-import {AvatarGroupModule} from 'primeng/avatargroup';
+import { AvatarModule } from 'primeng/avatar';
+import { AvatarGroupModule } from 'primeng/avatargroup';
 import { AppRouting } from 'projects/admin-area/src/app/app.routing';
 import { CommonModule } from '@angular/common';
-import {SidebarModule} from 'primeng/sidebar';
-import {ToastModule} from 'primeng/toast';
+import { SidebarModule } from 'primeng/sidebar';
+import { ToastModule } from 'primeng/toast';
 
 
 @NgModule({
@@ -17,10 +17,10 @@ import {ToastModule} from 'primeng/toast';
     AppComponent
   ],
   imports: [
-    
+
   ],
-  exports : [
-    ButtonModule 
+  exports: [
+    ButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

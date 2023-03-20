@@ -8,44 +8,51 @@
     </div>
 </div>
 <div class="flex flex-wrap align-items-center justify-content-center">
-    <div class="mt-8">
-        <form [formGroup]="data" (ngSubmit)="submit()">
-            <div class="field grid">
-                <label for="membershipCode" class="col-fixed" style="width:200px">Membership Code</label>
-                <div class="col">
-                    <input id="membershipCode" formControlName="membershipCode" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary">
-                </div>
-            </div>
-            <div class="mt-4">
+    <div class="mt-2">
+        <p-card class=" card-body p-4 flex align-items-center justify-content-center"
+            [style]=" {width: '500px' , height:'100%'}" styleClass="p-card-shadow">
+            <form [formGroup]="data" (ngSubmit)="submit()">
                 <div class="field grid">
-                    <label for="membershipName" class="col-fixed" style="width:200px">Membership Name</label>
+                    <label for="membershipCode" class="col-fixed" style="width:200px">Membership Code</label>
                     <div class="col">
-                        <input id="membershipName" formControlName="membershipName" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary">
+                        <input id="membershipCode" formControlName="membershipCode" type="text"
+                            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary">
                     </div>
                 </div>
-            </div>
-            <div class="mt-4">
-                <div class="field grid">
-                    <label for="duration" class="col-fixed" style="width:200px">Duration</label>
-                    <div class="col">
-                        <p-inputNumber id="duration" formControlName="duration" inputId="integeronly"></p-inputNumber>
-                        <!-- <input id="duration" formControlName="duration" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary"> -->
+                <div class="mt-4">
+                    <div class="field grid">
+                        <label for="membershipName" class="col-fixed" style="width:200px">Membership Name</label>
+                        <div class="col">
+                            <input id="membershipName" formControlName="membershipName" type="text"
+                                class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary">
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="mt-4">
-                <div class="field grid">
-                    <label for="amount" class="col-fixed" style="width:200px">Amount</label>
-                    <div class="col">
-                        <p-inputNumber id="amount" formControlName="amount" mode="decimal" [minFractionDigits]="2"></p-inputNumber>
+                <div class="mt-4">
+                    <div class="field grid">
+                        <label for="duration" class="col-fixed" style="width:200px">Duration</label>
+                        <div class="col">
+                            <p-inputNumber id="duration" formControlName="duration" inputId="integeronly">
+                            </p-inputNumber>
+                            <!-- <input id="duration" formControlName="duration" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary"> -->
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="mt-8">
-                <div class="col-6">
-                    <app-submit-button label="Create" clasz="p-button-rounded mr-2"></app-submit-button>
+                <div class="mt-4">
+                    <div class="field grid">
+                        <label for="amount" class="col-fixed" style="width:200px">Amount</label>
+                        <div class="col">
+                            <p-inputNumber id="amount" formControlName="amount" mode="decimal" [minFractionDigits]="2">
+                            </p-inputNumber>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </form>
+                <div class="mt-4">
+                    <div class="col-6">
+                        <app-submit-button label="Create" clasz="p-button-rounded mr-2"></app-submit-button>
+                    </div>
+                </div>
+            </form>
+        </p-card>
     </div>
 </div>

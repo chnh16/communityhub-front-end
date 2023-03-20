@@ -28,9 +28,9 @@
                     <td>{{data.industryName}}</td>
                     <td>
                         <button pButton pRipple type="button" icon="pi pi-file-edit"
-                            class="p-button-rounded p-button-success" routerLink="/edit/{{data.id}}"></button>
+                            class="p-button-rounded p-button-success" routerLink="edit/{{data.id}}"></button>
                         <button pButton pRipple type="button" icon="pi pi-trash"
-                            class="ml-3 p-button-rounded p-button-danger"></button>
+                            class="ml-3 p-button-rounded p-button-danger" (click)="deleteIndustry(data)"></button>
                     </td>
                 </tr>
             </ng-template>

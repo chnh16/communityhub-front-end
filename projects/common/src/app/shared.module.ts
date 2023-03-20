@@ -22,18 +22,18 @@ import {FileUploadModule} from 'primeng/fileupload';
 import {InputSwitchModule} from 'primeng/inputswitch';
 import {RadioButtonModule} from 'primeng/radiobutton';
 
-
 @NgModule({
-    declarations : [
+    declarations: [
         MenuBarComponent
     ],
-    imports : [
+    imports: [
         ButtonModule,
-        MenubarModule, 
-        AvatarModule, 
-        AvatarGroupModule, 
-        CommonModule, 
-        SidebarModule, 
+        MenubarModule,
+        AvatarModule,
+        AvatarGroupModule,
+        TieredMenuModule,
+        CommonModule,
+        SidebarModule,
         ToastModule,
         CardModule,
         DividerModule,
@@ -50,13 +50,14 @@ import {RadioButtonModule} from 'primeng/radiobutton';
         InputSwitchModule,
         RadioButtonModule
     ],
-    exports : [
+    exports: [
         ButtonModule,
-        MenubarModule, 
-        AvatarModule, 
-        AvatarGroupModule, 
-        CommonModule, 
-        SidebarModule, 
+        MenubarModule,
+        AvatarModule,
+        AvatarGroupModule,
+        TieredMenuModule,
+        CommonModule,
+        SidebarModule,
         ToastModule,
         CardModule,
         DividerModule,
@@ -75,6 +76,6 @@ import {RadioButtonModule} from 'primeng/radiobutton';
     ]
 })
 
-export class SharedModule{
+export class SharedModule {
 
 }

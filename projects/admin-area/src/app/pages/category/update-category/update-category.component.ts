@@ -18,17 +18,6 @@ export class UpdateCategoryComponent implements OnInit, OnDestroy {
     category$? : Subscription
     updateCategory$? : Subscription
 
-    // showUpdateForm(category : CategoryGetAllRes){
-    //     console.log(category)
-    //     this.data.setValue({
-    //         id: category.id,
-    //         categoryCode : category.categoryCode,
-    //         categoryName : category.categoryName,
-    //         ver : category.ver
-    //     })
-    // }
-    
-
     constructor(
         private categoryService : CategoryService,
         private fb : FormBuilder,

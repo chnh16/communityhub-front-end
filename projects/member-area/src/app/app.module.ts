@@ -30,11 +30,7 @@ import {FileUploadModule} from 'primeng/fileupload';
 
 @NgModule({
   declarations: [
-<<<<<<< HEAD
-    AppComponent, LoginMemberComponent, CodeMemberComponent
-=======
     AppComponent, LoginMemberComponent, RegisterMemberComponent, CodeMemberComponent, ProfileMemberComponent
->>>>>>> 4b1762695b4e0e0a4672c3137f408e1a9f6cbc49
   ],
   imports: [
     BrowserModule, TableModule, ButtonModule, ToolbarModule, ToastModule, CommonModule,

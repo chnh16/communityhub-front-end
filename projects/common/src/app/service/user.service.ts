@@ -7,11 +7,14 @@ import { UpdateRes } from "projects/common/src/app/pojo/UpdateRes";
 import { Observable, skip } from "rxjs";
 import { LoginReq } from "../pojo/user/LoginReq";
 import { LoginRes } from "../pojo/user/LoginRes";
+import { RegisterReq } from "../pojo/user/RegisterReq";
 
 @Injectable({
     providedIn : 'root'
 })
 export class UserService{
+    private registerData! : any
+
     constructor(
        private http : HttpClient
     ){}
@@ -30,7 +33,7 @@ export class UserService{
         if(data) {
             return JSON.parse(data).token;
         }
-        throw new Error('Token is emty')
+        throw new Error('Token is empty')
     }
 
     get roleCode() : string {

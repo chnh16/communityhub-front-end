@@ -32,19 +32,47 @@
             <h3>Aktivitas Saya</h3>
         </div>
         <p-card>
-            <form [formGroup]="data">
-                <textarea [style]="{'resize' : 'none', 'border' : 'none'}" [rows]="5" [cols]="109" [autoResize]="true"
-                    formControlName="postContent" placeholder="Tulis sesuatu" pInputTextarea></textarea>
-                <div *ngIf="showImageUpload" class="grid mt-2">
-                    <p-fileUpload [multiple]="true" accept="image/*" (onSelect)="onSelect($event)" (onRemove)="onRemove($event)" (maxFileSize)="1000000">
+            <form [formGroup]="data" (ngSubmit)="onSubmit()">
+                <div class="mb-1">
+                    <input class="col-12" [style]="{'border' : 'none'}" type="text" pInputText placeholder="Judul Post" formControlName="postTitle"/>
+                </div>
+                <div class="mb-1">
+                    <textarea class="col-12" [style]="{'resize' : 'none', 'border' : 'none'}" [rows]="5" [autoResize]="true" formControlName="postContent" placeholder="Tulis sesuatu" pInputTextarea>
+                    </textarea>
+                </div>
+                <div class="mb-1">
+                    <p-dropdown [options]="categories" optionLabel="categoryName" formControlName="categoryId" optionValue="id"></p-dropdown>
+                </div>
+                <div class="mb-1">
+                    <label>Premium</label>
+                    <p-inputSwitch formControlName="isPremium">Premium</p-inputSwitch>
+                </div>
+                <div *ngIf="showImageUpload" class="grid mb-1">
+                    <p-fileUpload [multiple]="true" accept="image/*" [showUploadButton]="false" (onSelect)="onSelect($event)" (onRemove)="onRemove($event)" (onClear)="onClear()" (maxFileSize)="1000000">
                     </p-fileUpload>
+                </div>
+                <div formArrayName="polling" *ngIf="showInsertPolling" class="mb-1">
+                    <div *ngFor="let p of pollingData.controls; let i = index" [formGroupName]="i" class="grid">
+                        <div class="col-2">
+                            <label>Pilihan <sup class="text-red-500" *ngIf="i < 2">*</sup></label>
+                        </div>
+                        <div class="flex col-4">
+                            <input class="col" formControlName="choiceContent" type="text" pInputText/>
+                        </div>
+                        <div class="col" *ngIf="i > 1">
+                            <button pButton class="p-button-text text-red-500" (click)="removePollingChoice(i)">Hapus Pilihan</button>
+                        </div>
+                    </div>
+                    <div class="grid">
+                        <button pButton class="p-button-text" [disabled]="pollingData.length > 3" (click)="addPollingChoice()">Tambah Pilihan</button>
+                    </div>
                 </div>
                 <div class="grid mt-2">
                     <div class="col-auto mx-1">
-                        <app-icon-button icon="pi pi-image" label="Image" (click)="onShowImageUpload()"></app-icon-button>
+                        <button pButton type="button" [disabled]="imageButton" icon="pi pi-image" label="Image" (click)="onShowImageUpload()"></button>
                     </div>
                     <div class="col-auto mx-1">
-                        <app-icon-button icon="pi pi-chart-bar" label="Polling"></app-icon-button>
+                        <button pButton type="button" [disabled]="pollingButton" icon="pi pi-chart-bar" label="Polling" (click)="onShowInsertPolling()"></button>
                     </div>
                     <div class="col-auto mx-1">
                         <app-submit-button label="Post"></app-submit-button>
@@ -80,6 +108,24 @@
                                     aliquid, repellendus numquam labore itaque officia laudantium placeat doloribus odio
                                     voluptas fuga ex tenetur! Minima quasi nam optio fuga.
                                 </p>
+                                <div>
+                                    <div class="grid">
+                                        <div class="col-1">
+                                            <p-radioButton name="groupname" value="val1"></p-radioButton>
+                                        </div>
+                                        <div class="col">
+                                            <span>Option A</span>
+                                        </div>
+                                    </div>
+                                    <div class="grid">
+                                        <div class="col-1">
+                                            <p-radioButton name="groupname" value="val1"></p-radioButton>
+                                        </div>
+                                        <div class="col">
+                                            <span>Option B</span>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="my-2">
                                 <p-avatarGroup styleClass="mb-3">

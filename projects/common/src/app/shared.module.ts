@@ -18,8 +18,9 @@ import { ScrollTopModule } from 'primeng/scrolltop';
 import { EditorModule } from 'primeng/editor';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { SpeedDialModule } from 'primeng/speeddial';
-import { FileUploadModule } from 'primeng/fileupload';
-import { TieredMenuModule } from 'primeng/tieredmenu';
+import {FileUploadModule} from 'primeng/fileupload';
+import {InputSwitchModule} from 'primeng/inputswitch';
+import {RadioButtonModule} from 'primeng/radiobutton';
 
 @NgModule({
     declarations: [
@@ -45,7 +46,9 @@ import { TieredMenuModule } from 'primeng/tieredmenu';
         EditorModule,
         InputTextareaModule,
         SpeedDialModule,
-        FileUploadModule
+        FileUploadModule,
+        InputSwitchModule,
+        RadioButtonModule
     ],
     exports: [
         ButtonModule,
@@ -67,7 +70,9 @@ import { TieredMenuModule } from 'primeng/tieredmenu';
         EditorModule,
         InputTextareaModule,
         SpeedDialModule,
-        FileUploadModule
+        FileUploadModule,
+        InputSwitchModule,
+        RadioButtonModule
     ]
 })
 

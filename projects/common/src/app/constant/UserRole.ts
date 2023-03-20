@@ -1,6 +1,2 @@
-export enum Role {
-    SYS = "SYS", 
-    SPR = "SPR",
-    ADM = "ADM",
-    MBR = "MBR"
-}
+type role = [string, string]
+export const roles : role[] = [["Super Admin", "SPR"], ["Admin", "ADM"], ["System", "SYS"], ["Member", "MBR"]]

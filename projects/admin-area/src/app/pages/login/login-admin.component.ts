@@ -1,10 +1,9 @@
-import { Token } from "@angular/compiler";
 import { Component, OnDestroy } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
 import { Title } from "@angular/platform-browser";
 import { Router } from "@angular/router";
 import { MessageService } from "primeng/api";
-import { Role } from "projects/common/src/app/constant/UserRole";
+import { roles } from "projects/common/src/app/constant/UserRole";
 import { LoginReq } from "projects/common/src/app/pojo/user/LoginReq";
 import { UserService } from "projects/common/src/app/service/user.service";
 import { Subscription } from "rxjs";
@@ -46,9 +45,8 @@ export class LoginAdminComponent implements OnDestroy {
 
                 const roleCode = this.userService.roleCode
                 console.log(roleCode)
-                if(roleCode == Role.SPR) {
-                    console.log(Token);
-
+                if(roleCode == roles[1][1]) {
+                    console.log(this.userService.token);
                     this.adminView()
                 }
             })

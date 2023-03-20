@@ -19,6 +19,9 @@ import { EditorModule } from 'primeng/editor';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { SpeedDialModule } from 'primeng/speeddial';
 import {FileUploadModule} from 'primeng/fileupload';
+import {InputSwitchModule} from 'primeng/inputswitch';
+import {RadioButtonModule} from 'primeng/radiobutton';
+
 
 @NgModule({
     declarations : [
@@ -43,7 +46,9 @@ import {FileUploadModule} from 'primeng/fileupload';
         EditorModule,
         InputTextareaModule,
         SpeedDialModule,
-        FileUploadModule
+        FileUploadModule,
+        InputSwitchModule,
+        RadioButtonModule
     ],
     exports : [
         ButtonModule,
@@ -64,7 +69,9 @@ import {FileUploadModule} from 'primeng/fileupload';
         EditorModule,
         InputTextareaModule,
         SpeedDialModule,
-        FileUploadModule
+        FileUploadModule,
+        InputSwitchModule,
+        RadioButtonModule
     ]
 })
 

@@ -4,6 +4,7 @@ import { AvatarModule } from "primeng/avatar";
 import { AvatarGroupModule } from "primeng/avatargroup";
 import { ButtonModule } from "primeng/button";
 import { MenubarModule } from "primeng/menubar";
+import { CardModule } from "primeng/card";
 import { TableModule } from "primeng/table";
 import { ToastModule } from "primeng/toast";
 import { ToolbarModule } from "primeng/toolbar";
@@ -20,7 +21,7 @@ import { UpdateIndustryComponent } from "./update-industry/update.industry.compo
     ],
     imports: [
         IndustryRouting, CommonModule, TableModule, ButtonModule, ToolbarModule, ToastModule,
-        AvatarModule, AvatarGroupModule, MenubarModule, bm, ReactiveFormsModule
+        AvatarModule, AvatarGroupModule, MenubarModule, bm, ReactiveFormsModule, CardModule
     ]
 })
 export class IndustryModule { }

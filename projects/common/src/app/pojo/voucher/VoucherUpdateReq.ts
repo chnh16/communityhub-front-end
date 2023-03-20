@@ -1,7 +1,7 @@
-export interface VoucherUpdateReq{
-    id : string
-    voucherCode : string
-    expiredDate : Date
-    amount : number
-    ver : number
+export interface VoucherUpdateReq {
+    id: string
+    voucherCode: string
+    expiredDate: string
+    amount: number
+    ver: number
 }

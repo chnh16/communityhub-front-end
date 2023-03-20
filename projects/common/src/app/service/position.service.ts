@@ -10,26 +10,30 @@ import { PositionInsertReq } from "../../../../common/src/app/pojo/position/Posi
 import { PositionUpdateReq } from "../../../../common/src/app/pojo/position/PositionUpdateReq";
 
 @Injectable({
-    providedIn : 'root'
+    providedIn: 'root'
 })
-export class PositionService{
+export class PositionService {
     constructor(
-       private http : HttpClient
-    ){}
+        private http: HttpClient
+    ) { }
 
-    getAll() : Observable<PositionGetAllRes[]>{
+    getAll(): Observable<PositionGetAllRes[]> {
         return this.http.get<PositionGetAllRes[]>(`${BASE_URL}/positions`);
     }
 
-    insert(data : PositionInsertReq) : Observable<InsertRes>{
+    getById(id: string): Observable<PositionGetAllRes> {
+        return this.http.get<PositionGetAllRes>(`${BASE_URL}/positions/${id}`);
+    }
+
+    insert(data: PositionInsertReq): Observable<InsertRes> {
         return this.http.post<InsertRes>(`${BASE_URL}/positions/add`, data);
     }
 
-    update(data : PositionUpdateReq) : Observable<UpdateRes>{
+    update(data: PositionUpdateReq): Observable<UpdateRes> {
         return this.http.put<UpdateRes>(`${BASE_URL}/positions/edit`, data);
     }
 
-    delete(id : string) : Observable<DeleteRes>{
+    delete(id: string): Observable<DeleteRes> {
         return this.http.delete<DeleteRes>(`${BASE_URL}/positions/${id}`);
     }
 }

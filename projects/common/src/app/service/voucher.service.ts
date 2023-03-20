@@ -10,26 +10,30 @@ import { VoucherInsertReq } from "../../../../common/src/app/pojo/voucher/Vouche
 import { VoucherUpdateReq } from "../../../../common/src/app/pojo/voucher/VoucherUpdateReq";
 
 @Injectable({
-    providedIn : 'root'
+    providedIn: 'root'
 })
-export class VoucherService{
+export class VoucherService {
     constructor(
-       private http : HttpClient
-    ){}
+        private http: HttpClient
+    ) { }
 
-    getAll() : Observable<VoucherGetAllRes[]>{
+    getAll(): Observable<VoucherGetAllRes[]> {
         return this.http.get<VoucherGetAllRes[]>(`${BASE_URL}/voucher`);
     }
 
-    insert(data : VoucherInsertReq) : Observable<InsertRes>{
+    getById(id: string): Observable<VoucherGetAllRes> {
+        return this.http.get<VoucherGetAllRes>(`${BASE_URL}/voucher/${id}`);
+    }
+
+    insert(data: VoucherInsertReq): Observable<InsertRes> {
         return this.http.post<InsertRes>(`${BASE_URL}/voucher/add`, data);
     }
 
-    update(data : VoucherUpdateReq) : Observable<UpdateRes>{
+    update(data: VoucherUpdateReq): Observable<UpdateRes> {
         return this.http.put<UpdateRes>(`${BASE_URL}/voucher/edit`, data);
     }
 
-    delete(id : string) : Observable<DeleteRes>{
+    delete(id: string): Observable<DeleteRes> {
         return this.http.delete<DeleteRes>(`${BASE_URL}/voucher/${id}`);
     }
 }

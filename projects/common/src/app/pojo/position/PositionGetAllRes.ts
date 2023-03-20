@@ -1,4 +1,5 @@
-export interface PositionGetAllRes{
-    id : string
-    positionName : string
+export interface PositionGetAllRes {
+    id: string
+    positionName: string
+    ver: number
 }

@@ -1,5 +1,5 @@
-export interface VoucherInsertReq{
-    voucherCode : string
-    expiredDate : Date
-    amount : number
+export interface VoucherInsertReq {
+    voucherCode: string
+    expiredDate: string
+    amount: number
 }

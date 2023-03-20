@@ -5,22 +5,31 @@ import { Subscription } from "rxjs";
 import { PositionGetAllRes } from "../../../../../../common/src/app/pojo/position/PositionGetAllRes";
 
 
-@Component ({
-    selector : 'app-position',
-    templateUrl : './list-position.component.html'
+@Component({
+    selector: 'app-position',
+    templateUrl: './list-position.component.html'
 })
 export class ListPositionComponent implements OnInit, OnDestroy {
-    
-    resPosition : PositionGetAllRes[] = []
-    position$? : Subscription
 
-    constructor (
-        private positionService : PositionService
-    ){}
-    
+    resPosition: PositionGetAllRes[] = []
+    position$?: Subscription
+    positionDelete$?: Subscription
+
+    constructor(
+        private positionService: PositionService
+    ) { }
+
     ngOnInit(): void {
         this.position$ = this.positionService.getAll().subscribe(res => {
             this.resPosition = res
+        })
+    }
+
+    deletePosition(position: PositionGetAllRes) {
+        console.log("Delete")
+        this.positionDelete$ = this.positionService.delete(position.id).subscribe(res => {
+            alert('Berhasil di hapus')
+            this.ngOnInit()
         })
     }
 

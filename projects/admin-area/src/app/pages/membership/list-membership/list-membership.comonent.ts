@@ -12,6 +12,7 @@ import { MembershipGetAllRes } from "../../../../../../common/src/app/pojo/membe
 export class ListMembershipComponent implements OnInit, OnDestroy {
     resMembership: MembershipGetAllRes[] = []
     membership$?: Subscription
+    membershipDelete$?: Subscription
 
     constructor(
         private membershipService: MembershipService
@@ -21,6 +22,14 @@ export class ListMembershipComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.membership$ = this.membershipService.getAll().subscribe(res => {
             this.resMembership = res
+        })
+    }
+
+    deleteMembership(membership: MembershipGetAllRes) {
+        console.log("Delete")
+        this.membershipDelete$ = this.membershipService.delete(membership.id).subscribe(res => {
+            alert('Berhasil di hapus')
+            this.ngOnInit()
         })
     }
 

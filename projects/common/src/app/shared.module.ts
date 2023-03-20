@@ -18,19 +18,21 @@ import { ScrollTopModule } from 'primeng/scrolltop';
 import { EditorModule } from 'primeng/editor';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { SpeedDialModule } from 'primeng/speeddial';
-import {FileUploadModule} from 'primeng/fileupload';
+import { FileUploadModule } from 'primeng/fileupload';
+import { TieredMenuModule } from 'primeng/tieredmenu';
 
 @NgModule({
-    declarations : [
+    declarations: [
         MenuBarComponent
     ],
-    imports : [
+    imports: [
         ButtonModule,
-        MenubarModule, 
-        AvatarModule, 
-        AvatarGroupModule, 
-        CommonModule, 
-        SidebarModule, 
+        MenubarModule,
+        AvatarModule,
+        AvatarGroupModule,
+        TieredMenuModule,
+        CommonModule,
+        SidebarModule,
         ToastModule,
         CardModule,
         DividerModule,
@@ -45,13 +47,14 @@ import {FileUploadModule} from 'primeng/fileupload';
         SpeedDialModule,
         FileUploadModule
     ],
-    exports : [
+    exports: [
         ButtonModule,
-        MenubarModule, 
-        AvatarModule, 
-        AvatarGroupModule, 
-        CommonModule, 
-        SidebarModule, 
+        MenubarModule,
+        AvatarModule,
+        AvatarGroupModule,
+        TieredMenuModule,
+        CommonModule,
+        SidebarModule,
         ToastModule,
         CardModule,
         DividerModule,
@@ -68,6 +71,6 @@ import {FileUploadModule} from 'primeng/fileupload';
     ]
 })
 
-export class SharedModule{
+export class SharedModule {
 
 }

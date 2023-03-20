@@ -5,19 +5,20 @@ import { Subscription } from "rxjs";
 import { IndustryGetAllRes } from "../../../../../../common/src/app/pojo/industry/IndustryGetAllRes";
 
 
-@Component ({
-    selector : 'app-industry',
-    templateUrl : './list-industry.component.html'
+@Component({
+    selector: 'app-industry',
+    templateUrl: './list-industry.component.html'
 })
 export class ListIndustryComponent implements OnInit, OnDestroy {
-    
-    resIndustry : IndustryGetAllRes[] = []
-    industry$? : Subscription
-    industryDelete$? : Subscription
 
-    constructor (
-        private industryService : IndustryService
-    ){}
+    resIndustry: IndustryGetAllRes[] = []
+    industry$?: Subscription
+    industryDelete$?: Subscription
+
+
+    constructor(
+        private industryService: IndustryService
+    ) { }
 
     deleteIndustry(industry:IndustryGetAllRes) {
         console.log("Delete")
@@ -30,6 +31,14 @@ export class ListIndustryComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.industry$ = this.industryService.getAll().subscribe(res => {
             this.resIndustry = res
+        })
+    }
+
+    deleteIndustry(industry: IndustryGetAllRes) {
+        console.log("Delete")
+        this.industryDelete$ = this.industryService.delete(industry.id).subscribe(res => {
+            alert('Berhasil di hapus')
+            this.ngOnInit()
         })
     }
 

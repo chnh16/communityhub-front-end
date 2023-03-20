@@ -1,6 +1,7 @@
-export interface VoucherGetAllRes{
-    id : string
-    voucherCode : string
-    expiredDate : Date
-    amount : number
+export interface VoucherGetAllRes {
+    id: string
+    voucherCode: string
+    expiredDate: string
+    amount: number
+    ver: number
 }

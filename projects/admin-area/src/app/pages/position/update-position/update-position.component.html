@@ -4,14 +4,14 @@
 
 <div class="flex flex-wrap align-items-center justify-content-center">
     <div class="mt-6">
-        <h2>CREATE POSITION</h2>
+        <h2>Update Position</h2>
     </div>
 </div>
 <div class="flex flex-wrap align-items-center justify-content-center">
     <div class="mt-2">
         <p-card class=" card-body p-4 flex align-items-center justify-content-center"
             [style]=" {width: '500px' , height:'100%'}" styleClass="p-card-shadow">
-            <form [formGroup]="data" (ngSubmit)="submit()">
+            <form [formGroup]="data" (ngSubmit)="onUpdate()">
                 <div class="field grid">
                     <label for="positionName" class="col-fixed" style="width:200px">Position Name</label>
                     <div class="col">
@@ -21,11 +21,10 @@
                 </div>
                 <div class="mt-4">
                     <div class="col-6">
-                        <app-submit-button label="Create" clasz="p-button-rounded mr-2"></app-submit-button>
+                        <app-submit-button label="Update" clasz="p-button-rounded mr-2"></app-submit-button>
                     </div>
                 </div>
             </form>
         </p-card>
-
     </div>
 </div>

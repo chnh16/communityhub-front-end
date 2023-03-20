@@ -5,7 +5,8 @@
 <div class="mt-8 card">
     <p-toolbar styleClass="min-w-20 mb-4 gap-2">
         <ng-template pTemplate="left">
-            <app-routing-button label="Add New" icon="pi pi-plus" class="p-button-rounded mr-2" link="/position/add"></app-routing-button>
+            <app-routing-button label="Add New" icon="pi pi-plus" class="p-button-rounded mr-2" link="/position/add">
+            </app-routing-button>
             <!-- <button pButton pRipple label="Add New" icon="pi pi-plus" class="p-button-rounded mr-2"></button> -->
         </ng-template>
     </p-toolbar>
@@ -24,8 +25,10 @@
                     <td>{{i + 1}}</td>
                     <td>{{data.positionName}}</td>
                     <td>
-                        <button pButton pRipple type="button" icon="pi pi-file-edit" class="p-button-rounded p-button-success"></button>
-                        <button pButton pRipple type="button" icon="pi pi-trash" class="ml-3 p-button-rounded p-button-danger"></button>
+                        <button pButton pRipple type="button" icon="pi pi-file-edit"
+                            class="p-button-rounded p-button-success" routerLink="edit/{{data.id}}"></button>
+                        <button pButton pRipple type="button" icon="pi pi-trash"
+                            class="ml-3 p-button-rounded p-button-danger" (click)="deletePosition(data)"></button>
                     </td>
                 </tr>
             </ng-template>

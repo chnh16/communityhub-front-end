@@ -6,26 +6,26 @@ import { IndustryService } from "projects/common/src/app/service/industry.servic
 import { Subscription } from "rxjs";
 
 
-@Component ({
-    selector : 'app-create-industry',
-    templateUrl : './create-industry.component.html'
+@Component({
+    selector: 'app-create-industry',
+    templateUrl: './create-industry.component.html'
 })
 export class CreateIndustryComponent implements OnInit, OnDestroy {
-    data = this.fb.group ({
-        industryCode : ['', Validators.required],
-        industryName : ['', Validators.required]
+    data = this.fb.group({
+        industryCode: ['', Validators.required],
+        industryName: ['', Validators.required]
     })
-    createIndustry$? : Subscription
+    createIndustry$?: Subscription
 
-    constructor (
-        private industryService : IndustryService,
-        private fb : FormBuilder
-    ){}
-    
-    submit(){
-        const insert : IndustryInsertReq = {
-            industryCode : this.data.value.industryCode!,
-            industryName : this.data.value.industryName!
+    constructor(
+        private industryService: IndustryService,
+        private fb: FormBuilder
+    ) { }
+
+    submit() {
+        const insert: IndustryInsertReq = {
+            industryCode: this.data.value.industryCode!,
+            industryName: this.data.value.industryName!
         }
         this.createIndustry$ = this.industryService.insert(insert).subscribe(res => {
 
@@ -35,6 +35,8 @@ export class CreateIndustryComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy(): void {
-        throw new Error("Method not implemented.");
+        this.createIndustry$?.unsubscribe()
     }
+
+
 }

@@ -5,6 +5,7 @@ import { AvatarModule } from "primeng/avatar";
 import { AvatarGroupModule } from "primeng/avatargroup";
 import { ButtonModule } from "primeng/button";
 import { MenubarModule } from "primeng/menubar";
+import { CardModule } from "primeng/card";
 import { TableModule } from "primeng/table";
 import { ToastModule } from "primeng/toast";
 import { ToolbarModule } from "primeng/toolbar";
@@ -17,14 +18,14 @@ import { AppModule } from "../../app.module";
 import { UpdateCategoryComponent } from "./update-category/update-category.component";
 
 
-@NgModule ({
+@NgModule({
     declarations: [
         ListCategoryComponent, CreateCategoryComponent, UpdateCategoryComponent
     ],
     imports: [
-       CategoryRouting, CommonModule,TableModule, ButtonModule, ToolbarModule,
-       AvatarModule, AvatarGroupModule, MenubarModule, ReactiveFormsModule, bm, 
-       HttpClientModule
+        CategoryRouting, CommonModule, TableModule, ButtonModule, ToolbarModule,
+        AvatarModule, AvatarGroupModule, MenubarModule, ReactiveFormsModule, bm,
+        HttpClientModule, CardModule
     ]
 })
-export class CategoryModule {}
+export class CategoryModule { }

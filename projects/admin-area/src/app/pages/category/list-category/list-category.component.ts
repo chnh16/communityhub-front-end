@@ -5,21 +5,21 @@ import { CategoryService } from "projects/common/src/app/service/category.servic
 import { Subscription } from "rxjs";
 
 
-@Component ({
-    selector : 'app-category',
-    templateUrl : './list-category.component.html'
+@Component({
+    selector: 'app-category',
+    templateUrl: './list-category.component.html'
 })
 export class ListCategoryComponent implements OnInit, OnDestroy {
- 
-    resCategory : CategoryGetAllRes[] = []
-    category$? : Subscription
-    categoryDelete$? : Subscription
+
+    resCategory: CategoryGetAllRes[] = []
+    category$?: Subscription
+    categoryDelete$?: Subscription
 
     constructor(
-        private categoryService : CategoryService
-    ){}
+        private categoryService: CategoryService
+    ) { }
 
-    deleteCategory(category:CategoryGetAllRes) {
+    deleteCategory(category: CategoryGetAllRes) {
         console.log("Delete")
         this.categoryDelete$ = this.categoryService.delete(category.id).subscribe(res => {
             alert('Berhasil di hapus')

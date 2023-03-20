@@ -1,0 +1,98 @@
+<div class="ml-5 mr-5 card">
+    <h2>TRANSACTION APPROVAL</h2>
+    <p-tabView class="mt-8">
+        <p-tabPanel header="Course">
+            <div class="mt-4 card">
+                <div class="flex flex-wrap align-items-center justify-content-center">
+                    <p-table styleClass="p-datatable-striped" [tableStyle]="{'min-width': '80rem'}">
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th>#</th>
+                                <th>Member Name</th>
+                                <th>Course</th>
+                                <th>Transaction date</th>
+                                <th>Files</th>
+                                <th>Approved</th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-item let-i="rowIndex">
+                            <tr>
+                                <td>{{i+1}}</td>
+                                <td>{{item.categoryCode}}</td>
+                                <td>{{item.categoryName}}</td>
+                                <td>{{item.categoryCode}}</td>
+                                <td>{{item.categoryName}}</td>
+                                <td>
+                                    <button pButton pRipple type="button" icon="pi pi-file-edit" class="p-button-rounded p-button-success" routerLink="/category/update/{{item.id}}"></button>
+                                    <button pButton pRipple type="button" icon="pi pi-trash" class="ml-3 p-button-rounded p-button-danger"></button>
+                                </td>
+                            </tr>
+                        </ng-template>
+                    </p-table>
+                </div>
+            </div>
+        </p-tabPanel>
+        <p-tabPanel header="Event">
+            <div class="mt-4 card">
+                <div class="flex flex-wrap align-items-center justify-content-center">
+                    <p-table styleClass="p-datatable-striped" [tableStyle]="{'min-width': '80rem'}">
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th>#</th>
+                                <th>Member Name</th>
+                                <th>Event</th>
+                                <th>Transaction date</th>
+                                <th>Files</th>
+                                <th>Approved</th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-item let-i="rowIndex">
+                            <tr>
+                                <td>{{i+1}}</td>
+                                <td>{{item.categoryCode}}</td>
+                                <td>{{item.categoryName}}</td>
+                                <td>{{item.categoryCode}}</td>
+                                <td>{{item.categoryName}}</td>
+                                <td>
+                                    <button pButton pRipple type="button" icon="pi pi-file-edit" class="p-button-rounded p-button-success" routerLink="/category/update/{{item.id}}"></button>
+                                    <button pButton pRipple type="button" icon="pi pi-trash" class="ml-3 p-button-rounded p-button-danger"></button>
+                                </td>
+                            </tr>
+                        </ng-template>
+                    </p-table>
+                </div>
+            </div>
+        </p-tabPanel>
+        <p-tabPanel header="Membership">
+            <div class="mt-4 card">
+                <div class="flex flex-wrap align-items-center justify-content-center">
+                    <p-table styleClass="p-datatable-striped" [tableStyle]="{'min-width': '80rem'}">
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th>#</th>
+                                <th>Member Name</th>
+                                <th>Membership</th>
+                                <th>Transaction date</th>
+                                <th>Files</th>
+                                <th>Approved</th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-item let-i="rowIndex">
+                            <tr>
+                                <td>{{i+1}}</td>
+                                <td>{{item.categoryCode}}</td>
+                                <td>{{item.categoryName}}</td>
+                                <td>{{item.categoryCode}}</td>
+                                <td>{{item.categoryName}}</td>
+                                <td>
+                                    <button pButton pRipple type="button" icon="pi pi-file-edit" class="p-button-rounded p-button-success" routerLink="/category/update/{{item.id}}"></button>
+                                    <button pButton pRipple type="button" icon="pi pi-trash" class="ml-3 p-button-rounded p-button-danger"></button>
+                                </td>
+                            </tr>
+                        </ng-template>
+                    </p-table>
+                </div>
+            </div>
+        </p-tabPanel>
+    </p-tabView>
+</div>

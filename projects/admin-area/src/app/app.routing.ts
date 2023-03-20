@@ -54,6 +54,16 @@ export const adminRouter: Routes = [
         path : 'membership',
         loadChildren : () => import('./pages/membership/membership.module').then(c => c.MembershipModule),
         component : MenuBarComponent
+    },
+    {
+        path : 'approval',
+        loadChildren : () => import('./pages/approval/approval.module').then(c => c.ApprovalModule),
+        component : MenuBarComponent
+    },
+    {
+        path : 'create-article',
+        loadChildren : () => import('./pages/article/article.module').then(c => c.CreateArticleModule),
+        component : MenuBarComponent
     }
 
 ];

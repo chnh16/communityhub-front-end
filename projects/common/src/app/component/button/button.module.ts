@@ -10,6 +10,7 @@ import { CategoryButtonComponent } from './category-button/category-button.compo
 import { SubmitButtonComponent } from './submit-button/submit-button.component';
 import { ActionButtonComponent } from './action-button/action-button.component';
 import { IconButtonComponent } from './icon-button/icon-button.component';
+import { TextButtonComponent } from './text-button/text-button.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { IconButtonComponent } from './icon-button/icon-button.component';
     CategoryButtonComponent,
     SubmitButtonComponent,
     ActionButtonComponent,
-    IconButtonComponent
+    IconButtonComponent,
+    TextButtonComponent
   ],
   imports: [
     CommonModule, bm, RouterLink
@@ -34,7 +36,8 @@ import { IconButtonComponent } from './icon-button/icon-button.component';
     CategoryButtonComponent,
     SubmitButtonComponent,
     ActionButtonComponent,
-    IconButtonComponent
+    IconButtonComponent,
+    TextButtonComponent
   ]
 })
 export class ButtonModule { }

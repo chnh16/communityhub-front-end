@@ -20,14 +20,6 @@ export class ListIndustryComponent implements OnInit, OnDestroy {
         private industryService: IndustryService
     ) { }
 
-    deleteIndustry(industry:IndustryGetAllRes) {
-        console.log("Delete")
-        this.industryDelete$ = this.industryService.delete(industry.id).subscribe(res => {
-            alert('Berhasil di hapus')
-            this.ngOnInit()
-        })
-    }
-
     ngOnInit(): void {
         this.industry$ = this.industryService.getAll().subscribe(res => {
             this.resIndustry = res

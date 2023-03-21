@@ -5,6 +5,7 @@ import { DeleteRes } from "projects/common/src/app/pojo/DeleteRes";
 import { InsertRes } from "projects/common/src/app/pojo/InsertRes";
 import { UpdateRes } from "projects/common/src/app/pojo/UpdateRes";
 import { Observable } from "rxjs";
+import { PostGetAllRes } from "../pojo/post/PostGetAllRes";
 import { PostInsertReq } from "../pojo/post/PostInsertReq";
 import { TransactionGetByCourseIdRes } from "../pojo/transaction/TransactionGetByCourseIdRes";
 
@@ -16,6 +17,10 @@ export class PostService{
     constructor(
        private http : HttpClient
     ){}
+
+    getPost() : Observable<PostGetAllRes[]> {
+        return this.http.get<PostGetAllRes[]>(`${BASE_URL}/post/list-post`)
+    }
 
     insertPost(data : PostInsertReq) : Observable<InsertRes>{
         return this.http.post<InsertRes>(`${BASE_URL}/post`, data)

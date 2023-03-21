@@ -1,24 +1,26 @@
 <pre>{{data.value | json}}</pre>
+<pre>{{post | json}}</pre>
 <div class="grid m-0">
-    <div class="col-4">
+    <div class="col-3">
         <div class="flex justify-content-start">
-            <h3>Profil Saya</h3>
+            <h3><i class="pi pi-user"></i> Profil Saya</h3>
         </div>
-        <div class="align-item-center w-10">
+        <div class="align-item-center">
             <p-card class="align-items-center flex-wrap" styleClass="p-card-shadow">
-                <p-avatar class="flex align-items-center justify-content-center" icon="pi pi-user" styleClass="mr-2"
-                    size="xlarge" [style]="{'background-color':'#2196F3', 'color': '#ffffff'}"></p-avatar>
-                <h3>fullName</h3>
-                <span>position</span>
+                <p-avatar class="flex align-items-center justify-content-center" styleClass="mr-2"
+                    size="xlarge" image="http://192.168.10.73:8080/files/{{profile.file}}" [style]="{'background-color':'#2196F3', 'color': '#ffffff'}"></p-avatar>
+                <h3 class="flex align-items-center justify-content-center">{{profile.fullName}}</h3>
+                <span class="flex align-items-center justify-content-center">{{profile.industryId}}</span>
+                <span class="flex align-items-center justify-content-center">{{profile.positionId}}</span>
                 <p-divider></p-divider>
                 <h4>Profil</h4>
                 <div class="my-2">
                     <span>Email</span>
-                    <p>email@mail.com</p>
+                    <p>profile.email</p>
                 </div>
                 <div class="my-2">
                     <span>No. Telp</span>
-                    <p>phoneNumber</p>
+                    <p>{{profile.phoneNumber}}</p>
                 </div>
                 <p-divider></p-divider>
                 <div class="align-item-center">
@@ -27,17 +29,17 @@
             </p-card>
         </div>
     </div>
-    <div class="col-8">
+    <div class="col-7">
         <div class="justify-content-start">
-            <h3>Aktivitas Saya</h3>
+            <h3><i class="pi pi-home"></i> Aktivitas Saya</h3>
         </div>
         <p-card>
             <form [formGroup]="data" (ngSubmit)="onSubmit()">
                 <div class="mb-1">
-                    <input class="col-12" [style]="{'border' : 'none'}" type="text" pInputText placeholder="Judul Post" formControlName="postTitle"/>
+                    <input class="col-12" type="text" pInputText placeholder="Judul Post" formControlName="postTitle"/>
                 </div>
                 <div class="mb-1">
-                    <textarea class="col-12" [style]="{'resize' : 'none', 'border' : 'none'}" [rows]="5" [autoResize]="true" formControlName="postContent" placeholder="Tulis sesuatu" pInputTextarea>
+                    <textarea class="col-12" [style]="{'resize' : 'none'}" [rows]="5" [autoResize]="true" formControlName="postContent" placeholder="Tulis sesuatu" pInputTextarea>
                     </textarea>
                 </div>
                 <div class="mb-1">
@@ -80,7 +82,7 @@
                 </div>
             </form>
         </p-card>
-        <p-card class="flex align-items-center flex-wrap" styleClass="p-card-shadow">
+        <p-card class="flex align-items-center flex-wrap mt-4" styleClass="p-card-shadow">
             <p-tabView>
                 <p-tabPanel>
                     <ng-template pTemplate="header">
@@ -110,12 +112,12 @@
                                 </p>
                                 <div>
                                     <div class="grid">
-                                        <div class="col-2">
+                                        <div class="col-4">
                                             <app-text-button label="Option A"></app-text-button>
                                         </div>
                                     </div>
                                     <div class="grid">
-                                        <div class="col-2">
+                                        <div class="col-4">
                                             <app-text-button label="Option B"></app-text-button>
                                         </div>
                                     </div>

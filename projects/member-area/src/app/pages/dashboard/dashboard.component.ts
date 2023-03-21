@@ -5,8 +5,10 @@ import { FileInsertReq } from 'projects/common/src/app/pojo/file/FileInsertReq';
 import { PollingChoiceInsertReq } from 'projects/common/src/app/pojo/pollingchoice/PollingChoiceInsertReq';
 import { PostGetAllRes } from 'projects/common/src/app/pojo/post/PostGetAllRes';
 import { PostInsertReq } from 'projects/common/src/app/pojo/post/PostInsertReq';
+import { ProfileGetReq } from 'projects/common/src/app/pojo/user/ProfileGetReq';
 import { CategoryService } from 'projects/common/src/app/service/category.service';
 import { PostService } from 'projects/common/src/app/service/post.service';
+import { UserService } from 'projects/common/src/app/service/user.service';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -15,7 +17,10 @@ import { Subscription } from 'rxjs';
 })
 export class DashboardComponent implements OnInit, OnDestroy {
   dashboard$? : Subscription
+  dashboardCategory$? : Subscription
+  dashboardProfile$? : Subscription
   post!: PostGetAllRes[]
+  profile! : ProfileGetReq
   uploadedFiles: any[] = []
   showImageUpload : boolean = false
   showInsertPolling : boolean = false
@@ -35,7 +40,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
   constructor(
     private fb: FormBuilder,
     private categoryService : CategoryService,
-    private postService : PostService
+    private postService : PostService,
+    private userService : UserService
   ) { }
 
   get imageData() {
@@ -147,16 +153,20 @@ export class DashboardComponent implements OnInit, OnDestroy {
     })
   }
 
-  init(){
-    
-  }
-
   ngOnInit(): void {
-    this.categoryService.getAll().subscribe(res => {
+    this.dashboardCategory$ = this.categoryService.getAll().subscribe(res => {
       this.categories = res
       this.data.patchValue({
         categoryId : this.categories.at(0)?.id
       })
+    })
+    
+    this.dashboardProfile$ = this.userService.getProfile().subscribe(res => {
+      this.profile = res
+    })
+
+    this.dashboard$ = this.postService.getPost().subscribe(res => {
+      this.post = res
     })
   }
 

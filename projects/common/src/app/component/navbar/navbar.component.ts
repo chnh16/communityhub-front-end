@@ -40,7 +40,7 @@ export class MenuBarComponent {
                 ]
             },
             {
-                label: 'Approval'
+                label: 'Approval', routerLink: '/approval'
             },
             {
                 label: 'Master Data',

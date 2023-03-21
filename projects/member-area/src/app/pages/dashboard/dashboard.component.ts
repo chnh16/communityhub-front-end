@@ -6,6 +6,7 @@ import { PollingChoiceInsertReq } from 'projects/common/src/app/pojo/pollingchoi
 import { PostGetAllRes } from 'projects/common/src/app/pojo/post/PostGetAllRes';
 import { PostInsertReq } from 'projects/common/src/app/pojo/post/PostInsertReq';
 import { CategoryService } from 'projects/common/src/app/service/category.service';
+import { PostService } from 'projects/common/src/app/service/post.service';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -33,7 +34,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   constructor(
     private fb: FormBuilder,
-    private categoryService : CategoryService
+    private categoryService : CategoryService,
+    private postService : PostService
   ) { }
 
   get imageData() {
@@ -140,17 +142,22 @@ export class DashboardComponent implements OnInit, OnDestroy {
       file : file,
       polling : polling
     }
-    console.log(insertPost)
-  }
-
-  init(){
-    this.categoryService.getAll().subscribe(res => {
-      this.categories = res
+    this.postService.insertPost(insertPost).subscribe(res => {
+      this.data.reset()
     })
   }
 
+  init(){
+    
+  }
+
   ngOnInit(): void {
-    this.init()
+    this.categoryService.getAll().subscribe(res => {
+      this.categories = res
+      this.data.patchValue({
+        categoryId : this.categories.at(0)?.id
+      })
+    })
   }
 
   ngOnDestroy(): void {

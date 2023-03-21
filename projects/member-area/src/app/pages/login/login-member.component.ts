@@ -34,7 +34,6 @@ export class LoginMemberComponent implements OnDestroy {
 
             this.loginMember$ = this.userService.login(data).subscribe(res => {
                 this.userService.setData(res)
-                console.log(res)
                 const roleCode = this.userService.roleCode
                 this.router.navigateByUrl('/dashboard')
                 // if(roleCode == roles[3][1]){

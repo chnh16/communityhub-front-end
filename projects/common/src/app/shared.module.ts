@@ -21,6 +21,8 @@ import { SpeedDialModule } from 'primeng/speeddial';
 import {FileUploadModule} from 'primeng/fileupload';
 import {InputSwitchModule} from 'primeng/inputswitch';
 import {RadioButtonModule} from 'primeng/radiobutton';
+import {TieredMenuModule} from 'primeng/tieredmenu';
+import {PasswordModule} from 'primeng/password';
 
 @NgModule({
     declarations: [
@@ -48,7 +50,8 @@ import {RadioButtonModule} from 'primeng/radiobutton';
         SpeedDialModule,
         FileUploadModule,
         InputSwitchModule,
-        RadioButtonModule
+        RadioButtonModule,
+        PasswordModule
     ],
     exports: [
         ButtonModule,
@@ -72,7 +75,8 @@ import {RadioButtonModule} from 'primeng/radiobutton';
         SpeedDialModule,
         FileUploadModule,
         InputSwitchModule,
-        RadioButtonModule
+        RadioButtonModule,
+        PasswordModule
     ]
 })
 

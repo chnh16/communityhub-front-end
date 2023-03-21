@@ -13,7 +13,6 @@ import { RegisterReq } from "../pojo/user/RegisterReq";
     providedIn : 'root'
 })
 export class UserService{
-    private registerData! : any
 
     constructor(
        private http : HttpClient

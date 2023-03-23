@@ -7,19 +7,24 @@ import { UpdateRes } from "projects/common/src/app/pojo/UpdateRes";
 import { Observable } from "rxjs";
 import { TransactionGetAllRes } from "../pojo/transaction/TransactionGetAllRes";
 import { TransactionGetByCourseIdRes } from "../pojo/transaction/TransactionGetByCourseIdRes";
+import { TransactionInsertReq } from "../pojo/transaction/TransactionInsertReq";
 import { TransactionGetByEventsIdRes } from "../pojo/transaction/TransactionGetByEventIdRes";
 import { TransactionGetByMembershipIdRes } from "../pojo/transaction/TransactionGetByMembershipIdRes";
 import { UpdateTransactionReq } from "../pojo/transaction/UpdateTransactionReq";
 
 
 @Injectable({
-    providedIn : 'root'
+    providedIn: 'root'
 })
 export class TransactionService {
     constructor(
-       private http : HttpClient
-    ){}
+        private http: HttpClient
+    ) { }
 
+    getAll(): Observable<TransactionGetByCourseIdRes[]> {
+        return this.http.get<TransactionGetByCourseIdRes[]>(`${BASE_URL}/transaction`);
+    }
+    
     getTransactionCourseId(type : string) : Observable<TransactionGetByCourseIdRes[]>{
         return this.http.get<TransactionGetByCourseIdRes[]>(`${BASE_URL}/transaction?type=${type}`);
     }
@@ -38,5 +43,10 @@ export class TransactionService {
 
     getTransactionById(id : string) : Observable<TransactionGetAllRes>{
         return this.http.get<TransactionGetAllRes>(`${BASE_URL}/transaction/${id}`)
+    }
+
+
+    insert(data: TransactionInsertReq): Observable<InsertRes> {
+        return this.http.post<InsertRes>(`${BASE_URL}/transaction/add`, data)
     }
 }

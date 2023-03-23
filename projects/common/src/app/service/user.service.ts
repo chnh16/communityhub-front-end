@@ -11,16 +11,15 @@ import { ProfileGetReq } from "../pojo/user/ProfileGetReq";
 import { RegisterReq } from "../pojo/user/RegisterReq";
 
 @Injectable({
-    providedIn : 'root'
+    providedIn: 'root'
 })
 export class UserService{
-
     constructor(
-       private http : HttpClient
-    ){}
+        private http: HttpClient
+    ) { }
 
-    login(data : LoginReq) : Observable<LoginRes>{
-        return this.http.post<LoginRes>(`${BASE_URL}/users/login`, data, { headers : { 'skip' : 'true' } });
+    login(data: LoginReq): Observable<LoginRes> {
+        return this.http.post<LoginRes>(`${BASE_URL}/users/login`, data, { headers: { 'skip': 'true' } });
     }
 
     getProfile() : Observable<ProfileGetReq>{
@@ -32,19 +31,29 @@ export class UserService{
 
     }
 
-    get token() : string {
+    get token(): string {
         const data = localStorage.getItem('dataLogin')
-        if(data) {
+        if (data) {
             return JSON.parse(data).token;
         }
         throw new Error('Token is empty')
     }
 
-    get roleCode() : string {
+    get roleCode(): string {
         const data = localStorage.getItem('dataLogin')
-        if(data) {
+        if (data) {
             return JSON.parse(data).roleCode
         }
         throw new Error('Role Code')
     }
+
+
+    getidUser() {
+        const data = localStorage.getItem('dataLogin')
+        if (data) {
+            return JSON.parse(data).idUser
+        }
+        throw new Error('Id User is Empty')
+    }
+
 }

@@ -7,9 +7,9 @@ import { UserService } from "projects/common/src/app/service/user.service";
 import { Subscription } from "rxjs";
 
 
-@Component ({
-    selector : 'app-login-member',
-    templateUrl : './login-member.component.html'
+@Component({
+    selector: 'app-login-member',
+    templateUrl: './login-member.component.html'
 })
 export class LoginMemberComponent implements OnDestroy {
     loginMember$? : Subscription

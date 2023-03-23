@@ -1,30 +1,34 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { Route, Router } from "@angular/router";
+import { FileUpload } from "primeng/fileupload";
 import { CategoryGetAllRes } from "projects/common/src/app/pojo/category/CategoryGetAllRes";
+import { CourseInsertReq } from "projects/common/src/app/pojo/course/CourseInsertReq";
 import { EventInsertReq } from "projects/common/src/app/pojo/event/EventInsertReq";
 import { FileInsertReq } from "projects/common/src/app/pojo/file/FileInsertReq";
 import { CategoryService } from "projects/common/src/app/service/category.service";
+import { CourseService } from "projects/common/src/app/service/course.service";
 import { EventService } from "projects/common/src/app/service/event.service";
 import { Subscription } from "rxjs";
 
 @Component({
-    selector: 'app-create-event',
-    templateUrl: './create-event.component.html'
+    selector: 'app-create-course',
+    templateUrl: './create-course.component.html'
 })
 
-export class CreateEventComponent implements OnInit, OnDestroy {
+export class CreateCourseComponent implements OnInit, OnDestroy {
 
 
     private getCategory$?: Subscription
 
     categorys: CategoryGetAllRes[] = []
-    createEvent$?: Subscription
+    createCourse$?: Subscription
 
 
     data = this.fb.group({
-        eventName: ['', Validators.required],
+        courseName: ['', Validators.required],
         provider: ['', Validators.required],
+        trainer: ['', Validators.required],
         locationName: ['', Validators.required],
         startDate: ['', Validators.required],
         endDate: ['', Validators.required],
@@ -35,12 +39,14 @@ export class CreateEventComponent implements OnInit, OnDestroy {
             fileName: ['', Validators.required],
             fileContent: ['', Validators.required],
         })
+
+
     })
 
     constructor(
         private fb: FormBuilder,
         private categoryService: CategoryService,
-        private eventService: EventService,
+        private courseService: CourseService,
         private router: Router
     ) { }
 
@@ -55,16 +61,17 @@ export class CreateEventComponent implements OnInit, OnDestroy {
 
     }
 
-    createEvent() {
+    createCourse() {
         const file: FileInsertReq = {
             fileContent: this.data.value.file?.fileContent!,
             fileName: this.data.value.file?.fileName!,
             fileExtension: this.data.value.file?.fileExtension!,
 
         }
-        const insert: EventInsertReq = {
-            eventName: this.data.value.eventName!,
+        const insert: CourseInsertReq = {
+            courseName: this.data.value.courseName!,
             provider: this.data.value.provider!,
+            trainer: this.data.value.trainer!,
             locationName: this.data.value.locationName!,
             startDate: this.data.value.startDate!,
             endDate: this.data.value.endDate!,
@@ -73,8 +80,8 @@ export class CreateEventComponent implements OnInit, OnDestroy {
             file: file!
 
         }
-        this.createEvent$ = this.eventService.insert(insert).subscribe(res => {
-            this.router.navigateByUrl('/event')
+        this.createCourse$ = this.courseService.insert(insert).subscribe(res => {
+            this.router.navigateByUrl('/course')
         }
         )
     }

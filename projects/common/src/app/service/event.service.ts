@@ -10,31 +10,31 @@ import { InsertRes } from "../pojo/InsertRes";
 import { UpdateRes } from "../pojo/UpdateRes";
 
 @Injectable({
-    providedIn : 'root'
+    providedIn: 'root'
 })
 
-export class EventService{
+export class EventService {
     constructor(
-        private http : HttpClient
-    ){}
+        private http: HttpClient
+    ) { }
 
-    getAll() : Observable<EventGetAllRes[]>{
-        return this.http.get<EventGetAllRes[]>(`${BASE_URL}/events`)
+    getAll(id: string, price: string): Observable<EventGetAllRes[]> {
+        return this.http.get<EventGetAllRes[]>(`${BASE_URL}/events?category=${id}&price=${price}`)
     }
 
-    insert( data : EventInsertReq ) : Observable<InsertRes>{
+    insert(data: EventInsertReq): Observable<InsertRes> {
         return this.http.post<InsertRes>(`${BASE_URL}/events/add`, data)
     }
 
-    getByCategoryId( id : string ) : Observable<EventGetAllRes[]>{
-        return this.http.get<EventGetAllRes[]>(`${BASE_URL}/events/${id}`)
+    getByEventId(id: string): Observable<EventGetAllRes> {
+        return this.http.get<EventGetAllRes>(`${BASE_URL}/events/${id}`)
     }
 
-    update( data : EventUpdateReq ) : Observable<UpdateRes>{
+    update(data: EventUpdateReq): Observable<UpdateRes> {
         return this.http.put<UpdateRes>(`${BASE_URL}/events`, data)
     }
 
-    delete( id : string ) : Observable<DeleteRes>{
+    delete(id: string): Observable<DeleteRes> {
         return this.http.delete<DeleteRes>(`${BASE_URL}/events/${id}`)
     }
 

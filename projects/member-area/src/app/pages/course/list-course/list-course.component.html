@@ -1,6 +1,6 @@
 <div class="grid m-3">
 
-    <div class="col-4">
+    <div class="col-4" [formGroup]="reqParams">
         <p-card class=" card-body p-2 flex align-items-center justify-content-center"
             [style]=" {width: '500px' , height:'100%'}" styleClass="p-card-shadow">
 
@@ -15,7 +15,7 @@
             <div>
                 <h4><i class="pi pi-key"></i> By Category</h4>
                 <p-dropdown [options]="categorys" placeholder=" Select a Category" optionLabel="categoryName"
-                    [showClear]="true" optionValue="id">
+                    [showClear]="true" optionValue="id" formControlName="category">
                 </p-dropdown>
 
             </div>
@@ -45,9 +45,8 @@
                     <ng-template pTemplate="header" class="img flex flex-row justify-content-center mx-2">
                         <img alt="Card" src="http://192.168.10.73:8080/files/{{d.file}}" style="height: 250px;">
                     </ng-template>
-                    <div>
-
-                        <div class="flex flex-row grid">
+                    <div style="border: dotted;">
+                        <div class="flex flex-row grid mx-2">
                             <h3>
                                 <i class="pi pi-globe"></i> {{d.provider}}
                             </h3>
@@ -57,19 +56,19 @@
 
 
 
-                        <div class="grid my-2">
+                        <div class="grid my-2 mx-2">
                             <span><i class="pi pi-user"></i> {{d.trainer}}</span>
                         </div>
 
-                        <div class="grid my-2">
+                        <div class="grid my-2 mx-2">
                             <span> <i class="pi pi-calendar"></i> {{d.startDate}} - {{d.endDate}}</span>
                         </div>
 
-                        <div class="grid my-2">
+                        <div class="grid my-2 mx-2">
                             <span> <i class="pi pi-money-bill"></i> Rp.{{d.price}}</span>
                         </div>
 
-                        <div class="grid my-2">
+                        <div class="grid my-2 mx-2">
                             <span> <i class="pi pi-map-marker"></i> {{d.locationName}}</span>
                         </div>
                     </div>

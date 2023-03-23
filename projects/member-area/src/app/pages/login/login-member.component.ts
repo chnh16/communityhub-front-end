@@ -12,24 +12,24 @@ import { Subscription } from "rxjs";
     templateUrl: './login-member.component.html'
 })
 export class LoginMemberComponent implements OnDestroy {
-    loginMember$? : Subscription
+    loginMember$?: Subscription
 
     data = this.fb.group({
-        email : ['', Validators.required],
-        passwordUser : ['', Validators.required]
+        email: ['', Validators.required],
+        passwordUser: ['', Validators.required]
     })
 
     constructor(
-        private fb : FormBuilder,
-        private userService : UserService,
-        private router : Router
-    ){}
+        private fb: FormBuilder,
+        private userService: UserService,
+        private router: Router
+    ) { }
 
-    onLogin(){
-        if(this.data.valid){
-            const data : LoginReq = {
-                email : this.data.value.email!,
-                passwordUser : this.data.value.passwordUser!
+    onLogin() {
+        if (this.data.valid) {
+            const data: LoginReq = {
+                email: this.data.value.email!,
+                passwordUser: this.data.value.passwordUser!
             }
 
             this.loginMember$ = this.userService.login(data).subscribe(res => {
@@ -38,7 +38,7 @@ export class LoginMemberComponent implements OnDestroy {
                 this.router.navigateByUrl('/dashboard')
                 // if(roleCode == roles[3][1]){
                 //     console.log(this.userService.token)
-                    
+
                 // }
             })
         }
@@ -47,5 +47,5 @@ export class LoginMemberComponent implements OnDestroy {
     ngOnDestroy(): void {
         this.loginMember$?.unsubscribe()
     }
-    
+
 }

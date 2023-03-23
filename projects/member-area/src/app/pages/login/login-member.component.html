@@ -1,24 +1,26 @@
+<pre>{{data.value | json}}</pre>
 <div class="card">
     <p-card class="mt-8 flex flex-wrap align-items-center justify-content-center ">
-
         <div class="grid">
             <div class="col-5 flex align-items-center justify-content-center">
-                <div class="pl-5 p-fluid">
-                    <div class="pt-2 align-items-center justify-content-center">
-                        <h3>LOGIN</h3>
+                <form [formGroup]="data" (ngSubmit)="onLogin()">
+                    <div class="pl-5 p-fluid">
+                        <div class="pt-2 align-items-center justify-content-center">
+                            <h3>LOGIN</h3>
+                        </div>
+                        <div class="pt-4 field">
+                            <label for="email">Email</label>
+                            <input formControlName="email" pInputText id="email" type="email" />
+                        </div>
+                        <div class="field">
+                            <label for="password">Password</label>
+                            <p-password formControlName="passwordUser" [toggleMask]="true" [feedback]="false"></p-password>
+                        </div>
+                        <app-submit-button clasz="w-27rem p-button-rounded bg-blue-400" label="Login" [disabled]="!data.valid"></app-submit-button>
+                        <app-routing-button clasz="mt-2 w-27rem p-button-rounded bg-blue-400" label="Sign Up" link="/register-member"></app-routing-button>
+                        <p class="mt-1 underline text-center">Forget password</p>
                     </div>
-                    <div class="pt-4 field">
-                        <label for="email">Email</label>
-                        <input pInputText id="email" type="email" />
-                    </div>
-                    <div class="field">
-                        <label for="password">Password</label>
-                        <input pInputText id="password" type="password" />
-                    </div>
-                    <app-routing-button clasz="w-27rem p-button-rounded bg-blue-400" label="Login"></app-routing-button>
-                    <app-routing-button clasz="mt-2 w-27rem p-button-rounded bg-blue-400" label="Sign Up"></app-routing-button>
-                    <p class="mt-1 underline text-center">Forget password</p>
-                </div>
+                </form>
             </div>
 
             <div class="col-2">

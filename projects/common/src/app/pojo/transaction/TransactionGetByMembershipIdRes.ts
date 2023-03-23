@@ -1,4 +1,4 @@
-export interface TransactionGetByCourseIdRes {
+export interface TransactionGetByMembershipIdRes {
     id : string
     fileId : string
     fullName : string

@@ -7,11 +7,13 @@ import { UpdateRes } from "projects/common/src/app/pojo/UpdateRes";
 import { Observable, skip } from "rxjs";
 import { LoginReq } from "../pojo/user/LoginReq";
 import { LoginRes } from "../pojo/user/LoginRes";
+import { ProfileGetReq } from "../pojo/user/ProfileGetReq";
+import { RegisterReq } from "../pojo/user/RegisterReq";
 
 @Injectable({
     providedIn: 'root'
 })
-export class UserService {
+export class UserService{
     constructor(
         private http: HttpClient
     ) { }
@@ -20,7 +22,11 @@ export class UserService {
         return this.http.post<LoginRes>(`${BASE_URL}/users/login`, data, { headers: { 'skip': 'true' } });
     }
 
-    setData(data: LoginRes) {
+    getProfile() : Observable<ProfileGetReq>{
+        return this.http.get<ProfileGetReq>(`${BASE_URL}/users/user-profile`)
+    }
+
+    setData(data : LoginRes){
         localStorage.setItem('dataLogin', JSON.stringify(data))
 
     }
@@ -30,7 +36,7 @@ export class UserService {
         if (data) {
             return JSON.parse(data).token;
         }
-        throw new Error('Token is emty')
+        throw new Error('Token is empty')
     }
 
     get roleCode(): string {

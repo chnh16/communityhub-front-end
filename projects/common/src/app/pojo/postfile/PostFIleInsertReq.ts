@@ -1,4 +1,5 @@
+import { FileInsertReq } from "../file/FileInsertReq";
+
 export interface PostFileInsertReq {
-  postId : string,
-  file : PostFileInsertReq
+  file : FileInsertReq[]
 }

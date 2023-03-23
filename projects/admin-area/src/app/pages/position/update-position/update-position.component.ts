@@ -4,8 +4,8 @@ import { FormBuilder, Validators } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
 import { PositionService } from "projects/common/src/app/service/position.service";
 import { Subscription } from "rxjs";
-import { PositionGetAllRes } from "../../../pojo/position/PositionGetAllRes";
-import { PositionUpdateReq } from "../../../pojo/position/PositionUpdateReq";
+import { PositionGetAllRes } from "../../../../../../common/src/app/pojo/position/PositionGetAllRes";
+import { PositionUpdateReq } from "../../../../../../common/src/app/pojo/position/PositionUpdateReq";
 
 
 

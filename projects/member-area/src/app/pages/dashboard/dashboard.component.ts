@@ -1,31 +1,97 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, Validators } from '@angular/forms';
+import { CategoryGetAllRes } from 'projects/common/src/app/pojo/category/CategoryGetAllRes';
+import { FileInsertReq } from 'projects/common/src/app/pojo/file/FileInsertReq';
+import { PollingChoiceInsertReq } from 'projects/common/src/app/pojo/pollingchoice/PollingChoiceInsertReq';
 import { PostGetAllRes } from 'projects/common/src/app/pojo/post/PostGetAllRes';
+import { PostInsertReq } from 'projects/common/src/app/pojo/post/PostInsertReq';
+import { PostLikeReq } from 'projects/common/src/app/pojo/post/PostLikeReq';
+import { ProfileGetReq } from 'projects/common/src/app/pojo/user/ProfileGetReq';
+import { CategoryService } from 'projects/common/src/app/service/category.service';
+import { PostService } from 'projects/common/src/app/service/post.service';
+import { UserService } from 'projects/common/src/app/service/user.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html'
 })
 export class DashboardComponent implements OnInit, OnDestroy {
+  dashboard$? : Subscription
+  dashboardCategory$? : Subscription
+  dashboardProfile$? : Subscription
+  postLike$? : Subscription
   post!: PostGetAllRes[]
+  profile! : ProfileGetReq
   uploadedFiles: any[] = []
   showImageUpload : boolean = false
+  showInsertPolling : boolean = false
+  showAddDetail : boolean = false
+  imageButton : boolean = false
+  pollingButton : boolean = false
+  categories : CategoryGetAllRes[] = []
 
   data = this.fb.group({
+    postTitle : ['', Validators.required],
     postContent: ['', Validators.required],
-    postFile: this.fb.array([])
+    categoryId : ['', Validators.required],
+    isPremium : false,
+    file: this.fb.array([]),
+    polling : this.fb.array([])
   })
 
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private categoryService : CategoryService,
+    private postService : PostService,
+    private userService : UserService
   ) { }
 
   get imageData() {
-    return this.data.get('postFile') as FormArray
+    return this.data.get('file') as FormArray
+  }
+
+  get pollingData(){
+    return this.data.get('polling') as FormArray
+  }
+
+  onShowAddDetail(){
+    this.showAddDetail = !this.showAddDetail
   }
 
   onShowImageUpload(){
+    if(this.imageData.length > 0){
+      this.pollingButton = !this.pollingButton
+      this.showImageUpload = !this.showImageUpload
+      this.imageData.clear()
+      return
+    }
+    this.pollingButton = !this.pollingButton
     this.showImageUpload = !this.showImageUpload
+  }
+
+  onShowInsertPolling(){
+    if(this.pollingData.length > 0){
+      this.imageButton = !this.imageButton
+      this.showInsertPolling = !this.showInsertPolling
+      this.pollingData.clear()
+      return
+    }
+    this.imageButton = !this.imageButton
+    this.showInsertPolling = !this.showInsertPolling
+    for(let i = 0; i < 2; i++){
+      this.addPollingChoice()
+    }
+  }
+
+  addPollingChoice(){
+    this.pollingData.push(this.fb.group({
+      choiceContent : ['', Validators.required]
+    }))
+  }
+
+  removePollingChoice(i : number){
+    this.pollingData.removeAt(i)
   }
 
   onSelect(event : any){
@@ -66,19 +132,72 @@ export class DashboardComponent implements OnInit, OnDestroy {
     if(filter && filter.length){
       this.imageData.removeAt(filter[0])
       this.uploadedFiles.splice(filter[0], 1)
-      console.log(filter)
     }
   }
 
   onClear(){
+      this.imageData.clear()
+      this.uploadedFiles = []
+      this.showImageUpload = !this.showImageUpload
+      this.pollingButton = !this.pollingButton
+  }
 
+  onSubmit(){
+    const file : FileInsertReq[] = this.imageData.value
+
+    const polling : PollingChoiceInsertReq[] = this.pollingData.value
+
+    const insertPost : PostInsertReq = {
+      postTitle : this.data.value.postTitle!,
+      postContent : this.data.value.postContent!,
+      categoryId : this.data.value.categoryId!,
+      isPremium : this.data.value.isPremium!,
+      file : file,
+      polling : polling
+    }
+    this.postService.insertPost(insertPost).subscribe(res => {
+      this.data.reset()
+    })
+  }
+
+  onLike(postId : string) : void{
+    const data : PostLikeReq = {
+      postId : postId
+    }
+    this.postLike$ = this.postService.onLike(data).subscribe(res => {
+      this.init()
+    })
+  }
+
+  onDislike(postId : string) : void{
+    this.postLike$ = this.postService.onDislike(postId).subscribe(res => {
+      this.init()
+    })
+  }
+
+  init() : void{
+    this.dashboardCategory$ = this.categoryService.getAll().subscribe(res => {
+      this.categories = res
+      this.data.patchValue({
+        categoryId : this.categories.at(0)?.id
+      })
+    })
+    
+    this.dashboardProfile$ = this.userService.getProfile().subscribe(res => {
+      this.profile = res
+    })
+
+    this.dashboard$ = this.postService.getPost().subscribe(res => {
+      this.post = res
+    })
   }
 
   ngOnInit(): void {
-
+    this.init()
   }
+
   ngOnDestroy(): void {
-    throw new Error('Method not implemented.');
+    this.dashboard$?.unsubscribe()
   }
 
 }

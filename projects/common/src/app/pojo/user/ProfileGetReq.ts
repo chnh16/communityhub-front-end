@@ -1,6 +1,4 @@
-import { FileInsertReq } from "../file/FileInsertReq"
-
-export interface ProfileInsertReq{
+export interface ProfileGetReq{
     fullName : string
     country : string
     province : string
@@ -10,5 +8,6 @@ export interface ProfileInsertReq{
     positionId : string
     industryId : string
     company : string
-    file : FileInsertReq
+    file : string
+    ver : number
 }

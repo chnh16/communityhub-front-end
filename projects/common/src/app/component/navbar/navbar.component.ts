@@ -1,3 +1,4 @@
+import { style } from "@angular/animations";
 import { Component, Input } from "@angular/core";
 import { Router } from "@angular/router";
 import { MenuItem } from "primeng/api";
@@ -40,7 +41,7 @@ export class MenuBarComponent {
                 ]
             },
             {
-                label: 'Approval'
+                label: 'Approval', routerLink: '/approval'
             },
             {
                 label: 'Master Data',

@@ -23,6 +23,7 @@ import {InputSwitchModule} from 'primeng/inputswitch';
 import {RadioButtonModule} from 'primeng/radiobutton';
 import {TieredMenuModule} from 'primeng/tieredmenu';
 import {PasswordModule} from 'primeng/password';
+import { SkeletonModule } from 'primeng/skeleton';
 
 @NgModule({
     declarations: [
@@ -51,7 +52,8 @@ import {PasswordModule} from 'primeng/password';
         FileUploadModule,
         InputSwitchModule,
         RadioButtonModule,
-        PasswordModule
+        PasswordModule,
+        SkeletonModule
     ],
     exports: [
         ButtonModule,
@@ -76,7 +78,8 @@ import {PasswordModule} from 'primeng/password';
         FileUploadModule,
         InputSwitchModule,
         RadioButtonModule,
-        PasswordModule
+        PasswordModule,
+        SkeletonModule
     ]
 })
 

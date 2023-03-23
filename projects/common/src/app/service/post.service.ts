@@ -5,6 +5,7 @@ import { DeleteRes } from "projects/common/src/app/pojo/DeleteRes";
 import { InsertRes } from "projects/common/src/app/pojo/InsertRes";
 import { UpdateRes } from "projects/common/src/app/pojo/UpdateRes";
 import { Observable } from "rxjs";
+import { PostBookmarkReq } from "../pojo/post/PostBookmarkReq";
 import { PostGetAllRes } from "../pojo/post/PostGetAllRes";
 import { PostInsertReq } from "../pojo/post/PostInsertReq";
 import { PostLikeReq } from "../pojo/post/PostLikeReq";
@@ -33,5 +34,13 @@ export class PostService{
 
     onDislike(postId : string) : Observable<DeleteRes>{
         return this.http.delete<DeleteRes>(`${BASE_URL}/post/like/${postId}`)
+    }
+
+    onBookmark(data : PostBookmarkReq) : Observable<InsertRes>{
+        return this.http.post<InsertRes>(`${BASE_URL}/post/bookmark`, data)
+    }
+
+    onRemoveBookmark(postId : string) : Observable<DeleteRes>{
+        return this.http.delete<DeleteRes>(`${BASE_URL}/post/delete-bookmark/${postId}`)
     }
 }

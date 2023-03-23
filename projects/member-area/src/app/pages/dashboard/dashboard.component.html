@@ -1,7 +1,7 @@
-<pre>{{data.value | json}}</pre>
-<pre>{{post | json}}</pre>
+<!-- <pre>{{data.value | json}}</pre>
+<pre>{{post | json}}</pre> -->
 <div class="grid m-0">
-    <div class="col-3">
+    <div *ngIf="profile" class="col-3">
         <div class="flex justify-content-start">
             <h3><i class="pi pi-user"></i> Profil Saya</h3>
         </div>
@@ -26,6 +26,33 @@
                 <p-divider></p-divider>
                 <div class="align-item-center">
                     <app-routing-button label="Edit Profil"></app-routing-button>
+                </div>
+            </p-card>
+        </div>
+    </div>
+    <div *ngIf="!profile" class="col-3">
+        <div class="flex justify-content-start">
+            <h3><i class="pi pi-user"></i> Profil Saya</h3>
+        </div>
+        <div class="align-item-center">
+            <p-card class="align-items-center flex-wrap" styleClass="p-card-shadow">
+                <p-skeleton size="5rem" styleClass="mb-2"></p-skeleton>
+                <p-skeleton height="2rem" styleClass="mb-4"></p-skeleton>
+                <p-skeleton styleClass="mb-2"></p-skeleton>
+                <p-skeleton styleClass="mb-2"></p-skeleton>
+                <p-divider></p-divider>
+                <h4>Profil</h4>
+                <div class="my-2">
+                    <span>Email</span>
+                    <p-skeleton styleClass="mb-2"></p-skeleton>
+                </div>
+                <div class="my-2">
+                    <span>No. Telp</span>
+                    <p-skeleton styleClass="mb-2"></p-skeleton>
+                </div>
+                <p-divider></p-divider>
+                <div class="align-item-center">
+                    <button pButton [disabled]="true" class="p-button-primary">Edit Profil</button>
                 </div>
             </p-card>
         </div>
@@ -134,13 +161,14 @@
                 <div class="m-0 p-0">
                     <p-divider></p-divider>
                     <div class="grid">
-                        <app-text-icon-button *ngIf="!post[i].isLiked" icon="pi pi-heart" label="Suka" (click)="onLike(post[i].id)"></app-text-icon-button>
-                        <app-text-icon-button *ngIf="post[i].isLiked" icon="pi pi-heart-fill" label="Suka" (click)="onDislike(post[i].id)"></app-text-icon-button>
+                        <app-text-icon-button *ngIf="!post[i].isLiked" icon="pi pi-heart" clasz="p-button-text p-button-secondary" label="Suka" (click)="onLike(post[i].id)"></app-text-icon-button>
+                        <app-text-icon-button *ngIf="post[i].isLiked" clasz="p-button-text p-button-primary" icon="pi pi-heart-fill" label="Suka" (click)="onDislike(post[i].isLiked.id)"></app-text-icon-button>
                         <p-divider layout="vertical"></p-divider>
-                        <app-text-icon-button icon="pi pi-comments" label="Komentar"
+                        <app-text-icon-button icon="pi pi-comments" clasz="p-button-text p-button-secondary" label="Komentar"
                             (click)="onShowAddDetail()"></app-text-icon-button>
                         <p-divider layout="vertical"></p-divider>
-                        <app-text-icon-button icon="pi pi-bookmark" label="Bookmark"></app-text-icon-button>
+                        <app-text-icon-button *ngIf="!post[i].isBookmarked" icon="pi pi-bookmark" clasz="p-button-text p-button-secondary" label="Bookmark" (click)="onBookmark(post[i].id)"></app-text-icon-button>
+                        <app-text-icon-button *ngIf="post[i].isBookmarked" icon="pi pi-bookmark-fill" clasz="p-button-text p-button-primary" label="Bookmark" (click)="onRemoveBookmark(post[i].isBookmarked.id)"></app-text-icon-button>
                     </div>
                     <p-divider></p-divider>
                 </div>
@@ -440,11 +468,6 @@
                 </p-tabPanel>
             </p-tabView>
         </p-card> -->
-    </div>
-    <div class="col-3">
-        <div class="flex justify-content-start">
-            <h3><i class="pi pi-user"></i> Artikel Pilihan</h3>
-        </div>
     </div>
     <p-scrollTop target="window"></p-scrollTop>
 </div>

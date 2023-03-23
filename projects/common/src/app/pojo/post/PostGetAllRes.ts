@@ -1,3 +1,4 @@
+import { PostDetailGetAllRes } from "../postdetail/PostDetailGetAllRes"
 import { PostBookmarkRes } from "./PostBookmarkRes"
 import { PostLikeRes } from "./PostLikeRes"
 
@@ -8,9 +9,10 @@ export interface PostGetAllRes {
   postTitle : string
   postContent :  string
   postTypeId :  string
-  typeName : string
-  categoryId : string
   categoryName : string
   isLiked : PostLikeRes
   isBookmarked : PostBookmarkRes
+  likeCount : number
+  detailCount : number
+  postDetail : PostDetailGetAllRes[]
 }

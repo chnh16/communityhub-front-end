@@ -7,6 +7,7 @@ import { UpdateRes } from "projects/common/src/app/pojo/UpdateRes";
 import { Observable } from "rxjs";
 import { PostGetAllRes } from "../pojo/post/PostGetAllRes";
 import { PostInsertReq } from "../pojo/post/PostInsertReq";
+import { PostLikeReq } from "../pojo/post/PostLikeReq";
 import { TransactionGetByCourseIdRes } from "../pojo/transaction/TransactionGetByCourseIdRes";
 
 
@@ -24,5 +25,13 @@ export class PostService{
 
     insertPost(data : PostInsertReq) : Observable<InsertRes>{
         return this.http.post<InsertRes>(`${BASE_URL}/post`, data)
+    }
+
+    onLike(data : PostLikeReq) : Observable<InsertRes>{
+        return this.http.post<InsertRes>(`${BASE_URL}/post/like`, data)
+    }
+
+    onDislike(postId : string) : Observable<DeleteRes>{
+        return this.http.delete<DeleteRes>(`${BASE_URL}/post/like/${postId}`)
     }
 }

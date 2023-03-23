@@ -5,6 +5,7 @@ import { FileInsertReq } from 'projects/common/src/app/pojo/file/FileInsertReq';
 import { PollingChoiceInsertReq } from 'projects/common/src/app/pojo/pollingchoice/PollingChoiceInsertReq';
 import { PostGetAllRes } from 'projects/common/src/app/pojo/post/PostGetAllRes';
 import { PostInsertReq } from 'projects/common/src/app/pojo/post/PostInsertReq';
+import { PostLikeReq } from 'projects/common/src/app/pojo/post/PostLikeReq';
 import { ProfileGetReq } from 'projects/common/src/app/pojo/user/ProfileGetReq';
 import { CategoryService } from 'projects/common/src/app/service/category.service';
 import { PostService } from 'projects/common/src/app/service/post.service';
@@ -19,11 +20,13 @@ export class DashboardComponent implements OnInit, OnDestroy {
   dashboard$? : Subscription
   dashboardCategory$? : Subscription
   dashboardProfile$? : Subscription
+  postLike$? : Subscription
   post!: PostGetAllRes[]
   profile! : ProfileGetReq
   uploadedFiles: any[] = []
   showImageUpload : boolean = false
   showInsertPolling : boolean = false
+  showAddDetail : boolean = false
   imageButton : boolean = false
   pollingButton : boolean = false
   categories : CategoryGetAllRes[] = []
@@ -50,6 +53,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   get pollingData(){
     return this.data.get('polling') as FormArray
+  }
+
+  onShowAddDetail(){
+    this.showAddDetail = !this.showAddDetail
   }
 
   onShowImageUpload(){
@@ -153,7 +160,22 @@ export class DashboardComponent implements OnInit, OnDestroy {
     })
   }
 
-  ngOnInit(): void {
+  onLike(postId : string) : void{
+    const data : PostLikeReq = {
+      postId : postId
+    }
+    this.postLike$ = this.postService.onLike(data).subscribe(res => {
+      this.init()
+    })
+  }
+
+  onDislike(postId : string) : void{
+    this.postLike$ = this.postService.onDislike(postId).subscribe(res => {
+      this.init()
+    })
+  }
+
+  init() : void{
     this.dashboardCategory$ = this.categoryService.getAll().subscribe(res => {
       this.categories = res
       this.data.patchValue({
@@ -168,6 +190,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.dashboard$ = this.postService.getPost().subscribe(res => {
       this.post = res
     })
+  }
+
+  ngOnInit(): void {
+    this.init()
   }
 
   ngOnDestroy(): void {

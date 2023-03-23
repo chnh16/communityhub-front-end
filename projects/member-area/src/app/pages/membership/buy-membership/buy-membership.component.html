@@ -1,0 +1,38 @@
+<pre>
+    {{data.value | json}}
+</pre>
+
+<div class="flex flex-wrap align-items-center justify-content-center">
+    <div class="mt-6">
+        <h2>BUY MEMBERSHIP</h2>
+    </div>
+</div>
+<div class="flex flex-wrap align-items-center justify-content-center">
+    <div class="mt-2">
+        <p-card class=" card-body p-4 flex align-items-center justify-content-center"
+            [style]=" {width: '500px' , height:'100%'}" styleClass="p-card-shadow">
+            <form [formGroup]="data" (ngSubmit)="buyMembership()">
+                <div class="field grid">
+                    <label for="voucherCode" class="col-fixed" style="width:200px">Code Voucher</label>
+                    <div class="col">
+                        <input id="voucherCode" formControlName="voucherCode" type="text"
+                            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary">
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <div class="field grid">
+                        <label for="formFileMultiple" class="form-label">Masukkan File</label>
+
+                        <p-fileUpload mode="basic" name="demo[]" (onSelect)="fileUpload($event)"></p-fileUpload>
+
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <div class="col-6">
+                        <app-submit-button label="Buy" clasz="p-button-rounded mr-2"></app-submit-button>
+                    </div>
+                </div>
+            </form>
+        </p-card>
+    </div>
+</div>

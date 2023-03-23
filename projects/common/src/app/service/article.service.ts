@@ -5,23 +5,23 @@ import { DeleteRes } from "projects/common/src/app/pojo/DeleteRes";
 import { InsertRes } from "projects/common/src/app/pojo/InsertRes";
 import { UpdateRes } from "projects/common/src/app/pojo/UpdateRes";
 import { Observable } from "rxjs";
-import { TransactionGetByCourseIdRes } from "../pojo/transaction/TransactionGetByCourseIdRes";
-import { TransactionInsertReq } from "../pojo/transaction/TransactionInsertReq";
+import { ArticleInsertReq } from "../pojo/article/ArticleInsertReq";
 
 
 @Injectable({
     providedIn: 'root'
 })
-export class TransactionService {
+export class ArticleService {
     constructor(
         private http: HttpClient
     ) { }
 
-    getAll(): Observable<TransactionGetByCourseIdRes[]> {
-        return this.http.get<TransactionGetByCourseIdRes[]>(`${BASE_URL}/transaction`);
+
+
+
+    insert(data: ArticleInsertReq): Observable<InsertRes> {
+        return this.http.post<InsertRes>(`${BASE_URL}/article/add`, data);
     }
 
-    insert(data: TransactionInsertReq): Observable<InsertRes> {
-        return this.http.post<InsertRes>(`${BASE_URL}/transaction/add`, data)
-    }
+
 }

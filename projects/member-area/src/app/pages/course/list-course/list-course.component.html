@@ -1,27 +1,81 @@
-<div class="m-3">
-    <div>
-        <span class="p-input-icon-left">
-            <i class="pi pi-search"></i>
-            <input type="text" pInputText placeholder="Search"/>
-        </span>
+<div class="grid m-3">
+
+    <div class="col-4">
+        <p-card class=" card-body p-2 flex align-items-center justify-content-center"
+            [style]=" {width: '500px' , height:'100%'}" styleClass="p-card-shadow">
+
+            <div *ngIf="role=='MBR'">
+                <h2><i class="pi pi-plus-circle"></i> Create Course</h2>
+                <app-routing-button label="Add Course" icon="pi pi-plus" class="p-button-rounded mr-2"
+                    link="/course/add">
+                </app-routing-button>
+            </div>
+
+            <h2><i class="pi pi-filter"></i> Filters</h2>
+            <div>
+                <h4><i class="pi pi-key"></i> By Category</h4>
+                <p-dropdown [options]="categorys" placeholder=" Select a Category" optionLabel="categoryName"
+                    [showClear]="true" optionValue="id">
+                </p-dropdown>
+
+            </div>
+
+            <div>
+                <h4><i class="pi pi-money-bill"></i> By Price</h4>
+                <!-- <p-dropdown [options]="filterPrice" placeholder="Select a Choice" optionLabel="filterPrice"
+                    [showClear]="true">
+                </p-dropdown> -->
+
+                <p-dropdown [options]="sortOptions" optionLabel="label"></p-dropdown>
+
+
+            </div>
+            <!-- <span class="p-input-icon-left">
+                <i class="pi pi-search"></i>
+                <input type="text" pInputText placeholder="Search" />
+            </span> -->
+        </p-card>
     </div>
-    <div>
+
+    <div class="col-8">
         <div class="grid">
-            <div class="col-4">
-                <p-card header="courseName" subheader="category" [style]="{width : '360px'}" styleClass="p-card-shadow">
-                    <ng-template pTemplate="header">
-                        <img alt="Card" src="https://primefaces.org/cdn/primeng/images/usercard.png">
+            <div class="col-6 my-2 flex justify-content-center" *ngFor="let d of course let i = index">
+                <p-card header="{{d.courseName}}" subheader="{{d.categoryId}}" [style]="{width : '400px'}"
+                    styleClass="p-card-shadow">
+                    <ng-template pTemplate="header" class="img flex flex-row justify-content-center mx-2">
+                        <img alt="Card" src="http://192.168.10.73:8080/files/{{d.file}}" style="height: 250px;">
                     </ng-template>
                     <div>
-                        <span>Penyelenggara : organizerName</span>
-                        <span>Trainer : trainerName</span>
-                        <span>Tanggal Mulai : startDate</span>
-                        <span>Tanggal Selesai : endDate</span>
-                        <span>Harga : Rp price</span>
-                        <span>Lokasi : location</span>
+
+                        <div class="flex flex-row grid">
+                            <h3>
+                                <i class="pi pi-globe"></i> {{d.provider}}
+                            </h3>
+
+                            <h3><i class="pi pi-table"></i> COURSE</h3>
+                        </div>
+
+
+
+                        <div class="grid my-2">
+                            <span><i class="pi pi-user"></i> {{d.trainer}}</span>
+                        </div>
+
+                        <div class="grid my-2">
+                            <span> <i class="pi pi-calendar"></i> {{d.startDate}} - {{d.endDate}}</span>
+                        </div>
+
+                        <div class="grid my-2">
+                            <span> <i class="pi pi-money-bill"></i> Rp.{{d.price}}</span>
+                        </div>
+
+                        <div class="grid my-2">
+                            <span> <i class="pi pi-map-marker"></i> {{d.locationName}}</span>
+                        </div>
                     </div>
                     <ng-template pTemplate="footer">
-                        <app-action-button label="Beli Course"></app-action-button>
+                        <app-routing-button label="Detail" link="/course/detail/{{d.id}}"></app-routing-button>
+
                     </ng-template>
                 </p-card>
             </div>

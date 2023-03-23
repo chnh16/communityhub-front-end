@@ -59,7 +59,7 @@ export class ListEventComponent implements OnInit {
 
         this.reqParams.get('category')?.valueChanges.subscribe(res => {
             const temp = res as any
-            console.log(res)
+            console.log(temp)
             this.getEvent$ = this.eventService.getAll(temp, this.reqParams.value.price!).subscribe(res => {
                 this.event = res
             })

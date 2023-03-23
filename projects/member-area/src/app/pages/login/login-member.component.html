@@ -1,6 +1,7 @@
 <pre>{{data.value | json}}</pre>
 <div class="card">
     <p-card class="mt-8 flex flex-wrap align-items-center justify-content-center ">
+
         <div class="grid">
             <div class="col-5 flex align-items-center justify-content-center">
                 <form [formGroup]="data" (ngSubmit)="onLogin()">
@@ -14,10 +15,13 @@
                         </div>
                         <div class="field">
                             <label for="password">Password</label>
-                            <p-password formControlName="passwordUser" [toggleMask]="true" [feedback]="false"></p-password>
+                            <p-password formControlName="passwordUser" [toggleMask]="true" [feedback]="false">
+                            </p-password>
                         </div>
-                        <app-submit-button clasz="w-27rem p-button-rounded bg-blue-400" label="Login" [disabled]="!data.valid"></app-submit-button>
-                        <app-routing-button clasz="mt-2 w-27rem p-button-rounded bg-blue-400" label="Sign Up" link="/register-member"></app-routing-button>
+                        <app-submit-button clasz="w-27rem p-button-rounded bg-blue-400" label="Login"
+                            [disabled]="!data.valid"></app-submit-button>
+                        <app-routing-button clasz="mt-2 w-27rem p-button-rounded bg-blue-400" label="Sign Up"
+                            link="/register-member"></app-routing-button>
                         <p class="mt-1 underline text-center">Forget password</p>
                     </div>
                 </form>

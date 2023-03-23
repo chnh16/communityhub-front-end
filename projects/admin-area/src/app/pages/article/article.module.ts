@@ -11,24 +11,24 @@ import { ToolbarModule } from "primeng/toolbar";
 import { ButtonModule as bm } from "projects/common/src/app/component/button/button.module";
 import { HttpClientModule } from "@angular/common/http";
 import { AppModule } from "../../app.module";
-import {TabViewModule} from 'primeng/tabview';
+import { TabViewModule } from 'primeng/tabview';
 import { CreateArticleComponent } from "./create-article/create-article.component";
 import { CreateArticleRouting } from "./article.routing";
 import { CardModule } from "primeng/card";
 import { FileUploadModule } from "primeng/fileupload";
-import {InputTextareaModule} from 'primeng/inputtextarea';
-import {EditorModule} from 'primeng/editor';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { EditorModule } from 'primeng/editor';
 
 
-@NgModule ({
+@NgModule({
     declarations: [
         CreateArticleComponent
-        ],
+    ],
     imports: [
-       CreateArticleRouting,CommonModule,TableModule, ButtonModule, ToolbarModule,
-       AvatarModule, AvatarGroupModule, MenubarModule, ReactiveFormsModule, bm, 
-       HttpClientModule, TabViewModule, CardModule, FileUploadModule, InputTextareaModule,
-       EditorModule
+        CreateArticleRouting, CommonModule, TableModule, ButtonModule, ToolbarModule,
+        AvatarModule, AvatarGroupModule, MenubarModule, ReactiveFormsModule, bm,
+        HttpClientModule, TabViewModule, CardModule, FileUploadModule, InputTextareaModule,
+        EditorModule
     ]
 })
-export class CreateArticleModule {}
+export class CreateArticleModule { }

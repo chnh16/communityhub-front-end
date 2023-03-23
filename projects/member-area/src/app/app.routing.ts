@@ -10,6 +10,7 @@ import { LoginMemberComponent } from "./pages/login/login-member.component";
 import { RegisterMemberComponent } from "./pages/register/register-member.component";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProfileMemberComponent } from "./pages/user-profile/user-profile.component";
+import { InfiniteScrollModule } from "ngx-infinite-scroll";
 
 
 export const memberRouter: Routes = [
@@ -57,7 +58,8 @@ export const memberRouter: Routes = [
     ],
     imports: [
         RouterModule.forRoot(memberRouter),
-        SharedModule
+        SharedModule,
+        InfiniteScrollModule
     ],
     exports: [
         RouterModule,

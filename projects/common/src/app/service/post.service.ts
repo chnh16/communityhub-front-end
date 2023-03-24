@@ -41,6 +41,6 @@ export class PostService{
     }
 
     onRemoveBookmark(postId : string) : Observable<DeleteRes>{
-        return this.http.delete<DeleteRes>(`${BASE_URL}/post/delete-bookmark/${postId}`)
+        return this.http.delete<DeleteRes>(`${BASE_URL}/post/bookmark/${postId}`)
     }
 }

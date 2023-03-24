@@ -58,8 +58,7 @@ export const memberRouter: Routes = [
     ],
     imports: [
         RouterModule.forRoot(memberRouter),
-        SharedModule,
-        InfiniteScrollModule
+        SharedModule
     ],
     exports: [
         RouterModule,

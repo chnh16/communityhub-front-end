@@ -119,354 +119,82 @@
                 </div>
             </form>
         </p-card>
-        <div *ngFor="let p of post; let i = index" class="col-12 block align-items-center flex-wrap p-0">
-            <p-card class="grid block col-12 m-0 mt-2 p-0">
-                <div class="flex">
-                    <div class="flex align-items-center col-2 p-0">
-                        <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png"
-                            styleClass="mr-2" size="xlarge" shape="circle"></p-avatar>
+        <div infinite-scroll (scrolled)="onScroll()">
+            <div *ngFor="let p of post; let i = index" class="col-12 block align-items-center flex-wrap p-0">
+                <p-card class="grid block col-12 m-0 mt-2 p-0">
+                    <div class="flex">
+                        <div class="flex align-items-center col-2 p-0">
+                            <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png"
+                                styleClass="mr-2" size="xlarge" shape="circle"></p-avatar>
+                        </div>
+                        <div class="grid flex align-items-center col-7 p-0">
+                            <h4 class="flex align-items-start">{{post[i].fullName}}</h4>
+                            <span class="flex align-items-start m-0">uploaded 1 hour ago</span>
+                        </div>
+                        <div class="flex align-items-end col-3">
+                            <app-category-button label="{{post[i].categoryName}}"></app-category-button>
+                        </div>
                     </div>
-                    <div class="grid flex align-items-center col-7 p-0">
-                        <h4 class="flex align-items-start">{{post[i].fullName}}</h4>
-                        <span class="flex align-items-start m-0">uploaded 1 hour ago</span>
-                    </div>
-                    <div class="flex align-items-end col-3">
-                        <app-category-button label="{{post[i].categoryName}}"></app-category-button>
-                    </div>
-                </div>
-                <div class="grid">
-                    <div class="my-2">
-                        <h3>{{post[i].postTitle}}</h3>
-                        <p>{{post[i].postContent}}</p>
-                    </div>
-                </div>
-                <div *ngIf="post[i].likeCount > 0" class="grid my-2">
-                    <p-avatarGroup styleClass="mb-3">
-                        <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png"
-                            shape="circle"></p-avatar>
-                        <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/asiyajavayant.png"
-                            shape="circle"></p-avatar>
-                        <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/onyamalimba.png"
-                            shape="circle"></p-avatar>
-                        <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/ionibowcher.png"
-                            shape="circle"></p-avatar>
-                        <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/xuxuefeng.png"
-                            shape="circle"></p-avatar>
-                        <p-avatar label="+2" shape="circle"
-                            [style]="{'background-color':'#9c27b0', 'color': '#ffffff'}"></p-avatar>
-                    </p-avatarGroup>
-                    <span>{{post[i].likeCount}} likes</span>
-                </div>
-                <div class="m-0 p-0">
-                    <p-divider></p-divider>
                     <div class="grid">
-                        <app-text-icon-button *ngIf="!post[i].isLiked" icon="pi pi-heart" clasz="p-button-text p-button-secondary" label="Suka" (click)="onLike(post[i].id)"></app-text-icon-button>
-                        <app-text-icon-button *ngIf="post[i].isLiked" clasz="p-button-text p-button-primary" icon="pi pi-heart-fill" label="Suka" (click)="onDislike(post[i].isLiked.id)"></app-text-icon-button>
-                        <p-divider layout="vertical"></p-divider>
-                        <app-text-icon-button icon="pi pi-comments" clasz="p-button-text p-button-secondary" label="Komentar"
-                            (click)="onShowAddDetail()"></app-text-icon-button>
-                        <p-divider layout="vertical"></p-divider>
-                        <app-text-icon-button *ngIf="!post[i].isBookmarked" icon="pi pi-bookmark" clasz="p-button-text p-button-secondary" label="Bookmark" (click)="onBookmark(post[i].id)"></app-text-icon-button>
-                        <app-text-icon-button *ngIf="post[i].isBookmarked" icon="pi pi-bookmark-fill" clasz="p-button-text p-button-primary" label="Bookmark" (click)="onRemoveBookmark(post[i].isBookmarked.id)"></app-text-icon-button>
+                        <div class="my-2">
+                            <h3>{{post[i].postTitle}}</h3>
+                            <p>{{post[i].postContent}}</p>
+                        </div>
                     </div>
-                    <p-divider></p-divider>
-                </div>
-                <div *ngIf="showAddDetail">
-                    <input pInputText type="text" placeholder="Tulis komentar" class="col-12 mb-2 p-inputtext-sm">
-                    <app-submit-button label="Post"></app-submit-button>
-                </div>
-                <div *ngIf="post[i].detailCount > 0" >
-                    <button pButton type="button" class="p-button-text">Lebih banyak komentar (detailCount)</button>
-                </div>
-                <div *ngFor="let d of post[i].postDetail" class="flex">
-                    <div class="col-1 flex align-items-center justify-content-center m-0 p-0">
-                        <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png"
-                            size="large" shape="circle"></p-avatar>
+                    <div *ngIf="post[i].likeCount > 0" class="grid my-2">
+                        <p-avatarGroup styleClass="mb-3">
+                            <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png"
+                                shape="circle"></p-avatar>
+                            <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/asiyajavayant.png"
+                                shape="circle"></p-avatar>
+                            <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/onyamalimba.png"
+                                shape="circle"></p-avatar>
+                            <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/ionibowcher.png"
+                                shape="circle"></p-avatar>
+                            <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/xuxuefeng.png"
+                                shape="circle"></p-avatar>
+                            <p-avatar label="+2" shape="circle"
+                                [style]="{'background-color':'#9c27b0', 'color': '#ffffff'}"></p-avatar>
+                        </p-avatarGroup>
+                        <span>{{post[i].likeCount}} likes</span>
                     </div>
-                    <div class="col-11">
-                        <h5 class="flex align-items-start m-0">fullName</h5>
-                        <span class="flex align-items-end m-0">Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                            Nisi voluptatibus cupiditate expedita aspernatur quas fuga, neque saepe doloremque harum
-                            omnis assumenda ea necessitatibus reiciendis dolorem ullam quaerat amet dolore
-                            laboriosam!</span>
+                    <div class="m-0 p-0">
+                        <p-divider></p-divider>
+                        <div class="grid">
+                            <app-text-icon-button *ngIf="!post[i].isLiked" icon="pi pi-heart" clasz="p-button-text p-button-secondary" label="Suka" (click)="onLike(post[i].id)"></app-text-icon-button>
+                            <app-text-icon-button *ngIf="post[i].isLiked" clasz="p-button-text p-button-primary" icon="pi pi-heart-fill" label="Suka" (click)="onDislike(post[i].isLiked.id)"></app-text-icon-button>
+                            <p-divider layout="vertical"></p-divider>
+                            <app-text-icon-button icon="pi pi-comments" clasz="p-button-text p-button-secondary" label="Komentar"
+                                (click)="onShowAddDetail()"></app-text-icon-button>
+                            <p-divider layout="vertical"></p-divider>
+                            <app-text-icon-button *ngIf="!post[i].isBookmarked" icon="pi pi-bookmark" clasz="p-button-text p-button-secondary" label="Bookmark" (click)="onBookmark(post[i].id)"></app-text-icon-button>
+                            <app-text-icon-button *ngIf="post[i].isBookmarked" icon="pi pi-bookmark-fill" clasz="p-button-text p-button-primary" label="Bookmark" (click)="onRemoveBookmark(post[i].isBookmarked.id)"></app-text-icon-button>
+                        </div>
+                        <p-divider></p-divider>
                     </div>
-                </div>
-            </p-card>
+                    <div *ngIf="showAddDetail">
+                        <input pInputText type="text" placeholder="Tulis komentar" class="col-12 mb-2 p-inputtext-sm">
+                        <app-submit-button label="Post"></app-submit-button>
+                    </div>
+                    <div *ngIf="post[i].detailCount > 0" >
+                        <button pButton type="button" class="p-button-text">Lebih banyak komentar (detailCount)</button>
+                    </div>
+                    <div *ngFor="let d of post[i].postDetail" class="flex">
+                        <div class="col-1 flex align-items-center justify-content-center m-0 p-0">
+                            <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png"
+                                size="large" shape="circle"></p-avatar>
+                        </div>
+                        <div class="col-11">
+                            <h5 class="flex align-items-start m-0">fullName</h5>
+                            <span class="flex align-items-end m-0">Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                                Nisi voluptatibus cupiditate expedita aspernatur quas fuga, neque saepe doloremque harum
+                                omnis assumenda ea necessitatibus reiciendis dolorem ullam quaerat amet dolore
+                                laboriosam!</span>
+                        </div>
+                    </div>
+                </p-card>
+            </div>
         </div>
-
-        <!-- <p-card class="flex align-items-center flex-wrap mt-4" styleClass="p-card-shadow">
-            <p-tabView>
-                <p-tabPanel>
-                    <ng-template pTemplate="header">
-                        <i class="pi pi-list"></i>
-                        <span>Thread</span>
-                    </ng-template>
-
-                    <div class="card">
-                        <div class="grid">
-                            <div>
-                                <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png"
-                                    styleClass="mr-2" size="large" shape="circle"></p-avatar>
-                            </div>
-                            <div>
-                                <h5 class="flex align-items-start">fullName</h5>
-                                <span class="flex align-items-end">uploaded 1 hour ago</span>
-                            </div>
-                            <div>
-                                <app-category-button label="category"></app-category-button>
-                            </div>
-                        </div>
-                        <div class="grid">
-                            <div class="my-2">
-                                <h3>Title</h3>
-                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corporis id, explicabo
-                                    aliquid, repellendus numquam labore itaque officia laudantium placeat doloribus odio
-                                    voluptas fuga ex tenetur! Minima quasi nam optio fuga.
-                                </p>
-                            </div>
-                            <div class="my-2">
-                                <p-avatarGroup styleClass="mb-3">
-                                    <p-avatar
-                                        image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png"
-                                        shape="circle"></p-avatar>
-                                    <p-avatar
-                                        image="https://primefaces.org/cdn/primeng/images/demo/avatar/asiyajavayant.png"
-                                        shape="circle"></p-avatar>
-                                    <p-avatar
-                                        image="https://primefaces.org/cdn/primeng/images/demo/avatar/onyamalimba.png"
-                                        shape="circle"></p-avatar>
-                                    <p-avatar
-                                        image="https://primefaces.org/cdn/primeng/images/demo/avatar/ionibowcher.png"
-                                        shape="circle"></p-avatar>
-                                    <p-avatar
-                                        image="https://primefaces.org/cdn/primeng/images/demo/avatar/xuxuefeng.png"
-                                        shape="circle"></p-avatar>
-                                    <p-avatar label="+2" shape="circle"
-                                        [style]="{'background-color':'#9c27b0', 'color': '#ffffff'}"></p-avatar>
-                                </p-avatarGroup>
-                                <span>14 users likes</span>
-                                <app-text-icon-button icon="pi pi-heart"></app-text-icon-button>
-                                <app-text-icon-button icon="pi pi-bookmark"></app-text-icon-button>
-                                <app-text-icon-button icon="pi pi-comments"></app-text-icon-button>
-                            </div>
-                        </div>
-                        <p-divider></p-divider>
-                    </div>
-                    <div class="card">
-                        <div class="grid">
-                            <div>
-                                <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png"
-                                    styleClass="mr-2" size="large" shape="circle"></p-avatar>
-                            </div>
-                            <div>
-                                <h5 class="flex align-items-start">fullName</h5>
-                                <span class="flex align-items-end">uploaded 1 hour ago</span>
-                            </div>
-                            <div>
-                                <app-category-button label="category"></app-category-button>
-                            </div>
-                        </div>
-                        <div class="grid">
-                            <div class="my-2">
-                                <h3>Title</h3>
-                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corporis id, explicabo
-                                    aliquid, repellendus numquam labore itaque officia laudantium placeat doloribus odio
-                                    voluptas fuga ex tenetur! Minima quasi nam optio fuga.
-                                </p>
-                            </div>
-                            <div class="my-2">
-                                <p-avatarGroup styleClass="mb-3">
-                                    <p-avatar
-                                        image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png"
-                                        shape="circle"></p-avatar>
-                                    <p-avatar
-                                        image="https://primefaces.org/cdn/primeng/images/demo/avatar/asiyajavayant.png"
-                                        shape="circle"></p-avatar>
-                                    <p-avatar
-                                        image="https://primefaces.org/cdn/primeng/images/demo/avatar/onyamalimba.png"
-                                        shape="circle"></p-avatar>
-                                    <p-avatar
-                                        image="https://primefaces.org/cdn/primeng/images/demo/avatar/ionibowcher.png"
-                                        shape="circle"></p-avatar>
-                                    <p-avatar
-                                        image="https://primefaces.org/cdn/primeng/images/demo/avatar/xuxuefeng.png"
-                                        shape="circle"></p-avatar>
-                                    <p-avatar label="+2" shape="circle"
-                                        [style]="{'background-color':'#9c27b0', 'color': '#ffffff'}"></p-avatar>
-                                </p-avatarGroup>
-                                <span>14 users likes</span>
-                                <app-text-icon-button icon="pi pi-heart"></app-text-icon-button>
-                                <app-text-icon-button icon="pi pi-bookmark"></app-text-icon-button>
-                                <app-text-icon-button icon="pi pi-comments"></app-text-icon-button>
-                            </div>
-                        </div>
-                        <p-divider></p-divider>
-                    </div>
-                </p-tabPanel>
-                <p-tabPanel>
-                    <ng-template pTemplate="header">
-                        <i class="pi pi-heart"></i>
-                        <span>Like</span>
-                    </ng-template>
-                    <div class="card">
-                        <div class="grid">
-                            <div>
-                                <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png"
-                                    styleClass="mr-2" size="large" shape="circle"></p-avatar>
-                            </div>
-                            <div>
-                                <h5 class="flex align-items-start">fullName</h5>
-                                <span class="flex align-items-end">uploaded 1 hour ago</span>
-                            </div>
-                            <div>
-                                <app-category-button label="category"></app-category-button>
-                            </div>
-                        </div>
-                        <div class="grid">
-                            <div class="my-2">
-                                <h3>Title</h3>
-                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corporis id, explicabo
-                                    aliquid, repellendus numquam labore itaque officia laudantium placeat doloribus odio
-                                    voluptas fuga ex tenetur! Minima quasi nam optio fuga.
-                                </p>
-                            </div>
-                            <div class="my-2">
-                                <p-avatarGroup styleClass="mb-3">
-                                    <p-avatar
-                                        image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png"
-                                        shape="circle"></p-avatar>
-                                    <p-avatar
-                                        image="https://primefaces.org/cdn/primeng/images/demo/avatar/asiyajavayant.png"
-                                        shape="circle"></p-avatar>
-                                    <p-avatar
-                                        image="https://primefaces.org/cdn/primeng/images/demo/avatar/onyamalimba.png"
-                                        shape="circle"></p-avatar>
-                                    <p-avatar
-                                        image="https://primefaces.org/cdn/primeng/images/demo/avatar/ionibowcher.png"
-                                        shape="circle"></p-avatar>
-                                    <p-avatar
-                                        image="https://primefaces.org/cdn/primeng/images/demo/avatar/xuxuefeng.png"
-                                        shape="circle"></p-avatar>
-                                    <p-avatar label="+2" shape="circle"
-                                        [style]="{'background-color':'#9c27b0', 'color': '#ffffff'}"></p-avatar>
-                                </p-avatarGroup>
-                                <span>14 users likes</span>
-                                <app-text-icon-button icon="pi pi-heart"></app-text-icon-button>
-                                <app-text-icon-button icon="pi pi-bookmark"></app-text-icon-button>
-                                <app-text-icon-button icon="pi pi-comments"></app-text-icon-button>
-                            </div>
-                        </div>
-                        <p-divider></p-divider>
-                    </div>
-                    <div class="card">
-                        <div class="grid">
-                            <div>
-                                <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png"
-                                    styleClass="mr-2" size="large" shape="circle"></p-avatar>
-                            </div>
-                            <div>
-                                <h5 class="flex align-items-start">fullName</h5>
-                                <span class="flex align-items-end">uploaded 1 hour ago</span>
-                            </div>
-                            <div>
-                                <app-category-button label="category"></app-category-button>
-                            </div>
-                        </div>
-                        <div class="grid">
-                            <div class="my-2">
-                                <h3>Title</h3>
-                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corporis id, explicabo
-                                    aliquid, repellendus numquam labore itaque officia laudantium placeat doloribus odio
-                                    voluptas fuga ex tenetur! Minima quasi nam optio fuga.
-                                </p>
-                            </div>
-                            <div class="my-2">
-                                <p-avatarGroup styleClass="mb-3">
-                                    <p-avatar
-                                        image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png"
-                                        shape="circle"></p-avatar>
-                                    <p-avatar
-                                        image="https://primefaces.org/cdn/primeng/images/demo/avatar/asiyajavayant.png"
-                                        shape="circle"></p-avatar>
-                                    <p-avatar
-                                        image="https://primefaces.org/cdn/primeng/images/demo/avatar/onyamalimba.png"
-                                        shape="circle"></p-avatar>
-                                    <p-avatar
-                                        image="https://primefaces.org/cdn/primeng/images/demo/avatar/ionibowcher.png"
-                                        shape="circle"></p-avatar>
-                                    <p-avatar
-                                        image="https://primefaces.org/cdn/primeng/images/demo/avatar/xuxuefeng.png"
-                                        shape="circle"></p-avatar>
-                                    <p-avatar label="+2" shape="circle"
-                                        [style]="{'background-color':'#9c27b0', 'color': '#ffffff'}"></p-avatar>
-                                </p-avatarGroup>
-                                <span>14 users likes</span>
-                                <app-text-icon-button icon="pi pi-heart"></app-text-icon-button>
-                                <app-text-icon-button icon="pi pi-bookmark"></app-text-icon-button>
-                                <app-text-icon-button icon="pi pi-comments"></app-text-icon-button>
-                            </div>
-                        </div>
-                        <p-divider></p-divider>
-                    </div>
-                </p-tabPanel>
-                <p-tabPanel>
-                    <ng-template pTemplate="header">
-                        <i class="pi pi-bookmark"></i>
-                        <span>Bookmark</span>
-                    </ng-template>
-                    <div class="card">
-                        <div class="grid">
-                            <div>
-                                <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png"
-                                    styleClass="mr-2" size="large" shape="circle"></p-avatar>
-                            </div>
-                            <div>
-                                <h5 class="flex align-items-start">fullName</h5>
-                                <span class="flex align-items-end">uploaded 1 hour ago</span>
-                            </div>
-                            <div>
-                                <app-category-button label="category"></app-category-button>
-                            </div>
-                        </div>
-                        <div class="grid">
-                            <div class="my-2">
-                                <h3>Title</h3>
-                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corporis id, explicabo
-                                    aliquid, repellendus numquam labore itaque officia laudantium placeat doloribus odio
-                                    voluptas fuga ex tenetur! Minima quasi nam optio fuga.
-                                </p>
-                            </div>
-                            <div class="my-2">
-                                <p-avatarGroup styleClass="mb-3">
-                                    <p-avatar
-                                        image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png"
-                                        shape="circle"></p-avatar>
-                                    <p-avatar
-                                        image="https://primefaces.org/cdn/primeng/images/demo/avatar/asiyajavayant.png"
-                                        shape="circle"></p-avatar>
-                                    <p-avatar
-                                        image="https://primefaces.org/cdn/primeng/images/demo/avatar/onyamalimba.png"
-                                        shape="circle"></p-avatar>
-                                    <p-avatar
-                                        image="https://primefaces.org/cdn/primeng/images/demo/avatar/ionibowcher.png"
-                                        shape="circle"></p-avatar>
-                                    <p-avatar
-                                        image="https://primefaces.org/cdn/primeng/images/demo/avatar/xuxuefeng.png"
-                                        shape="circle"></p-avatar>
-                                    <p-avatar label="+2" shape="circle"
-                                        [style]="{'background-color':'#9c27b0', 'color': '#ffffff'}"></p-avatar>
-                                </p-avatarGroup>
-                                <span>14 users likes</span>
-                                <app-text-icon-button icon="pi pi-heart"></app-text-icon-button>
-                                <app-text-icon-button icon="pi pi-bookmark"></app-text-icon-button>
-                                <app-text-icon-button icon="pi pi-comments"></app-text-icon-button>
-                            </div>
-                        </div>
-                        <p-divider></p-divider>
-                    </div>
-                </p-tabPanel>
-            </p-tabView>
-        </p-card> -->
     </div>
     <p-scrollTop target="window"></p-scrollTop>
 </div>

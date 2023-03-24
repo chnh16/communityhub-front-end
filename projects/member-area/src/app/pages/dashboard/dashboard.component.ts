@@ -18,66 +18,66 @@ import { Subscription } from 'rxjs';
   templateUrl: './dashboard.component.html'
 })
 export class DashboardComponent implements OnInit, OnDestroy {
-  dashboard$? : Subscription
-  dashboardCategory$? : Subscription
-  dashboardProfile$? : Subscription
-  postLike$? : Subscription
-  postBookmark$? : Subscription
+  dashboard$?: Subscription
+  dashboardCategory$?: Subscription
+  dashboardProfile$?: Subscription
+  postLike$?: Subscription
+  postBookmark$?: Subscription
   post!: PostGetAllRes[]
-  profile? : ProfileGetReq
+  profile?: ProfileGetReq
   uploadedFiles: any[] = []
-  showImageUpload : boolean = false
-  showInsertPolling : boolean = false
-  showAddDetail : boolean = false
-  imageButton : boolean = false
-  pollingButton : boolean = false
-  categories : CategoryGetAllRes[] = []
+  showImageUpload: boolean = false
+  showInsertPolling: boolean = false
+  showAddDetail: boolean = false
+  imageButton: boolean = false
+  pollingButton: boolean = false
+  categories: CategoryGetAllRes[] = []
 
   data = this.fb.group({
-    postTitle : ['', Validators.required],
+    postTitle: ['', Validators.required],
     postContent: ['', Validators.required],
-    categoryId : ['', Validators.required],
-    isPremium : false,
+    categoryId: ['', Validators.required],
+    isPremium: false,
     file: this.fb.array([]),
-    polling : this.fb.array([])
+    polling: this.fb.array([])
   })
 
-  POST_LIMIT : number = 3
-  PAGE : number = 1
+  POST_LIMIT: number = 3
+  PAGE: number = 1
 
   constructor(
     private fb: FormBuilder,
-    private categoryService : CategoryService,
-    private postService : PostService,
-    private userService : UserService
+    private categoryService: CategoryService,
+    private postService: PostService,
+    private userService: UserService
   ) { }
 
   get imageData() {
     return this.data.get('file') as FormArray
   }
 
-  get pollingData(){
+  get pollingData() {
     return this.data.get('polling') as FormArray
   }
 
-  onScroll() : void {
-    this.dashboard$ = this.postService.getPost(this.POST_LIMIT, this.PAGE).subscribe(res => {
-        if(res){
-        if(this.post.length){
-        this.post = [...this.post, ...res]
+  onScroll(): void {
+    this.dashboard$ = this.postService.getPost(this.POST_LIMIT, this.PAGE++).subscribe(res => {
+      if (res) {
+        if (this.post.length) {
+          this.post = [...this.post, ...res]
         } else {
-         this.post = res
+          this.post = res
         }
-        }
+      }
     })
   }
 
-  onShowAddDetail(){
+  onShowAddDetail() {
     this.showAddDetail = !this.showAddDetail
   }
 
-  onShowImageUpload(){
-    if(this.imageData.length > 0){
+  onShowImageUpload() {
+    if (this.imageData.length > 0) {
       this.pollingButton = !this.pollingButton
       this.showImageUpload = !this.showImageUpload
       this.imageData.clear()
@@ -87,8 +87,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.showImageUpload = !this.showImageUpload
   }
 
-  onShowInsertPolling(){
-    if(this.pollingData.length > 0){
+  onShowInsertPolling() {
+    if (this.pollingData.length > 0) {
       this.imageButton = !this.imageButton
       this.showInsertPolling = !this.showInsertPolling
       this.pollingData.clear()
@@ -96,22 +96,22 @@ export class DashboardComponent implements OnInit, OnDestroy {
     }
     this.imageButton = !this.imageButton
     this.showInsertPolling = !this.showInsertPolling
-    for(let i = 0; i < 2; i++){
+    for (let i = 0; i < 2; i++) {
       this.addPollingChoice()
     }
   }
 
-  addPollingChoice(){
+  addPollingChoice() {
     this.pollingData.push(this.fb.group({
-      choiceContent : ['', Validators.required]
+      choiceContent: ['', Validators.required]
     }))
   }
 
-  removePollingChoice(i : number){
+  removePollingChoice(i: number) {
     this.pollingData.removeAt(i)
   }
 
-  onSelect(event : any){
+  onSelect(event: any) {
     const toBase64 = (file: File) => new Promise<string>((resolve, reject) => {
       const reader = new FileReader();
       reader.readAsDataURL(file);
@@ -128,86 +128,86 @@ export class DashboardComponent implements OnInit, OnDestroy {
         const resultFileName = file.name
 
         this.imageData?.push(this.fb.group({
-          fileContent : [resultBase64],
-          fileExtension : [resultExtension],
-          fileName : [resultFileName]
+          fileContent: [resultBase64],
+          fileExtension: [resultExtension],
+          fileName: [resultFileName]
         }))
       })
       this.uploadedFiles.push(file)
     }
   }
 
-  onRemove(event : any){
+  onRemove(event: any) {
     const filter = this.uploadedFiles.map((f, i) => {
-      if(f.name == event.file.name){
+      if (f.name == event.file.name) {
         return i
       } else {
         return -1
       }
     }).filter(f => f != -1)
 
-    if(filter && filter.length){
+    if (filter && filter.length) {
       this.imageData.removeAt(filter[0])
       this.uploadedFiles.splice(filter[0], 1)
     }
   }
 
-  onClear(){
-      this.imageData.clear()
-      this.uploadedFiles = []
-      this.showImageUpload = !this.showImageUpload
-      this.pollingButton = !this.pollingButton
+  onClear() {
+    this.imageData.clear()
+    this.uploadedFiles = []
+    this.showImageUpload = !this.showImageUpload
+    this.pollingButton = !this.pollingButton
   }
 
-  onSubmit(){
-    const file : FileInsertReq[] = this.imageData.value
+  onSubmit() {
+    const file: FileInsertReq[] = this.imageData.value
 
-    const polling : PollingChoiceInsertReq[] = this.pollingData.value
+    const polling: PollingChoiceInsertReq[] = this.pollingData.value
 
-    const insertPost : PostInsertReq = {
-      postTitle : this.data.value.postTitle!,
-      postContent : this.data.value.postContent!,
-      categoryId : this.data.value.categoryId!,
-      isPremium : this.data.value.isPremium!,
-      file : file,
-      polling : polling
+    const insertPost: PostInsertReq = {
+      postTitle: this.data.value.postTitle!,
+      postContent: this.data.value.postContent!,
+      categoryId: this.data.value.categoryId!,
+      isPremium: this.data.value.isPremium!,
+      file: file,
+      polling: polling
     }
     this.postService.insertPost(insertPost).subscribe(res => {
       this.data.reset()
     })
   }
 
-  onLike(postId : string) : void{
-    const data : PostLikeReq = {
-      postId : postId
+  onLike(postId: string): void {
+    const data: PostLikeReq = {
+      postId: postId
     }
     this.postLike$ = this.postService.onLike(data).subscribe(res => {
       this.init()
     })
   }
 
-  onDislike(postId : string) : void{
+  onDislike(postId: string): void {
     this.postLike$ = this.postService.onDislike(postId).subscribe(res => {
       this.init()
     })
   }
 
-  onBookmark(postId : string) : void {
-    const data : PostBookmarkReq = {
-      postId : postId
+  onBookmark(postId: string): void {
+    const data: PostBookmarkReq = {
+      postId: postId
     }
     this.postBookmark$ = this.postService.onBookmark(data).subscribe(res => {
       this.init()
     })
   }
 
-  onRemoveBookmark(postId : string) : void {
+  onRemoveBookmark(postId: string): void {
     this.postBookmark$ = this.postService.onRemoveBookmark(postId).subscribe(res => {
       this.init()
     })
   }
 
-  init() : void{
+  init(): void {
     this.dashboard$ = this.postService.getPost(this.POST_LIMIT, this.PAGE++).subscribe(res => {
       this.post = res
     })
@@ -218,16 +218,16 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.dashboardCategory$ = this.categoryService.getAll().subscribe(res => {
       this.categories = res
       this.data.patchValue({
-        categoryId : this.categories.at(0)?.id
+        categoryId: this.categories.at(0)?.id
       })
     })
-    
+
     setTimeout(() => {
       this.dashboardProfile$ = this.userService.getProfile().subscribe(res => {
         this.profile = res
       })
     }, 3000)
-    
+
   }
 
   ngOnDestroy(): void {

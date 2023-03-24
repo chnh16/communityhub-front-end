@@ -1,5 +1,5 @@
-import {NgModule} from "@angular/core"
-import {RouterModule, Routes} from "@angular/router"
+import { NgModule } from "@angular/core"
+import { RouterModule, Routes } from "@angular/router"
 import { MenuBarComponent } from "projects/common/src/app/component/navbar/navbar.component";
 import { CreateArticleComponent } from "./create-article/create-article.component";
 import { ListArticleComponent } from "./list_article/list-article.component";
@@ -7,7 +7,7 @@ import { ListArticleComponent } from "./list_article/list-article.component";
 
 
 
-const appRouter : Routes = [
+const appRouter: Routes = [
     {
         path : '',
         component : ListArticleComponent, 
@@ -15,14 +15,18 @@ const appRouter : Routes = [
     {
         path : 'create-article',
         component : CreateArticleComponent, 
+     },
+     {
+        path: 'add',
+        component: CreateArticleComponent,
     },
 ];
 
-@NgModule ({
-    imports : [
+@NgModule({
+    imports: [
         RouterModule.forChild(appRouter)
     ],
-    exports : [
+    exports: [
         RouterModule
     ]
 })

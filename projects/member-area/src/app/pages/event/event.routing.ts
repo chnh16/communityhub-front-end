@@ -1,33 +1,38 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
+import { BuyEventComponent } from "./buy-event/buy-event.component";
 import { CreateEventComponent } from "./create-event/create-event.component";
 import { EventDetailComponent } from "./event-deail/event-detail.component";
 import { ListEventComponent } from "./list-event/list-event.component";
 
-const eventRoutes : Routes = [
+const eventRoutes: Routes = [
     {
-        path : '',
-        component : ListEventComponent
+        path: '',
+        component: ListEventComponent
     },
     {
-        path : 'detail',
-        component : EventDetailComponent
+        path: 'detail/:id',
+        component: EventDetailComponent
     },
     {
-        path : 'add',
-        component : CreateEventComponent
+        path: 'add',
+        component: CreateEventComponent
+    },
+    {
+        path: 'buy-event/:id',
+        component: BuyEventComponent
     }
 ]
 
 @NgModule({
-    imports : [
+    imports: [
         RouterModule.forChild(eventRoutes)
     ],
-    exports : [
+    exports: [
         RouterModule
     ]
 })
 
-export class EventRouting{
+export class EventRouting {
 
 }

@@ -10,8 +10,10 @@ import { LoginMemberComponent } from "./pages/login/login-member.component";
 import { RegisterMemberComponent } from "./pages/register/register-member.component";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProfileMemberComponent } from "./pages/user-profile/user-profile.component";
+import { InfiniteScrollModule } from "ngx-infinite-scroll";
 
-export const memberRouter : Routes = [
+
+export const memberRouter: Routes = [
     {
         path: 'login-member',
         component: LoginMemberComponent
@@ -21,27 +23,27 @@ export const memberRouter : Routes = [
         component: RegisterMemberComponent
     },
     {
-        path : 'profile-member',
-        component : ProfileMemberComponent
+        path: 'profile-member',
+        component: ProfileMemberComponent
     },
     {
-        path : 'dashboard',
-        loadChildren : () => import('./pages/dashboard/dashboard.module').then(d => d.DashboardModule),
-        component : MenuBarComponent
+        path: 'dashboard',
+        loadChildren: () => import('./pages/dashboard/dashboard.module').then(d => d.DashboardModule),
+        component: MenuBarComponent
     },
     {
-        path : 'event',
-        loadChildren : () => import('./pages/event/event.module').then(e => e.EventModule),
-        component : MenuBarComponent
-    },
-    {
-        path: 'code-member',
-        component: CodeMemberComponent
+        path: 'memberships',
+        loadChildren: () => import('./pages/membership/membership.module').then(e => e.MembershipModule),
+        component: MenuBarComponent
     },
     {
         path: 'event',
         loadChildren: () => import('./pages/event/event.module').then(e => e.EventModule),
         component: MenuBarComponent
+    },
+    {
+        path: 'code-member',
+        component: CodeMemberComponent
     },
     {
         path: 'course',
@@ -50,15 +52,16 @@ export const memberRouter : Routes = [
     }
 ];
 
-@NgModule ({
-    declarations : [
+@NgModule({
+    declarations: [
         LoginMemberComponent, RegisterMemberComponent, CodeMemberComponent, ProfileMemberComponent
     ],
-    imports : [
+    imports: [
         RouterModule.forRoot(memberRouter),
-        SharedModule
+        SharedModule,
+        InfiniteScrollModule
     ],
-    exports : [
+    exports: [
         RouterModule,
         LoginMemberComponent,
         RegisterMemberComponent,

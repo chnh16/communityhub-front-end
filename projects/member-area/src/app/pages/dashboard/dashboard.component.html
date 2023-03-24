@@ -1,24 +1,27 @@
-<pre>{{data.value | json}}</pre>
+<!-- <pre>{{data.value | json}}</pre>
+<pre>{{post | json}}</pre> -->
 <div class="grid m-0">
-    <div class="col-4">
+    <div *ngIf="profile" class="col-3">
         <div class="flex justify-content-start">
-            <h3>Profil Saya</h3>
+            <h3><i class="pi pi-user"></i> Profil Saya</h3>
         </div>
-        <div class="align-item-center w-10">
+        <div class="align-item-center">
             <p-card class="align-items-center flex-wrap" styleClass="p-card-shadow">
-                <p-avatar class="flex align-items-center justify-content-center" icon="pi pi-user" styleClass="mr-2"
-                    size="xlarge" [style]="{'background-color':'#2196F3', 'color': '#ffffff'}"></p-avatar>
-                <h3>fullName</h3>
-                <span>position</span>
+                <p-avatar class="flex align-items-center justify-content-center" styleClass="mr-2" size="xlarge"
+                    image="http://192.168.10.73:8080/files/{{profile.file}}"
+                    [style]="{'background-color':'#2196F3', 'color': '#ffffff'}"></p-avatar>
+                <h3 class="flex align-items-center justify-content-center">{{profile.fullName}}</h3>
+                <span class="flex align-items-center justify-content-center">{{profile.industryId}}</span>
+                <span class="flex align-items-center justify-content-center">{{profile.positionId}}</span>
                 <p-divider></p-divider>
                 <h4>Profil</h4>
                 <div class="my-2">
                     <span>Email</span>
-                    <p>email@mail.com</p>
+                    <p>profile.email</p>
                 </div>
                 <div class="my-2">
                     <span>No. Telp</span>
-                    <p>phoneNumber</p>
+                    <p>{{profile.phoneNumber}}</p>
                 </div>
                 <p-divider></p-divider>
                 <div class="align-item-center">
@@ -27,28 +30,59 @@
             </p-card>
         </div>
     </div>
-    <div class="col-8">
-        <div class="justify-content-start">
-            <h3>Aktivitas Saya</h3>
+    <div *ngIf="!profile" class="col-3">
+        <div class="flex justify-content-start">
+            <h3><i class="pi pi-user"></i> Profil Saya</h3>
         </div>
-        <p-card>
+        <div class="align-item-center">
+            <p-card class="align-items-center flex-wrap" styleClass="p-card-shadow">
+                <p-skeleton size="5rem" styleClass="mb-2"></p-skeleton>
+                <p-skeleton height="2rem" styleClass="mb-4"></p-skeleton>
+                <p-skeleton styleClass="mb-2"></p-skeleton>
+                <p-skeleton styleClass="mb-2"></p-skeleton>
+                <p-divider></p-divider>
+                <h4>Profil</h4>
+                <div class="my-2">
+                    <span>Email</span>
+                    <p-skeleton styleClass="mb-2"></p-skeleton>
+                </div>
+                <div class="my-2">
+                    <span>No. Telp</span>
+                    <p-skeleton styleClass="mb-2"></p-skeleton>
+                </div>
+                <p-divider></p-divider>
+                <div class="align-item-center">
+                    <button pButton [disabled]="true" class="p-button-primary">Edit Profil</button>
+                </div>
+            </p-card>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="justify-content-start">
+            <h3><i class="pi pi-home"></i> Aktivitas Saya</h3>
+        </div>
+        <p-card class="mb-2">
             <form [formGroup]="data" (ngSubmit)="onSubmit()">
                 <div class="mb-1">
-                    <input class="col-12" [style]="{'border' : 'none'}" type="text" pInputText placeholder="Judul Post" formControlName="postTitle"/>
+                    <input class="col-12" type="text" pInputText placeholder="Judul Post" formControlName="postTitle" />
                 </div>
                 <div class="mb-1">
-                    <textarea class="col-12" [style]="{'resize' : 'none', 'border' : 'none'}" [rows]="5" [autoResize]="true" formControlName="postContent" placeholder="Tulis sesuatu" pInputTextarea>
+                    <textarea class="col-12" [style]="{'resize' : 'none'}" [rows]="5" [autoResize]="true"
+                        formControlName="postContent" placeholder="Tulis sesuatu" pInputTextarea>
                     </textarea>
                 </div>
                 <div class="mb-1">
-                    <p-dropdown [options]="categories" optionLabel="categoryName" formControlName="categoryId" optionValue="id"></p-dropdown>
+                    <p-dropdown [options]="categories" optionLabel="categoryName" formControlName="categoryId"
+                        optionValue="id"></p-dropdown>
                 </div>
                 <div class="mb-1">
                     <label>Premium</label>
                     <p-inputSwitch formControlName="isPremium">Premium</p-inputSwitch>
                 </div>
                 <div *ngIf="showImageUpload" class="grid mb-1">
-                    <p-fileUpload [multiple]="true" accept="image/*" [showUploadButton]="false" (onSelect)="onSelect($event)" (onRemove)="onRemove($event)" (onClear)="onClear()" (maxFileSize)="1000000">
+                    <p-fileUpload [multiple]="true" accept="image/*" [showUploadButton]="false"
+                        (onSelect)="onSelect($event)" (onRemove)="onRemove($event)" (onClear)="onClear()"
+                        (maxFileSize)="1000000">
                     </p-fileUpload>
                 </div>
                 <div formArrayName="polling" *ngIf="showInsertPolling" class="mb-1">
@@ -57,22 +91,28 @@
                             <label>Pilihan <sup class="text-red-500" *ngIf="i < 2">*</sup></label>
                         </div>
                         <div class="flex col-4">
-                            <input class="col" formControlName="choiceContent" type="text" pInputText/>
+                            <input class="col" formControlName="choiceContent" type="text" pInputText />
                         </div>
                         <div class="col" *ngIf="i > 1">
-                            <button pButton class="p-button-text text-red-500" (click)="removePollingChoice(i)">Hapus Pilihan</button>
+                            <button pButton class="p-button-text text-red-500" (click)="removePollingChoice(i)">Hapus
+                                Pilihan</button>
                         </div>
                     </div>
                     <div class="grid">
-                        <button pButton type="button" class="p-button-text" [disabled]="pollingData.length > 3" (click)="addPollingChoice()">Tambah Pilihan</button>
+                        <button pButton type="button" class="p-button-text" [disabled]="pollingData.length > 3"
+                            (click)="addPollingChoice()">Tambah Pilihan</button>
                     </div>
                 </div>
                 <div class="grid mt-2">
                     <div class="col-auto mx-1">
-                        <button pButton pRipple type="button" label="Image" icon="pi pi-image" (click)="onShowImageUpload()" [disabled]="imageButton" class="p-button-outlined p-button-rounded"></button>
+                        <button pButton pRipple type="button" label="Image" icon="pi pi-image"
+                            (click)="onShowImageUpload()" [disabled]="imageButton"
+                            class="p-button-outlined p-button-rounded"></button>
                     </div>
                     <div class="col-auto mx-1">
-                        <button pButton pRipple type="button" label="Polling" icon="pi pi-chart-bar" (click)="onShowInsertPolling()" [disabled]="pollingButton" class="p-button-outlined p-button-rounded"></button>
+                        <button pButton pRipple type="button" label="Polling" icon="pi pi-chart-bar"
+                            (click)="onShowInsertPolling()" [disabled]="pollingButton"
+                            class="p-button-outlined p-button-rounded"></button>
                     </div>
                     <div class="col-auto mx-1">
                         <app-submit-button label="Post"></app-submit-button>
@@ -80,75 +120,89 @@
                 </div>
             </form>
         </p-card>
-        <p-card class="flex align-items-center flex-wrap" styleClass="p-card-shadow">
+        <div *ngFor="let p of post; let i = index" class="col-12 block align-items-center flex-wrap p-0">
+            <p-card class="grid block col-12 m-0 mt-2 p-0">
+                <div class="flex">
+                    <div class="flex align-items-center col-2 p-0">
+                        <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png"
+                            styleClass="mr-2" size="xlarge" shape="circle"></p-avatar>
+                    </div>
+                    <div class="grid flex align-items-center col-7 p-0">
+                        <h4 class="flex align-items-start">{{post[i].fullName}}</h4>
+                        <span class="flex align-items-start m-0">uploaded 1 hour ago</span>
+                    </div>
+                    <div class="flex align-items-end col-3">
+                        <app-category-button label="{{post[i].categoryName}}"></app-category-button>
+                    </div>
+                </div>
+                <div class="grid">
+                    <div class="my-2">
+                        <h3>{{post[i].postTitle}}</h3>
+                        <p>{{post[i].postContent}}</p>
+                    </div>
+                </div>
+                <div *ngIf="post[i].likeCount > 0" class="grid my-2">
+                    <p-avatarGroup styleClass="mb-3">
+                        <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png"
+                            shape="circle"></p-avatar>
+                        <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/asiyajavayant.png"
+                            shape="circle"></p-avatar>
+                        <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/onyamalimba.png"
+                            shape="circle"></p-avatar>
+                        <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/ionibowcher.png"
+                            shape="circle"></p-avatar>
+                        <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/xuxuefeng.png"
+                            shape="circle"></p-avatar>
+                        <p-avatar label="+2" shape="circle"
+                            [style]="{'background-color':'#9c27b0', 'color': '#ffffff'}"></p-avatar>
+                    </p-avatarGroup>
+                    <span>{{post[i].likeCount}} likes</span>
+                </div>
+                <div class="m-0 p-0">
+                    <p-divider></p-divider>
+                    <div class="grid">
+                        <app-text-icon-button *ngIf="!post[i].isLiked" icon="pi pi-heart" clasz="p-button-text p-button-secondary" label="Suka" (click)="onLike(post[i].id)"></app-text-icon-button>
+                        <app-text-icon-button *ngIf="post[i].isLiked" clasz="p-button-text p-button-primary" icon="pi pi-heart-fill" label="Suka" (click)="onDislike(post[i].isLiked.id)"></app-text-icon-button>
+                        <p-divider layout="vertical"></p-divider>
+                        <app-text-icon-button icon="pi pi-comments" clasz="p-button-text p-button-secondary" label="Komentar"
+                            (click)="onShowAddDetail()"></app-text-icon-button>
+                        <p-divider layout="vertical"></p-divider>
+                        <app-text-icon-button *ngIf="!post[i].isBookmarked" icon="pi pi-bookmark" clasz="p-button-text p-button-secondary" label="Bookmark" (click)="onBookmark(post[i].id)"></app-text-icon-button>
+                        <app-text-icon-button *ngIf="post[i].isBookmarked" icon="pi pi-bookmark-fill" clasz="p-button-text p-button-primary" label="Bookmark" (click)="onRemoveBookmark(post[i].isBookmarked.id)"></app-text-icon-button>
+                    </div>
+                    <p-divider></p-divider>
+                </div>
+                <div *ngIf="showAddDetail">
+                    <input pInputText type="text" placeholder="Tulis komentar" class="col-12 mb-2 p-inputtext-sm">
+                    <app-submit-button label="Post"></app-submit-button>
+                </div>
+                <div *ngIf="post[i].detailCount > 0" >
+                    <button pButton type="button" class="p-button-text">Lebih banyak komentar (detailCount)</button>
+                </div>
+                <div *ngFor="let d of post[i].postDetail" class="flex">
+                    <div class="col-1 flex align-items-center justify-content-center m-0 p-0">
+                        <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png"
+                            size="large" shape="circle"></p-avatar>
+                    </div>
+                    <div class="col-11">
+                        <h5 class="flex align-items-start m-0">fullName</h5>
+                        <span class="flex align-items-end m-0">Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                            Nisi voluptatibus cupiditate expedita aspernatur quas fuga, neque saepe doloremque harum
+                            omnis assumenda ea necessitatibus reiciendis dolorem ullam quaerat amet dolore
+                            laboriosam!</span>
+                    </div>
+                </div>
+            </p-card>
+        </div>
+
+        <!-- <p-card class="flex align-items-center flex-wrap mt-4" styleClass="p-card-shadow">
             <p-tabView>
                 <p-tabPanel>
                     <ng-template pTemplate="header">
                         <i class="pi pi-list"></i>
                         <span>Thread</span>
                     </ng-template>
-                    <div class="card">
-                        <div class="grid">
-                            <div>
-                                <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png"
-                                    styleClass="mr-2" size="large" shape="circle"></p-avatar>
-                            </div>
-                            <div>
-                                <h5 class="flex align-items-start">fullName</h5>
-                                <span class="flex align-items-end">uploaded 1 hour ago</span>
-                            </div>
-                            <div>
-                                <app-category-button label="category"></app-category-button>
-                            </div>
-                        </div>
-                        <div class="grid">
-                            <div class="my-2">
-                                <h3>Title</h3>
-                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corporis id, explicabo
-                                    aliquid, repellendus numquam labore itaque officia laudantium placeat doloribus odio
-                                    voluptas fuga ex tenetur! Minima quasi nam optio fuga.
-                                </p>
-                                <div>
-                                    <div class="grid">
-                                        <div class="col-2">
-                                            <app-text-button label="Option A"></app-text-button>
-                                        </div>
-                                    </div>
-                                    <div class="grid">
-                                        <div class="col-2">
-                                            <app-text-button label="Option B"></app-text-button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="my-2">
-                                <p-avatarGroup styleClass="mb-3">
-                                    <p-avatar
-                                        image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png"
-                                        shape="circle"></p-avatar>
-                                    <p-avatar
-                                        image="https://primefaces.org/cdn/primeng/images/demo/avatar/asiyajavayant.png"
-                                        shape="circle"></p-avatar>
-                                    <p-avatar
-                                        image="https://primefaces.org/cdn/primeng/images/demo/avatar/onyamalimba.png"
-                                        shape="circle"></p-avatar>
-                                    <p-avatar
-                                        image="https://primefaces.org/cdn/primeng/images/demo/avatar/ionibowcher.png"
-                                        shape="circle"></p-avatar>
-                                    <p-avatar
-                                        image="https://primefaces.org/cdn/primeng/images/demo/avatar/xuxuefeng.png"
-                                        shape="circle"></p-avatar>
-                                    <p-avatar label="+2" shape="circle"
-                                        [style]="{'background-color':'#9c27b0', 'color': '#ffffff'}"></p-avatar>
-                                </p-avatarGroup>
-                                <span>14 users likes</span>
-                                <app-text-icon-button icon="pi pi-heart"></app-text-icon-button>
-                                <app-text-icon-button icon="pi pi-bookmark"></app-text-icon-button>
-                                <app-text-icon-button icon="pi pi-comments"></app-text-icon-button>
-                            </div>
-                        </div>
-                        <p-divider></p-divider>
-                    </div>
+
                     <div class="card">
                         <div class="grid">
                             <div>
@@ -413,7 +467,7 @@
                     </div>
                 </p-tabPanel>
             </p-tabView>
-        </p-card>
+        </p-card> -->
     </div>
     <p-scrollTop target="window"></p-scrollTop>
 </div>

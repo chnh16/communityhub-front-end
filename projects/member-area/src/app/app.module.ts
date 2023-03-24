@@ -15,18 +15,20 @@ import { TableModule } from 'primeng/table';
 import { TabViewModule } from 'primeng/tabview';
 import { ToastModule } from 'primeng/toast';
 import { ToolbarModule } from 'primeng/toolbar';
-import { ButtonModule } from 'projects/common/src/app/component/button/button.module';
+import { ButtonModule } from "primeng/button";
+import { ButtonModule as bm } from 'projects/common/src/app/component/button/button.module';
 import { MenuBarComponent } from 'projects/common/src/app/component/navbar/navbar.component';
 import { ResponseInterceptor } from 'projects/common/src/app/interceptor/response.interceptor';
 import { TokenInterceptor } from 'projects/common/src/app/interceptor/token.interceptor';
 
 import { AppComponent } from './app.component';
-import { AppRouting } from './app.routing';
+
 import { CodeMemberComponent } from './pages/code-member/code-member.component';
 import { LoginMemberComponent } from './pages/login/login-member.component';
 import { RegisterMemberComponent } from './pages/register/register-member.component';
 import { ProfileMemberComponent } from './pages/user-profile/user-profile.component';
-import {FileUploadModule} from 'primeng/fileupload';
+import { FileUploadModule } from 'primeng/fileupload';
+
 
 @NgModule({
   declarations: [
@@ -35,7 +37,7 @@ import {FileUploadModule} from 'primeng/fileupload';
   imports: [
     BrowserModule, TableModule, ButtonModule, ToolbarModule, ToastModule, CommonModule,
     AvatarModule, AvatarGroupModule, MenubarModule, DividerModule, CardModule, InputTextModule, AutoCompleteModule,
-    TabViewModule, StepsModule, ImageModule, FileUploadModule, HttpClientModule
+    TabViewModule, StepsModule, ImageModule, FileUploadModule, HttpClientModule, bm,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },

@@ -11,18 +11,18 @@ import { ToolbarModule } from "primeng/toolbar";
 import { ButtonModule as bm } from "projects/common/src/app/component/button/button.module";
 import { HttpClientModule } from "@angular/common/http";
 import { AppModule } from "../../app.module";
-import {TabViewModule} from 'primeng/tabview';
+import { TabViewModule } from 'primeng/tabview';
 import { CreateArticleComponent } from "./create-article/create-article.component";
 import { CardModule } from "primeng/card";
 import { FileUploadModule } from "primeng/fileupload";
-import {InputTextareaModule} from 'primeng/inputtextarea';
-import {EditorModule} from 'primeng/editor';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { EditorModule } from 'primeng/editor';
 import { ListArticleComponent } from "./list_article/list-article.component";
 import { ArticleRouting } from "./article.routing";
 import { DividerModule } from "primeng/divider";
 
 
-@NgModule ({
+@NgModule({
     declarations: [
         CreateArticleComponent, ListArticleComponent
         ],

@@ -3,10 +3,14 @@ import { FormArray, FormBuilder, Validators } from '@angular/forms';
 import { CategoryGetAllRes } from 'projects/common/src/app/pojo/category/CategoryGetAllRes';
 import { FileInsertReq } from 'projects/common/src/app/pojo/file/FileInsertReq';
 import { PollingChoiceInsertReq } from 'projects/common/src/app/pojo/pollingchoice/PollingChoiceInsertReq';
+import { PostBookmarkReq } from 'projects/common/src/app/pojo/post/PostBookmarkReq';
 import { PostGetAllRes } from 'projects/common/src/app/pojo/post/PostGetAllRes';
 import { PostInsertReq } from 'projects/common/src/app/pojo/post/PostInsertReq';
+import { PostLikeReq } from 'projects/common/src/app/pojo/post/PostLikeReq';
+import { ProfileGetReq } from 'projects/common/src/app/pojo/user/ProfileGetReq';
 import { CategoryService } from 'projects/common/src/app/service/category.service';
 import { PostService } from 'projects/common/src/app/service/post.service';
+import { UserService } from 'projects/common/src/app/service/user.service';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -15,10 +19,16 @@ import { Subscription } from 'rxjs';
 })
 export class DashboardComponent implements OnInit, OnDestroy {
   dashboard$? : Subscription
+  dashboardCategory$? : Subscription
+  dashboardProfile$? : Subscription
+  postLike$? : Subscription
+  postBookmark$? : Subscription
   post!: PostGetAllRes[]
+  profile? : ProfileGetReq
   uploadedFiles: any[] = []
   showImageUpload : boolean = false
   showInsertPolling : boolean = false
+  showAddDetail : boolean = false
   imageButton : boolean = false
   pollingButton : boolean = false
   categories : CategoryGetAllRes[] = []
@@ -32,10 +42,14 @@ export class DashboardComponent implements OnInit, OnDestroy {
     polling : this.fb.array([])
   })
 
+  POST_LIMIT : number = 3
+  PAGE : number = 1
+
   constructor(
     private fb: FormBuilder,
     private categoryService : CategoryService,
-    private postService : PostService
+    private postService : PostService,
+    private userService : UserService
   ) { }
 
   get imageData() {
@@ -44,6 +58,25 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   get pollingData(){
     return this.data.get('polling') as FormArray
+  }
+
+  onScroll() : void {
+    // this.dashboard$ = this.postService.getPost(POST_LIMIT, PAGE++).subscribe(res => {
+        // if(res){
+        //  res.map(p => {
+        //  p.showComment = false
+        // })
+        // if(this.post.length){
+        // this.post = [...this.post, ...res]
+        // } else {
+        //  this.post = res
+        // }
+        // }
+    // })
+  }
+
+  onShowAddDetail(){
+    this.showAddDetail = !this.showAddDetail
   }
 
   onShowImageUpload(){
@@ -147,17 +180,57 @@ export class DashboardComponent implements OnInit, OnDestroy {
     })
   }
 
-  init(){
-    
+  onLike(postId : string) : void{
+    const data : PostLikeReq = {
+      postId : postId
+    }
+    this.postLike$ = this.postService.onLike(data).subscribe(res => {
+      this.init()
+    })
+  }
+
+  onDislike(postId : string) : void{
+    this.postLike$ = this.postService.onDislike(postId).subscribe(res => {
+      this.init()
+    })
+  }
+
+  onBookmark(postId : string) : void {
+    const data : PostBookmarkReq = {
+      postId : postId
+    }
+    this.postBookmark$ = this.postService.onBookmark(data).subscribe(res => {
+      this.init()
+    })
+  }
+
+  onRemoveBookmark(postId : string) : void {
+    this.postBookmark$ = this.postService.onRemoveBookmark(postId).subscribe(res => {
+      this.init()
+    })
+  }
+
+  init() : void{
+    this.dashboard$ = this.postService.getPost().subscribe(res => {
+      this.post = res
+    })
   }
 
   ngOnInit(): void {
-    this.categoryService.getAll().subscribe(res => {
+    this.init()
+    this.dashboardCategory$ = this.categoryService.getAll().subscribe(res => {
       this.categories = res
       this.data.patchValue({
         categoryId : this.categories.at(0)?.id
       })
     })
+    
+    setTimeout(() => {
+      this.dashboardProfile$ = this.userService.getProfile().subscribe(res => {
+        this.profile = res
+      })
+    }, 3000)
+    
   }
 
   ngOnDestroy(): void {

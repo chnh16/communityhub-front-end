@@ -1,0 +1,106 @@
+<pre>{{data.value | json}}</pre>
+
+<div class="m-3">
+    <div class="flex flex-wrap align-items-center justify-content-center">
+        <div class="mt-6">
+            <h2>CREATE COURSE</h2>
+        </div>
+    </div>
+
+    <div>
+        <p-card class=" card-body p-4 flex align-items-center justify-content-center"
+            [style]=" {width: '500px' , height:'100%'}" styleClass="p-card-shadow">
+            <form [formGroup]="data" (ngSubmit)="createCourse()">
+                <div class="field grid">
+                    <label for="courseName" class="col-fixed" style="width:200px">Course Name</label>
+                    <div class="col">
+                        <input id="courseName" formControlName="courseName" type="text"
+                            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary">
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <div class="field grid">
+                        <label for="provider" class="col-fixed" style="width:200px">Provider</label>
+                        <div class="col">
+                            <input id="provider" formControlName="provider" type="text"
+                                class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary">
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <div class="field grid">
+                        <label for="trainer" class=" col-fixed" style="width:200px">Trainer</label>
+                        <div class="col">
+                            <input id="trainer" formControlName="trainer" type=" text"
+                                class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary">
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <div class="field grid">
+                        <label for="locationName" class="col-fixed" style="width:200px">Location</label>
+                        <div class="col">
+                            <input id="locationName" formControlName="locationName" type="text"
+                                class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary">
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <div class="field grid">
+                        <label for="startDate" class="col-fixed" style="width:200px">Start Date</label>
+                        <div class="col">
+                            <p-calendar id="startDate" formControlName="startDate" [showIcon]="true"
+                                inputId="startDate">
+                            </p-calendar>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <div class="field grid">
+                        <label for="endDate" class="col-fixed" style="width:200px">End Date</label>
+                        <div class="col">
+                            <p-calendar id="endDate" formControlName="endDate" [showIcon]="true" inputId="endDate">
+                            </p-calendar>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <div class="field grid">
+                        <label for="price" class="col-fixed" style="width:200px">Price</label>
+                        <div class="col">
+                            <p-inputNumber id="price" formControlName="price" mode="decimal" [minFractionDigits]="2">
+                            </p-inputNumber>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <div class="field grid">
+                        <label for="categoryId" class="col-fixed" style="width:200px">Category</label>
+                        <div class="col">
+                            <p-dropdown [options]="categorys" placeholder=" Select a Category"
+                                optionLabel="categoryName" [showClear]=" true" formControlName="categoryId"
+                                optionValue="id">
+                            </p-dropdown>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <div class="field grid">
+                        <label for="formFileMultiple" class="form-label">Masukkan File</label>
+
+                        <!-- <p-fileUpload mode="basic" name="demo[]" (onSelect)="fileUpload($event)"></p-fileUpload> -->
+
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <div class="col-6">
+                        <app-submit-button label="Create" clasz="p-button-rounded mr-2"></app-submit-button>
+                    </div>
+                </div>
+
+            </form>
+        </p-card>
+
+    </div>
+</div>

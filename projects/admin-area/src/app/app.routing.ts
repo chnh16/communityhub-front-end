@@ -2,7 +2,7 @@ import { CommonModule } from "@angular/common";
 import { HttpClient } from "@angular/common/http";
 import { NgModule } from "@angular/core"
 import { ReactiveFormsModule } from "@angular/forms";
-import {RouterModule, Routes} from "@angular/router"
+import { RouterModule, Routes } from "@angular/router"
 import { CanLoad } from "@angular/router";
 import { AvatarModule } from "primeng/avatar";
 import { CardModule } from "primeng/card";
@@ -31,52 +31,62 @@ export const adminRouter: Routes = [
         component: CodeAdminComponent
     },
     {
-        path : 'voucher',
-        loadChildren : () => import('./pages/voucher/voucher.module').then(c => c.VoucherModule),
-        component : MenuBarComponent
+        path: 'voucher',
+        loadChildren: () => import('./pages/voucher/voucher.module').then(c => c.VoucherModule),
+        component: MenuBarComponent
     },
     {
-        path : 'category',
-        loadChildren : () => import('./pages/category/category.module').then(c => c.CategoryModule),
-        component : MenuBarComponent
+        path: 'category',
+        loadChildren: () => import('./pages/category/category.module').then(c => c.CategoryModule),
+        component: MenuBarComponent
     },
     {
-        path : 'industry',
-        loadChildren : () => import('./pages/industry/industry.module').then(c => c.IndustryModule),
-        component : MenuBarComponent
+        path: 'industry',
+        loadChildren: () => import('./pages/industry/industry.module').then(c => c.IndustryModule),
+        component: MenuBarComponent
     },
     {
-        path : 'position',
-        loadChildren : () => import('./pages/position/position.module').then(c => c.PositionModule),
-        component : MenuBarComponent
+        path: 'article',
+        loadChildren: () => import('./pages/article/article.module').then(c => c.CreateArticleModule),
+        component: MenuBarComponent
     },
     {
-        path : 'membership',
-        loadChildren : () => import('./pages/membership/membership.module').then(c => c.MembershipModule),
-        component : MenuBarComponent
+        path: 'position',
+        loadChildren: () => import('./pages/position/position.module').then(c => c.PositionModule),
+        component: MenuBarComponent
     },
     {
-        path : 'approval',
-        loadChildren : () => import('./pages/approval/approval.module').then(c => c.ApprovalModule),
-        component : MenuBarComponent
+        path: 'membership',
+        loadChildren: () => import('./pages/membership/membership.module').then(c => c.MembershipModule),
+        component: MenuBarComponent
     },
     {
         path : 'article',
         loadChildren : () => import('./pages/article/article.module').then(c => c.ArticleModule),
         component : MenuBarComponent
+    },
+    { 
+        path: 'approval',
+        loadChildren: () => import('./pages/approval/approval.module').then(c => c.ApprovalModule),
+        component: MenuBarComponent
+    },
+    {
+        path: 'create-article',
+        loadChildren: () => import('./pages/article/article.module').then(c => c.CreateArticleModule),
+        component: MenuBarComponent
     }
 
 ];
 
-@NgModule ({
-    declarations : [
+@NgModule({
+    declarations: [
         LoginAdminComponent, RegisterAdminComponent, CodeAdminComponent
     ],
-    imports : [
+    imports: [
         RouterModule.forRoot(adminRouter),
         SharedModule
     ],
-    exports : [
+    exports: [
         RouterModule, LoginAdminComponent, RegisterAdminComponent, CodeAdminComponent
     ]
 })

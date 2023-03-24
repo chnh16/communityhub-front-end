@@ -13,22 +13,24 @@ import { HttpClientModule } from "@angular/common/http";
 import { AppModule } from "../../app.module";
 import { TabViewModule } from 'primeng/tabview';
 import { CreateArticleComponent } from "./create-article/create-article.component";
-import { CreateArticleRouting } from "./article.routing";
 import { CardModule } from "primeng/card";
 import { FileUploadModule } from "primeng/fileupload";
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { EditorModule } from 'primeng/editor';
+import { ListArticleComponent } from "./list_article/list-article.component";
+import { ArticleRouting } from "./article.routing";
+import { DividerModule } from "primeng/divider";
 
 
 @NgModule({
     declarations: [
-        CreateArticleComponent
-    ],
+        CreateArticleComponent, ListArticleComponent
+        ],
     imports: [
-        CreateArticleRouting, CommonModule, TableModule, ButtonModule, ToolbarModule,
-        AvatarModule, AvatarGroupModule, MenubarModule, ReactiveFormsModule, bm,
-        HttpClientModule, TabViewModule, CardModule, FileUploadModule, InputTextareaModule,
-        EditorModule
+       ArticleRouting,CommonModule,TableModule, ButtonModule, ToolbarModule,
+       AvatarModule, AvatarGroupModule, MenubarModule, ReactiveFormsModule, bm, 
+       HttpClientModule, TabViewModule, CardModule, FileUploadModule, InputTextareaModule,
+       EditorModule, DividerModule
     ]
 })
-export class CreateArticleModule { }
+export class ArticleModule {}

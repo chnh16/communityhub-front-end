@@ -46,11 +46,6 @@ export const adminRouter: Routes = [
         component: MenuBarComponent
     },
     {
-        path: 'article',
-        loadChildren: () => import('./pages/article/article.module').then(c => c.CreateArticleModule),
-        component: MenuBarComponent
-    },
-    {
         path: 'position',
         loadChildren: () => import('./pages/position/position.module').then(c => c.PositionModule),
         component: MenuBarComponent
@@ -68,11 +63,6 @@ export const adminRouter: Routes = [
     { 
         path: 'approval',
         loadChildren: () => import('./pages/approval/approval.module').then(c => c.ApprovalModule),
-        component: MenuBarComponent
-    },
-    {
-        path: 'create-article',
-        loadChildren: () => import('./pages/article/article.module').then(c => c.CreateArticleModule),
         component: MenuBarComponent
     }
 

@@ -13,10 +13,6 @@ const appRouter: Routes = [
         component : ListArticleComponent, 
     },
     {
-        path : 'create-article',
-        component : CreateArticleComponent, 
-     },
-     {
         path: 'add',
         component: CreateArticleComponent,
     },

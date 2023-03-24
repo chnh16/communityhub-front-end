@@ -28,4 +28,8 @@ export class ArticleService {
     delete(id: string): Observable<DeleteRes> {
         return this.http.delete<DeleteRes>(`${BASE_URL}/article/${id}`);
     }
+
+    getArticleById(id: string): Observable<ArticleGetAllRes> {
+        return this.http.get<ArticleGetAllRes>(`${BASE_URL}/article/${id}`);
+    }
 }

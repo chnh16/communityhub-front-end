@@ -30,7 +30,7 @@ export class MenuBarComponent {
                 label: 'Home'
             },
             {
-                label: 'Article'
+                label: 'Article', routerLink:'/article'
             },
             {
                 label: 'Transaction',

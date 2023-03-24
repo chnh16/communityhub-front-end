@@ -18,7 +18,7 @@ const appRouter: Routes = [
         component: CreateArticleComponent,
     },
     {
-        path: 'detail',
+        path: 'detail/:id',
         component: ArticleDetailComponent
     }
 ];

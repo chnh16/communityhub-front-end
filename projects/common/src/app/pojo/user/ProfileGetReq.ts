@@ -1,4 +1,5 @@
 export interface ProfileGetReq{
+    email : string
     fullName : string
     country : string
     province : string

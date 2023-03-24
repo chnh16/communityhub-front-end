@@ -8,9 +8,7 @@ import { SharedModule } from "projects/common/src/app/shared.module";
 import { CodeMemberComponent } from "./pages/code-member/code-member.component";
 import { LoginMemberComponent } from "./pages/login/login-member.component";
 import { RegisterMemberComponent } from "./pages/register/register-member.component";
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProfileMemberComponent } from "./pages/user-profile/user-profile.component";
-import { InfiniteScrollModule } from "ngx-infinite-scroll";
 
 
 export const memberRouter: Routes = [
@@ -49,6 +47,11 @@ export const memberRouter: Routes = [
         path: 'course',
         loadChildren: () => import('./pages/course/course.module').then(c => c.CourseModule),
         component: MenuBarComponent
+    },
+    {
+        path : 'profile/:id',
+        loadChildren: () => import('./pages/user-profile/edit-profile/edit-profile.module').then(e => e.EditProfileModule),
+        component : MenuBarComponent
     }
 ];
 

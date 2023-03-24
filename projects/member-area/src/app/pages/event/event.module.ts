@@ -12,6 +12,7 @@ import { ListEventComponent } from "./list-event/list-event.component";
 import { CommonModule } from "@angular/common";
 import { BuyEventComponent } from "./buy-event/buy-event.component";
 import { RadioButtonModule } from 'primeng/radiobutton';
+import { InfiniteScrollModule } from "ngx-infinite-scroll";
 
 @NgModule({
     declarations: [
@@ -22,7 +23,7 @@ import { RadioButtonModule } from 'primeng/radiobutton';
     ],
     imports: [
         SharedModule,
-        EventRouting, InputNumberModule, CalendarModule, CommonModule, CardModule, InputTextModule, RadioButtonModule
+        EventRouting, InputNumberModule, CalendarModule, CommonModule, CardModule, InputTextModule, RadioButtonModule, InfiniteScrollModule
     ]
 })
 

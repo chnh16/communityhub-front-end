@@ -15,6 +15,10 @@ export class ListCategoryComponent implements OnInit, OnDestroy {
     category$?: Subscription
     categoryDelete$?: Subscription
 
+    limit: number = 3
+    offset: number = 0
+    totalData: number = 0
+
     constructor(
         private categoryService: CategoryService
     ) { }
@@ -27,10 +31,21 @@ export class ListCategoryComponent implements OnInit, OnDestroy {
         })
     }
 
+    getAll(limit: number, offset: number) {
+
+        this.limit = limit
+        this.offset = offset
+
+        this.category$ = this.categoryService.getCategory(limit, offset).subscribe(res => {
+            this.resCategory = res
+        })
+    }
+
     ngOnInit(): void {
         this.category$ = this.categoryService.getAll().subscribe(res => {
             this.resCategory = res
         })
+
     }
 
     ngOnDestroy(): void {

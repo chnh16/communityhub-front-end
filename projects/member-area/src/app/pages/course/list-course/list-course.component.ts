@@ -24,6 +24,11 @@ export class ListCourseComponent implements OnInit {
     course: CourseGetAllRes[] = []
     categorys: CategoryGetAllRes[] = []
 
+    POST_LIMIT: number = 4
+    PAGE: number = 1
+
+
+
     reqParams = this.fb.group({
         category: [''],
         price: ['']
@@ -56,9 +61,21 @@ export class ListCourseComponent implements OnInit {
         { name: "DESC" }
     ];
 
+    onScroll(): void {
+        this.getCourse$ = this.courseService.getAll(this.reqParams.value.category!, this.reqParams.value.price!, this.POST_LIMIT, this.PAGE++).subscribe(res => {
+            if (res) {
+                if (this.course.length) {
+                    this.course = [...this.course, ...res]
+                } else {
+                    this.course = res
+                }
+            }
+        })
+    }
+
     ngOnInit(): void {
 
-        this.getCourse$ = this.courseService.getAll(this.reqParams.value.category!, this.reqParams.value.price!).subscribe(result => {
+        this.getCourse$ = this.courseService.getAll(this.reqParams.value.category!, this.reqParams.value.price!, this.POST_LIMIT, this.PAGE++).subscribe(result => {
             this.course = result
         })
 
@@ -68,9 +85,19 @@ export class ListCourseComponent implements OnInit {
 
         this.reqParams.get('category')?.valueChanges.subscribe(res => {
             const temp = res as any
-            this.getCourse$ = this.courseService.getAll(temp, this.reqParams.value.price!).subscribe(res => {
-                this.course = res
-            })
+
+            this.PAGE = 1
+
+            if (!temp.length) {
+                this.getCourse$ = this.courseService.getAll(this.reqParams.value.category!, this.reqParams.value.price!, this.POST_LIMIT, this.PAGE++).subscribe(result => {
+                    this.course = result
+                })
+            } else {
+                this.getCourse$ = this.courseService.getAll(temp, this.reqParams.value.price!, this.POST_LIMIT, this.PAGE++).subscribe(res => {
+                    this.course = res
+                })
+            }
+
         })
     }
 

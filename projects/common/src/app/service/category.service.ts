@@ -21,6 +21,10 @@ export class CategoryService {
         return this.http.get<CategoryGetAllRes[]>(`${BASE_URL}/category`);
     }
 
+    getCategory(limit: number, offset: number): Observable<CategoryGetAllRes[]> {
+        return this.http.get<CategoryGetAllRes[]>(`${BASE_URL}/category/page?limit=${limit}&offset=${offset}`)
+    }
+
     insert(data: CategoryInsertReq): Observable<InsertRes> {
         return this.http.post<InsertRes>(`${BASE_URL}/category/add`, data);
     }
@@ -33,7 +37,7 @@ export class CategoryService {
         return this.http.delete<DeleteRes>(`${BASE_URL}/category/${id}`);
     }
 
-    getById(id : string) : Observable<CategoryGetAllRes>{
+    getById(id: string): Observable<CategoryGetAllRes> {
         return this.http.get<CategoryGetAllRes>(`${BASE_URL}/category/${id}`);
     }
 }

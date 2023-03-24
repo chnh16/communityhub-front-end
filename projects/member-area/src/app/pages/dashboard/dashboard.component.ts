@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CategoryGetAllRes } from 'projects/common/src/app/pojo/category/CategoryGetAllRes';
 import { FileInsertReq } from 'projects/common/src/app/pojo/file/FileInsertReq';
 import { PollingChoiceInsertReq } from 'projects/common/src/app/pojo/pollingchoice/PollingChoiceInsertReq';
@@ -42,6 +42,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
     polling: this.fb.array([])
   })
 
+  detail = new FormGroup('', Validators.required)
+
   POST_LIMIT: number = 3
   PAGE: number = 1
 
@@ -72,8 +74,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
     })
   }
 
-  onShowAddDetail() {
-    this.showAddDetail = !this.showAddDetail
+  onShowAddDetail(i : number) {
+    this.post[i].showComment = !this.post[i].showComment
   }
 
   onShowImageUpload() {
@@ -177,33 +179,39 @@ export class DashboardComponent implements OnInit, OnDestroy {
     })
   }
 
-  onLike(postId: string): void {
+  onLike(postId: string, i : number): void {
     const data: PostLikeReq = {
       postId: postId
     }
     this.postLike$ = this.postService.onLike(data).subscribe(res => {
-      this.init()
+      this.post[i].isLiked = {
+        id : res.id,
+        status : true
+      }
     })
   }
 
-  onDislike(postId: string): void {
+  onDislike(postId: string, i : number): void {
     this.postLike$ = this.postService.onDislike(postId).subscribe(res => {
-      this.init()
+      this.post[i].isLiked = null
     })
   }
 
-  onBookmark(postId: string): void {
+  onBookmark(postId: string, i : number): void {
     const data: PostBookmarkReq = {
       postId: postId
     }
     this.postBookmark$ = this.postService.onBookmark(data).subscribe(res => {
-      this.init()
+      this.post[i].isBookmarked = {
+        id : res.id,
+        status : true
+      }
     })
   }
 
-  onRemoveBookmark(postId: string): void {
+  onRemoveBookmark(postId: string, i : number): void {
     this.postBookmark$ = this.postService.onRemoveBookmark(postId).subscribe(res => {
-      this.init()
+      this.post[i].isBookmarked = null
     })
   }
 

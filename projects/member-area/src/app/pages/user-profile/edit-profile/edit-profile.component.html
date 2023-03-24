@@ -1,5 +1,3 @@
-<pre>{{registerData | json}}</pre>
-<pre>{{data.value | json}}</pre>
 <div class="ml-4 mr-4 card surface-border">
     <p-card class="mt-6 flex flex-wrap align-items-center justify-content-center surface-border">
         <form [formGroup]="data" (ngSubmit)="onSubmit()">
@@ -7,7 +5,7 @@
                 <div class="col-8 flex align-items-center justify-content-center">
                     <div class="formgrid grid">
                         <div class="field col-8 md:col-12">
-                            <h1>USER PROFILE</h1>
+                            <h1>Edit Profile</h1>
                         </div>
                         <div class="mt-4 field col-8 md:col-6">
                             <label for="lastname6">Full Name</label>
@@ -44,20 +42,11 @@
                             <label for="lastname6">Industry</label>
                         </div>
                         <div class="field col-8 md:col-6">
-                            <!-- <label for="lastname6">Position</label> -->
                             <p-dropdown [options]="positions" optionLabel="positionName" formControlName="positionId" optionValue="id" class="w-full"></p-dropdown>
                         </div>
 
                         <div class="field col-8 md:col-6">
-                            <!-- <label for="lastname6">Industry</label> -->
                             <p-dropdown [options]="industries" optionLabel="industryName" formControlName="industryId" optionValue="id" class="w-full"></p-dropdown>
-                            <!-- <select id="state" class="w-full text-base text-color surface-overlay p-2 border-3 border-solid surface-border border-blue-400 border-round outline-none focus:border-primary" style="appearance: auto">
-                                <option>Arizona</option>
-                                <option>California</option>
-                                <option>Florida</option>
-                                <option>Ohio</option>
-                                <option>Washington</option>
-                            </select> -->
                         </div>
                         <div class="field col-8 md:col-4">
                             <p-image src="../../../assets/img/Profile_pic.png" alt="Image" width="250"></p-image>

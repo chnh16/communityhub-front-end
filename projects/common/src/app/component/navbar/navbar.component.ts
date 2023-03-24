@@ -1,18 +1,22 @@
 import { style } from "@angular/animations";
-import { Component, Input } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { MenuItem } from "primeng/api";
 import { Subscription } from "rxjs";
+import { UserService } from "../../service/user.service";
 
 @Component({
     selector: 'app-navbar',
     templateUrl: './navbar.component.html'
 })
-export class MenuBarComponent {
+export class MenuBarComponent implements OnInit {
+    profileFileId! : string
+    dashboard$? : Subscription
 
-    // visibleSidebar1;
-    constructor(private router: Router) {
-
+    constructor(
+        private router: Router, 
+        private userService : UserService
+        ) {
     }
 
     items!: MenuItem[];
@@ -25,6 +29,9 @@ export class MenuBarComponent {
     }
 
     ngOnInit() {
+        this.dashboard$ = this.userService.getProfile().subscribe(res => {
+            this.profileFileId = res.file
+        })
         this.items = [
             {
                 label: 'Home'

@@ -5,7 +5,8 @@
         </div>
         <div class="align-item-center w-7 ml-8">
             <p-card class="align-items-center flex-wrap" styleClass="p-card-shadow">
-                <p-avatar class="flex align-items-center justify-content-center" icon="pi pi-user" styleClass="mr-2" size="xlarge" [style]="{'background-color':'#2196F3', 'color': '#ffffff'}"></p-avatar>
+                <p-avatar class="flex align-items-center justify-content-center" icon="pi pi-user" styleClass="mr-2"
+                    size="xlarge" [style]="{'background-color':'#2196F3', 'color': '#ffffff'}"></p-avatar>
                 <h3>fullName</h3>
                 <span>position</span>
                 <p-divider></p-divider>
@@ -29,19 +30,19 @@
         <div class="justify-content-start">
             <!-- <h3>Aktivitas Saya</h3> -->
         </div>
-        <p-card>
-            <h4>Lulusan Teknik informatika Apakah bisa bekerja di lingkungan pendidikan ?</h4>
+
+        <p-card *ngFor="let d of resArticle" class="mx-4">
+            <h4>{{d.articleTitle}}</h4>
             <div>
                 <p>penulis : Tasya</p>
             </div>
-            <div class="grid">
+            <div class=" grid">
                 <div class="col-3 flex justify-content-start">
-                    <img src="http://ungerboeck.com/images/blog/header/more-event-technology-is-better.jpg" width="150" height="150" alt="">
+                    <img src="http://192.168.10.73:8080/files/{{d.photoId}}" width="150" height="150" alt="">
                 </div>
                 <div class="col-9">
                     <div class="col-9 flex align-items-center justify-content-center w-full">
-                        <p>What did the Dursleys care if Harry lost his place on the House Quidditch team because he hadn’t practiced all summer? What was it to the Dursleys if Harry went back to school without any of his homework done? The Dursleys were
-                            what wizards called Muggles (not a drop of magical blood in their veins)........</p>
+                        <p>{{d.articleContent}}</p>
                     </div>
                     <div class="col-9 flex justify-content-start w-full">
                         <a href="" routerLink="/article/detail">Detail</a>

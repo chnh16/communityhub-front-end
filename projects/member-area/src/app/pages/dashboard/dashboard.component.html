@@ -7,8 +7,9 @@
         </div>
         <div class="align-item-center">
             <p-card class="align-items-center flex-wrap" styleClass="p-card-shadow">
-                <p-avatar class="flex align-items-center justify-content-center" styleClass="mr-2" size="xlarge" image="http://192.168.10.73:8080/files/{{profile.file}}"
-                [style]="{'background-color':'#2196F3', 'color': '#ffffff'}"></p-avatar>
+                <p-avatar class="flex align-items-center justify-content-center" styleClass="mr-2" size="xlarge"
+                    image="http://192.168.10.73:8080/files/{{profile.file}}"
+                    [style]="{'background-color':'#2196F3', 'color': '#ffffff'}"></p-avatar>
                 <h3 class="flex align-items-center justify-content-center">{{profile.fullName}}</h3>
                 <span class="flex align-items-center justify-content-center">{{profile.industryId}}</span>
                 <span class="flex align-items-center justify-content-center">{{profile.positionId}}</span>
@@ -160,14 +161,22 @@
                 <div class="m-0 p-0">
                     <p-divider></p-divider>
                     <div class="grid">
-                        <app-text-icon-button *ngIf="!post[i].isLiked" icon="pi pi-heart" clasz="p-button-text p-button-secondary" label="Suka" (click)="onLike(post[i].id)"></app-text-icon-button>
-                        <app-text-icon-button *ngIf="post[i].isLiked" clasz="p-button-text p-button-primary" icon="pi pi-heart-fill" label="Suka" (click)="onDislike(post[i].isLiked.id)"></app-text-icon-button>
+                        <app-text-icon-button *ngIf="!post[i].isLiked" icon="pi pi-heart"
+                            clasz="p-button-text p-button-secondary" label="Suka" (click)="onLike(post[i].id)">
+                        </app-text-icon-button>
+                        <app-text-icon-button *ngIf="post[i].isLiked" clasz="p-button-text p-button-primary"
+                            icon="pi pi-heart-fill" label="Suka" (click)="onDislike(post[i].isLiked.id)">
+                        </app-text-icon-button>
                         <p-divider layout="vertical"></p-divider>
-                        <app-text-icon-button icon="pi pi-comments" clasz="p-button-text p-button-secondary" label="Komentar"
-                            (click)="onShowAddDetail()"></app-text-icon-button>
+                        <app-text-icon-button icon="pi pi-comments" clasz="p-button-text p-button-secondary"
+                            label="Komentar" (click)="onShowAddDetail()"></app-text-icon-button>
                         <p-divider layout="vertical"></p-divider>
-                        <app-text-icon-button *ngIf="!post[i].isBookmarked" icon="pi pi-bookmark" clasz="p-button-text p-button-secondary" label="Bookmark" (click)="onBookmark(post[i].id)"></app-text-icon-button>
-                        <app-text-icon-button *ngIf="post[i].isBookmarked" icon="pi pi-bookmark-fill" clasz="p-button-text p-button-primary" label="Bookmark" (click)="onRemoveBookmark(post[i].isBookmarked.id)"></app-text-icon-button>
+                        <app-text-icon-button *ngIf="!post[i].isBookmarked" icon="pi pi-bookmark"
+                            clasz="p-button-text p-button-secondary" label="Bookmark" (click)="onBookmark(post[i].id)">
+                        </app-text-icon-button>
+                        <app-text-icon-button *ngIf="post[i].isBookmarked" icon="pi pi-bookmark-fill"
+                            clasz="p-button-text p-button-primary" label="Bookmark"
+                            (click)="onRemoveBookmark(post[i].isBookmarked.id)"></app-text-icon-button>
                     </div>
                     <p-divider></p-divider>
                 </div>
@@ -175,7 +184,7 @@
                     <input pInputText type="text" placeholder="Tulis komentar" class="col-12 mb-2 p-inputtext-sm">
                     <app-submit-button label="Post"></app-submit-button>
                 </div>
-                <div *ngIf="post[i].detailCount > 0" >
+                <div *ngIf="post[i].detailCount > 0">
                     <button pButton type="button" class="p-button-text">Lebih banyak komentar (detailCount)</button>
                 </div>
                 <div *ngFor="let d of post[i].postDetail" class="flex">

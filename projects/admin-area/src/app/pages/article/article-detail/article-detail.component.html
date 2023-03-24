@@ -1,30 +1,32 @@
+<pre>
+    {{getArticleById | json}}
+</pre>
+
 <div class="flex align-item-start justify-content-start mt-4 ml-8">
     <p-toolbar styleClass="mb-4 gap-2">
         <ng-template pTemplate="left">
             <button pButton pRipple icon="pi pi-pencil" class="p-button-success mr-2"></button>
-            <button pButton pRipple icon="pi pi-trash" class="p-button-danger"></button>
+            <button pButton pRipple icon="pi pi-trash" class="p-button-danger" (click)="deleteArticle(getArticleById!)"></button>
         </ng-template>
     </p-toolbar>
 </div>
 
 <div class="col-10 flex justify-content-center align-item-center ml-8 mr-8">
     <div class="justify-content-center">
-        <!-- <h3>Aktivitas Saya</h3> -->
     </div>
     <p-card>
         <div class="col-12 flex align-item-center justify-content-center">
-            <h4 class="align-item-center justify-content-center">Lulusan Teknik informatika Apakah bisa bekerja di lingkungan pendidikan ?</h4>
+            <h4 class="align-item-center justify-content-center">{{getArticleById?.articleTitle}}</h4>
         </div>
         <div class="col-12 flex mt-1 align-item-center justify-content-center">
-            <p>penulis : Tasya</p>
+            <p>Penulis : {{getArticleById?.createdBy}}</p>
         </div>
         <div class="col-12 flex justify-content-center">
-            <img src="http://ungerboeck.com/images/blog/header/more-event-technology-is-better.jpg" width="300" height="250" alt="Detail-Article">
+            <img src="http://192.168.10.73:8080/files/{{getArticleById?.photoId}}" width="300" height="250" alt="Detail-Article">
         </div>
         <div class="col-12">
             <div class="col-12 flex align-items-center justify-content-center w-full">
-                <p>What did the Dursleys care if Harry lost his place on the House Quidditch team because he hadn’t practiced all summer? What was it to the Dursleys if Harry went back to school without any of his homework done? The Dursleys were what wizards
-                    called Muggles (not a drop of magical blood in their veins)........</p>
+                <p>{{getArticleById?.articleContent}}</p>
             </div>
         </div>
     </p-card>

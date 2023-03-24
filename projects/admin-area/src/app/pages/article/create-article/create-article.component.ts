@@ -13,8 +13,6 @@ import { Subscription } from "rxjs";
 export class CreateArticleComponent implements OnInit, OnDestroy {
     text1: string = '<div>Hello World!</div><div>PrimeNG <b>Editor</b> Rocks</div><div><br></div>';
 
-
-
     data = this.fb.group({
         articleTitle: ['', Validators.required],
         articleContent: ['', Validators.required],
@@ -37,10 +35,9 @@ export class CreateArticleComponent implements OnInit, OnDestroy {
             articleContent: this.data.value.articleContent!,
             photoId: [... this.uploadsPhoto.value]
         }
+
         this.createArticle$ = this.articleService.insert(insert).subscribe(res => {
-
         })
-
 
     }
     ngOnInit(): void {

@@ -61,18 +61,15 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   onScroll() : void {
-    // this.dashboard$ = this.postService.getPost(POST_LIMIT, PAGE++).subscribe(res => {
-        // if(res){
-        //  res.map(p => {
-        //  p.showComment = false
-        // })
-        // if(this.post.length){
-        // this.post = [...this.post, ...res]
-        // } else {
-        //  this.post = res
-        // }
-        // }
-    // })
+    this.dashboard$ = this.postService.getPost(this.POST_LIMIT, this.PAGE).subscribe(res => {
+        if(res){
+        if(this.post.length){
+        this.post = [...this.post, ...res]
+        } else {
+         this.post = res
+        }
+        }
+    })
   }
 
   onShowAddDetail(){
@@ -211,7 +208,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   init() : void{
-    this.dashboard$ = this.postService.getPost().subscribe(res => {
+    this.dashboard$ = this.postService.getPost(this.POST_LIMIT, this.PAGE++).subscribe(res => {
       this.post = res
     })
   }

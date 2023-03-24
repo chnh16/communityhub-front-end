@@ -20,8 +20,8 @@ export class PostService{
        private http : HttpClient
     ){}
 
-    getPost() : Observable<PostGetAllRes[]> {
-        return this.http.get<PostGetAllRes[]>(`${BASE_URL}/post/list-post`)
+    getPost(limit : number, offset : number) : Observable<PostGetAllRes[]> {
+        return this.http.get<PostGetAllRes[]>(`${BASE_URL}/post/list-post?limit=${limit}&offset=${offset}`)
     }
 
     insertPost(data : PostInsertReq) : Observable<InsertRes>{

@@ -61,8 +61,8 @@ export const adminRouter: Routes = [
         component : MenuBarComponent
     },
     {
-        path : 'create-article',
-        loadChildren : () => import('./pages/article/article.module').then(c => c.CreateArticleModule),
+        path : 'article',
+        loadChildren : () => import('./pages/article/article.module').then(c => c.ArticleModule),
         component : MenuBarComponent
     }
 

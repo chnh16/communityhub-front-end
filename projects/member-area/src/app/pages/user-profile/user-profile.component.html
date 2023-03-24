@@ -2,18 +2,19 @@
 <pre>{{data.value | json}}</pre>
 <div class="ml-4 mr-4 card surface-border">
     <p-card class="mt-6 flex flex-wrap align-items-center justify-content-center surface-border">
-        <div class="grid">
-            <div class="col-8 flex align-items-center justify-content-center">
-                <div class="formgrid grid">
-                    <div class="field col-8 md:col-12">
-                        <h1>USER PROFILE</h1>
-                    </div>
-                    <form [formGroup]="data" (ngSubmit)="onSubmit()">
-                        <div class="mt-6 field col-8 md:col-6">
+        <form [formGroup]="data" (ngSubmit)="onSubmit()">
+            <div class="grid">
+                <div class="col-8 flex align-items-center justify-content-center">
+                    <div class="formgrid grid">
+                        <div class="field col-8 md:col-12">
+                            <h1>USER PROFILE</h1>
+                        </div>
+
+                        <div class="mt-4 field col-8 md:col-6">
                             <label for="lastname6">Full Name</label>
                             <input formControlName="fullName" id="lastname6" type="text" class="text-base text-color surface-overlay p-2 border-3 border-solid surface-border border-blue-400 border-round appearance-none outline-none focus:border-primary w-full">
                         </div>
-                        <div class="mt-6 field col-8 md:col-6">
+                        <div class="mt-4 field col-8 md:col-6">
                             <label for="lastname6">Country</label>
                             <input formControlName="country" id="lastname6" type="text" class="text-base text-color surface-overlay p-2 border-3 border-solid surface-border border-blue-400 border-round appearance-none outline-none focus:border-primary w-full">
                         </div>
@@ -39,11 +40,18 @@
                         </div>
                         <div class="mt-4 field col-8 md:col-6">
                             <label for="lastname6">Position</label>
-                            <p-dropdown [options]="positions" optionLabel="positionName" formControlName="positionId" optionValue="id"></p-dropdown>
                         </div>
                         <div class="mt-4 field col-8 md:col-6">
                             <label for="lastname6">Industry</label>
-                            <p-dropdown [options]="industries" optionLabel="industryName" formControlName="industryId" optionValue="id"></p-dropdown>
+                        </div>
+                        <div class="field col-8 md:col-6">
+                            <!-- <label for="lastname6">Position</label> -->
+                            <p-dropdown [options]="positions" optionLabel="positionName" formControlName="positionId" optionValue="id" class="w-full"></p-dropdown>
+                        </div>
+
+                        <div class="field col-8 md:col-6">
+                            <!-- <label for="lastname6">Industry</label> -->
+                            <p-dropdown [options]="industries" optionLabel="industryName" formControlName="industryId" optionValue="id" class="w-full"></p-dropdown>
                             <!-- <select id="state" class="w-full text-base text-color surface-overlay p-2 border-3 border-solid surface-border border-blue-400 border-round outline-none focus:border-primary" style="appearance: auto">
                                 <option>Arizona</option>
                                 <option>California</option>
@@ -62,19 +70,20 @@
                         <div class="mt-6 field col-8 md:col-12">
                             <button pButton pRipple type="button" label="SAVE" class="p-button-raised min-w-full" styleClass="p-button min-w-full bg-blue-400"></button>
                         </div>
-                    </form>
+                    </div>
+                </div>
+
+                <div class="col-2">
+                    <p-divider layout="vertical">
+                        <b></b>
+                    </p-divider>
+                </div>
+                <div class="col-2 flex align-items-center justify-content-start">
+                    <div class="w-27rem">
+                        <p-image src="/projects/member-area/src/assets/img/user_profile.jpg" alt="Image" width="150" height="300"></p-image>
+                    </div>
                 </div>
             </div>
-            <div class="col-2">
-                <p-divider layout="vertical">
-                    <b></b>
-                </p-divider>
-            </div>
-            <div class="col-2 flex align-items-center justify-content-start">
-                <div class="w-27rem">
-                    <p-image src="../../../assets/img/Profile_details.png" alt="Image" width="150" height="300"></p-image>
-                </div>
-            </div>
-        </div>
+        </form>
     </p-card>
 </div>

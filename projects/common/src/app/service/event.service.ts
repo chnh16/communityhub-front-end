@@ -18,9 +18,10 @@ export class EventService {
         private http: HttpClient
     ) { }
 
-    getAll(id: string, price: string): Observable<EventGetAllRes[]> {
-        return this.http.get<EventGetAllRes[]>(`${BASE_URL}/events?category=${id}&price=${price}`)
+    getAll(id: string, price: string, limit: number, offset: number): Observable<EventGetAllRes[]> {
+        return this.http.get<EventGetAllRes[]>(`${BASE_URL}/events?category=${id}&price=${price}&limit=${limit}&offset=${offset}`)
     }
+
 
     insert(data: EventInsertReq): Observable<InsertRes> {
         return this.http.post<InsertRes>(`${BASE_URL}/events/add`, data)

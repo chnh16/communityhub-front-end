@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
 import { FormBuilder } from "@angular/forms";
 import { ActivatedRoute } from "@angular/router";
 import { CategoryGetAllRes } from "projects/common/src/app/pojo/category/CategoryGetAllRes";
@@ -14,7 +14,7 @@ import { UserService } from "projects/common/src/app/service/user.service";
     templateUrl: './list-event.component.html'
 })
 
-export class ListEventComponent implements OnInit {
+export class ListEventComponent implements OnInit, OnDestroy {
 
     private getEvent$?: Subscription
     private getEventByCategory$?: Subscription
@@ -25,6 +25,9 @@ export class ListEventComponent implements OnInit {
 
     sortOptions!: SelectItem[];
     selectedSortOption!: string;
+
+    POST_LIMIT: number = 4
+    PAGE: number = 1
 
     role = this.userService.roleCode
 
@@ -47,10 +50,23 @@ export class ListEventComponent implements OnInit {
         this.selectedSortOption = 'ASC';
     }
 
+
+    onScroll(): void {
+        this.getEvent$ = this.eventService.getAll(this.reqParams.value.category!, this.reqParams.value.price!, this.POST_LIMIT, this.PAGE++).subscribe(res => {
+            if (res) {
+                if (this.event.length) {
+                    this.event = [...this.event, ...res]
+                } else {
+                    this.event = res
+                }
+            }
+        })
+    }
+
     ngOnInit(): void {
 
-        this.getEvent$ = this.eventService.getAll(this.reqParams.value.category!, this.reqParams.value.price!).subscribe(result => {
-            this.event = result
+        this.getEvent$ = this.eventService.getAll(this.reqParams.value.category!, this.reqParams.value.price!, this.POST_LIMIT, this.PAGE++).subscribe(res => {
+            this.event = res
         })
 
         this.getCategory$ = this.categoryService.getAll().subscribe(result => {
@@ -59,10 +75,23 @@ export class ListEventComponent implements OnInit {
 
         this.reqParams.get('category')?.valueChanges.subscribe(res => {
             const temp = res as any
-            console.log(temp)
-            this.getEvent$ = this.eventService.getAll(temp, this.reqParams.value.price!).subscribe(res => {
-                this.event = res
-            })
+            this.PAGE = 1
+
+            if (!temp.length) {
+                this.getEvent$ = this.eventService.getAll(this.reqParams.value.category!, this.reqParams.value.price!, this.POST_LIMIT, this.PAGE++).subscribe(res => {
+                    this.event = res
+                })
+            } else {
+                this.getEvent$ = this.eventService.getAll(temp, this.reqParams.value.price!, this.POST_LIMIT, this.PAGE++).subscribe(res => {
+                    this.event = res
+                })
+            }
+
+
         })
+    }
+
+    ngOnDestroy(): void {
+        //  this.getEvent$?.unsubscribe()
     }
 }

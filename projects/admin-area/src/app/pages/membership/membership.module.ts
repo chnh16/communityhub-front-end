@@ -16,6 +16,7 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { CalendarModule } from 'primeng/calendar';
 import { ReactiveFormsModule } from "@angular/forms";
 import { UpdateMembershipComponent } from "./update-membership/update-membership.component";
+import { PaginatorModule } from 'primeng/paginator';
 
 @NgModule({
     declarations: [
@@ -23,7 +24,7 @@ import { UpdateMembershipComponent } from "./update-membership/update-membership
     ],
     imports: [
         MembershipRouting, CommonModule, TableModule, ButtonModule, ToolbarModule, ToastModule,
-        AvatarModule, AvatarGroupModule, MenubarModule, bm, InputNumberModule, ReactiveFormsModule, CalendarModule, CardModule
+        AvatarModule, AvatarGroupModule, MenubarModule, bm, InputNumberModule, ReactiveFormsModule, CalendarModule, CardModule, PaginatorModule
     ]
 })
 export class MembershipModule { }

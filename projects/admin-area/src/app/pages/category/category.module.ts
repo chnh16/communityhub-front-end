@@ -16,6 +16,7 @@ import { ButtonModule as bm } from "projects/common/src/app/component/button/but
 import { HttpClientModule } from "@angular/common/http";
 import { AppModule } from "../../app.module";
 import { UpdateCategoryComponent } from "./update-category/update-category.component";
+import { PaginatorModule } from 'primeng/paginator';
 
 
 @NgModule({
@@ -25,7 +26,7 @@ import { UpdateCategoryComponent } from "./update-category/update-category.compo
     imports: [
         CategoryRouting, CommonModule, TableModule, ButtonModule, ToolbarModule,
         AvatarModule, AvatarGroupModule, MenubarModule, ReactiveFormsModule, bm,
-        HttpClientModule, CardModule
+        HttpClientModule, CardModule, PaginatorModule
     ]
 })
 export class CategoryModule { }

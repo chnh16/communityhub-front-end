@@ -5,8 +5,7 @@
 
             <div *ngIf="role=='MBR'">
                 <h2><i class="pi pi-plus-circle"></i> Create Event</h2>
-                <app-routing-button label="Add Course" icon="pi pi-plus" class="p-button-rounded mr-2"
-                    link="/event/add">
+                <app-routing-button label="Add Event" icon="pi pi-plus" class="p-button-rounded mr-2" link="/event/add">
                 </app-routing-button>
             </div>
 
@@ -36,7 +35,7 @@
         </p-card>
     </div>
     <div class="col-8">
-        <div class="grid">
+        <div class=" grid" infinite-scroll (scrolled)="onScroll()">
             <div class="col-6 my-2 flex justify-content-center" *ngFor="let d of event let i = index">
                 <p-card header="{{d.eventName}}" subheader="{{d.categoryId}}" [style]="{width : '400px'}"
                     styleClass="p-card-shadow">
@@ -52,8 +51,6 @@
                                 <h3> <i class="pi pi-table"></i> EVENT</h3>
                             </div>
                         </div>
-
-
 
                         <div class="grid my-2 mx-2">
                             <span> <i class=" pi pi-calendar"></i> {{d.startDate}} - {{d.endDate}}</span>
@@ -73,6 +70,7 @@
                     </ng-template>
                 </p-card>
             </div>
+            <p-scrollTop target="window"></p-scrollTop>
         </div>
     </div>
 </div>

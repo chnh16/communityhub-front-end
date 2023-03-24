@@ -11,6 +11,7 @@ import { ListCourseComponent } from "./list-course/list-course.component";
 import { CalendarModule } from 'primeng/calendar';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { RadioButtonModule } from 'primeng/radiobutton';
+import { InfiniteScrollModule } from "ngx-infinite-scroll";
 @NgModule({
     declarations: [
         ListCourseComponent,
@@ -20,7 +21,7 @@ import { RadioButtonModule } from 'primeng/radiobutton';
     ],
     imports: [
         ButtonModule, CardModule, InputTextModule, CourseRouting, SharedModule, CalendarModule, InputNumberModule,
-        RadioButtonModule,
+        RadioButtonModule, InfiniteScrollModule
     ]
 })
 

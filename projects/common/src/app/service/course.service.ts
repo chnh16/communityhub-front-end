@@ -18,8 +18,10 @@ export class CourseService {
         private http: HttpClient
     ) { }
 
-    getAll(id: string, price: string): Observable<CourseGetAllRes[]> {
-        return this.http.get<CourseGetAllRes[]>(`${BASE_URL}/courses?category=${id}&price=${price}`)
+
+
+    getAll(id: string, price: string, limit: number, offset: number): Observable<CourseGetAllRes[]> {
+        return this.http.get<CourseGetAllRes[]>(`${BASE_URL}/courses?category=${id}&price=${price}&limit=${limit}&offset=${offset}`)
     }
 
     insert(data: CourseInsertReq): Observable<InsertRes> {

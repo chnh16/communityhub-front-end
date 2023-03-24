@@ -5,16 +5,18 @@
 <div class="mt-8 card">
     <p-toolbar styleClass="min-w-20 mb-4 gap-2">
         <ng-template pTemplate="left">
-            <app-routing-button label="Add New" icon="pi pi-plus" class="p-button-rounded mr-2" link="/category/add"></app-routing-button>
+            <app-routing-button label="Add New" icon="pi pi-plus" class="p-button-rounded mr-2" link="/category/add">
+            </app-routing-button>
             <!-- <button pButton pRipple label="Add New" icon="pi pi-plus" class="p-button-rounded mr-2"></button> -->
         </ng-template>
     </p-toolbar>
 
     <div class="flex flex-wrap align-items-center justify-content-center">
-        <p-table styleClass="p-datatable-striped" [value]="resCategory" [tableStyle]="{'min-width': '80rem'}">
+        <p-table styleClass="p-datatable-striped" [value]="resCategory" [tableStyle]="{'min-width': '80rem'}"
+            [paginator]="true" [rows]="5" [columns]="resCategory" [rowsPerPageOptions]="[5,10,15,20]">
             <ng-template pTemplate="header">
                 <tr>
-                    <th>#</th>
+                    <th>No</th>
                     <th>Code Category</th>
                     <th>Name Category</th>
                     <th>Detail</th>
@@ -26,12 +28,16 @@
                     <td>{{item.categoryCode}}</td>
                     <td>{{item.categoryName}}</td>
                     <td>
-                        <button pButton pRipple type="button" icon="pi pi-file-edit" class="p-button-rounded p-button-success" routerLink="/category/update/{{item.id}}"></button>
-                        <button pButton pRipple type="button" icon="pi pi-trash" class="ml-3 p-button-rounded p-button-danger" (click)="deleteCategory(item)"></button>
+                        <button pButton pRipple type="button" icon="pi pi-file-edit"
+                            class="p-button-rounded p-button-success"
+                            routerLink="/category/update/{{item.id}}"></button>
+                        <button pButton pRipple type="button" icon="pi pi-trash"
+                            class="ml-3 p-button-rounded p-button-danger" (click)="deleteCategory(item)"></button>
                     </td>
                 </tr>
             </ng-template>
         </p-table>
+        <!-- <p-paginator [rows]="10" [totalRecords]="120" [rowsPerPageOptions]="[10,20,30]"></p-paginator> -->
     </div>
 </div>
 <pre>{{resCategory.values | json}}</pre>

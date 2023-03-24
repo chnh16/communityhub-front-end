@@ -34,10 +34,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
   categories: CategoryGetAllRes[] = []
 
   data = this.fb.group({
-    postTitle: ['', Validators.required],
-    postContent: ['', Validators.required],
+    postTitle: ['', [Validators.required, Validators.minLength(5)]],
+    postContent: ['', [Validators.required, Validators.minLength(5)]],
     categoryId: ['', Validators.required],
-    isPremium: false,
+    isPremium: [false, Validators.required],
     file: this.fb.array([]),
     polling: this.fb.array([])
   })

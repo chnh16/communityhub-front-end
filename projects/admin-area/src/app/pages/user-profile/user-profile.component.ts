@@ -5,6 +5,7 @@ import { FileInsertReq } from "projects/common/src/app/pojo/file/FileInsertReq";
 import { IndustryGetAllRes } from "projects/common/src/app/pojo/industry/IndustryGetAllRes";
 import { PositionGetAllRes } from "projects/common/src/app/pojo/position/PositionGetAllRes";
 import { ProfileInsertReq } from "projects/common/src/app/pojo/user/ProfileInsertReq";
+import { RegisterReq } from "projects/common/src/app/pojo/user/RegisterReq";
 import { IndustryService } from "projects/common/src/app/service/industry.service";
 import { PositionService } from "projects/common/src/app/service/position.service";
 import { UserService } from "projects/common/src/app/service/user.service";
@@ -15,13 +16,14 @@ import { Subscription } from "rxjs";
     selector: 'app-login',
     templateUrl: './user-profile.component.html'
 })
-export class ProfileMemberComponent implements OnInit, OnDestroy {
+export class ProfileAdminComponent implements OnInit, OnDestroy {
     registerData!: any[]
     profileMember$?: Subscription
-    industry$?: Subscription
     position$?: Subscription
-    industries!: IndustryGetAllRes[]
+    industries$?: Subscription
     positions!: PositionGetAllRes[]
+    industries!: IndustryGetAllRes[]
+
     data = this.fb.group({
         fullName: ['', Validators.required],
         country: ['', Validators.required],
@@ -67,23 +69,52 @@ export class ProfileMemberComponent implements OnInit, OnDestroy {
             file: file
         }
 
+        const register: RegisterReq = {
+            email: '',
+            passwordUser: '',
+            profile: profile
+        }
+        this.userService.regisAdmin(register).subscribe(result => {
+
+        })
+
+    }
+
+    uploadFile(event: any) {
+        const toBase64 = (file: File) => new Promise<string>((resolve, reject) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => {
+                if (typeof reader.result === "string")
+                    resolve(reader.result)
+            };
+            reader.onerror = error => reject(error);
+        });
+        for (let file of event.files) {
+            toBase64(file).then(result => {
+                const resultBase64 = result.substring(result.indexOf(",") + 1, result.length)
+                const resultExtension = file.name.substring(file.name.indexOf(".") + 1, file.name.length)
+
+                console.log(resultBase64)
+                console.log(resultExtension)
+                this.data.patchValue({
+                    file: ({
+                        fileName: file.name,
+                        fileContent: resultBase64,
+                        fileExtension: resultExtension
+                    })
+                })
+            })
+        }
     }
 
     ngOnInit(): void {
-        this.activatedRoute.queryParams.subscribe(res => {
-            this.registerData = JSON.parse(atob(res['data']))
-        })
-        this.industry$ = this.industryService.getAll().subscribe(res => {
-            this.industries = res
-            this.data.patchValue({
-                industryId: this.industries.at(0)?.id
-            })
-        })
         this.position$ = this.positionService.getAll().subscribe(res => {
             this.positions = res
-            this.data.patchValue({
-                positionId: this.positions.at(0)?.id
-            })
+        })
+
+        this.industries$ = this.industryService.getAll().subscribe(res => {
+            this.industries = res
         })
     }
 

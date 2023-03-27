@@ -25,6 +25,7 @@ export class BuyEventComponent implements OnInit, OnDestroy {
 
     insertTransaction$?: Subscription
     getByEventId?: EventGetAllRes
+
     private geEventDetail$?: Subscription
 
     eventId!: string
@@ -76,9 +77,6 @@ export class BuyEventComponent implements OnInit, OnDestroy {
         }
         )
     }
-
-
-
 
     fileUpload(event: any) {
         const toBase64 = (file: File) => new Promise<string>((resolve, reject) => {

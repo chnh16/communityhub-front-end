@@ -21,6 +21,10 @@ export class IndustryService {
         return this.http.get<IndustryGetAllRes[]>(`${BASE_URL}/industry`);
     }
 
+    getIndustry(limit: number, offset: number): Observable<IndustryGetAllRes[]> {
+        return this.http.get<IndustryGetAllRes[]>(`${BASE_URL}/industry/page?limit=${limit}&offset=${offset}`)
+    }
+
     getById(id: string): Observable<IndustryGetAllRes> {
         return this.http.get<IndustryGetAllRes>(`${BASE_URL}/industry/${id}`);
     }

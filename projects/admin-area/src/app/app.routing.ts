@@ -15,6 +15,7 @@ import { SharedModule } from "projects/common/src/app/shared.module";
 import { CodeAdminComponent } from "./pages/code-register/code-admin.component";
 import { LoginAdminComponent } from "./pages/login/login-admin.component";
 import { RegisterAdminComponent } from "./pages/register/register-admin.component";
+import { ProfileAdminComponent } from "./pages/user-profile/user-profile.component";
 
 
 export const adminRouter: Routes = [
@@ -25,6 +26,10 @@ export const adminRouter: Routes = [
     {
         path: 'register',
         component: RegisterAdminComponent
+    },
+    {
+        path: 'profile',
+        component: ProfileAdminComponent
     },
     {
         path: 'code',
@@ -56,11 +61,11 @@ export const adminRouter: Routes = [
         component: MenuBarComponent
     },
     {
-        path : 'article',
-        loadChildren : () => import('./pages/article/article.module').then(c => c.ArticleModule),
-        component : MenuBarComponent
+        path: 'article',
+        loadChildren: () => import('./pages/article/article.module').then(c => c.ArticleModule),
+        component: MenuBarComponent
     },
-    { 
+    {
         path: 'approval',
         loadChildren: () => import('./pages/approval/approval.module').then(c => c.ApprovalModule),
         component: MenuBarComponent
@@ -70,14 +75,14 @@ export const adminRouter: Routes = [
 
 @NgModule({
     declarations: [
-        LoginAdminComponent, RegisterAdminComponent, CodeAdminComponent
+        LoginAdminComponent, RegisterAdminComponent, CodeAdminComponent, ProfileAdminComponent
     ],
     imports: [
         RouterModule.forRoot(adminRouter),
         SharedModule
     ],
     exports: [
-        RouterModule, LoginAdminComponent, RegisterAdminComponent, CodeAdminComponent
+        RouterModule, LoginAdminComponent, RegisterAdminComponent, CodeAdminComponent, ProfileAdminComponent
     ]
 })
 

@@ -11,6 +11,15 @@
     <div class="mt-2">
         <p-card class=" card-body p-4 flex align-items-center justify-content-center"
             [style]=" {width: '500px' , height:'100%'}" styleClass="p-card-shadow">
+            <div>
+                <div class=" grid mt-1 justify-content-center">
+                    <span style="font-weight:bold">Event : {{getByCourseId?.courseName}}</span>
+                </div>
+                <div class=" grid mt-1 justify-content-center">
+                    <span>Price : Rp.{{getByCourseId?.price}}</span>
+                </div>
+            </div>
+            <p-divider></p-divider>
             <form [formGroup]="data" (ngSubmit)="buyCourse()">
                 <div class="field grid">
                     <label for="voucherCode" class="col-fixed" style="width:200px">Code Voucher</label>

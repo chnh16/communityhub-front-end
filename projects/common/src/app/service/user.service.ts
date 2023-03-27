@@ -13,7 +13,7 @@ import { RegisterReq } from "../pojo/user/RegisterReq";
 @Injectable({
     providedIn: 'root'
 })
-export class UserService{
+export class UserService {
     constructor(
         private http: HttpClient
     ) { }
@@ -22,11 +22,15 @@ export class UserService{
         return this.http.post<LoginRes>(`${BASE_URL}/users/login`, data, { headers: { 'skip': 'true' } });
     }
 
-    getProfile() : Observable<ProfileGetReq>{
+    regisAdmin(data: RegisterReq): Observable<RegisterReq> {
+        return this.http.post<RegisterReq>(`${BASE_URL}/users/regis-admin`, data, { headers: { 'skip': 'true' } });
+    }
+
+    getProfile(): Observable<ProfileGetReq> {
         return this.http.get<ProfileGetReq>(`${BASE_URL}/users/user-profile`)
     }
 
-    setData(data : LoginRes){
+    setData(data: LoginRes) {
         localStorage.setItem('dataLogin', JSON.stringify(data))
 
     }

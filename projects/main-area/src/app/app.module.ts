@@ -11,11 +11,12 @@ import { CodeComponent } from './pages/code-register/code-register.component';
 import { MessageService } from 'primeng/api';
 import { SharedModule } from 'projects/common/src/app/shared.module';
 import { AppRouting } from './app.routing';
+import { ProfileAdminComponent } from 'projects/admin-area/src/app/pages/admin-profile/admin-profile.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent, LoginComponent, RegisterComponent, CodeComponent
+    AppComponent, LoginComponent, RegisterComponent, CodeComponent, ProfileAdminComponent
   ],
   imports: [
    SharedModule, BrowserModule, AppRouting, BrowserAnimationsModule, HttpClientModule

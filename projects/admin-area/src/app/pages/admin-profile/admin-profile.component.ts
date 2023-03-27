@@ -14,9 +14,10 @@ import { Subscription } from "rxjs";
 
 @Component ({
     selector : 'app-login',
-    templateUrl : './user-profile.component.html'
+    templateUrl : './admin-profile.component.html'
 })
-export class ProfileMemberComponent implements OnInit, OnDestroy {
+export class ProfileAdminComponent implements OnInit, OnDestroy { 
+
     registerData! : any
     profileMember$? : Subscription
     industry$? : Subscription
@@ -27,6 +28,7 @@ export class ProfileMemberComponent implements OnInit, OnDestroy {
         email : ['', Validators.required],
         passwordUser :['', Validators.required], 
     })
+
     profile = this.fb.group ({
         fullName : ['', Validators.required],
         country : ['', Validators.required],
@@ -137,5 +139,4 @@ export class ProfileMemberComponent implements OnInit, OnDestroy {
     ngOnDestroy(): void {
         this.profileMember$?.unsubscribe()
     }
-    
 }

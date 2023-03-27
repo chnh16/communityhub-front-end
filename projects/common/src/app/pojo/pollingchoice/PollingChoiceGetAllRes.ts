@@ -1,5 +1,5 @@
 export interface PollingChoiceGetAllRes {
   pollingChoiceId :  string,
-  pollingDetailId :  string,
-  choiceContent : string
+  choiceContent : string,
+  ver : number
 }

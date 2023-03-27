@@ -8,6 +8,7 @@ import { Observable, skip } from "rxjs";
 import { LoginReq } from "../pojo/user/LoginReq";
 import { LoginRes } from "../pojo/user/LoginRes";
 import { ProfileGetReq } from "../pojo/user/ProfileGetReq";
+import { ProfileInsertReq } from "../pojo/user/ProfileInsertReq";
 import { RegisterReq } from "../pojo/user/RegisterReq";
 
 @Injectable({
@@ -25,8 +26,12 @@ export class UserService {
     regisAdmin(data: RegisterReq): Observable<RegisterReq> {
         return this.http.post<RegisterReq>(`${BASE_URL}/users/regis-admin`, data, { headers: { 'skip': 'true' } });
     }
+    
+    regisMember(data: RegisterReq): Observable<RegisterReq> {
+        return this.http.post<RegisterReq>(`${BASE_URL}/users/regis`, data, { headers: { 'skip': 'true' } });
+    }
 
-    getProfile(): Observable<ProfileGetReq> {
+    getProfile() : Observable<ProfileGetReq>{
         return this.http.get<ProfileGetReq>(`${BASE_URL}/users/user-profile`)
     }
 

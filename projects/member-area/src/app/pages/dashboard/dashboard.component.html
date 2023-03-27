@@ -8,14 +8,15 @@
         <div class="align-item-center">
             <p-card class="align-items-center flex-wrap" styleClass="p-card-shadow">
                 <p-avatar class="grid align-items-center justify-content-center" styleClass="mr-2" size="xlarge"
-                    image="http://192.168.10.73:8080/files/{{profile.file}}"
+                    image="http://192.168.10.124:8080/files/{{profile.file}}"
                     [style]="{'background-color':'#2196F3', 'color': '#ffffff'}"></p-avatar>
                 <h3 class="grid my-1 align-items-center justify-content-center">{{profile.fullName}}</h3>
                 <span class="grid my-1 align-items-center justify-content-center">{{profile.industryId}}</span>
                 <span class="grid my-1 align-items-center justify-content-center">{{profile.positionId}}</span>
+                <span class="grid my-1 align-items-center justify-content-center">{{profile.company}}</span>
                 <p-divider></p-divider>
                 <h4>Profil</h4>
-                <div class="mx-2">
+                <div class="mx-2 p-0">
                     <div class="mb-2">
                         <span class="grid mb-1">Email</span>
                         <p class="grid">{{profile.email}}</p>
@@ -23,6 +24,11 @@
                     <div class="mb-2">
                         <span class="grid mb-1">No. Telp</span>
                         <p class="grid">{{profile.phoneNumber}}</p>
+                    </div>
+                    <div *ngIf="!isPremium" class="mb-2">
+                        <div class="grid">
+                            <button pButton class="p-button-primary p-button-text m-0 p-0" routerLink="/memberships"><i class="pi pi-lock"></i>Aktifkan Premium</button>
+                        </div>
                     </div>
                 </div>
                 <p-divider></p-divider>
@@ -77,7 +83,7 @@
                     <p-dropdown [options]="categories" optionLabel="categoryName" formControlName="categoryId"
                         optionValue="id"></p-dropdown>
                 </div>
-                <div class="mb-1">
+                <div *ngIf="isPremium" class="mb-1">
                     <label>Premium</label>
                     <p-inputSwitch formControlName="isPremium">Premium</p-inputSwitch>
                 </div>
@@ -127,7 +133,7 @@
                 <p-card class="grid block col-12 m-0 mt-2 p-0">
                     <div class="grid mx-2">
                         <div class="grid align-items-center col-2 p-0">
-                            <p-avatar image="http://192.168.10.73:8080/files/{{p.userFileId}}" styleClass="mr-2"
+                            <p-avatar image="http://192.168.10.124:8080/files/{{p.userFileId}}" styleClass="mr-2"
                                 size="xlarge" shape="circle"></p-avatar>
                         </div>
                         <div class="grid align-items-center col-7 p-0">
@@ -151,7 +157,20 @@
                     <div class="grid mx-2">
                         <div *ngIf="p.fileId">
                             <img class="m-1" style="width: 250px;" *ngFor="let img of p.fileId; let j = index"
-                                src="http://192.168.10.73:8080/files/{{img}}" alt="img">
+                                src="http://192.168.10.124:8080/files/{{img}}" alt="img">
+                        </div>
+                        <div *ngIf="p.pollingChoice">
+                            <div *ngIf="!p.isAnswered">
+                                <div *ngFor="let c of p.pollingChoice; let j = index">
+                                    <app-text-button label="{{c.choiceContent}}"
+                                        (click)="onInsertPollingAnswer(c.pollingChoiceId, i)"></app-text-button>
+                                </div>
+                            </div>
+                            <div *ngIf="p.isAnswered">
+                                <div class="mb-2">Progress bar</div>
+                                <app-text-button label="Undo"
+                                    (click)="onRemovePollingAnswer(p.isAnswered.id, i)"></app-text-button>
+                            </div>
                         </div>
                     </div>
                     <div *ngIf="p.likeCount > 0" class="grid m-2">

@@ -12,6 +12,7 @@ import { MenubarModule } from "primeng/menubar";
 import { ButtonModule } from "projects/common/src/app/component/button/button.module";
 import { MenuBarComponent } from "projects/common/src/app/component/navbar/navbar.component";
 import { SharedModule } from "projects/common/src/app/shared.module";
+import { ProfileAdminComponent } from "./pages/admin-profile/admin-profile.component";
 import { CodeAdminComponent } from "./pages/code-register/code-admin.component";
 import { LoginAdminComponent } from "./pages/login/login-admin.component";
 import { RegisterAdminComponent } from "./pages/register/register-admin.component";
@@ -28,8 +29,8 @@ export const adminRouter: Routes = [
         component: RegisterAdminComponent
     },
     {
-        path: 'profile',
-        component: ProfileAdminComponent
+        path: 'admin-Profile',
+        component : ProfileAdminComponent
     },
     {
         path: 'code',

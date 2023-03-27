@@ -1,6 +1,6 @@
-<pre>{{registerData | json}}</pre>
+<!-- <pre>{{registerData | json}}</pre>
 <pre>{{data.value | json}}</pre>
-<pre>{{profile.value | json}}</pre>
+<pre>{{profile.value | json}}</pre> -->
 <div class="ml-4 mr-4 card surface-border">
     <p-card class="mt-6 flex flex-wrap align-items-center justify-content-center surface-border">
         <form [formGroup]="profile" (ngSubmit)="onSubmit()">
@@ -38,7 +38,7 @@
                             <label for="lastname6">Postal Code</label>
                             <input [formGroup]="profile" formControlName="postalCode" id="lastname6" type="text" class="text-base text-color surface-overlay p-2 border-3 border-solid surface-border border-blue-400 border-round appearance-none outline-none focus:border-primary w-full">
                         </div>
-                        <div for="positionId" class="mt-4 field col-8 md:col-6">
+                        <div class="mt-4 field col-8 md:col-6">
                             <label for="lastname6">Position</label>
                         </div>
                         <div class="mt-4 field col-8 md:col-6">
@@ -46,12 +46,8 @@
                         </div>
                         <div class="field col-8 md:col-6">
                             <!-- <label for="lastname6">Position</label> -->
-                            <p-dropdown [options]="positions" placeholder=" Select a Position" [showClear]="true"
-                                optionLabel="positionName" formControlName="positionId" optionValue="id" class="w-full">
-                            </p-dropdown>
+                            <p-dropdown [options]="positions" optionLabel="positionName" [formGroup]="profile" formControlName="positionId" optionValue="id" class="w-full"></p-dropdown>
                         </div>
-
-
 
                         <div class="field col-8 md:col-6">
                             <!-- <label for="lastname6">Industry</label> -->
@@ -77,8 +73,7 @@
                 </div>
                 <div class="col-2 flex align-items-center justify-content-start">
                     <div class="w-27rem">
-                        <p-image src="/projects/member-area/src/assets/img/user_profile.jpg" alt="Image" width="150"
-                            height="300"></p-image>
+                        <p-image src="/projects/member-area/src/assets/img/user_profile.jpg" alt="Image" width="150" height="300"></p-image>
                     </div>
                 </div>
             </div>

@@ -4,7 +4,7 @@ import { BASE_URL } from "projects/common/src/app/constant/BaseUrl";
 import { DeleteRes } from "projects/common/src/app/pojo/DeleteRes";
 import { InsertRes } from "projects/common/src/app/pojo/InsertRes";
 import { UpdateRes } from "projects/common/src/app/pojo/UpdateRes";
-import { Observable } from "rxjs";
+import { Observable, skip } from "rxjs";
 import { IndustryGetAllRes } from "../../../../common/src/app/pojo/industry/IndustryGetAllRes";
 import { IndustryInsertReq } from "../../../../common/src/app/pojo/industry/IndustryInsertReq";
 import { IndustryUpdateReq } from "../../../../common/src/app/pojo/industry/IndustryUpdateReq";
@@ -18,7 +18,7 @@ export class IndustryService {
     ) { }
 
     getAll(): Observable<IndustryGetAllRes[]> {
-        return this.http.get<IndustryGetAllRes[]>(`${BASE_URL}/industry`);
+        return this.http.get<IndustryGetAllRes[]>(`${BASE_URL}/industry`, {headers : {'skip' : 'true'} });
     }
 
     getIndustry(limit: number, offset: number): Observable<IndustryGetAllRes[]> {

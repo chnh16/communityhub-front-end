@@ -24,7 +24,7 @@ export class ListMembershipMemberComponent implements OnInit {
         })
     }
 
-    // ngOnDestroy(): void {
-    //     this.membership$?.unsubscribe()
-    // }
+    ngOnDestroy(): void {
+        this.membership$?.unsubscribe()
+    }
 }

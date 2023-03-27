@@ -21,6 +21,10 @@ export class PositionService {
         return this.http.get<PositionGetAllRes[]>(`${BASE_URL}/positions`, {headers : {'skip' : 'true'} });
     }
 
+    getPosition(limit: number, offset: number): Observable<PositionGetAllRes[]> {
+        return this.http.get<PositionGetAllRes[]>(`${BASE_URL}/positions/page?limit=${limit}&offset=${offset}`)
+    }
+
     getById(id: string): Observable<PositionGetAllRes> {
         return this.http.get<PositionGetAllRes>(`${BASE_URL}/positions/${id}`);
     }

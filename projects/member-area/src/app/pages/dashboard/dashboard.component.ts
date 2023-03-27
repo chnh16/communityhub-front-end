@@ -82,7 +82,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     })
   }
 
-  onShowAddDetail(i : number) {
+  onShowAddDetail(i: number) {
     this.post[i].showComment = !this.post[i].showComment
   }
 
@@ -187,37 +187,37 @@ export class DashboardComponent implements OnInit, OnDestroy {
     })
   }
 
-  onLike(postId: string, i : number): void {
+  onLike(postId: string, i: number): void {
     const data: PostLikeReq = {
       postId: postId
     }
     this.postLike$ = this.postService.onLike(data).subscribe(res => {
       this.post[i].isLiked = {
-        id : res.id,
-        status : true
+        id: res.id,
+        status: true
       }
     })
   }
 
-  onDislike(postId: string, i : number): void {
+  onDislike(postId: string, i: number): void {
     this.postLike$ = this.postService.onDislike(postId).subscribe(res => {
       this.post[i].isLiked = null
     })
   }
 
-  onBookmark(postId: string, i : number): void {
+  onBookmark(postId: string, i: number): void {
     const data: PostBookmarkReq = {
       postId: postId
     }
     this.postBookmark$ = this.postService.onBookmark(data).subscribe(res => {
       this.post[i].isBookmarked = {
-        id : res.id,
-        status : true
+        id: res.id,
+        status: true
       }
     })
   }
 
-  onRemoveBookmark(postId: string, i : number): void {
+  onRemoveBookmark(postId: string, i: number): void {
     this.postBookmark$ = this.postService.onRemoveBookmark(postId).subscribe(res => {
       this.post[i].isBookmarked = null
     })

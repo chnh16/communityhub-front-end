@@ -21,6 +21,10 @@ export class VoucherService {
         return this.http.get<VoucherGetAllRes[]>(`${BASE_URL}/voucher`);
     }
 
+    getVoucher(limit: number, offset: number): Observable<VoucherGetAllRes[]> {
+        return this.http.get<VoucherGetAllRes[]>(`${BASE_URL}/voucher/page?limit=${limit}&offset=${offset}`)
+    }
+
     getById(id: string): Observable<VoucherGetAllRes> {
         return this.http.get<VoucherGetAllRes>(`${BASE_URL}/voucher/${id}`);
     }

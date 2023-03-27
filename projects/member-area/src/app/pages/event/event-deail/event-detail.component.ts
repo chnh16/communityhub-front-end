@@ -17,8 +17,6 @@ export class EventDetailComponent {
     eventDelete$?: Subscription
     userId = this.userService.getidUser()
 
-    // idEvent: string = this.getByEventId!.id
-
     constructor(
         private eventService: EventService,
         private router: ActivatedRoute,
@@ -27,8 +25,6 @@ export class EventDetailComponent {
     ) {
 
     }
-
-
 
     ngOnInit(): void {
         this.router.params.subscribe(result1 => {
@@ -39,7 +35,6 @@ export class EventDetailComponent {
 
         })
     }
-
 
     deleteEvent(event: EventGetAllRes) {
         console.log("Delete")

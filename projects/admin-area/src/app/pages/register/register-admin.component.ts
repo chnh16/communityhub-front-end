@@ -5,10 +5,11 @@ import { UserService } from "projects/common/src/app/service/user.service";
 import { Subscription } from "rxjs";
 
 
-@Component ({
-    selector : 'app-login',
-    templateUrl : './register-admin.component.html'
+@Component({
+    selector: 'app-login',
+    templateUrl: './register-admin.component.html'
 })
+
 export class RegisterAdminComponent implements OnDestroy {
     registerAdmin$? : Subscription
     data = this.fb.group({
@@ -31,6 +32,5 @@ export class RegisterAdminComponent implements OnDestroy {
     ngOnDestroy(): void {
         this.registerAdmin$?.unsubscribe()
     }
-    
     
 }

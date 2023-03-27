@@ -2,18 +2,17 @@
     {{login.value | json}}
 </pre>
 
-<div class="card">
+<!-- <div class="card">
     <p-card class="mt-4 ml-6 mr-6 flex flex-wrap align-items-center justify-content-center">
         <div class="grid">
             <div class="col-8 flex justify-content-start">
                 <div class="col-2 flex justify-content-start">
                     <div class="w-35rem pl-0">
-                        <p-image src="../../../assets/img/undraw_Welcoming_re_x0qo.png" alt="Image" height="500" width="600" class="justify-content-start pl-0"></p-image>
+                        <p-image src="../../../assets/img/undraw_Welcoming_re_x0qo.png" alt="Image" height="500"
+                            width="600" class="justify-content-start pl-0"></p-image>
                     </div>
                 </div>
-                <!-- <p-divider layout="vertical">
-                    <b></b>
-                </p-divider> -->
+
             </div>
 
 
@@ -26,18 +25,66 @@
                             </div>
                             <div class="pt-4 field col-4 md:col-12">
                                 <label for="email">Email</label>
-                                <input pInputText id="email" type="text" formControlName="email" class="text-base text-color surface-overlay p-2 border-3 border-solid surface-border border-blue-400 border-round appearance-none outline-none focus:border-primary w-full" />
+                                <input pInputText id="email" type="text" formControlName="email"
+                                    class="text-base text-color surface-overlay p-2 border-3 border-solid surface-border border-blue-400 border-round appearance-none outline-none focus:border-primary w-full" />
                             </div>
                             <div class="field col-4 md:col-12">
                                 <label for="password">Password</label>
-                                <input pInputText id="password" type="password" formControlName="passwordUser" class="text-base text-color surface-overlay p-2 border-3 border-solid surface-border border-blue-400 border-round appearance-none outline-none focus:border-primary w-full"
-                                />
+                                <input pInputText id="password" type="password" formControlName="passwordUser"
+                                    class="text-base text-color surface-overlay p-2 border-3 border-solid surface-border border-blue-400 border-round appearance-none outline-none focus:border-primary w-full" />
                             </div>
-                            <app-submit-button clasz="w-27rem p-button-rounded bg-blue-400" label="LOGIN"></app-submit-button>
-                            <app-routing-button clasz="mt-2 w-27rem p-button-rounded bg-blue-400" label="SIGN UP"></app-routing-button>
+                            <app-submit-button clasz="w-27rem p-button-rounded bg-blue-400" label="LOGIN">
+                            </app-submit-button>
+
+                            <app-routing-button clasz="mt-2 w-27rem p-button-rounded bg-blue-400" label="Sign Up"
+                                link="/register">
+                            </app-routing-button>
                             <p class="mt-1 underline text-center">Forget password</p>
                         </form>
                     </div>
+                </div>
+            </div>
+        </div>
+    </p-card>
+</div> -->
+
+<pre>{{login.value | json}}</pre>
+<div class="card">
+    <p-card class="mt-8 flex flex-wrap align-items-center justify-content-center ">
+
+        <div class="grid">
+            <div class="col-5 flex align-items-center justify-content-center">
+                <form [formGroup]="login" (ngSubmit)="onLogin()">
+                    <div class="pl-5 p-fluid">
+                        <div class="pt-2 align-items-center justify-content-center">
+                            <h3>LOGIN</h3>
+                        </div>
+                        <div class="pt-4 field">
+                            <label for="email">Email</label>
+                            <input formControlName="email" pInputText id="email" type="email" />
+                        </div>
+                        <div class="field">
+                            <label for="password">Password</label>
+                            <p-password formControlName="passwordUser" [toggleMask]="true" [feedback]="false">
+                            </p-password>
+                        </div>
+                        <app-submit-button clasz="w-27rem p-button-rounded bg-blue-400" label="Login"
+                            [disabled]="!login.valid"></app-submit-button>
+                        <app-routing-button clasz="mt-2 w-27rem p-button-rounded bg-blue-400" label="Sign Up"
+                            link="/register"></app-routing-button>
+                        <p class="mt-1 underline text-center">Forget password</p>
+                    </div>
+                </form>
+            </div>
+
+            <div class="col-2">
+                <p-divider layout="vertical">
+                    <b></b>
+                </p-divider>
+            </div>
+            <div class="col-5 flex align-items-center justify-content-center">
+                <div class="w-27rem">
+                    <p-image src="../../../assets/img/undraw_Welcoming_re_x0qo.png" alt="Image" width="350"></p-image>
                 </div>
             </div>
         </div>

@@ -10,13 +10,13 @@ import { UserService } from "../../service/user.service";
     templateUrl: './navbar.component.html'
 })
 export class MenuBarComponent implements OnInit {
-    profileFileId! : string
-    dashboard$? : Subscription
+    profileFileId!: string
+    dashboard$?: Subscription
 
     constructor(
-        private router: Router, 
-        private userService : UserService
-        ) {
+        private router: Router,
+        private userService: UserService
+    ) {
     }
 
     items!: MenuItem[];
@@ -34,17 +34,17 @@ export class MenuBarComponent implements OnInit {
         })
         this.items = [
             {
-                label: 'Home'
+                label: 'Home', routerLink: '/dashboard'
             },
             {
-                label: 'Article', routerLink:'/article'
+                label: 'Article', routerLink: '/article'
             },
             {
                 label: 'Transaction',
                 items: [
-                    { label: 'Membership' },
-                    { label: 'Course' },
-                    { label: 'Events' }
+                    { label: 'Membership', routerLink: '/memberships' },
+                    { label: 'Course', routerLink: '/course' },
+                    { label: 'Events', routerLink: '/event' }
                 ]
             },
             {

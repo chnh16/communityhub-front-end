@@ -6,7 +6,7 @@
 
         </ng-template>
         <ng-template pTemplate="end">
-            <p-avatar image="http://192.168.10.73:8080/files/{{profileFileId}}" styleClass="mr-2"
+            <p-avatar image="http://192.168.10.124:8080/files/{{profileFileId}}" styleClass="mr-2"
                 size="xlarge" shape="circle" (click)="menu.toggle($event)"></p-avatar>
             <p-tieredMenu #menu [model]="itemsEnd" [popup]="true"></p-tieredMenu>
         </ng-template>

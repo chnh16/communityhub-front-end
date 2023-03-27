@@ -41,4 +41,12 @@ export class PostService{
     onRemoveBookmark(postId : string) : Observable<DeleteRes>{
         return this.http.delete<DeleteRes>(`${BASE_URL}/post/bookmark/${postId}`)
     }
+
+    onInsertPollingAnswer(pollingChoiceId : string) : Observable<InsertRes>{
+        return this.http.post<InsertRes>(`${BASE_URL}/post/polling/${pollingChoiceId}`, {})
+    }
+
+    onRemovePollingAnswer(pollingAnswerId : string) : Observable<DeleteRes>{
+        return this.http.delete<DeleteRes>(`${BASE_URL}/post/polling/${pollingAnswerId}`)
+    }
 }

@@ -16,7 +16,6 @@ import { ProfileAdminComponent } from "./pages/admin-profile/admin-profile.compo
 import { CodeAdminComponent } from "./pages/code-register/code-admin.component";
 import { LoginAdminComponent } from "./pages/login/login-admin.component";
 import { RegisterAdminComponent } from "./pages/register/register-admin.component";
-import { ProfileAdminComponent } from "./pages/user-profile/user-profile.component";
 
 
 export const adminRouter: Routes = [

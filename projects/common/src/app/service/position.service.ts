@@ -18,7 +18,7 @@ export class PositionService {
     ) { }
 
     getAll(): Observable<PositionGetAllRes[]> {
-        return this.http.get<PositionGetAllRes[]>(`${BASE_URL}/positions`);
+        return this.http.get<PositionGetAllRes[]>(`${BASE_URL}/positions`, {headers : {'skip' : 'true'} });
     }
 
     getById(id: string): Observable<PositionGetAllRes> {

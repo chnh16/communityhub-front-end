@@ -14,6 +14,9 @@ import { Subscription } from "rxjs";
 })
 
 export class BuyMembershipComponent implements OnInit, OnDestroy {
+    membership$? : Subscription
+    membership! : MembershipGetAllRes
+
     constructor(
         private fb: FormBuilder,
         private membershipService: MembershipService,
@@ -31,12 +34,14 @@ export class BuyMembershipComponent implements OnInit, OnDestroy {
     membershipId!: string
 
     ngOnDestroy(): void {
-
+        this.membership$?.unsubscribe()
     }
     ngOnInit(): void {
-        this.ar.params.subscribe(result1 => {
-            this.membershipId = result1['id']
-
+        this.ar.params.subscribe(res => {
+            this.membershipId = res['id']
+            this.membership$ = this.membershipService.getById(this.membershipId).subscribe(res => {
+                this.membership = res
+            })
         })
     }
 

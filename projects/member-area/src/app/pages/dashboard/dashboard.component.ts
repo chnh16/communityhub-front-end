@@ -23,6 +23,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   dashboardProfile$?: Subscription
   postLike$?: Subscription
   postBookmark$?: Subscription
+  pollingAnswer$? : Subscription
   post!: PostGetAllRes[]
   profile?: ProfileGetReq
   uploadedFiles: any[] = []
@@ -60,6 +61,13 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   get pollingData() {
     return this.data.get('polling') as FormArray
+  }
+
+  get isPremium(){
+    const data = localStorage.getItem('dataLogin')
+    if(data){
+      return JSON.parse(data).isPremium
+    }
   }
 
   onScroll(): void {
@@ -221,6 +229,21 @@ export class DashboardComponent implements OnInit, OnDestroy {
     })
   }
 
+  onInsertPollingAnswer(pollingChoiceId : string, i : number){
+    this.pollingAnswer$ = this.postService.onInsertPollingAnswer(pollingChoiceId).subscribe(res => {
+      this.post[i].isAnswered = {
+        id : res.id,
+        choiceId : pollingChoiceId
+      }
+    })
+  }
+
+  onRemovePollingAnswer(pollingAnswerId : string, i : number){
+    this.pollingAnswer$ = this.postService.onRemovePollingAnswer(pollingAnswerId).subscribe(res => {
+      this.post[i].isAnswered = null;
+    })
+  }
+
   ngOnInit(): void {
     this.init()
     this.dashboardCategory$ = this.categoryService.getAll().subscribe(res => {
@@ -234,7 +257,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
       this.dashboardProfile$ = this.userService.getProfile().subscribe(res => {
         this.profile = res
       })
-    }, 3000)
+    }, 1000)
 
   }
 

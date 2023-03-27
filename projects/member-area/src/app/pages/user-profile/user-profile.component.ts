@@ -16,7 +16,7 @@ import { Subscription } from "rxjs";
     templateUrl : './user-profile.component.html'
 })
 export class ProfileMemberComponent implements OnInit, OnDestroy {
-    registerData! : any[]
+    registerData! : any
     profileMember$? : Subscription
     industry$? : Subscription
     position$? : Subscription

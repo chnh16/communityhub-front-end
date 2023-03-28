@@ -32,10 +32,12 @@
                     <div class="field grid">
                         <label for="formFileMultiple" class="form-label">Masukkan File</label>
 
-                        <p-fileUpload mode="basic" name="demo[]" (onSelect)="fileUpload($event)"></p-fileUpload>
-
+                        <div class="col">
+                            <p-fileUpload mode="basic" name="demo[]" (onSelect)="fileUpload($event)"></p-fileUpload>
+                        </div>
                     </div>
                 </div>
+
                 <div class="mt-4">
                     <div class="col-6">
                         <app-submit-button label="Buy" clasz="p-button-rounded mr-2"></app-submit-button>

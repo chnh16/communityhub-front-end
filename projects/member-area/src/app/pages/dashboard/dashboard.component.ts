@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MenuItem } from 'primeng/api';
 import { CategoryGetAllRes } from 'projects/common/src/app/pojo/category/CategoryGetAllRes';
 import { FileInsertReq } from 'projects/common/src/app/pojo/file/FileInsertReq';
 import { PollingChoiceInsertReq } from 'projects/common/src/app/pojo/pollingchoice/PollingChoiceInsertReq';
@@ -10,6 +11,7 @@ import { PostLikeReq } from 'projects/common/src/app/pojo/post/PostLikeReq';
 import { ProfileGetReq } from 'projects/common/src/app/pojo/user/ProfileGetReq';
 import { CategoryService } from 'projects/common/src/app/service/category.service';
 import { PostService } from 'projects/common/src/app/service/post.service';
+import { RouterService } from 'projects/common/src/app/service/router.service';
 import { UserService } from 'projects/common/src/app/service/user.service';
 import { Subscription } from 'rxjs';
 
@@ -18,12 +20,14 @@ import { Subscription } from 'rxjs';
   templateUrl: './dashboard.component.html'
 })
 export class DashboardComponent implements OnInit, OnDestroy {
+  items! : MenuItem[]
   dashboard$?: Subscription
   dashboardCategory$?: Subscription
   dashboardProfile$?: Subscription
   postLike$?: Subscription
   postBookmark$?: Subscription
   pollingAnswer$? : Subscription
+  postEdit$? : Subscription
   post!: PostGetAllRes[]
   profile?: ProfileGetReq
   uploadedFiles: any[] = []
@@ -33,6 +37,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   imageButton: boolean = false
   pollingButton: boolean = false
   categories: CategoryGetAllRes[] = []
+  edit : any = null
 
   data = this.fb.group({
     postTitle: ['', [Validators.required, Validators.minLength(5)]],
@@ -52,7 +57,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
     private fb: FormBuilder,
     private categoryService: CategoryService,
     private postService: PostService,
-    private userService: UserService
+    private userService: UserService,
+    private routerService : RouterService
   ) { }
 
   get imageData() {
@@ -245,6 +251,15 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.items = [
+      {
+        label : 'Ubah'
+        //command : ((postId) => this.onEdit(postId))
+      },
+      {
+        label : 'Hapus'
+      }
+    ]
     this.init()
     this.dashboardCategory$ = this.categoryService.getAll().subscribe(res => {
       this.categories = res
@@ -258,11 +273,25 @@ export class DashboardComponent implements OnInit, OnDestroy {
         this.profile = res
       })
     }, 1000)
-
   }
 
   ngOnDestroy(): void {
     this.dashboard$?.unsubscribe()
+  }
+
+  navigate(route : string){
+    this.routerService.navigate(route)
+  }
+
+  onEdit(postId : string){
+    this.edit = this.fb.group({
+      postTitle : ['', Validators.required],
+      postContent : ['', Validators.required]
+    })
+
+    this.postEdit$ = this.postService.getPostById(postId).subscribe(res => {
+
+    })
   }
 
 }

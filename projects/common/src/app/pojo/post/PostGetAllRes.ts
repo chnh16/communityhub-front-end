@@ -23,4 +23,5 @@ export interface PostGetAllRes {
   pollingChoice : PollingChoiceGetAllRes[]
   fileId : string[]
   showComment : boolean
+  isPremium : boolean
 }

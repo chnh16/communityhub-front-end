@@ -1,4 +1,6 @@
+<pre>{{data.value| json}}</pre>
 <div class="ml-4 mr-4 card surface-border">
+    <app-text-button label="Kembali" routerLink="/dashboard"></app-text-button>
     <p-card class="mt-6 flex flex-wrap align-items-center justify-content-center surface-border">
         <form [formGroup]="data" (ngSubmit)="onSubmit()">
             <div class="grid">
@@ -9,7 +11,7 @@
                         </div>
                         <div class="mt-4 field col-8 md:col-6">
                             <label for="lastname6">Full Name</label>
-                            <input formControlName="fullName" id="lastname6" type="text" class="text-base text-color surface-overlay p-2 border-3 border-solid surface-border border-blue-400 border-round appearance-none outline-none focus:border-primary w-full">
+                            <input formControlName="fullName" id="lastname6" type="text" class="text-base text-color surface-overlay p-2 border-3 border-solid surface-border border-blue-400 border-round appearance-none outline-none focus:border-primary w-full" readonly="">
                         </div>
                         <div class="mt-4 field col-8 md:col-6">
                             <label for="lastname6">Country</label>
@@ -53,7 +55,13 @@
                         </div>
                         <div class="mt-8 field col-8 md:col-6">
                             <label for="firstname6">Upload Foto</label>
-                            <p-fileUpload mode="basic" name="demo[]" url="./upload.php" accept="image/*" chooseLabel="Browse" styleClass="p-button w-16rem h-2.5rem bg-blue-400"></p-fileUpload>
+                            <div class="col">
+                                <p-fileUpload mode="basic" accept="image/*" chooseLabel="Browse" styleClass="p-button w-16rem h-2.5rem bg-blue-400" (onSelect)="onUploadImage($event)"></p-fileUpload>
+                                <div *ngIf="file">
+                                    <button pButton class="p-button-danger">Batal</button>
+                                </div>
+                            </div>
+                            <button pButton class="p-button-danger">Hapus Foto</button>
                         </div>
                         <div class="mt-6 field col-8 md:col-12">
                             <button pButton pRipple type="button" label="SAVE" class="p-button-raised min-w-full" styleClass="p-button min-w-full bg-blue-400"></button>

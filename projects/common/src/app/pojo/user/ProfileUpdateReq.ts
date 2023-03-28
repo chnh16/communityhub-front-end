@@ -1,4 +1,4 @@
-export interface ProfileGetReq{
+export interface ProfileUpdateReq{
     id : string
     email : string
     fullName : string

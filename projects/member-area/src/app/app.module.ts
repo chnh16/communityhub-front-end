@@ -20,19 +20,13 @@ import { ButtonModule as bm } from 'projects/common/src/app/component/button/but
 import { MenuBarComponent } from 'projects/common/src/app/component/navbar/navbar.component';
 import { ResponseInterceptor } from 'projects/common/src/app/interceptor/response.interceptor';
 import { TokenInterceptor } from 'projects/common/src/app/interceptor/token.interceptor';
-
 import { AppComponent } from './app.component';
-
-import { CodeMemberComponent } from './pages/code-member/code-member.component';
-import { LoginMemberComponent } from './pages/login/login-member.component';
-import { RegisterMemberComponent } from './pages/register/register-member.component';
-import { ProfileMemberComponent } from './pages/user-profile/user-profile.component';
 import { FileUploadModule } from 'primeng/fileupload';
 
 
 @NgModule({
   declarations: [
-    AppComponent, CodeMemberComponent
+    AppComponent
   ],
   imports: [
     BrowserModule, TableModule, ButtonModule, ToolbarModule, ToastModule, CommonModule,

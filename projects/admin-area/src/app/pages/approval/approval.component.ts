@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { FormBuilder } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
+import { StatusTransaction } from "projects/common/src/app/constant/StatusTransaction";
 import { TransactionRole } from "projects/common/src/app/constant/TransactionRole";
 import { TransactionGetAllRes } from "projects/common/src/app/pojo/transaction/TransactionGetAllRes";
 import { TransactionGetByCourseIdRes } from "projects/common/src/app/pojo/transaction/TransactionGetByCourseIdRes";
@@ -11,57 +12,59 @@ import { TransactionService } from "projects/common/src/app/service/transaction.
 import { Subscription } from "rxjs";
 
 
-@Component ({
-    selector : 'app-login',
-    templateUrl : './approval.component.html'
+@Component({
+    selector: 'app-login',
+    templateUrl: './approval.component.html'
 })
-export class ApprovalComponent implements OnInit, OnDestroy{
-    id! : string
-    resCourseTransaction : TransactionGetByCourseIdRes[] = []
-    resEventTransaction : TransactionGetByEventsIdRes[] = []
-    resMembershipTransaction : TransactionGetByMembershipIdRes[] = []
-    getById! : TransactionGetAllRes
-    courseApproval$? : Subscription
-    eventApproval$? : Subscription
-    membershipApproval$? : Subscription
-    updateTransaction$? : Subscription
-    courseUpdate$? : Subscription
+export class ApprovalComponent implements OnInit, OnDestroy {
+    id!: string
+    resCourseTransaction: TransactionGetByCourseIdRes[] = []
+    resEventTransaction: TransactionGetByEventsIdRes[] = []
+    resMembershipTransaction: TransactionGetByMembershipIdRes[] = []
+    getById!: TransactionGetAllRes
+    courseApproval$?: Subscription
+    eventApproval$?: Subscription
+    membershipApproval$?: Subscription
+    updateTransaction$?: Subscription
+    courseUpdate$?: Subscription
 
-    update! : UpdateTransactionReq
-    
-    type! : string
+    //appove = StatusTransaction.APPROVE
+
+    update!: UpdateTransactionReq
+
+    type!: string
 
     constructor(
-        private transactionService : TransactionService,
-        private fb : FormBuilder,
-        private activatedRouter : ActivatedRoute,
-        private router : Router
-    ){}
-    
+        private transactionService: TransactionService,
+        private fb: FormBuilder,
+        private activatedRouter: ActivatedRoute,
+        private router: Router
+    ) { }
+
     data = this.fb.group({
-        id : [''],
-        isApproved : [false],
-        ver : [0]
+        id: [''],
+        isApproved: [false],
+        ver: [0]
     })
 
-    onUpdate(id : string) {
-         
+    onUpdate(id: string) {
+
         this.transactionService.getTransactionById(id).subscribe(res => {
             this.getById = res
 
             this.update = {
-                id : this.getById.id,
-                isApproved : true,
-                ver : this.getById.ver
+                id: this.getById.id,
+                isApproved: true,
+                ver: this.getById.ver
             }
             console.log(this.update)
             this.updateTransaction$ = this.transactionService.updateTransaction(this.update).subscribe(res => {
-    
+
             })
         })
-        
+
     }
- 
+
     ngOnInit(): void {
         this.courseApproval$ = this.transactionService.getTransactionCourseId(TransactionRole.COURSE).subscribe(res => {
             this.resCourseTransaction = res
@@ -72,7 +75,7 @@ export class ApprovalComponent implements OnInit, OnDestroy{
         })
         this.membershipApproval$ = this.transactionService.getTransactionMembershipId(TransactionRole.MEMBERSHIP).subscribe(res => {
             this.resMembershipTransaction = res
-        })     
+        })
 
     }
 
@@ -81,6 +84,6 @@ export class ApprovalComponent implements OnInit, OnDestroy{
         this.eventApproval$?.unsubscribe()
         this.membershipApproval$?.unsubscribe()
     }
-    
-    
+
+
 }

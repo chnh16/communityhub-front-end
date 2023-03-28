@@ -27,13 +27,13 @@
                     </div>
                     <div *ngIf="!isPremium" class="mb-2">
                         <div class="grid">
-                            <button pButton class="p-button-primary p-button-text m-0 p-0" routerLink="/memberships"><i class="pi pi-lock"></i>Aktifkan Premium</button>
+                            <button pButton class="p-button-primary p-button-text m-0 p-0" (click)="navigate('/memberships')"><i class="pi pi-lock"></i>Aktifkan Premium</button>
                         </div>
                     </div>
                 </div>
                 <p-divider></p-divider>
                 <div class="align-item-center">
-                    <app-routing-button label="Edit Profil"></app-routing-button>
+                    <app-routing-button label="Edit Profil" link="/profile/{{profile.id}}"></app-routing-button>
                 </div>
             </p-card>
         </div>
@@ -69,7 +69,7 @@
         <div class="justify-content-start">
             <h3><i class="pi pi-home"></i> Aktivitas Saya</h3>
         </div>
-        <p-card class="mb-2">
+        <p-card *ngIf="!edit" class="mb-2">
             <form [formGroup]="data" (ngSubmit)="onSubmit()">
                 <div class="mb-1">
                     <input class="col-12" type="text" pInputText placeholder="Judul Post" formControlName="postTitle" />
@@ -102,8 +102,7 @@
                             <input class="col" formControlName="choiceContent" type="text" pInputText />
                         </div>
                         <div class="col" *ngIf="i > 1">
-                            <button pButton class="p-button-text text-red-500" (click)="removePollingChoice(i)">Hapus
-                                Pilihan</button>
+                            <button pButton class="p-button-text text-red-500" (click)="removePollingChoice(i)">Hapus Pilihan</button>
                         </div>
                     </div>
                     <div class="grid">
@@ -128,15 +127,36 @@
                 </div>
             </form>
         </p-card>
+        <p-card *ngIf="edit" class="mb-2">
+            <form [formGroup]="data" (ngSubmit)="onSubmit()">
+                <div class="mb-1">
+                    <input class="col-12" type="text" pInputText placeholder="Judul Post" formControlName="postTitle" />
+                </div>
+                <div class="mb-1">
+                    <textarea class="col-12" [style]="{'resize' : 'none'}" [rows]="5" [autoResize]="true"
+                        formControlName="postContent" placeholder="Tulis sesuatu" pInputTextarea>
+                    </textarea>
+                </div>
+                <div class="mb-1">
+                    <p-dropdown [options]="categories" optionLabel="categoryName" formControlName="categoryId"
+                        optionValue="id"></p-dropdown>
+                </div>
+                <div class="grid mt-2">
+                    <div class="col-auto mx-2">
+                        <app-submit-button [disabled]="!this.data.valid" label="Ubah Post"></app-submit-button>
+                    </div>
+                </div>
+            </form>
+        </p-card>
         <div infinite-scroll (scrolled)="onScroll()">
             <div *ngFor="let p of post; let i = index" class="col-12 block align-items-center flex-wrap p-0">
                 <p-card class="grid block col-12 m-0 mt-2 p-0">
-                    <div class="grid mx-2">
-                        <div class="grid align-items-center col-2 p-0">
+                    <div class="grid  align-items-center mx-2">
+                        <div class="grid align-items-center col-1 mr-2 p-0">
                             <p-avatar image="http://192.168.10.124:8080/files/{{p.userFileId}}" styleClass="mr-2"
                                 size="xlarge" shape="circle"></p-avatar>
                         </div>
-                        <div class="grid align-items-center col-7 p-0">
+                        <div class="block align-items-center col-7 p-0">
                             <div class="grid">
                                 <h4 class="col">{{p.fullName}}</h4>
                             </div>
@@ -146,6 +166,10 @@
                         </div>
                         <div class="grid align-items-end col-3">
                             <app-category-button label="{{p.categoryName}}"></app-category-button>
+                        </div>
+                        <div class="grid align-items-end col-1">
+                            <app-icon-button icon="pi pi-chevron-down" clasz="p-button-text p-button-secondary" (click)="menu.toggle($event)"></app-icon-button>
+                            <p-tieredMenu #menu [model]="items" [popup]="true"></p-tieredMenu>
                         </div>
                     </div>
                     <div class="grid mx-2">

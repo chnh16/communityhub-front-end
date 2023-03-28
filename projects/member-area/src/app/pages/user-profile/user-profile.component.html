@@ -50,9 +50,6 @@
                                 optionLabel="positionName" formControlName="positionId" optionValue="id" class="w-full">
                             </p-dropdown>
                         </div>
-
-
-
                         <div class="field col-8 md:col-6">
                             <!-- <label for="lastname6">Industry</label> -->
                             <p-dropdown [options]="industries" optionLabel="industryName" [formGroup]="profile" formControlName="industryId" optionValue="id" class="w-full"></p-dropdown>
@@ -62,14 +59,13 @@
                         </div>
                         <div class="mt-8 field col-8 md:col-6">
                             <label for="formFile">Upload Foto</label>
-                            <p-fileUpload mode="basic" name="demo[]" url="./upload.php" accept="image/*" chooseLabel="Browse" styleClass="p-button w-16rem h-2.5rem bg-blue-400" id="formFile" (onSelect)="uploadFile($event)"></p-fileUpload>
+                            <p-fileUpload mode="basic" accept="image/*" chooseLabel="Browse" styleClass="p-button w-16rem h-2.5rem bg-blue-400" id="formFile" (onSelect)="uploadFile($event)"></p-fileUpload>
                         </div>
                         <div class="mt-6 field col-8 md:col-12">
                             <button pButton pRipple type="submit" label="SAVE" class="p-button-raised min-w-full" styleClass="p-button min-w-full bg-blue-400"></button>
                         </div>
                     </div>
                 </div>
-
                 <div class="col-2">
                     <p-divider layout="vertical">
                         <b></b>

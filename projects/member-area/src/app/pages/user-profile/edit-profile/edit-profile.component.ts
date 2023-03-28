@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
-import { FormBuilder, Validators } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ActivatedRoute } from "@angular/router";
 import { IndustryGetAllRes } from "projects/common/src/app/pojo/industry/IndustryGetAllRes";
 import { PositionGetAllRes } from "projects/common/src/app/pojo/position/PositionGetAllRes";
@@ -29,12 +29,8 @@ export class EditProfileComponent implements OnInit, OnDestroy{
         company : ['', Validators.required],
         positionId : ['', Validators.required],
         industryId : ['', Validators.required],
-        file : this.fb.group({
-            fileName : ['', Validators.required],
-            fileContent : ['', Validators.required],
-            fileExtension : ['', Validators.required]
-        })
     })
+    file : any = null
 
     constructor(
         private userService : UserService,
@@ -44,11 +40,55 @@ export class EditProfileComponent implements OnInit, OnDestroy{
         private fb : FormBuilder
     ){}
 
+    onUploadImage(event : any){
+        const toBase64 = (file : File) => new Promise<string>((resolve, reject) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => {
+                if(typeof reader.result === "string")
+                resolve(reader.result)
+            };
+            reader.onerror = error => reject(error);
+        });
+        for(let file of event.files) {
+            toBase64(file).then(result => {
+                const resultBase64 = result.substring(result.indexOf(",") + 1, result.length)
+                const resultExtension = file.name.substring(file.name.indexOf(".") + 1, file.name.length)
+                this.file = ({
+                            fileName : file.name,
+                            fileContent : resultBase64,
+                            fileExtension : resultExtension
+                })
+            })
+        }
+    }
+
+    onCancelImage(){
+        if(this.file instanceof FormGroup){
+            this.file.reset()
+        }
+        console.log(this.file)
+    }
+
     onSubmit(){
 
     }
 
     ngOnInit(): void {
+        this.editProfile$ = this.userService.getProfile().subscribe(res => {
+            this.data.patchValue({
+                fullName : res.fullName,
+                country : res.country,
+                province : res.province,
+                city : res.city,
+                phoneNumber : res.phoneNumber,
+                postalCode : res.postalCode,
+                company : res.company,
+                positionId : res.positionId,
+                industryId : res.industryId
+            })
+        })
+
         this.position$ = this.positionService.getAll().subscribe(res => {
             this.positions = res
         })

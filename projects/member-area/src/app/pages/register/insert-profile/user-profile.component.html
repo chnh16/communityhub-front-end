@@ -1,0 +1,83 @@
+<pre>{{registerData | json}}</pre>
+<pre>{{data.value | json}}</pre>
+<pre>{{profile.value | json}}</pre>
+<div class="ml-4 mr-4 card surface-border">
+    <p-card class="mt-6 flex flex-wrap align-items-center justify-content-center surface-border">
+        <form [formGroup]="profile" (ngSubmit)="onSubmit()">
+            <div class="grid">
+                <div class="col-8 flex align-items-center justify-content-center">
+                    <div class="formgrid grid">
+                        <div class="field col-8 md:col-12">
+                            <h1>USER PROFILE</h1>
+                        </div>
+                        <div class="mt-4 field col-8 md:col-6">
+                            <label for="lastname6">Full Name</label>
+                            <input [formGroup]="profile" formControlName="fullName" id="lastname6" type="text" class="text-base text-color surface-overlay p-2 border-3 border-solid surface-border border-blue-400 border-round appearance-none outline-none focus:border-primary w-full">
+                        </div>
+                        <div class="mt-4 field col-8 md:col-6">
+                            <label for="lastname6">Country</label>
+                            <input [formGroup]="profile" formControlName="country" id="lastname6" type="text" class="text-base text-color surface-overlay p-2 border-3 border-solid surface-border border-blue-400 border-round appearance-none outline-none focus:border-primary w-full">
+                        </div>
+                        <div class="mt-4 field col-8 md:col-6">
+                            <label for="lastname6">Province</label>
+                            <input [formGroup]="profile" formControlName="province" id="lastname6" type="text" class="text-base text-color surface-overlay p-2 border-3 border-solid surface-border border-blue-400 border-round appearance-none outline-none focus:border-primary w-full">
+                        </div>
+                        <div class="mt-4 field col-8 md:col-6">
+                            <label for="lastname6">City</label>
+                            <input [formGroup]="profile" formControlName="city" id="lastname6" type="text" class="text-base text-color surface-overlay p-2 border-3 border-solid surface-border border-blue-400 border-round appearance-none outline-none focus:border-primary w-full">
+                        </div>
+                        <div class="mt-4 field col-8 md:col-4">
+                            <label for="lastname6">Phone Number</label>
+                            <input [formGroup]="profile" formControlName="phoneNumber" id="lastname6" type="text" class="text-base text-color surface-overlay p-2 border-3 border-solid surface-border border-blue-400 border-round appearance-none outline-none focus:border-primary w-full">
+                        </div>
+                        <div class="mt-4 field col-12 md:col-6">
+                            <label for="state">Company</label>
+                            <input [formGroup]="profile" formControlName="company" id="lastname6" type="text" class="text-base text-color surface-overlay p-2 border-3 border-solid surface-border border-blue-400 border-round appearance-none outline-none focus:border-primary w-full">
+                        </div>
+                        <div class="mt-4 field col-8 md:col-2">
+                            <label for="lastname6">Postal Code</label>
+                            <input [formGroup]="profile" formControlName="postalCode" id="lastname6" type="text" class="text-base text-color surface-overlay p-2 border-3 border-solid surface-border border-blue-400 border-round appearance-none outline-none focus:border-primary w-full">
+                        </div>
+                        <div for="positionId" class="mt-4 field col-8 md:col-6">
+                            <label for="lastname6">Position</label>
+                        </div>
+                        <div class="mt-4 field col-8 md:col-6">
+                            <label for="lastname6">Industry</label>
+                        </div>
+                        <div class="field col-8 md:col-6">
+                            <!-- <label for="lastname6">Position</label> -->
+                            <p-dropdown [options]="positions" placeholder=" Select a Position" [showClear]="true"
+                                optionLabel="positionName" formControlName="positionId" optionValue="id" class="w-full">
+                            </p-dropdown>
+                        </div>
+                        <div class="field col-8 md:col-6">
+                            <!-- <label for="lastname6">Industry</label> -->
+                            <p-dropdown [options]="industries" optionLabel="industryName" [formGroup]="profile" formControlName="industryId" optionValue="id" class="w-full"></p-dropdown>
+                        </div>
+                        <div class="field col-8 md:col-4">
+                            <p-image src="../../../assets/img/Profile_pic.png" alt="Image" width="250"></p-image>
+                        </div>
+                        <div class="mt-8 field col-8 md:col-6">
+                            <label for="formFile">Upload Foto</label>
+                            <p-fileUpload mode="basic" accept="image/*" chooseLabel="Browse" styleClass="p-button w-16rem h-2.5rem bg-blue-400" id="formFile" (onSelect)="uploadFile($event)"></p-fileUpload>
+                        </div>
+                        <div class="mt-6 field col-8 md:col-12">
+                            <button pButton pRipple type="submit" label="SAVE" class="p-button-raised min-w-full" styleClass="p-button min-w-full bg-blue-400"></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <p-divider layout="vertical">
+                        <b></b>
+                    </p-divider>
+                </div>
+                <div class="col-2 flex align-items-center justify-content-start">
+                    <div class="w-27rem">
+                        <p-image src="/projects/member-area/src/assets/img/user_profile.jpg" alt="Image" width="150"
+                            height="300"></p-image>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </p-card>
+</div>

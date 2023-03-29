@@ -3,6 +3,7 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MenuItem } from 'primeng/api';
 import { CategoryGetAllRes } from 'projects/common/src/app/pojo/category/CategoryGetAllRes';
 import { FileInsertReq } from 'projects/common/src/app/pojo/file/FileInsertReq';
+import { PollingAnswerGetCountRes } from 'projects/common/src/app/pojo/pollinganswer/PollingAnswerGetCountRes';
 import { PollingChoiceInsertReq } from 'projects/common/src/app/pojo/pollingchoice/PollingChoiceInsertReq';
 import { PostBookmarkReq } from 'projects/common/src/app/pojo/post/PostBookmarkReq';
 import { PostGetAllRes } from 'projects/common/src/app/pojo/post/PostGetAllRes';
@@ -26,6 +27,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   dashboardProfile$?: Subscription
   postLike$?: Subscription
   postBookmark$?: Subscription
+  postDetail$? : Subscription
   pollingAnswer$? : Subscription
   postEdit$? : Subscription
   post!: PostGetAllRes[]
@@ -37,6 +39,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   imageButton: boolean = false
   pollingButton: boolean = false
   categories: CategoryGetAllRes[] = []
+  pollingAnswer : PollingAnswerGetCountRes[] = []
   edit : any = null
 
   data = this.fb.group({
@@ -90,6 +93,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   onShowAddDetail(i: number) {
     this.post[i].showComment = !this.post[i].showComment
+    this.postDetail$ = this.postService.getPostDetail(this.post[i].id).subscribe(res => {
+      this.post[i].postDetail = res
+    })
   }
 
   onShowImageUpload() {
@@ -292,6 +298,14 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.postEdit$ = this.postService.getPostById(postId).subscribe(res => {
 
     })
+  }
+
+  getPollingAnswer(i : number) : PollingAnswerGetCountRes[]{
+    this.pollingAnswer$ = this.postService.getPollingAnswer(this.post[i].id).subscribe(res => {
+      this.pollingAnswer = res
+    })
+
+    return this.pollingAnswer
   }
 
 }

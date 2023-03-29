@@ -43,15 +43,16 @@
                 <p-card header="{{d.courseName}}" subheader="{{d.categoryId}}" [style]="{width : '400px'}"
                     styleClass="p-card-shadow">
                     <ng-template pTemplate="header" class="img flex flex-row justify-content-center mx-2">
-                        <img alt="Card" src="http://192.168.10.73:8080/files/{{d.file}}" style="height: 250px;">
+                        <img alt="Card" src="http://192.168.10.124:8080/files/{{d.file}}" style="height: 250px;">
                     </ng-template>
                     <div style="border: dotted;">
-                        <div class="flex flex-row grid mx-2">
-                            <h3>
-                                <i class="pi pi-globe"></i> {{d.provider}}
-                            </h3>
-
-                            <h3><i class="pi pi-table"></i> COURSE</h3>
+                        <div class="mx-2">
+                            <div>
+                                <h3><i class="pi pi-globe"></i> {{d.provider}}</h3>
+                            </div>
+                            <div>
+                                <h3><i class="pi pi-table"></i> COURSE</h3>
+                            </div>
                         </div>
 
 
@@ -61,7 +62,7 @@
                         </div>
 
                         <div class="grid my-2 mx-2">
-                            <span> <i class="pi pi-calendar"></i> {{d.startDate}} - {{d.endDate}}</span>
+                            <span> <i class="pi pi-calendar"></i> {{d.startDate | date}} - {{d.endDate | date}}</span>
                         </div>
 
                         <div class="grid my-2 mx-2">

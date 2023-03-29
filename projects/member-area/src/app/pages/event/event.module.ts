@@ -6,7 +6,7 @@ import { SharedModule } from "projects/common/src/app/shared.module";
 import { InputNumberModule } from 'primeng/inputnumber';
 import { CalendarModule } from 'primeng/calendar';
 import { CreateEventComponent } from "./create-event/create-event.component";
-import { EventDetailComponent } from "./event-deail/event-detail.component";
+import { EventDetailComponent } from "./event-detail/event-detail.component";
 import { EventRouting } from "./event.routing";
 import { ListEventComponent } from "./list-event/list-event.component";
 import { CommonModule } from "@angular/common";

@@ -60,6 +60,18 @@ export class MenuBarComponent implements OnInit {
                     { label: 'Voucher', routerLink: '/voucher' }
                 ]
             },
+            {
+                label : 'Article',
+                routerLink : '/article'
+            },
+            {
+                label : 'Event',
+                routerLink : '/event'
+            },
+            {
+                label : 'Course',
+                routerLink : '/course'
+            }
         ];
 
         this.itemsEnd = [

@@ -15,7 +15,6 @@
                 <p-dropdown [options]="categorys" placeholder=" Select a Category" optionLabel="categoryName"
                     [showClear]="true" optionValue="id" formControlName="category">
                 </p-dropdown>
-
             </div>
 
             <div>
@@ -40,7 +39,7 @@
                 <p-card header="{{d.eventName}}" subheader="{{d.categoryId}}" [style]="{width : '400px'}"
                     styleClass="p-card-shadow">
                     <ng-template pTemplate="header" class="img flex flex-row justify-content-center mx-2">
-                        <img alt="Card" src="http://192.168.10.73:8080/files/{{d.fileId}}" style="height: 250px;">
+                        <img alt="Card" src="http://192.168.10.124:8080/files/{{d.fileId}}" style="height: 250px;">
                     </ng-template>
                     <div style="border: dotted;">
                         <div class="mx-2">
@@ -51,9 +50,8 @@
                                 <h3> <i class="pi pi-table"></i> EVENT</h3>
                             </div>
                         </div>
-
                         <div class="grid my-2 mx-2">
-                            <span> <i class=" pi pi-calendar"></i> {{d.startDate}} - {{d.endDate}}</span>
+                            <span> <i class=" pi pi-calendar"></i> {{d.startDate | date}} - {{d.endDate | date}}</span>
                         </div>
 
                         <div class="grid my-2 mx-2">

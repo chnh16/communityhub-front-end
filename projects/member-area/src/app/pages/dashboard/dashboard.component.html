@@ -191,27 +191,15 @@
                                 </div>
                             </div>
                             <div *ngIf="p.isAnswered">
-                                <div class="mb-2">Progress bar</div>
+                                <div class="mb-2">
+                                    
+                                </div>
                                 <app-text-button label="Undo"
                                     (click)="onRemovePollingAnswer(p.isAnswered.id, i)"></app-text-button>
                             </div>
                         </div>
                     </div>
                     <div *ngIf="p.likeCount > 0" class="grid m-2">
-                        <p-avatarGroup styleClass="mb-3">
-                            <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png"
-                                shape="circle"></p-avatar>
-                            <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/asiyajavayant.png"
-                                shape="circle"></p-avatar>
-                            <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/onyamalimba.png"
-                                shape="circle"></p-avatar>
-                            <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/ionibowcher.png"
-                                shape="circle"></p-avatar>
-                            <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/xuxuefeng.png"
-                                shape="circle"></p-avatar>
-                            <p-avatar label="+2" shape="circle"
-                                [style]="{'background-color':'#9c27b0', 'color': '#ffffff'}"></p-avatar>
-                        </p-avatarGroup>
                         <span>{{p.likeCount}} likes</span>
                     </div>
                     <div class="m-0 p-0">
@@ -247,21 +235,18 @@
                             </div>
                         </div>
                     </div>
-                    <div *ngIf="p.detailCount > 0">
+                    <div *ngIf="p.detailCount > 3">
                         <button pButton type="button" class="p-button-text">Lebih banyak komentar (detailCount)</button>
                     </div>
-                    <div *ngFor="let d of p.postDetail" class="flex">
-                        <div class="col-1 grid align-items-center justify-content-center m-0 p-0">
-                            <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png"
-                                size="large" shape="circle"></p-avatar>
-                        </div>
-                        <div class="col-11">
-                            <h5 class="grid align-items-start m-0">fullName</h5>
-                            <span class="grid align-items-end m-0">Lorem ipsum dolor, sit amet consectetur adipisicing
-                                elit.
-                                Nisi voluptatibus cupiditate expedita aspernatur quas fuga, neque saepe doloremque harum
-                                omnis assumenda ea necessitatibus reiciendis dolorem ullam quaerat amet dolore
-                                laboriosam!</span>
+                    <div *ngIf="p.showComment">
+                        <div *ngFor="let d of p.postDetail" class="flex">
+                            <div class="col-1 grid align-items-center justify-content-center m-0 p-0">
+                                <p-avatar image="http://192.168.10.124:8080/files/{{d.userFileId}}" size="large" shape="circle"></p-avatar>
+                            </div>
+                            <div class="col-11">
+                                <h5 class="grid align-items-start m-0">{{d.fullName}}</h5>
+                                <span class="grid align-items-end m-0">{{d.detailContent}}</span>
+                            </div>
                         </div>
                     </div>
                 </p-card>

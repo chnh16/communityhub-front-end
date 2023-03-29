@@ -4,10 +4,12 @@ import { BASE_URL } from "projects/common/src/app/constant/BaseUrl";
 import { DeleteRes } from "projects/common/src/app/pojo/DeleteRes";
 import { InsertRes } from "projects/common/src/app/pojo/InsertRes";
 import { Observable } from "rxjs";
+import { PollingAnswerGetCountRes } from "../pojo/pollinganswer/PollingAnswerGetCountRes";
 import { PostBookmarkReq } from "../pojo/post/PostBookmarkReq";
 import { PostGetAllRes } from "../pojo/post/PostGetAllRes";
 import { PostInsertReq } from "../pojo/post/PostInsertReq";
 import { PostLikeReq } from "../pojo/post/PostLikeReq";
+import { PostDetailGetAllRes } from "../pojo/postdetail/PostDetailGetAllRes";
 
 
 @Injectable({
@@ -46,11 +48,19 @@ export class PostService{
         return this.http.delete<DeleteRes>(`${BASE_URL}/post/bookmark/${postId}`)
     }
 
+    getPollingAnswer(postId : string) : Observable<PollingAnswerGetCountRes[]>{
+        return this.http.get<PollingAnswerGetCountRes[]>(`${BASE_URL}/post/polling/${postId}`)
+    }
+
     onInsertPollingAnswer(pollingChoiceId : string) : Observable<InsertRes>{
         return this.http.post<InsertRes>(`${BASE_URL}/post/polling/${pollingChoiceId}`, {})
     }
 
     onRemovePollingAnswer(pollingAnswerId : string) : Observable<DeleteRes>{
         return this.http.delete<DeleteRes>(`${BASE_URL}/post/polling/${pollingAnswerId}`)
+    }
+
+    getPostDetail(postId : string) : Observable<PostDetailGetAllRes[]>{
+        return this.http.get<PostDetailGetAllRes[]>(`${BASE_URL}/post/detail/${postId}`)
     }
 }

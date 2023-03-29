@@ -1,15 +1,10 @@
 import { NgModule } from "@angular/core"
 import { RouterModule, Routes } from "@angular/router"
-// import { LoginComponent } from "./pages/login/login.component"; 
-// import { OutLoadGuard } from "./guard/out-load.guard"
-import { CanLoad } from "@angular/router";
 import { MenuBarComponent } from "projects/common/src/app/component/navbar/navbar.component";
 import { SharedModule } from "projects/common/src/app/shared.module";
-import { CodeMemberComponent } from "./pages/code-member/code-member.component";
+import { UserVerificationComponent } from "./pages/user-verification/user-verification.component";
 import { LoginMemberComponent } from "./pages/login/login-member.component";
-import { RegisterMemberComponent } from "./pages/register/register-member.component";
-import { EditProfileComponent } from "./pages/user-profile/edit-profile/edit-profile.component";
-import { ProfileMemberComponent } from "./pages/user-profile/user-profile.component";
+import { ProfileMemberComponent } from "./pages/register/insert-profile/user-profile.component";
 
 
 export const memberRouter: Routes = [
@@ -19,11 +14,7 @@ export const memberRouter: Routes = [
     },
     {
         path: 'register-member',
-        component: RegisterMemberComponent
-    },
-    {
-        path: 'profile-member',
-        component: ProfileMemberComponent
+        loadChildren : () => import('./pages/register/register-member.module').then(r => r.RegisterMemberModule)
     },
     {
         path: 'dashboard',
@@ -41,8 +32,8 @@ export const memberRouter: Routes = [
         component: MenuBarComponent
     },
     {
-        path: 'code-member',
-        component: CodeMemberComponent
+        path: 'user-verification',
+        component: UserVerificationComponent
     },
     {
         path: 'course',
@@ -58,7 +49,7 @@ export const memberRouter: Routes = [
 
 @NgModule({
     declarations: [
-        LoginMemberComponent, RegisterMemberComponent, CodeMemberComponent, ProfileMemberComponent
+        LoginMemberComponent, UserVerificationComponent
     ],
     imports: [
         RouterModule.forRoot(memberRouter),
@@ -67,9 +58,7 @@ export const memberRouter: Routes = [
     exports: [
         RouterModule,
         LoginMemberComponent,
-        RegisterMemberComponent,
-        CodeMemberComponent,
-        ProfileMemberComponent
+        UserVerificationComponent
     ]
 })
 

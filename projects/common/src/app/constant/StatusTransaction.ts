@@ -1,5 +1,2 @@
-export enum StatusTransaction {
-    PENDING = "Pending",
-    APPROVE = "Approve",
-    REJECTED = "Rejected"
-}
+type statusTransaction = [string, string]
+export const statuss: statusTransaction[] = [["Pending", "PDG"], ["Approve", "APR"], ["Rejected", "RJC"]]

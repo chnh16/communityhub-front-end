@@ -1,4 +1,5 @@
 import { PollingAnswerRes } from "../pollinganswer/PollingAnswerRes"
+import { PollingAnswerGetCountRes } from "../pollinganswer/PollingAnswerGetCountRes"
 import { PollingChoiceGetAllRes } from "../pollingchoice/PollingChoiceGetAllRes"
 import { PostDetailGetAllRes } from "../postdetail/PostDetailGetAllRes"
 import { PostBookmarkRes } from "./PostBookmarkRes"
@@ -17,11 +18,12 @@ export interface PostGetAllRes {
   isLiked : PostLikeRes | null
   isBookmarked : PostBookmarkRes | null
   isAnswered : PollingAnswerRes | null
-  likeCount : number
-  detailCount : number
   postDetail : PostDetailGetAllRes[]
   pollingChoice : PollingChoiceGetAllRes[]
+  pollingAnswer : PollingAnswerGetCountRes[]
   fileId : string[]
   showComment : boolean
   isPremium : boolean
+  likeCount : number
+  detailCount : number
 }

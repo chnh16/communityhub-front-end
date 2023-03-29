@@ -1,7 +1,4 @@
-import { FileInsertReq } from "../file/FileInsertReq"
-
 export interface PostDetailInsertReq {
-  postId : string,
-  file : FileInsertReq,
+  postId : string
   detailContent : string
 }

@@ -28,7 +28,7 @@ export const adminRouter: Routes = [
         component: RegisterAdminComponent
     },
     {
-        path: 'admin-Profile',
+        path: 'profile-admin',
         component : ProfileAdminComponent
     },
     {
@@ -75,14 +75,14 @@ export const adminRouter: Routes = [
 
 @NgModule({
     declarations: [
-        LoginAdminComponent, RegisterAdminComponent, CodeAdminComponent
+        LoginAdminComponent, RegisterAdminComponent, CodeAdminComponent, ProfileAdminComponent
     ],
     imports: [
         RouterModule.forRoot(adminRouter),
         SharedModule
     ],
     exports: [
-        RouterModule, LoginAdminComponent, RegisterAdminComponent, CodeAdminComponent
+        RouterModule, LoginAdminComponent, RegisterAdminComponent, CodeAdminComponent, ProfileAdminComponent
     ]
 })
 

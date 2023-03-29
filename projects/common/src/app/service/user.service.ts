@@ -27,6 +27,10 @@ export class UserService{
         return this.http.post<RegisterReq>(`${BASE_URL}/users/regis`, data, { headers: { 'skip': 'true' } });
     }
 
+    regisAdmin(data: RegisterReq): Observable<RegisterReq> {
+        return this.http.post<RegisterReq>(`${BASE_URL}/users/regis-admin`, data, { headers: { 'skip': 'true' } });
+    }
+
     getProfile() : Observable<ProfileGetReq>{
         return this.http.get<ProfileGetReq>(`${BASE_URL}/users/user-profile`)
     }

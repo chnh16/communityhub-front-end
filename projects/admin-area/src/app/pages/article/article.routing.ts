@@ -4,6 +4,7 @@ import { MenuBarComponent } from "projects/common/src/app/component/navbar/navba
 import { ArticleDetailComponent } from "./article-detail/article-detail.component";
 import { CreateArticleComponent } from "./create-article/create-article.component";
 import { ListArticleComponent } from "./list_article/list-article.component";
+import { UpdateArticleComponent } from "./update-article/update-article.component";
 
 
 
@@ -20,6 +21,10 @@ const appRouter: Routes = [
     {
         path: 'detail/:id',
         component: ArticleDetailComponent
+    },
+    {
+        path: 'update/:id',
+        component: UpdateArticleComponent
     }
 ];
 

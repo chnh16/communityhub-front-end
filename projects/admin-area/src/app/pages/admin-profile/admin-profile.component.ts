@@ -19,7 +19,7 @@ import { Subscription } from "rxjs";
 export class ProfileAdminComponent implements OnInit, OnDestroy { 
 
     registerData! : any
-    profileMember$? : Subscription
+    profileAdmin$? : Subscription
     industry$? : Subscription
     position$? : Subscription
     industries! : IndustryGetAllRes[]
@@ -79,7 +79,7 @@ export class ProfileAdminComponent implements OnInit, OnDestroy {
             passwordUser : this.data.value.passwordUser!,
             profile : profile
         }
-        this.userService.regisMember(register).subscribe(result => {
+        this.userService.regisAdmin(register).subscribe(result => {
 
         })
 
@@ -137,6 +137,6 @@ export class ProfileAdminComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy(): void {
-        this.profileMember$?.unsubscribe()
+        this. profileAdmin$?.unsubscribe()
     }
 }

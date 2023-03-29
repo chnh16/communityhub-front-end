@@ -1,27 +1,18 @@
-<pre>{{data.value | json}}</pre>
-
 <div class="ml-8 mr-8 card surface-border">
     <p-card class="mt-6 flex flex-wrap align-items-center justify-content-center surface-border">
         <div class="col-12 flex align-items-center justify-content-center">
-            <form [formGroup]="data" (ngSubmit)="submit()">
+            <form [formGroup]="data" (ngSubmit)="onUpdate()">
                 <div class="formgrid grid justify-content-center align-items-center ">
                     <div class="field col-12 md:col-12">
-                        <h1>CREATE ARTICLE</h1>
+                        <h1>UPDATE ARTICLE</h1>
                     </div>
-                    <!-- <div class="mt-6 field grid">
-                    <label for="categoryCode">Full Name</label>
-                    <div class="col-12 md:col-8">
-                        <input id="lastname6" type="text" class="text-base text-color surface-overlay p-2 border-3 border-solid surface-border border-blue-400 border-round appearance-none outline-none focus:border-primary w-full">
-                    </div>
-                </div> -->
-
                     <div class="mt-6 field col-12 md:col-3 align-items-center justify-content-center">
                         <label for="lastname6">
                             Tittle
                         </label>
                     </div>
                     <div class="mt-6 field col-12 md:col-9 align-items-center justify-content-center">
-                        <input id="lastname6" type="text" class="text-base text-color surface-overlay p-2 border-3 border-solid surface-border border-blue-400 border-round appearance-none outline-none focus:border-primary w-full" formControlName="articleTitle">
+                        <input id="articleTitle" type="text" class="text-base text-color surface-overlay p-2 border-3 border-solid surface-border border-blue-400 border-round appearance-none outline-none focus:border-primary w-full" formControlName="articleTitle">
                     </div>
                     <div class="mt-6 field col-12 md:col-3 align-items-center justify-content-center">
                         <label for="lastname6">
@@ -29,7 +20,7 @@
                         </label>
                     </div>
                     <div class="mt-6 field col-12 md:col-9 align-items-center justify-content-center">
-                        <p-editor [style]="{'height':'320px'}" name="text1" formControlName="articleContent"></p-editor>
+                        <p-editor [style]="{'height':'320px'}" name="articleContent" formControlName="articleContent"></p-editor>
                     </div>
 
                     <div class="mt-6 field col-12 md:col-3 align-items-center justify-content-center">
@@ -38,12 +29,11 @@
                             </label>
                     </div>
                     <div class="mt-6 field col-12 md:col-9 align-items-center justify-content-center">
-                        <p-fileUpload mode="basic" name="demo[]" url="./upload.php" accept="image/*" chooseLabel="Browse" styleClass="p-button w-16rem h-2.5rem bg-blue-400" (onSelect)="fileUploadExam($event)"></p-fileUpload>
+                        <p-fileUpload mode="basic" name="demo[]" url="" accept="image/*" chooseLabel="Browse" styleClass="p-button w-16rem h-2.5rem bg-blue-400" (onSelect)="fileUploadExam($event)"></p-fileUpload>
                     </div>
-                    <!-- <button pButton pRipple type="button" label="SAVE" class="p-button-raised min-w-full"
-                            styleClass="p-button min-w-full bg-blue-400"></button> -->
+
                     <div class="mt-6 field col-12 md:col-12">
-                        <app-submit-button label="SAVE" clasz="p-button-rounded mr-2"></app-submit-button>
+                        <app-submit-button label="UPDATE" clasz="p-button-rounded mr-2"></app-submit-button>
                     </div>
                 </div>
             </form>

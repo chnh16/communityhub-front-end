@@ -43,7 +43,10 @@
                 </div>
                 <div class="col-9">
                     <div class="col-9 flex align-items-center justify-content-center w-full">
-                        <p>{{d.articleContent}}</p>
+                        <span [innerHTML]="d.articleContent">
+                           
+                        </span>
+
                     </div>
                     <div class="col-9 flex justify-content-start w-full">
                         <a href="" routerLink="/article/detail/{{d.id}}">Detail</a>

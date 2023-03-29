@@ -7,6 +7,7 @@ import { UpdateRes } from "projects/common/src/app/pojo/UpdateRes";
 import { Observable } from "rxjs";
 import { ArticleGetAllRes } from "../pojo/article/ArticleGetAllRes";
 import { ArticleInsertReq } from "../pojo/article/ArticleInsertReq";
+import { ArticleUpdateReq } from "../pojo/article/ArticleUpdateReq";
 
 
 @Injectable({
@@ -31,5 +32,9 @@ export class ArticleService {
 
     getArticleById(id: string): Observable<ArticleGetAllRes> {
         return this.http.get<ArticleGetAllRes>(`${BASE_URL}/article/${id}`);
+    }
+
+    update(data: ArticleUpdateReq) : Observable<UpdateRes> {
+        return this.http.put<UpdateRes>(`${BASE_URL}/article`, data);
     }
 }

@@ -16,7 +16,7 @@ import { ProfileAdminComponent } from 'projects/admin-area/src/app/pages/admin-p
 
 @NgModule({
   declarations: [
-    AppComponent, LoginComponent, RegisterComponent, CodeComponent, ProfileAdminComponent
+    AppComponent, LoginComponent, RegisterComponent, CodeComponent
   ],
   imports: [
    SharedModule, BrowserModule, AppRouting, BrowserAnimationsModule, HttpClientModule

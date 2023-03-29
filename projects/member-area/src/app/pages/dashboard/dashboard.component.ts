@@ -22,15 +22,15 @@ import { Subscription } from 'rxjs';
   templateUrl: './dashboard.component.html'
 })
 export class DashboardComponent implements OnInit, OnDestroy {
-  items! : MenuItem[]
+  items!: MenuItem[]
   dashboard$?: Subscription
   dashboardCategory$?: Subscription
   dashboardProfile$?: Subscription
   postLike$?: Subscription
   postBookmark$?: Subscription
-  postDetail$? : Subscription
-  pollingAnswer$? : Subscription
-  postEdit$? : Subscription
+  postDetail$?: Subscription
+  pollingAnswer$?: Subscription
+  postEdit$?: Subscription
   post!: PostGetAllRes[]
   profile?: ProfileGetReq
   uploadedFiles: any[] = []
@@ -40,8 +40,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
   imageButton: boolean = false
   pollingButton: boolean = false
   categories: CategoryGetAllRes[] = []
-  pollingAnswer : PollingAnswerGetCountRes[] = []
-  edit : any = null
+  pollingAnswer: PollingAnswerGetCountRes[] = []
+  edit: any = null
 
   data = this.fb.group({
     postTitle: ['', [Validators.required, Validators.minLength(5)]],
@@ -75,7 +75,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   get pollingData() {
     return this.data.get('polling') as FormArray
   }
-
+  
   onScroll(): void {
     this.dashboard$ = this.postService.getPost(this.POST_LIMIT, this.PAGE++).subscribe(res => {
       if (res) {
@@ -238,16 +238,16 @@ export class DashboardComponent implements OnInit, OnDestroy {
     })
   }
 
-  onInsertPollingAnswer(pollingChoiceId : string, i : number){
+  onInsertPollingAnswer(pollingChoiceId: string, i: number) {
     this.pollingAnswer$ = this.postService.onInsertPollingAnswer(pollingChoiceId).subscribe(res => {
       this.post[i].isAnswered = {
-        id : res.id,
-        choiceId : pollingChoiceId
+        id: res.id,
+        choiceId: pollingChoiceId
       }
     })
   }
 
-  onRemovePollingAnswer(pollingAnswerId : string, i : number){
+  onRemovePollingAnswer(pollingAnswerId: string, i: number) {
     this.pollingAnswer$ = this.postService.onRemovePollingAnswer(pollingAnswerId).subscribe(res => {
       this.post[i].isAnswered = null;
     })
@@ -256,11 +256,11 @@ export class DashboardComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.items = [
       {
-        label : 'Ubah'
+        label: 'Ubah'
         //command : ((postId) => this.onEdit(postId))
       },
       {
-        label : 'Hapus'
+        label: 'Hapus'
       }
     ]
     this.init()
@@ -282,14 +282,14 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.dashboard$?.unsubscribe()
   }
 
-  navigate(route : string){
+  navigate(route: string) {
     this.routerService.navigate(route)
   }
 
-  onEdit(postId : string){
+  onEdit(postId: string) {
     this.edit = this.fb.group({
-      postTitle : ['', Validators.required],
-      postContent : ['', Validators.required]
+      postTitle: ['', Validators.required],
+      postContent: ['', Validators.required]
     })
 
     this.postEdit$ = this.postService.getPostById(postId).subscribe(res => {
@@ -297,7 +297,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     })
   }
 
-  getPollingAnswer(i : number) : PollingAnswerGetCountRes[]{
+  getPollingAnswer(i: number): PollingAnswerGetCountRes[] {
     this.pollingAnswer$ = this.postService.getPollingAnswer(this.post[i].id).subscribe(res => {
       this.pollingAnswer = res
     })

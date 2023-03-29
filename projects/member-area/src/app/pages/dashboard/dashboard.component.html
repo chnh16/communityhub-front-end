@@ -25,7 +25,8 @@
                     </div>
                     <div *ngIf="!profile.premiumUntil" class="mb-2">
                         <div class="grid">
-                            <button pButton class="p-button-primary p-button-text m-0 p-0" (click)="navigate('/memberships')"><i class="pi pi-lock"></i>Aktifkan Premium</button>
+                            <button pButton class="p-button-primary p-button-text m-0 p-0"
+                                (click)="navigate('/memberships')"><i class="pi pi-lock"></i>Aktifkan Premium</button>
                         </div>
                     </div>
                 </div>
@@ -100,7 +101,8 @@
                             <input class="col" formControlName="choiceContent" type="text" pInputText />
                         </div>
                         <div class="col" *ngIf="i > 1">
-                            <button pButton class="p-button-text text-red-500" (click)="removePollingChoice(i)">Hapus Pilihan</button>
+                            <button pButton class="p-button-text text-red-500" (click)="removePollingChoice(i)">Hapus
+                                Pilihan</button>
                         </div>
                     </div>
                     <div class="grid">
@@ -166,7 +168,8 @@
                             <app-category-button label="{{p.categoryName}}"></app-category-button>
                         </div>
                         <div class="grid align-items-end col-1">
-                            <app-icon-button icon="pi pi-chevron-down" clasz="p-button-text p-button-secondary" (click)="menu.toggle($event)"></app-icon-button>
+                            <app-icon-button icon="pi pi-chevron-down" clasz="p-button-text p-button-secondary"
+                                (click)="menu.toggle($event)"></app-icon-button>
                             <p-tieredMenu #menu [model]="items" [popup]="true"></p-tieredMenu>
                         </div>
                     </div>
@@ -190,10 +193,10 @@
                             </div>
                             <div *ngIf="p.isAnswered">
                                 <div class="mb-2">
-                                    
+
                                 </div>
-                                <app-text-button label="Undo"
-                                    (click)="onRemovePollingAnswer(p.isAnswered.id, i)"></app-text-button>
+                                <app-text-button label="Undo" (click)="onRemovePollingAnswer(p.isAnswered.id, i)">
+                                </app-text-button>
                             </div>
                         </div>
                     </div>
@@ -204,18 +207,18 @@
                         <p-divider></p-divider>
                         <div class="grid">
                             <app-text-icon-button *ngIf="!p.isLiked" icon="pi pi-heart"
-                                clasz="p-button-text p-button-secondary" label="Suka"
-                                (click)="onLike(p.id, i)"></app-text-icon-button>
+                                clasz="p-button-text p-button-secondary" label="Suka" (click)="onLike(p.id, i)">
+                            </app-text-icon-button>
                             <app-text-icon-button *ngIf="p.isLiked" clasz="p-button-text p-button-danger"
-                                icon="pi pi-heart-fill" label="Suka"
-                                (click)="onDislike(p.isLiked.id, i)"></app-text-icon-button>
+                                icon="pi pi-heart-fill" label="Suka" (click)="onDislike(p.isLiked.id, i)">
+                            </app-text-icon-button>
                             <p-divider layout="vertical"></p-divider>
                             <app-text-icon-button icon="pi pi-comments" clasz="p-button-text p-button-secondary"
                                 label="Komentar({{p.detailCount}})" (click)="onShowAddDetail(i)"></app-text-icon-button>
                             <p-divider layout="vertical"></p-divider>
                             <app-text-icon-button *ngIf="!p.isBookmarked" icon="pi pi-bookmark"
-                                clasz="p-button-text p-button-secondary" label="Bookmark"
-                                (click)="onBookmark(p.id, i)"></app-text-icon-button>
+                                clasz="p-button-text p-button-secondary" label="Bookmark" (click)="onBookmark(p.id, i)">
+                            </app-text-icon-button>
                             <app-text-icon-button *ngIf="p.isBookmarked" icon="pi pi-bookmark-fill"
                                 clasz="p-button-text p-button-primary" label="Bookmark"
                                 (click)="onRemoveBookmark(p.isBookmarked.id, i)"></app-text-icon-button>
@@ -239,7 +242,8 @@
                     <div *ngIf="p.showComment">
                         <div *ngFor="let d of p.postDetail" class="flex">
                             <div class="col-1 grid align-items-center justify-content-center m-0 p-0">
-                                <p-avatar image="http://192.168.10.124:8080/files/{{d.userFileId}}" size="large" shape="circle"></p-avatar>
+                                <p-avatar image="http://192.168.10.124:8080/files/{{d.userFileId}}" size="large"
+                                    shape="circle"></p-avatar>
                             </div>
                             <div class="col-11">
                                 <h5 class="grid align-items-start m-0">{{d.fullName}}</h5>

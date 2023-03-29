@@ -4,6 +4,9 @@
             [style]=" {width: '500px' , height:'100%'}" styleClass="p-card-shadow">
 
             <div *ngIf="role=='MBR'">
+
+                <!-- <h2><i class="pi pi-plus-circle"></i> Buy Event</h2> -->
+
                 <h2><i class="pi pi-plus-circle"></i> Create Event</h2>
                 <app-routing-button label="Add Event" icon="pi pi-plus" class="p-button-rounded mr-2" link="/event/add">
                 </app-routing-button>
@@ -23,7 +26,8 @@
                         [showClear]="true">
                     </p-dropdown> -->
 
-                <p-dropdown [options]="sortOptions" optionLabel="label"></p-dropdown>
+                <p-dropdown [options]="sortOptions" optionLabel="label" optionValue="value" formControlName="price">
+                </p-dropdown>
 
 
             </div>
@@ -41,7 +45,7 @@
                     <ng-template pTemplate="header" class="img flex flex-row justify-content-center mx-2">
                         <img alt="Card" src="http://192.168.10.124:8080/files/{{d.fileId}}" style="height: 250px;">
                     </ng-template>
-                    <div style="border: dotted;">
+                    <div>
                         <div class="mx-2">
                             <div>
                                 <h3> <i class="pi pi-globe"></i> {{d.provider}}</h3>
@@ -50,6 +54,7 @@
                                 <h3> <i class="pi pi-table"></i> EVENT</h3>
                             </div>
                         </div>
+                        <p-divider></p-divider>
                         <div class="grid my-2 mx-2">
                             <span> <i class=" pi pi-calendar"></i> {{d.startDate | date}} - {{d.endDate | date}}</span>
                         </div>

@@ -89,6 +89,23 @@ export class ListEventComponent implements OnInit, OnDestroy {
 
 
         })
+
+        this.reqParams.get('price')?.valueChanges.subscribe(res => {
+            const temp = res as any
+            this.PAGE = 1
+            console.log(temp)
+            if (!temp.length) {
+                this.getEvent$ = this.eventService.getAll(this.reqParams.value.category!, this.reqParams.value.price!, this.POST_LIMIT, this.PAGE++).subscribe(res => {
+                    this.event = res
+                })
+            } else {
+                this.getEvent$ = this.eventService.getAll(this.reqParams.value.category!, temp, this.POST_LIMIT, this.PAGE++).subscribe(res => {
+                    this.event = res
+                })
+            }
+
+
+        })
     }
 
     ngOnDestroy(): void {

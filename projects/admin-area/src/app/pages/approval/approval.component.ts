@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { FormBuilder } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
-import { StatusTransaction } from "projects/common/src/app/constant/StatusTransaction";
 import { TransactionRole } from "projects/common/src/app/constant/TransactionRole";
 import { TransactionGetAllRes } from "projects/common/src/app/pojo/transaction/TransactionGetAllRes";
 import { TransactionGetByCourseIdRes } from "projects/common/src/app/pojo/transaction/TransactionGetByCourseIdRes";
@@ -41,13 +40,21 @@ export class ApprovalComponent implements OnInit, OnDestroy {
         private router: Router
     ) { }
 
-    data = this.fb.group({
+    approve = this.fb.group({
         id: [''],
         isApproved: [false],
+        statusTransaction: ['APR'],
         ver: [0]
     })
 
-    onUpdate(id: string) {
+    rejected = this.fb.group({
+        id: [''],
+        isApproved: [false],
+        statusTransaction: ['RJC'],
+        ver: [0]
+    })
+
+    onApprove(id: string) {
 
         this.transactionService.getTransactionById(id).subscribe(res => {
             this.getById = res
@@ -55,9 +62,28 @@ export class ApprovalComponent implements OnInit, OnDestroy {
             this.update = {
                 id: this.getById.id,
                 isApproved: true,
+                statusTransaction: this.approve.value.statusTransaction!,
                 ver: this.getById.ver
             }
-            console.log(this.update)
+            // console.log(this.update)
+            this.updateTransaction$ = this.transactionService.updateTransaction(this.update).subscribe(res => {
+
+            })
+        })
+    }
+
+    onRejected(id: string) {
+
+        this.transactionService.getTransactionById(id).subscribe(res => {
+            this.getById = res
+
+            this.update = {
+                id: this.getById.id,
+                isApproved: true,
+                statusTransaction: this.rejected.value.statusTransaction!,
+                ver: this.getById.ver
+            }
+            // console.log(this.update)
             this.updateTransaction$ = this.transactionService.updateTransaction(this.update).subscribe(res => {
 
             })
@@ -68,7 +94,7 @@ export class ApprovalComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.courseApproval$ = this.transactionService.getTransactionCourseId(TransactionRole.COURSE).subscribe(res => {
             this.resCourseTransaction = res
-            console.log(this.resCourseTransaction)
+
         })
         this.eventApproval$ = this.transactionService.getTransactionEventId(TransactionRole.EVENT).subscribe(res => {
             this.resEventTransaction = res

@@ -61,11 +61,11 @@ export const adminRouter: Routes = [
         component: MenuBarComponent
     },
     {
-        path : 'article',
-        loadChildren : () => import('./pages/article/article.module').then(c => c.ArticleModule),
-        component : MenuBarComponent
+        path: 'article',
+        loadChildren: () => import('./pages/article/article.module').then(c => c.ArticleModule),
+        component: MenuBarComponent
     },
-    { 
+    {
         path: 'approval',
         loadChildren: () => import('./pages/approval/approval.module').then(c => c.ApprovalModule),
         component: MenuBarComponent

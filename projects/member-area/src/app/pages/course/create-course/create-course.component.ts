@@ -22,6 +22,7 @@ export class CreateCourseComponent implements OnInit, OnDestroy {
     private getCategory$?: Subscription
 
     categorys: CategoryGetAllRes[] = []
+
     createCourse$?: Subscription
 
 
@@ -88,7 +89,6 @@ export class CreateCourseComponent implements OnInit, OnDestroy {
 
     ngOnDestroy(): void {
         this.getCategory$?.unsubscribe()
-
     }
 
 

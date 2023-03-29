@@ -21,6 +21,10 @@ export class MembershipService {
         return this.http.get<MembershipGetAllRes[]>(`${BASE_URL}/memberships`);
     }
 
+    getMembership(limit: number, offset: number): Observable<MembershipGetAllRes[]> {
+        return this.http.get<MembershipGetAllRes[]>(`${BASE_URL}/memberships/page?limit=${limit}&offset=${offset}`)
+    }
+
     getById(id: string): Observable<MembershipGetAllRes> {
         return this.http.get<MembershipGetAllRes>(`${BASE_URL}/memberships/${id}`);
     }

@@ -8,6 +8,7 @@ import { SharedModule } from "projects/common/src/app/shared.module";
 import { CodeMemberComponent } from "./pages/code-member/code-member.component";
 import { LoginMemberComponent } from "./pages/login/login-member.component";
 import { RegisterMemberComponent } from "./pages/register/register-member.component";
+import { EditProfileComponent } from "./pages/user-profile/edit-profile/edit-profile.component";
 import { ProfileMemberComponent } from "./pages/user-profile/user-profile.component";
 
 

@@ -12,7 +12,9 @@
     </p-toolbar>
 
     <div class="flex flex-wrap align-items-center justify-content-center">
-        <p-table styleClass="p-datatable-striped" [value]="resVoucher" [tableStyle]="{'min-width': '80rem'}">
+        <p-table styleClass="p-datatable-striped" (onLazyLoad)="loadData($event)" [value]="resVoucher"
+            responsiveLayout="scroll" [tableStyle]="{'min-width': '80rem'}" [paginator]="true"
+            [totalRecords]="totalData" [rows]="limit" [rowsPerPageOptions]="[5,10,15,20]">
             <ng-template pTemplate="header">
                 <tr>
                     <th>#</th>

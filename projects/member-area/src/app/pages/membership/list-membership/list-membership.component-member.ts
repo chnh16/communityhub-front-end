@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { MembershipGetAllRes } from "projects/common/src/app/pojo/membership/MembershipGetAllRes";
 import { MembershipService } from "projects/common/src/app/service/membership.service";
+import { RouterService } from "projects/common/src/app/service/router.service";
 import { Subscription } from "rxjs";
 
 @Component({
@@ -14,7 +15,8 @@ export class ListMembershipMemberComponent implements OnInit {
 
 
     constructor(
-        private membershipService: MembershipService
+        private membershipService: MembershipService,
+        private routerService : RouterService
     ) { }
 
 
@@ -24,7 +26,7 @@ export class ListMembershipMemberComponent implements OnInit {
         })
     }
 
-    // ngOnDestroy(): void {
-    //     this.membership$?.unsubscribe()
-    // }
+    ngOnDestroy(): void {
+        this.membership$?.unsubscribe()
+    }
 }

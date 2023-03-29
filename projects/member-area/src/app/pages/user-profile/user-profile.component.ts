@@ -12,9 +12,9 @@ import { UserService } from "projects/common/src/app/service/user.service";
 import { Subscription } from "rxjs";
 
 
-@Component ({
-    selector : 'app-login',
-    templateUrl : './user-profile.component.html'
+@Component({
+    selector: 'app-login',
+    templateUrl: './user-profile.component.html'
 })
 export class ProfileMemberComponent implements OnInit, OnDestroy {
     registerData! : any
@@ -45,12 +45,12 @@ export class ProfileMemberComponent implements OnInit, OnDestroy {
     })
 
     constructor(
-        private fb : FormBuilder,
-        private userService : UserService,
-        private industryService : IndustryService,
-        private positionService : PositionService,
-        private activatedRoute : ActivatedRoute
-    ){}
+        private fb: FormBuilder,
+        private userService: UserService,
+        private industryService: IndustryService,
+        private positionService: PositionService,
+        private activatedRoute: ActivatedRoute
+    ) { }
 
     onSubmit(){
         const file : FileInsertReq = {
@@ -137,5 +137,5 @@ export class ProfileMemberComponent implements OnInit, OnDestroy {
     ngOnDestroy(): void {
         this.profileMember$?.unsubscribe()
     }
-    
+
 }

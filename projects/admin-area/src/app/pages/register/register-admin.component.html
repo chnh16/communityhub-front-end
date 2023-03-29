@@ -1,7 +1,6 @@
 <pre>{{data.value | json}}</pre>
 <div class="card">
     <p-card class="mt-8 flex flex-wrap align-items-center justify-content-center ">
-
         <div class="grid">
             <div class="col-5 flex align-items-center justify-content-center">
                 <form [formGroup]="data" (ngSubmit)="onRegister()">
@@ -18,13 +17,10 @@
                             <input formControlName="passwordUser" pInputText id="password" type="password" />
                         </div>
                         <app-submit-button clasz="w-27rem p-button-rounded bg-blue-400" label="Sign Up" [disabled]="!data.valid"></app-submit-button>
-
                         <p class="mt-1 underline text-center">Forget password</p>
                     </div>
                 </form>
             </div>
-
-
             <div class="col-2">
                 <p-divider layout="vertical">
                     <b></b>
@@ -32,7 +28,9 @@
             </div>
             <div class="col-5 flex align-items-center justify-content-center">
                 <div class="w-27rem">
-                    <app-routing-button clasz="mt-2 w-12rem p-button-rounded bg-blue-400" label="SIGN IN"></app-routing-button>
+                    <img src="https://downloadillustrations.com/wp-content/uploads/2020/12/CleanShot-2020-12-06-at-15.06.46.png"
+                        alt="">
+                    <!-- <app-routing-button clasz="mt-2 w-12rem p-button-rounded bg-blue-400" label="SIGN IN"></app-routing-button> -->
                 </div>
             </div>
         </div>

@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MenuItem } from 'primeng/api';
 import { CategoryGetAllRes } from 'projects/common/src/app/pojo/category/CategoryGetAllRes';
 import { FileInsertReq } from 'projects/common/src/app/pojo/file/FileInsertReq';
 import { PollingChoiceInsertReq } from 'projects/common/src/app/pojo/pollingchoice/PollingChoiceInsertReq';
@@ -10,6 +11,7 @@ import { PostLikeReq } from 'projects/common/src/app/pojo/post/PostLikeReq';
 import { ProfileGetReq } from 'projects/common/src/app/pojo/user/ProfileGetReq';
 import { CategoryService } from 'projects/common/src/app/service/category.service';
 import { PostService } from 'projects/common/src/app/service/post.service';
+import { RouterService } from 'projects/common/src/app/service/router.service';
 import { UserService } from 'projects/common/src/app/service/user.service';
 import { Subscription } from 'rxjs';
 
@@ -18,11 +20,14 @@ import { Subscription } from 'rxjs';
   templateUrl: './dashboard.component.html'
 })
 export class DashboardComponent implements OnInit, OnDestroy {
+  items! : MenuItem[]
   dashboard$?: Subscription
   dashboardCategory$?: Subscription
   dashboardProfile$?: Subscription
   postLike$?: Subscription
   postBookmark$?: Subscription
+  pollingAnswer$? : Subscription
+  postEdit$? : Subscription
   post!: PostGetAllRes[]
   profile?: ProfileGetReq
   uploadedFiles: any[] = []
@@ -32,6 +37,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   imageButton: boolean = false
   pollingButton: boolean = false
   categories: CategoryGetAllRes[] = []
+  edit : any = null
 
   data = this.fb.group({
     postTitle: ['', [Validators.required, Validators.minLength(5)]],
@@ -51,7 +57,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
     private fb: FormBuilder,
     private categoryService: CategoryService,
     private postService: PostService,
-    private userService: UserService
+    private userService: UserService,
+    private routerService : RouterService
   ) { }
 
   get imageData() {
@@ -60,6 +67,13 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   get pollingData() {
     return this.data.get('polling') as FormArray
+  }
+
+  get isPremium(){
+    const data = localStorage.getItem('dataLogin')
+    if(data){
+      return JSON.parse(data).isPremium
+    }
   }
 
   onScroll(): void {
@@ -74,7 +88,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     })
   }
 
-  onShowAddDetail(i : number) {
+  onShowAddDetail(i: number) {
     this.post[i].showComment = !this.post[i].showComment
   }
 
@@ -179,37 +193,37 @@ export class DashboardComponent implements OnInit, OnDestroy {
     })
   }
 
-  onLike(postId: string, i : number): void {
+  onLike(postId: string, i: number): void {
     const data: PostLikeReq = {
       postId: postId
     }
     this.postLike$ = this.postService.onLike(data).subscribe(res => {
       this.post[i].isLiked = {
-        id : res.id,
-        status : true
+        id: res.id,
+        status: true
       }
     })
   }
 
-  onDislike(postId: string, i : number): void {
+  onDislike(postId: string, i: number): void {
     this.postLike$ = this.postService.onDislike(postId).subscribe(res => {
       this.post[i].isLiked = null
     })
   }
 
-  onBookmark(postId: string, i : number): void {
+  onBookmark(postId: string, i: number): void {
     const data: PostBookmarkReq = {
       postId: postId
     }
     this.postBookmark$ = this.postService.onBookmark(data).subscribe(res => {
       this.post[i].isBookmarked = {
-        id : res.id,
-        status : true
+        id: res.id,
+        status: true
       }
     })
   }
 
-  onRemoveBookmark(postId: string, i : number): void {
+  onRemoveBookmark(postId: string, i: number): void {
     this.postBookmark$ = this.postService.onRemoveBookmark(postId).subscribe(res => {
       this.post[i].isBookmarked = null
     })
@@ -221,7 +235,31 @@ export class DashboardComponent implements OnInit, OnDestroy {
     })
   }
 
+  onInsertPollingAnswer(pollingChoiceId : string, i : number){
+    this.pollingAnswer$ = this.postService.onInsertPollingAnswer(pollingChoiceId).subscribe(res => {
+      this.post[i].isAnswered = {
+        id : res.id,
+        choiceId : pollingChoiceId
+      }
+    })
+  }
+
+  onRemovePollingAnswer(pollingAnswerId : string, i : number){
+    this.pollingAnswer$ = this.postService.onRemovePollingAnswer(pollingAnswerId).subscribe(res => {
+      this.post[i].isAnswered = null;
+    })
+  }
+
   ngOnInit(): void {
+    this.items = [
+      {
+        label : 'Ubah'
+        //command : ((postId) => this.onEdit(postId))
+      },
+      {
+        label : 'Hapus'
+      }
+    ]
     this.init()
     this.dashboardCategory$ = this.categoryService.getAll().subscribe(res => {
       this.categories = res
@@ -234,12 +272,26 @@ export class DashboardComponent implements OnInit, OnDestroy {
       this.dashboardProfile$ = this.userService.getProfile().subscribe(res => {
         this.profile = res
       })
-    }, 3000)
-
+    }, 1000)
   }
 
   ngOnDestroy(): void {
     this.dashboard$?.unsubscribe()
+  }
+
+  navigate(route : string){
+    this.routerService.navigate(route)
+  }
+
+  onEdit(postId : string){
+    this.edit = this.fb.group({
+      postTitle : ['', Validators.required],
+      postContent : ['', Validators.required]
+    })
+
+    this.postEdit$ = this.postService.getPostById(postId).subscribe(res => {
+
+    })
   }
 
 }

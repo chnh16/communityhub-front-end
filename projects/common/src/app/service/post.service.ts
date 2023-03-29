@@ -21,6 +21,10 @@ export class PostService{
     getPost(limit : number, offset : number) : Observable<PostGetAllRes[]> {
         return this.http.get<PostGetAllRes[]>(`${BASE_URL}/post/list-post?limit=${limit}&offset=${offset}`)
     }
+    
+    getPostById(postId : string) : Observable<PostGetAllRes>{
+        return this.http.get<PostGetAllRes>(`${BASE_URL}/post/${postId}`)
+    }
 
     insertPost(data : PostInsertReq) : Observable<InsertRes>{
         return this.http.post<InsertRes>(`${BASE_URL}/post`, data)
@@ -40,5 +44,13 @@ export class PostService{
 
     onRemoveBookmark(postId : string) : Observable<DeleteRes>{
         return this.http.delete<DeleteRes>(`${BASE_URL}/post/bookmark/${postId}`)
+    }
+
+    onInsertPollingAnswer(pollingChoiceId : string) : Observable<InsertRes>{
+        return this.http.post<InsertRes>(`${BASE_URL}/post/polling/${pollingChoiceId}`, {})
+    }
+
+    onRemovePollingAnswer(pollingAnswerId : string) : Observable<DeleteRes>{
+        return this.http.delete<DeleteRes>(`${BASE_URL}/post/polling/${pollingAnswerId}`)
     }
 }

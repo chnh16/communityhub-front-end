@@ -6,7 +6,8 @@ import { RegisterMemberComponent } from "./register-member.component";
 @NgModule({
     declarations : [
         RegisterMemberComponent,
-        ProfileMemberComponent
+        ProfileMemberComponent,
+        
     ],
     imports : [
         SharedModule

@@ -10,6 +10,7 @@ export interface ProfileGetReq{
     positionId : string
     industryId : string
     company : string
+    premiumUntil : Date | null
     file : string
     ver : number
 }

@@ -7,25 +7,23 @@
         </div>
         <div class="align-item-center">
             <p-card class="align-items-center flex-wrap" styleClass="p-card-shadow">
-                <p-avatar class="grid align-items-center justify-content-center" styleClass="mr-2" size="xlarge"
-                    image="http://192.168.10.124:8080/files/{{profile.file}}"
-                    [style]="{'background-color':'#2196F3', 'color': '#ffffff'}"></p-avatar>
+                <p-avatar class="grid align-items-center justify-content-center" styleClass="mr-2" size="xlarge" shape="circle" image="http://192.168.10.124:8080/files/{{profile.file}}"
+                [style]="{'background-color':'#2196F3', 'color': '#ffffff'}"></p-avatar>
                 <h3 class="grid my-1 align-items-center justify-content-center">{{profile.fullName}}</h3>
                 <span class="grid my-1 align-items-center justify-content-center">{{profile.industryId}}</span>
-                <span class="grid my-1 align-items-center justify-content-center">{{profile.positionId}}</span>
-                <span class="grid my-1 align-items-center justify-content-center">{{profile.company}}</span>
+                <span class="grid my-1 align-items-center justify-content-center">{{profile.positionId}} at {{profile.company}}</span>
                 <p-divider></p-divider>
                 <h4>Profil</h4>
                 <div class="mx-2 p-0">
                     <div class="mb-2">
-                        <span class="grid mb-1">Email</span>
+                        <span class="grid mb-1"><i class="pi pi-envelope mr-1"></i>Email</span>
                         <p class="grid">{{profile.email}}</p>
                     </div>
                     <div class="mb-2">
-                        <span class="grid mb-1">No. Telp</span>
+                        <span class="grid mb-1"><i class="pi pi-mobile mr-1"></i>No. Telp</span>
                         <p class="grid">{{profile.phoneNumber}}</p>
                     </div>
-                    <div *ngIf="!isPremium" class="mb-2">
+                    <div *ngIf="!profile.premiumUntil" class="mb-2">
                         <div class="grid">
                             <button pButton class="p-button-primary p-button-text m-0 p-0"
                                 (click)="navigate('/memberships')"><i class="pi pi-lock"></i>Aktifkan Premium</button>
@@ -84,7 +82,7 @@
                     <p-dropdown [options]="categories" optionLabel="categoryName" formControlName="categoryId"
                         optionValue="id"></p-dropdown>
                 </div>
-                <div *ngIf="isPremium" class="mb-1">
+                <div *ngIf="profile?.premiumUntil" class="mb-1">
                     <label>Premium</label>
                     <p-inputSwitch formControlName="isPremium">Premium</p-inputSwitch>
                 </div>
@@ -124,7 +122,7 @@
                             class="p-button-outlined p-button-rounded"></button>
                     </div>
                     <div class="col-auto mx-1">
-                        <app-submit-button [disabled]="!this.data.valid" label="Post"></app-submit-button>
+                        <app-submit-button label="Post"></app-submit-button>
                     </div>
                 </div>
             </form>

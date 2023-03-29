@@ -1,13 +1,13 @@
 <div class="m-3">
     <div>
-        <app-text-button label="Kembali" routerLink="/course"></app-text-button>
+        <app-back-button label="Kembali" link="../"></app-back-button>
     </div>
     <div>
-        <p-card header="{{getByCourseId?.courseName}}" subheader="{{getByCourseId?.categoryId}}"
+        <p-card header="{{getByEventId?.eventName}}" subheader="{{getByEventId?.categoryId}}"
             [style]="{width : '860px'}" styleClass="p-card-shadow"
             class=" card-body p-4 flex align-items-center justify-content-center">
 
-            <img alt="Card" src="http://192.168.10.124:8080/files/{{getByCourseId?.file}}"
+            <img alt="Card" src="http://192.168.10.124:8080/files/{{getByEventId?.fileId}}"
                 style="width: 100%; height: 100%;">
 
             <div>
@@ -19,18 +19,7 @@
                         :
                     </div>
                     <div class="col">
-                        <b>{{getByCourseId?.provider}}</b>
-                    </div>
-                </div>
-                <div class=" grid mt-1">
-                    <div class="col-2">
-                        Trainer
-                    </div>
-                    <div class="col-1">
-                        :
-                    </div>
-                    <div class="col">
-                        <b>{{getByCourseId?.trainer}}</b>
+                        <b>{{getByEventId?.provider}}</b>
                     </div>
                 </div>
                 <div class=" grid mt-1">
@@ -41,7 +30,7 @@
                         :
                     </div>
                     <div class="col">
-                        <b>{{getByCourseId?.startDate | date}}</b>
+                        <b>{{getByEventId?.startDate | date}}</b>
                     </div>
                 </div>
                 <div class=" grid mt-1">
@@ -52,7 +41,7 @@
                         :
                     </div>
                     <div class="col">
-                        <b>{{getByCourseId?.endDate | date}}</b>
+                        <b>{{getByEventId?.endDate | date}}</b>
                     </div>
                 </div>
                 <div class=" grid mt-1">
@@ -63,7 +52,7 @@
                         :
                     </div>
                     <div class="col">
-                        <b>Rp {{getByCourseId?.price}}</b>
+                        <b>Rp {{getByEventId?.price}}</b>
                     </div>
                 </div>
                 <div class=" grid mt-1">
@@ -74,19 +63,18 @@
                         :
                     </div>
                     <div class="col">
-                        <b>{{getByCourseId?.locationName}}</b>
+                        <b>{{getByEventId?.locationName}}</b>
                     </div>
                 </div>
             </div>
             <ng-template pTemplate="footer" let-data>
                 <!-- <app-action-button label="Beli Event" link="/event/buy-event"></app-action-button> -->
-                <app-routing-button *ngIf="userId!=getByCourseId?.userId" label="Beli Event" icon="pi pi-plus"
-                    class="p-button-rounded mr-2" link="/course/buy-course/{{getByCourseId?.id}}">
+                <app-routing-button *ngIf="userId!=getByEventId?.userId" label="Beli Event" icon="pi pi-plus"
+                    class="p-button-rounded mr-2" link="/event/buy-event/{{getByEventId?.id}}">
                 </app-routing-button>
 
-
-                <button *ngIf="userId==getByCourseId?.userId" pButton pRipple type="button" icon="pi pi-trash"
-                    class="ml-3 p-button-rounded p-button-danger" (click)="deleteCourse(data)"></button>
+                <button *ngIf="userId==getByEventId?.userId" pButton pRipple type="button" icon="pi pi-trash"
+                    class="ml-3 p-button-rounded p-button-danger" (click)="deleteEvent(data)"></button>
             </ng-template>
         </p-card>
     </div>

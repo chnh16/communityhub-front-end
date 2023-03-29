@@ -2,43 +2,74 @@
     {{data.value | json}}
 </pre>
 
-<div class="flex flex-wrap align-items-center justify-content-center">
-    <div class="mt-6">
-        <h2>BELI EVENT</h2>
-    </div>
-</div>
+
 <div class="flex flex-wrap align-items-center justify-content-center">
     <div class="mt-2">
+        <app-text-button label="Kembali" routerLink="../../"></app-text-button>
         <p-card class=" card-body p-4 flex align-items-center justify-content-center"
             [style]=" {width: '500px' , height:'100%'}" styleClass="p-card-shadow">
+            <div class="flex flex-wrap align-items-center justify-content-center">
+                <div class="mb-6">
+                    <h2>BUY EVENT</h2>
+                </div>
+            </div>
             <div>
-                <div class=" grid mt-1 justify-content-center">
-                    <span style="font-weight:bold">Event : {{getByEventId?.eventName}}</span>
+                <div class="grid">
+                    <div class="col">
+                        <h4>Detail Item</h4>
+                    </div>
                 </div>
-                <div class=" grid mt-1 justify-content-center">
-                    <span>Price : Rp.{{getByEventId?.price}}</span>
+                <div class="grid">
+                    <div class="col-3">
+                        <span>Event</span>
+                    </div>
+                    <div class="col-1">
+                        <span>:</span>
+                    </div>
+                    <div class="col">
+                        <span>{{getByEventId?.eventName}}</span>
+                    </div>
                 </div>
-
+                <div class="grid">
+                    <div class="col-3">
+                        <span>Jadwal</span>
+                    </div>
+                    <div class="col-1">
+                        <span>:</span>
+                    </div>
+                    <div class="col">
+                        <span>{{getByEventId?.startDate}} - {{getByEventId?.endDate}}</span>
+                    </div>
+                </div>
+                <div class="grid">
+                    <div class="col-3">
+                        <span>Harga</span>
+                    </div>
+                    <div class="col-1">
+                        <span>:</span>
+                    </div>
+                    <div class="col">
+                        <span>Rp {{getByEventId?.price}}</span>
+                    </div>
+                </div>
             </div>
 
 
             <p-divider></p-divider>
             <form [formGroup]="data" (ngSubmit)="buyEvent()">
                 <div class="field grid">
-                    <label for="voucherCode" class="col-fixed" style="width:200px">Code Voucher</label>
+                    <label for="voucherCode" class="col-4">Code Voucher</label>
                     <div class="col">
                         <input id="voucherCode" formControlName="voucherCode" type="text"
                             class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary">
                     </div>
                 </div>
                 <div class="mt-4">
-
                     <div class="field grid">
-                        <label for="formFileMultiple" class="form-label">Masukkan File </label>
-                        <div class="col">
-                            <p-fileUpload mode="basic" name="demo[]" (onSelect)="fileUpload($event)"></p-fileUpload>
-                        </div>
-
+                        <label for="formFileMultiple" class="col-4 form-label">Bukti Pembayaran</label>
+                        <p-fileUpload class="col" mode="basic" name="demo[]" (onSelect)="fileUpload($event)"
+                            chooseLabel="Pilih File">
+                        </p-fileUpload>
                     </div>
                 </div>
                 <div class="mt-4">

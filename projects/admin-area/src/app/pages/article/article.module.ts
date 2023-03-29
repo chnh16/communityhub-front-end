@@ -21,11 +21,12 @@ import { ListArticleComponent } from "./list_article/list-article.component";
 import { ArticleRouting } from "./article.routing";
 import { DividerModule } from "primeng/divider";
 import { ArticleDetailComponent } from "./article-detail/article-detail.component";
+import { UpdateArticleComponent } from "./update-article/update-article.component";
 
 
 @NgModule({
     declarations: [
-        CreateArticleComponent, ListArticleComponent, ArticleDetailComponent
+        CreateArticleComponent, ListArticleComponent, ArticleDetailComponent, UpdateArticleComponent
         ],
     imports: [
        ArticleRouting,CommonModule,TableModule, ButtonModule, ToolbarModule,

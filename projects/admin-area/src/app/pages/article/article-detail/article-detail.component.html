@@ -5,7 +5,7 @@
 <div class="flex align-item-start justify-content-start mt-4 ml-8">
     <p-toolbar styleClass="mb-4 gap-2">
         <ng-template pTemplate="left">
-            <button pButton pRipple icon="pi pi-pencil" class="p-button-success mr-2"></button>
+            <button pButton pRipple icon="pi pi-pencil" class="p-button-success mr-2" routerLink="/article/update/{{getArticleById?.id}}"></button>
             <button pButton pRipple icon="pi pi-trash" class="p-button-danger" (click)="deleteArticle(getArticleById!)"></button>
         </ng-template>
     </p-toolbar>
@@ -26,7 +26,8 @@
         </div>
         <div class="col-12">
             <div class="col-12 flex align-items-center justify-content-center w-full">
-                <p>{{getArticleById?.articleContent}}</p>
+                <span [innerHTML]="getArticleById?.articleContent">       
+                </span>
             </div>
         </div>
     </p-card>

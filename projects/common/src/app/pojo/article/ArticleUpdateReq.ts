@@ -1,7 +1,9 @@
 import { FileInsertReq } from "../file/FileInsertReq"
 
-export interface ArticleInsertReq {
+export interface ArticleUpdateReq {
+    id : string
     articleTitle: string
     articleContent: string
     photoId?: FileInsertReq
+    ver : number
 }

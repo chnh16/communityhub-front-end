@@ -28,7 +28,7 @@ export const adminRouter: Routes = [
         component: RegisterAdminComponent
     },
     {
-        path: 'admin-Profile',
+        path: 'profile-admin',
         component : ProfileAdminComponent
     },
     {

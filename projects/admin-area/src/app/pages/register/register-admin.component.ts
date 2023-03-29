@@ -25,7 +25,7 @@ export class RegisterAdminComponent implements OnDestroy {
 
     onRegister(){
         if(this.data.valid){
-            this.router.navigate(['/admin-Profile']), {queryParams : {data : btoa(JSON.stringify(this.data.value))}}
+            this.router.navigate(['/profile-admin']), {queryParams : {data : btoa(JSON.stringify(this.data.value))}}
         }
     }
 

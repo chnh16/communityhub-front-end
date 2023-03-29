@@ -9,20 +9,15 @@
                             <h3>REGISTER</h3>
                         </div>
                         <div class="pt-4 field">
-                            <label for="email">Email</label>
-                            <input formControlName="email" pInputText id="email" type="text" />
+                            <label for="username">Username</label>
+                            <input formControlName="email" pInputText id="username" type="text" />
                         </div>
                         <div class="field">
                             <label for="password">Password</label>
                             <input formControlName="passwordUser" pInputText id="password" type="password" />
                         </div>
-                        <app-submit-button clasz="w-27rem p-button-rounded bg-blue-400" label="Sign Up"
-                            [disabled]="!data.valid"></app-submit-button>
-                        <div class="field col-5 md:col-12 justify-content-center align-items-center ">
-                            <p class="justify-content-center align-items-center ">Already Have An Account
-                                <a href="">Sign In</a>
-                            </p>
-                        </div>
+                        <app-submit-button clasz="w-27rem p-button-rounded bg-blue-400" label="Sign Up" [disabled]="!data.valid"></app-submit-button>
+                        <p class="mt-1 underline text-center">Forget password</p>
                     </div>
                 </form>
             </div>

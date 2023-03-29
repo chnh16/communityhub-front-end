@@ -1,13 +1,20 @@
 <pre>{{data.value | json}}</pre>
 <div class="card">
-    <p-card class="mt-8 flex flex-wrap align-items-center justify-content-center ">
-
-        <div class="grid">
-            <div class="col-5 flex align-items-center justify-content-center">
+    <p-card class="grid grid-nogutter align-items-center justify-content-center">
+        <div class="grid m-0 p-0 w-auto">
+            <div class="grid m-0 p-0 lg:col align-items-center justify-content-center">
+                <div>
+                    <p-image src="../../../assets/img/undraw_Welcoming_re_x0qo.png" alt="Image" width="250"></p-image>
+                </div>
+            </div>
+            <div class="hidden md:block col-1 lg:block col-1">
+                <p-divider layout="vertical"></p-divider>
+            </div>
+            <div class="grid lg:col align-items-center justify-content-center">
                 <form [formGroup]="data" (ngSubmit)="onLogin()">
                     <div class="pl-5 p-fluid">
                         <div class="pt-2 align-items-center justify-content-center">
-                            <h3>LOGIN</h3>
+                            <h3>Login</h3>
                         </div>
                         <div class="pt-4 field">
                             <label for="email">Email</label>
@@ -18,24 +25,13 @@
                             <p-password formControlName="passwordUser" [toggleMask]="true" [feedback]="false">
                             </p-password>
                         </div>
-                        <app-submit-button clasz="w-27rem p-button-rounded bg-blue-400" label="Login"
+                        <app-submit-button clasz="w-auto p-button-rounded bg-blue-400 mx-1" label="Login"
                             [disabled]="!data.valid"></app-submit-button>
-                        <app-routing-button clasz="mt-2 w-27rem p-button-rounded bg-blue-400" label="Sign Up"
+                        <app-routing-button clasz="w-auto p-button-rounded bg-blue-400 mx-1" label="Sign Up"
                             link="/register-member"></app-routing-button>
                         <p class="mt-1 underline text-center">Forget password</p>
                     </div>
                 </form>
-            </div>
-
-            <div class="col-2">
-                <p-divider layout="vertical">
-                    <b></b>
-                </p-divider>
-            </div>
-            <div class="col-5 flex align-items-center justify-content-center">
-                <div class="w-27rem">
-                    <p-image src="../../../assets/img/undraw_Welcoming_re_x0qo.png" alt="Image" width="350"></p-image>
-                </div>
             </div>
         </div>
     </p-card>

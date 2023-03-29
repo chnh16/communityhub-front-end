@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { MenuItem } from 'primeng/api';
 import { CategoryGetAllRes } from 'projects/common/src/app/pojo/category/CategoryGetAllRes';
 import { FileInsertReq } from 'projects/common/src/app/pojo/file/FileInsertReq';
@@ -61,8 +62,11 @@ export class DashboardComponent implements OnInit, OnDestroy {
     private categoryService: CategoryService,
     private postService: PostService,
     private userService: UserService,
-    private routerService : RouterService
-  ) { }
+    private routerService : RouterService,
+    private title : Title
+  ) {
+    this.title.setTitle("Beranda")
+   }
 
   get imageData() {
     return this.data.get('file') as FormArray
@@ -70,13 +74,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   get pollingData() {
     return this.data.get('polling') as FormArray
-  }
-
-  get isPremium(){
-    const data = localStorage.getItem('dataLogin')
-    if(data){
-      return JSON.parse(data).isPremium
-    }
   }
 
   onScroll(): void {

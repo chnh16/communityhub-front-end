@@ -24,6 +24,7 @@ import { RadioButtonModule } from 'primeng/radiobutton';
 import { TieredMenuModule } from 'primeng/tieredmenu';
 import { PasswordModule } from 'primeng/password';
 import { SkeletonModule } from 'primeng/skeleton';
+import { ProgressBarComponent } from "./component/progressbar/app-progressbar.component";
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import { SkeletonModule } from 'primeng/skeleton';
         InputSwitchModule,
         RadioButtonModule,
         PasswordModule,
-        SkeletonModule
+        SkeletonModule,
+        ProgressBarComponent
     ],
     exports: [
         ButtonModule,
@@ -80,7 +82,8 @@ import { SkeletonModule } from 'primeng/skeleton';
         InputSwitchModule,
         RadioButtonModule,
         PasswordModule,
-        SkeletonModule
+        SkeletonModule,
+        ProgressBarComponent
     ]
 })
 

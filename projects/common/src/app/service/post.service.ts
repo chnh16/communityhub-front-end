@@ -10,6 +10,7 @@ import { PostGetAllRes } from "../pojo/post/PostGetAllRes";
 import { PostInsertReq } from "../pojo/post/PostInsertReq";
 import { PostLikeReq } from "../pojo/post/PostLikeReq";
 import { PostDetailGetAllRes } from "../pojo/postdetail/PostDetailGetAllRes";
+import { PostDetailInsertReq } from "../pojo/postdetail/PostDetailInsertReq";
 
 
 @Injectable({
@@ -62,5 +63,9 @@ export class PostService{
 
     getPostDetail(postId : string) : Observable<PostDetailGetAllRes[]>{
         return this.http.get<PostDetailGetAllRes[]>(`${BASE_URL}/post/detail/${postId}`)
+    }
+
+    insertPostDetail(postDetail : PostDetailInsertReq) : Observable<InsertRes>{
+        return this.http.post<InsertRes>(`${BASE_URL}/post/detail/add`, postDetail)
     }
 }

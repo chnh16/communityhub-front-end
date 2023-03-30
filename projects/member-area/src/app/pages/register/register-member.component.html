@@ -1,41 +1,105 @@
-<pre>{{data.value | json}}</pre>
+<!-- <pre>{{data.value | json}}</pre> -->
 <div class="card">
-    <p-card class="mt-8 flex flex-wrap align-items-center justify-content-center ">
-        <div class="grid">
-            <div class="col-5 flex align-items-center justify-content-center">
+    <p-card class="grid grid-nogutter align-items-center justify-content-center">
+        <div class="grid m-0 p-0 w-auto">
+            <p-toast></p-toast>
+            <div class="grid m-0 p-0 lg:col align-items-center justify-content-center">
+                <div>
+                    <p-image
+                        src="https://downloadillustrations.com/wp-content/uploads/2020/12/CleanShot-2020-12-06-at-15.06.46.png"
+                        alt="Image" width="250"></p-image>
+                </div>
+            </div>
+            <div class="hidden md:block col-1 lg:block col-1">
+                <p-divider layout="vertical"></p-divider>
+            </div>
+            <div class="grid lg:col align-items-center justify-content-center">
                 <form [formGroup]="data" (ngSubmit)="onRegister()">
                     <div class="pl-5 p-fluid">
                         <div class="pt-2 align-items-center justify-content-center">
-                            <h3>REGISTER</h3>
+                            <h3>Register</h3>
                         </div>
                         <div class="pt-4 field">
                             <label for="email">Email</label>
-                            <input formControlName="email" pInputText id="email" type="text" />
+                            <input formControlName="email" pInputText id="email" type="email" />
                         </div>
                         <div class="field">
                             <label for="password">Password</label>
-                            <input formControlName="passwordUser" pInputText id="password" type="password" />
+                            <p-password formControlName="passwordUser" [toggleMask]="true" [feedback]="false">
+                            </p-password>
                         </div>
-                        <app-submit-button clasz="w-27rem p-button-rounded bg-blue-400" label="Sign Up" [disabled]="!data.valid"></app-submit-button>
-                        <div class="field col-5 md:col-12 justify-content-center align-items-center ">
-                            <p class="justify-content-center align-items-center ">Already Have An Account
-                                <a href="">Sign In</a>
-                            </p>
+                        <div class="field">
+                            <label>Konfirmasi Password</label>
+                            <p-password formControlName="passwordConfirm" [toggleMask]="true" [feedback]="false">
+                            </p-password>
                         </div>
+                        <app-submit-button clasz="w-auto p-button-rounded bg-blue-400" label="Register"
+                            [disabled]="!data.valid"></app-submit-button>
+                        <p class="justify-content-center align-items-center ">Sudah punya akun?
+                            <button pButton class="p-button-text m-0 p-0 w-auto" (click)="signIn()">Log In</button>
+                        </p>
                     </div>
                 </form>
-            </div>
-            <div class="col-2">
-                <p-divider layout="vertical">
-                    <b></b>
-                </p-divider>
-            </div>
-            <div class="col-5 flex align-items-center justify-content-center">
-                <div class="w-27rem">
-                    <img src="https://downloadillustrations.com/wp-content/uploads/2020/12/CleanShot-2020-12-06-at-15.06.46.png" alt="">
-                    <!-- <app-routing-button clasz="mt-2 w-12rem p-button-rounded bg-blue-400" label="SIGN IN"></app-routing-button> -->
-                </div>
             </div>
         </div>
     </p-card>
 </div>
+<!-- <div class="grid grid-nogutter">
+    <p-card class="grid align-items-center justify-content-center">
+        <div class="grid">
+            <div class="grid md:col lg:col">
+                <img src="https://downloadillustrations.com/wp-content/uploads/2020/12/CleanShot-2020-12-06-at-15.06.46.png"
+                    alt="Image">
+            </div>
+            <div class="hidden md:block col-1 lg:block col-1">
+                <p-divider layout="vertical">
+                    <b></b>
+                </p-divider>
+            </div>
+            <div class="grid md:col lg:col">
+                <div class="grid justify-content-center">
+                    <h3>Register</h3>
+                </div>
+                <form [formGroup]="data" (ngSubmit)="onRegister()">
+                    <div class="grid">
+                        <div class="grid align-item-center">
+                            <div class="col-4">
+                                <label for="email">Email</label>
+                            </div>
+                            <div class="col">
+                                <input formControlName="email" pInputText id="email" type="text" />
+                            </div>
+                        </div>
+                        <div class="grid">
+                            <div class="col-4">
+                                <label for="password" class="col-2">Password</label>
+                            </div>
+                            <div class="col">
+                                <p-password id="password" [toggleMask]="true" formControlName="passwordUser"
+                                    [feedback]="false"></p-password>
+                            </div>
+                        </div>
+                        <div class="grid">
+                            <div class="col-4">
+                                <label for="passwordConfirm" class="col-2">Konfirmasi Password</label>
+                            </div>
+                            <div class="col">
+                                <p-password id="passwordConfirm" [toggleMask]="true" formControlName="passwordConfirm"
+                                    [feedback]="false"></p-password>
+                            </div>
+                        </div>
+                        <div class="grid justify-content-center">
+                            <app-submit-button clasz="w-auto p-button-rounded bg-blue-400" label="Register"
+                                [disabled]="!data.valid"></app-submit-button>
+                        </div>
+                    </div>
+                </form>
+                <div class="grid col-5 md:col-12 justify-content-center align-items-center ">
+                    <p class="justify-content-center align-items-center ">Sudah punya akun?
+                        <button pButton class="p-button-text m-0 p-0 w-auto" (click)="signIn()">Log In</button>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </p-card>
+</div> -->

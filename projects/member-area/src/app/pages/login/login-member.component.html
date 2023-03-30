@@ -1,6 +1,6 @@
-<pre>{{data.value | json}}</pre>
-<div class="card">
-    <p-card class="grid grid-nogutter align-items-center justify-content-center">
+<!-- <pre>{{data.value | json}}</pre> -->
+<div class="flex align-item-center justify-content-center">
+    <p-card class="grid grid-nogutter justify-content-center">
         <div class="grid m-0 p-0 w-auto">
             <div class="grid m-0 p-0 lg:col align-items-center justify-content-center">
                 <div>
@@ -27,9 +27,8 @@
                         </div>
                         <app-submit-button clasz="w-auto p-button-rounded bg-blue-400 mx-1" label="Login"
                             [disabled]="!data.valid"></app-submit-button>
-                        <app-routing-button clasz="w-auto p-button-rounded bg-blue-400 mx-1" label="Sign Up"
+                        <app-routing-button clasz="w-auto p-button-rounded bg-blue-400 mx-1" label="Register"
                             link="/register-member"></app-routing-button>
-                        <p class="mt-1 underline text-center">Forget password</p>
                     </div>
                 </form>
             </div>

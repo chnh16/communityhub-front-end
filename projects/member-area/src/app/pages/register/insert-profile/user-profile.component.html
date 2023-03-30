@@ -1,83 +1,127 @@
 <pre>{{registerData | json}}</pre>
 <pre>{{data.value | json}}</pre>
 <pre>{{profile.value | json}}</pre>
-<div class="ml-4 mr-4 card surface-border">
-    <p-card class="mt-6 flex flex-wrap align-items-center justify-content-center surface-border">
-        <form [formGroup]="profile" (ngSubmit)="onSubmit()">
-            <div class="grid">
-                <div class="col-8 flex align-items-center justify-content-center">
-                    <div class="formgrid grid">
-                        <div class="field col-8 md:col-12">
-                            <h1>USER PROFILE</h1>
+<!-- <pre>{{file.value | json}}</pre> -->
+<p-card class="align-items-center justify-content-center">
+    <div class="grid grid-nogutter mx-2">
+        <div class="grid md:col align-items-center lg:col align-items-center">
+            <div>
+                <p-image src="../../../../assets/img/user_profile.jpg" alt="Image"></p-image>
+            </div>
+        </div>
+        <div class="hidden md:block col-1">
+            <p-divider layout="vertical">
+                <b></b>
+            </p-divider>
+        </div>
+        <div class="col-12 md:col-6 lg:col-6">
+            <form [formGroup]="profile" (ngSubmit)="onSubmit()">
+                <div class="grid align-items-center justify-content-center">
+                    <div class="col-12 mb-4">
+                        <h1>Profil</h1>
+                    </div>
+                    <div class="col-12 mt-2 md:col-6">
+                        <div>
+                            <label>Nama Lengkap <sup class="text-red-500">*</sup></label>
                         </div>
-                        <div class="mt-4 field col-8 md:col-6">
-                            <label for="lastname6">Full Name</label>
-                            <input [formGroup]="profile" formControlName="fullName" id="lastname6" type="text" class="text-base text-color surface-overlay p-2 border-3 border-solid surface-border border-blue-400 border-round appearance-none outline-none focus:border-primary w-full">
+                        <div>
+                            <input pInputText formControlName="fullName" type="text"
+                                class="col-12 md:col-10">
                         </div>
-                        <div class="mt-4 field col-8 md:col-6">
-                            <label for="lastname6">Country</label>
-                            <input [formGroup]="profile" formControlName="country" id="lastname6" type="text" class="text-base text-color surface-overlay p-2 border-3 border-solid surface-border border-blue-400 border-round appearance-none outline-none focus:border-primary w-full">
+                    </div>
+                    <p-divider class="md:hidden lg:hidden"></p-divider>
+                    <div class="col-12 mt-2 md:col-6">
+                        <div>
+                            <label>Country <sup class="text-red-500">*</sup></label>
                         </div>
-                        <div class="mt-4 field col-8 md:col-6">
-                            <label for="lastname6">Province</label>
-                            <input [formGroup]="profile" formControlName="province" id="lastname6" type="text" class="text-base text-color surface-overlay p-2 border-3 border-solid surface-border border-blue-400 border-round appearance-none outline-none focus:border-primary w-full">
+                        <div>
+                            <input pInputText formControlName="country" type="text"
+                            class="col-12 md:col-10">
                         </div>
-                        <div class="mt-4 field col-8 md:col-6">
-                            <label for="lastname6">City</label>
-                            <input [formGroup]="profile" formControlName="city" id="lastname6" type="text" class="text-base text-color surface-overlay p-2 border-3 border-solid surface-border border-blue-400 border-round appearance-none outline-none focus:border-primary w-full">
+                    </div>
+                    <p-divider class="md:hidden lg:hidden"></p-divider>
+                    <div class="col-12 mt-2 md:col-6">
+                        <div>
+                            <label>Province <sup class="text-red-500">*</sup></label>
                         </div>
-                        <div class="mt-4 field col-8 md:col-4">
-                            <label for="lastname6">Phone Number</label>
-                            <input [formGroup]="profile" formControlName="phoneNumber" id="lastname6" type="text" class="text-base text-color surface-overlay p-2 border-3 border-solid surface-border border-blue-400 border-round appearance-none outline-none focus:border-primary w-full">
+                        <div>
+                            <input pInputText formControlName="province" type="text"
+                                class="col-12 md:col-10">
                         </div>
-                        <div class="mt-4 field col-12 md:col-6">
-                            <label for="state">Company</label>
-                            <input [formGroup]="profile" formControlName="company" id="lastname6" type="text" class="text-base text-color surface-overlay p-2 border-3 border-solid surface-border border-blue-400 border-round appearance-none outline-none focus:border-primary w-full">
+                    </div>
+                    <p-divider class="md:hidden lg:hidden"></p-divider>
+                    <div class="col-12 mt-2 md:col-6">
+                        <div>
+                            <label>City <sup class="text-red-500">*</sup></label>
                         </div>
-                        <div class="mt-4 field col-8 md:col-2">
-                            <label for="lastname6">Postal Code</label>
-                            <input [formGroup]="profile" formControlName="postalCode" id="lastname6" type="text" class="text-base text-color surface-overlay p-2 border-3 border-solid surface-border border-blue-400 border-round appearance-none outline-none focus:border-primary w-full">
+                        <div>
+                            <input pInputText formControlName="city" type="text"
+                                class="col-12 md:col-10">
                         </div>
-                        <div for="positionId" class="mt-4 field col-8 md:col-6">
-                            <label for="lastname6">Position</label>
+                    </div>
+                    <p-divider class="md:hidden lg:hidden"></p-divider>
+                    <div class="col-12 mt-2 md:col-6">
+                        <div>
+                            <label>Phone Number <sup class="text-red-500">*</sup></label>
                         </div>
-                        <div class="mt-4 field col-8 md:col-6">
-                            <label for="lastname6">Industry</label>
+                        <div>
+                            <input pInputText formControlName="phoneNumber" type="text"
+                                class="col-12 md:col-10">
                         </div>
-                        <div class="field col-8 md:col-6">
-                            <!-- <label for="lastname6">Position</label> -->
-                            <p-dropdown [options]="positions" placeholder=" Select a Position" [showClear]="true"
-                                optionLabel="positionName" formControlName="positionId" optionValue="id" class="w-full">
+                    </div>
+                    <p-divider class="md:hidden lg:hidden"></p-divider>
+                    <div class="col-12 mt-2 md:col-6">
+                        <div>
+                            <label>Company <sup class="text-red-500">*</sup></label>
+                        </div>
+                        <div>
+                            <input pInputText formControlName="company" type="text"
+                                class="col-12 md:col-10">
+                        </div>
+                    </div>
+                    <p-divider class="md:hidden lg:hidden"></p-divider>
+                    <div class="col-12 mt-2 md:col-6">
+                        <div>
+                            <label>Postal Code <sup class="text-red-500">*</sup></label>
+                        </div>
+                        <div>
+                            <input pInputText formControlName="postalCode" type="text"
+                                class="col-12 md:col-10">
+                        </div>
+                    </div>
+                    <p-divider class="md:hidden lg:hidden"></p-divider>
+                    <div class="col-12 mt-2 md:col-6">
+                        <div>
+                            <label>Position<sup class="text-red-500">*</sup></label>
+                        </div>
+                        <div>
+                            <p-dropdown [options]="positions" placeholder=" Select Position" [showClear]="true"
+                                optionLabel="positionName" formControlName="positionId" optionValue="id" class="col-12 md:col-10">
                             </p-dropdown>
                         </div>
-                        <div class="field col-8 md:col-6">
-                            <!-- <label for="lastname6">Industry</label> -->
-                            <p-dropdown [options]="industries" optionLabel="industryName" [formGroup]="profile" formControlName="industryId" optionValue="id" class="w-full"></p-dropdown>
+                    </div>
+                    <div class="col-12 mt-2 md:col-6">
+                        <div>
+                            <label>Industry<sup class="text-red-500">*</sup></label>
                         </div>
-                        <div class="field col-8 md:col-4">
-                            <p-image src="../../../assets/img/Profile_pic.png" alt="Image" width="250"></p-image>
-                        </div>
-                        <div class="mt-8 field col-8 md:col-6">
-                            <label for="formFile">Upload Foto</label>
-                            <p-fileUpload mode="basic" accept="image/*" chooseLabel="Browse" styleClass="p-button w-16rem h-2.5rem bg-blue-400" id="formFile" (onSelect)="uploadFile($event)"></p-fileUpload>
-                        </div>
-                        <div class="mt-6 field col-8 md:col-12">
-                            <button pButton pRipple type="submit" label="SAVE" class="p-button-raised min-w-full" styleClass="p-button min-w-full bg-blue-400"></button>
+                        <div>
+                            <p-dropdown [options]="industries" placeholder=" Select Industry" [showClear]="true"
+                                optionLabel="industryName" [formGroup]="profile" formControlName="industryId"
+                                optionValue="id"></p-dropdown>
                         </div>
                     </div>
-                </div>
-                <div class="col-2">
-                    <p-divider layout="vertical">
-                        <b></b>
-                    </p-divider>
-                </div>
-                <div class="col-2 flex align-items-center justify-content-start">
-                    <div class="w-27rem">
-                        <p-image src="/projects/member-area/src/assets/img/user_profile.jpg" alt="Image" width="150"
-                            height="300"></p-image>
+                    <div class="mt-8 field col-8 md:col-6">
+                        <label for="formFile">Upload Foto</label>
+                        <p-fileUpload mode="basic" accept="image/*" chooseLabel="Browse"
+                            styleClass="p-button w-16rem h-2.5rem bg-blue-400" id="formFile"
+                            (onSelect)="uploadFile($event)"></p-fileUpload>
+                    </div>
+                    <div class="col-8 mt-6 field">
+                        <button pButton pRipple type="submit" label="Daftar" class="p-button-raised"
+                            styleClass="p-button w-auto bg-blue-400"></button>
                     </div>
                 </div>
-            </div>
-        </form>
-    </p-card>
-</div>
+            </form>
+        </div>
+    </div>
+</p-card>

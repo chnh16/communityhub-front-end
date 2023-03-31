@@ -14,8 +14,8 @@
                                 <th>Member Name</th>
                                 <th>Course</th>
                                 <th>Grand Total</th>
-                                <th>Status Transaction</th>
                                 <th>Files</th>
+                                <th>Status Transaction</th>
                                 <th>Approved</th>
                             </tr>
                         </ng-template>
@@ -114,11 +114,14 @@
                                             pButton pRipple type="button" label="Bukti Pembayaran"
                                             class="p-button-outlined p-button-rounded p-button-success"></button></a>
                                 </td>
-                                <td *ngIf="item.statusTransaction!='Pending'">
-                                    <button pButton pRipple type="submit" icon="pi pi-check" class="p-button-rounded p-button-success mx-2" (click)="onApprove(item.id)"></button>
-                                    <button pButton pRipple type="submit" icon="pi pi-times" class="p-button-rounded p-button-danger" (click)="onRejected(item.id)"></button>
-                                </td>
                                 <td *ngIf="item.statusTransaction=='Pending'">
+                                    <button pButton pRipple type="submit" icon="pi pi-check"
+                                        class="p-button-rounded p-button-success mx-2"
+                                        (click)="onApprove(item.id)"></button>
+                                    <button pButton pRipple type="submit" icon="pi pi-times"
+                                        class="p-button-rounded p-button-danger" (click)="onRejected(item.id)"></button>
+                                </td>
+                                <td *ngIf="item.statusTransaction!='Pending'">
                                     <span>-</span>
                                 </td>
                             </tr>

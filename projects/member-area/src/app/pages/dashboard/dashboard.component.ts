@@ -45,6 +45,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
   detail : any
   edit: any = null
 
+  showMore = false;
+
   data = this.fb.group({
     postTitle: ['', [Validators.required, Validators.minLength(5)]],
     postContent: ['', [Validators.required, Validators.minLength(5)]],
@@ -62,11 +64,11 @@ export class DashboardComponent implements OnInit, OnDestroy {
     private categoryService: CategoryService,
     private postService: PostService,
     private userService: UserService,
-    private routerService : RouterService,
-    private title : Title
+    private routerService: RouterService,
+    private title: Title
   ) {
     this.title.setTitle("Beranda")
-   }
+  }
 
   get imageData() {
     return this.data.get('file') as FormArray
@@ -75,7 +77,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   get pollingData() {
     return this.data.get('polling') as FormArray
   }
-  
+
   onScroll(): void {
     this.dashboard$ = this.postService.getPost(this.POST_LIMIT, this.PAGE++).subscribe(res => {
       if (res) {
@@ -217,6 +219,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
         status: true
       }
     })
+  }
+
+  onInsertPostDetail() {
+
   }
 
   onDislike(postId: string, i: number): void {

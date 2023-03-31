@@ -20,6 +20,7 @@ export class ApprovalComponent implements OnInit, OnDestroy {
     resCourseTransaction: TransactionGetByCourseIdRes[] = []
     resEventTransaction: TransactionGetByEventsIdRes[] = []
     resMembershipTransaction: TransactionGetByMembershipIdRes[] = []
+
     getById!: TransactionGetAllRes
     courseApproval$?: Subscription
     eventApproval$?: Subscription

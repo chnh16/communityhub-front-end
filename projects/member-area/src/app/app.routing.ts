@@ -14,7 +14,7 @@ export const memberRouter: Routes = [
     },
     {
         path: 'register-member',
-        loadChildren : () => import('./pages/register/register-member.module').then(r => r.RegisterMemberModule)
+        loadChildren: () => import('./pages/register/register-member.module').then(r => r.RegisterMemberModule)
     },
     {
         path: 'dashboard',
@@ -32,6 +32,11 @@ export const memberRouter: Routes = [
         component: MenuBarComponent
     },
     {
+        path: 'post',
+        loadChildren: () => import('./pages/post/post.module').then(e => e.PostModule),
+        component: MenuBarComponent
+    },
+    {
         path: 'user-verification',
         component: UserVerificationComponent
     },
@@ -41,9 +46,9 @@ export const memberRouter: Routes = [
         component: MenuBarComponent
     },
     {
-        path : 'profile/:id',
+        path: 'profile/:id',
         loadChildren: () => import('./pages/user-profile/edit-profile/edit-profile.module').then(e => e.EditProfileModule),
-        component : MenuBarComponent
+        component: MenuBarComponent
     }
 ];
 

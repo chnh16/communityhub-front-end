@@ -61,11 +61,11 @@
                         </div>
 
                         <div class="grid my-2 mx-2">
-                            <span> <i class="pi pi-calendar"></i> {{d.startDate | date}} - {{d.endDate | date}}</span>
+                            <span> <i class="pi pi-calendar"></i> {{d.startDate | date : 'E, d MMM YYYY'}} - {{d.endDate | date : 'E, d MMM YYYY'}}</span>
                         </div>
 
                         <div class="grid my-2 mx-2">
-                            <span> <i class="pi pi-money-bill"></i> Rp.{{d.price}}</span>
+                            <span> <i class="pi pi-money-bill"></i> {{d.price | currency:'Rp. ':'symbol':'3.0'}}</span>
                         </div>
 
                         <div class="grid my-2 mx-2">

@@ -13,6 +13,7 @@ import { CommonModule } from "@angular/common";
 import { BuyEventComponent } from "./buy-event/buy-event.component";
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { InfiniteScrollModule } from "ngx-infinite-scroll";
+import { DateFormatPipe } from "projects/common/src/app/pipe/date-format.pipe";
 
 @NgModule({
     declarations: [
@@ -23,7 +24,7 @@ import { InfiniteScrollModule } from "ngx-infinite-scroll";
     ],
     imports: [
         SharedModule,
-        EventRouting, InputNumberModule, CalendarModule, CommonModule, CardModule, InputTextModule, RadioButtonModule, InfiniteScrollModule
+        EventRouting, InputNumberModule, CalendarModule, CommonModule, CardModule, InputTextModule, RadioButtonModule, InfiniteScrollModule, DateFormatPipe
     ]
 })
 

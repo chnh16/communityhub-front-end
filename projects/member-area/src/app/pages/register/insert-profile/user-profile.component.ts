@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { FileInsertReq } from "projects/common/src/app/pojo/file/FileInsertReq";
 import { IndustryGetAllRes } from "projects/common/src/app/pojo/industry/IndustryGetAllRes";
 import { PositionGetAllRes } from "projects/common/src/app/pojo/position/PositionGetAllRes";
+import { LoginReq } from "projects/common/src/app/pojo/user/LoginReq";
 import { ProfileInsertReq } from "projects/common/src/app/pojo/user/ProfileInsertReq";
 import { RegisterReq } from "projects/common/src/app/pojo/user/RegisterReq";
 import { IndustryService } from "projects/common/src/app/service/industry.service";
@@ -23,6 +24,17 @@ export class ProfileMemberComponent implements OnInit, OnDestroy {
     position$? : Subscription
     industries! : IndustryGetAllRes[]
     positions! : PositionGetAllRes[]
+    file : any
+
+    constructor(
+        private fb: FormBuilder,
+        private userService: UserService,
+        private industryService: IndustryService,
+        private positionService: PositionService,
+        private activatedRoute: ActivatedRoute,
+        private router : Router
+    ) { }
+
     data = this.fb.group({
         email : ['', Validators.required],
         passwordUser :['', Validators.required]
@@ -38,16 +50,6 @@ export class ProfileMemberComponent implements OnInit, OnDestroy {
         positionId : ['', Validators.required],
         industryId : ['', Validators.required],
     })
-    file : any
-
-    constructor(
-        private fb: FormBuilder,
-        private userService: UserService,
-        private industryService: IndustryService,
-        private positionService: PositionService,
-        private activatedRoute: ActivatedRoute,
-        private router : Router
-    ) { }
 
     onSubmit(){
 
@@ -77,8 +79,13 @@ export class ProfileMemberComponent implements OnInit, OnDestroy {
             passwordUser : this.data.value.passwordUser!,
             profile : profile
         }
+
+        const data : LoginReq = {
+            email : this.data.value.email!,
+            passwordUser : this.data.value.passwordUser!
+        }
         this.userService.regisMember(register).subscribe(result => {
-            this.router.navigateByUrl("/user-verification")
+            this.router.navigate(['/user-verification'], {queryParams : {data : btoa(JSON.stringify(this.data.value.email))}})
         })
     }
 

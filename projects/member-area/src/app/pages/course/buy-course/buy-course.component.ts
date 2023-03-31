@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
+import { Title } from "@angular/platform-browser";
 import { ActivatedRoute, Router } from "@angular/router";
 import { CourseGetAllRes } from "projects/common/src/app/pojo/course/CourseGetAllRes";
 import { EventGetAllRes } from "projects/common/src/app/pojo/event/EventGetAllRes";
@@ -22,7 +23,8 @@ export class BuyCourseComponent implements OnInit, OnDestroy {
         private courseService: CourseService,
         private transactionService: TransactionService,
         private router: Router,
-        private ar: ActivatedRoute
+        private ar: ActivatedRoute,
+        private title : Title
     ) { }
 
     insertTransaction$?: Subscription
@@ -41,6 +43,7 @@ export class BuyCourseComponent implements OnInit, OnDestroy {
 
             this.getCourseDetail$ = this.courseService.getByCourseId(result1['id']).subscribe(result => {
                 this.getByCourseId = result
+                this.title.setTitle(result.courseName)
             })
 
             this.courseId = result1['id']

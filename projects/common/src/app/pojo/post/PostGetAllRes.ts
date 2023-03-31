@@ -24,6 +24,7 @@ export interface PostGetAllRes {
   fileId : string[]
   showComment : boolean
   isPremium : boolean
+  isShown : boolean
   likeCount : number
   detailCount : number
 }

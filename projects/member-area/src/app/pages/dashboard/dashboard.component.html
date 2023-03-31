@@ -164,7 +164,7 @@
                                 <h4 class="col">{{p.fullName}}</h4>
                             </div>
                             <div class="grid">
-                                <span class="col">{{p.postedAt | date}}</span>
+                                <span class="col">{{p.postedAt | timeAgo}}</span>
                             </div>
                         </div>
                         <div class="align-items-end col-3">
@@ -179,14 +179,23 @@
                     <div class="grid mx-2">
                         <div class="my-2">
                             <h3>{{p.postTitle}}</h3>
-
-                            <span style="white-space: pre-line;">{{p.postContent}}</span>
+                            <span *ngIf="!p.isPremium" style="white-space: pre-line;">{{p.postContent}}</span>
+                            <div *ngIf="p.isPremium">
+                                <div *ngIf="p.isShown">
+                                    <span style="white-space: pre-line;">{{p.postContent}}</span>
+                                </div>
+                                <div *ngIf="!p.isShown">
+                                    <span style="white-space: pre-line;">{{p.postContent | truncate : 100 :
+                                        false}}</span>
+                                    <button pButton class="p-button-text m-0 p-0" type="button" (click)="onShowPremiumContent(i)">See more</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="grid mx-2">
                         <div *ngIf="p.fileId">
-                            <img class="m-1" style="width: 250px;" *ngFor="let img of p.fileId; let j = index"
-                                src="http://192.168.10.124:8080/files/{{img}}" alt="img">
+                            <app-post-image [imagesId]="p.fileId" imageHost="192.168.10.124"
+                                [imageOptions]="imageOptions"></app-post-image>
                         </div>
                         <div class="col-12 mt-2" *ngIf="p.pollingChoice">
                             <div class="col-12" *ngIf="!p.isAnswered">
@@ -198,8 +207,8 @@
                             <div class="col-12" *ngIf="p.isAnswered">
                                 <div class="mb-2">
                                     <div *ngFor="let a of p.pollingAnswer; let j = index">
-                                        <app-progressbar [label]="a.choiceContent" [value]="a.percent">
-                                        </app-progressbar>
+                                        <app-progressbar [label]="a.choiceContent"
+                                            [value]="a.percent"></app-progressbar>
                                     </div>
                                 </div>
                                 <app-text-button label="Undo" (click)="onRemovePollingAnswer(p.isAnswered.id, i)">

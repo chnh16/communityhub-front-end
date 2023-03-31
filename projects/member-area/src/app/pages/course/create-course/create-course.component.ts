@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
+import { Title } from "@angular/platform-browser";
 import { Route, Router } from "@angular/router";
 import { FileUpload } from "primeng/fileupload";
 import { CategoryGetAllRes } from "projects/common/src/app/pojo/category/CategoryGetAllRes";
@@ -48,8 +49,11 @@ export class CreateCourseComponent implements OnInit, OnDestroy {
         private fb: FormBuilder,
         private categoryService: CategoryService,
         private courseService: CourseService,
-        private router: Router
-    ) { }
+        private router: Router,
+        private title : Title
+    ) { 
+        this.title.setTitle('Buat Course')
+    }
 
 
 

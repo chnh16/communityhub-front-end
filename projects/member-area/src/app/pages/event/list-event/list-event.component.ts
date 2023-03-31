@@ -8,6 +8,7 @@ import { EventService } from "projects/common/src/app/service/event.service";
 import { Subscription } from "rxjs";
 import { SelectItem } from 'primeng/api';
 import { UserService } from "projects/common/src/app/service/user.service";
+import { Title } from "@angular/platform-browser";
 
 @Component({
     selector: 'app-event',
@@ -62,15 +63,16 @@ export class ListEventComponent implements OnInit, OnDestroy {
     constructor(
         private eventService: EventService,
         private categoryService: CategoryService,
-        private router: ActivatedRoute,
         private fb: FormBuilder,
-        private userService: UserService
+        private userService: UserService,
+        private title : Title
     ) {
         this.sortOptions = [
             { label: 'Lower', value: 'ASC' },
             { label: 'Higher', value: 'DESC' }
         ];
         this.selectedSortOption = 'ASC';
+        this.title.setTitle('Event');
     }
 
 

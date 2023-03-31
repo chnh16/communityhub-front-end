@@ -41,7 +41,7 @@
                         :
                     </div>
                     <div class="col">
-                        <b>{{getByCourseId?.startDate | date}}</b>
+                        <b>{{getByCourseId?.startDate | date : 'E, d MMM YYYY'}}</b>
                     </div>
                 </div>
                 <div class=" grid mt-1">
@@ -52,7 +52,7 @@
                         :
                     </div>
                     <div class="col">
-                        <b>{{getByCourseId?.endDate | date}}</b>
+                        <b>{{getByCourseId?.endDate | date : 'E, d MMM YYYY'}}</b>
                     </div>
                 </div>
                 <div class=" grid mt-1">
@@ -63,7 +63,7 @@
                         :
                     </div>
                     <div class="col">
-                        <b>Rp {{getByCourseId?.price}}</b>
+                        <b>{{getByCourseId?.price | currency:'Rp. ':'symbol':'3.0'}}</b>
                     </div>
                 </div>
                 <div class=" grid mt-1">

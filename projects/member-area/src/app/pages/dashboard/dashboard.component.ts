@@ -1,7 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
+import { ImageOption } from 'projects/common/src/app/component/image/post-image.component';
 import { CategoryGetAllRes } from 'projects/common/src/app/pojo/category/CategoryGetAllRes';
 import { FileInsertReq } from 'projects/common/src/app/pojo/file/FileInsertReq';
 import { PollingAnswerGetCountRes } from 'projects/common/src/app/pojo/pollinganswer/PollingAnswerGetCountRes';
@@ -44,6 +46,33 @@ export class DashboardComponent implements OnInit, OnDestroy {
   pollingAnswer: PollingAnswerGetCountRes[] = []
   detail: any
   edit: any = null
+  imageOptions: ImageOption[] = [
+    {
+      len: 1,
+      imageItem: [
+        { class: 'w-full h-30rem' }
+      ]
+    },
+    {
+      len: 2,
+      imageItem: [
+        { class: 'w-6' }, { class: 'w-6' }
+      ]
+    },
+    {
+      len: 3,
+      imageItem: [
+        { class: 'w-full h-30rem' }, { class: 'w-6' }, { class: 'w-6' }
+      ]
+    },
+    {
+      len: 4,
+      imageItem: [
+        { class: 'w-full h-15rem' }, { class: 'w-4 h-15rem' }, { class: 'w-4 h-15rem' }, { class: 'w-4 h-15rem' }
+      ]
+    }
+  ]
+
 
   showMore = false;
 
@@ -64,8 +93,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
     private categoryService: CategoryService,
     private postService: PostService,
     private userService: UserService,
-    private routerService: RouterService,
-    private title: Title
+    private routerService : RouterService,
+    private title : Title,
+    private router : Router
   ) {
     this.title.setTitle("Beranda")
   }
@@ -98,10 +128,18 @@ export class DashboardComponent implements OnInit, OnDestroy {
     })
   }
 
-  onInsertPostDetail(i: number) {
-    const data: PostDetailInsertReq = {
-      postId: this.post[i].id,
-      detailContent: this.detail.value
+  onShowPremiumContent(i : number){
+    if(!this.profile?.premiumUntil){
+      this.router.navigateByUrl('/memberships')
+    } else {
+      this.post[i].isShown = !this.post[i].isShown
+    }
+  }
+
+  onInsertPostDetail(i : number){
+    const data : PostDetailInsertReq = {
+      postId : this.post[i].id,
+      detailContent : this.detail.value
     }
     this.postDetail$ = this.postService.insertPostDetail(data).subscribe(res => {
       this.detail.reset()

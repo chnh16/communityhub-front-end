@@ -33,7 +33,7 @@ export class UserService {
     }
 
     verify(data : UserVerificationReq) : Observable<UpdateRes>{
-        return this.http.put<UpdateRes>(`${BASE_URL}/users/verify`, data)
+        return this.http.put<UpdateRes>(`${BASE_URL}/users/verify`, data, { headers: { 'skip': 'true' } })
     }
 
     getProfile() : Observable<ProfileGetReq>{

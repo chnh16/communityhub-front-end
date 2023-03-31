@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
+import { Title } from "@angular/platform-browser";
 import { ActivatedRoute, Router } from "@angular/router";
 import { EventGetAllRes } from "projects/common/src/app/pojo/event/EventGetAllRes";
 import { FileInsertReq } from "projects/common/src/app/pojo/file/FileInsertReq";
@@ -20,7 +21,8 @@ export class BuyEventComponent implements OnInit, OnDestroy {
         private eventService: EventService,
         private transactionService: TransactionService,
         private router: Router,
-        private ar: ActivatedRoute
+        private ar: ActivatedRoute,
+        private title : Title
     ) { }
 
     insertTransaction$?: Subscription
@@ -40,6 +42,7 @@ export class BuyEventComponent implements OnInit, OnDestroy {
 
             this.geEventDetail$ = this.eventService.getByEventId(result1['id']).subscribe(result => {
                 this.getByEventId = result
+                this.title.setTitle(result.eventName)
             })
 
             this.eventId = result1['id']

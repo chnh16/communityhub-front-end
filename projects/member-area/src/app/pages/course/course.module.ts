@@ -12,6 +12,7 @@ import { CalendarModule } from 'primeng/calendar';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { InfiniteScrollModule } from "ngx-infinite-scroll";
+import { DateFormatPipe } from "projects/common/src/app/pipe/date-format.pipe";
 @NgModule({
     declarations: [
         ListCourseComponent,
@@ -21,7 +22,7 @@ import { InfiniteScrollModule } from "ngx-infinite-scroll";
     ],
     imports: [
         ButtonModule, CardModule, InputTextModule, CourseRouting, SharedModule, CalendarModule, InputNumberModule,
-        RadioButtonModule, InfiniteScrollModule
+        RadioButtonModule, InfiniteScrollModule, DateFormatPipe
     ]
 })
 

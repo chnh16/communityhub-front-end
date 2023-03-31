@@ -25,6 +25,9 @@ import { TieredMenuModule } from 'primeng/tieredmenu';
 import { PasswordModule } from 'primeng/password';
 import { SkeletonModule } from 'primeng/skeleton';
 import { ProgressBarComponent } from "./component/progressbar/app-progressbar.component";
+import { PostImageComponent } from "./component/image/post-image.component";
+import { DateFormatPipe } from "./pipe/date-format.pipe";
+import { TimeAgoPipe } from "./pipe/time-ago.pipe";
 
 
 @NgModule({
@@ -56,7 +59,9 @@ import { ProgressBarComponent } from "./component/progressbar/app-progressbar.co
         RadioButtonModule,
         PasswordModule,
         SkeletonModule,
-        ProgressBarComponent
+        ProgressBarComponent,
+        PostImageComponent,
+        DateFormatPipe
     ],
     exports: [
         ButtonModule,
@@ -83,7 +88,9 @@ import { ProgressBarComponent } from "./component/progressbar/app-progressbar.co
         RadioButtonModule,
         PasswordModule,
         SkeletonModule,
-        ProgressBarComponent
+        ProgressBarComponent,
+        PostImageComponent,
+        DateFormatPipe
     ]
 })
 

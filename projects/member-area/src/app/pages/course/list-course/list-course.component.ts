@@ -8,6 +8,7 @@ import { CourseService } from "projects/common/src/app/service/course.service";
 import { Subscription } from "rxjs";
 import { SelectItem } from 'primeng/api';
 import { UserService } from "projects/common/src/app/service/user.service";
+import { Title } from "@angular/platform-browser";
 
 
 @Component({
@@ -60,10 +61,9 @@ export class ListCourseComponent implements OnInit, OnDestroy {
     constructor(
         private courseService: CourseService,
         private categoryService: CategoryService,
-        private router: ActivatedRoute,
         private fb: FormBuilder,
-        private userService: UserService
-
+        private userService: UserService,
+        private title : Title
 
     ) {
         this.sortOptions = [
@@ -71,6 +71,7 @@ export class ListCourseComponent implements OnInit, OnDestroy {
             { label: 'Descending', value: 'DESC' }
         ];
         this.selectedSortOption = 'ASC';
+        this.title.setTitle('Course');
     }
 
 

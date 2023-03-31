@@ -30,7 +30,7 @@
                         :
                     </div>
                     <div class="col">
-                        <b>{{getByEventId?.startDate | date}}</b>
+                        <b>{{getByEventId?.startDate | date : 'E, d MMM YYYY'}}</b>
                     </div>
                 </div>
                 <div class=" grid mt-1">
@@ -41,7 +41,7 @@
                         :
                     </div>
                     <div class="col">
-                        <b>{{getByEventId?.endDate | date}}</b>
+                        <b>{{getByEventId?.endDate | date : 'E, d MMM YYYY'}}</b>
                     </div>
                 </div>
                 <div class=" grid mt-1">
@@ -52,7 +52,7 @@
                         :
                     </div>
                     <div class="col">
-                        <b>Rp {{getByEventId?.price}}</b>
+                        <b>{{getByEventId?.price | currency:'Rp. ':'symbol':'3.0'}}</b>
                     </div>
                 </div>
                 <div class=" grid mt-1">

@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { Title } from "@angular/platform-browser";
 import { ActivatedRoute, Router } from "@angular/router";
 import { EventGetAllRes } from "projects/common/src/app/pojo/event/EventGetAllRes";
 import { EventService } from "projects/common/src/app/service/event.service";
@@ -20,10 +21,10 @@ export class EventDetailComponent {
     constructor(
         private eventService: EventService,
         private router: ActivatedRoute,
-        private userService: UserService
+        private userService: UserService,
+        private title : Title
 
     ) {
-
     }
 
     ngOnInit(): void {
@@ -31,6 +32,7 @@ export class EventDetailComponent {
 
             this.geEventDetail$ = this.eventService.getByEventId(result1['id']).subscribe(result => {
                 this.getByEventId = result
+                this.title.setTitle(result.eventName)
             })
 
         })

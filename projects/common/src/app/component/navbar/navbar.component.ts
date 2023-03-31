@@ -7,7 +7,18 @@ import { UserService } from "../../service/user.service";
 
 @Component({
     selector: 'app-navbar',
-    templateUrl: './navbar.component.html'
+    templateUrl: './navbar.component.html',
+    styles: [`
+                :host ::ng-deep .p-menubar {
+                 height: 50px;
+                }
+                .menubar-head {
+                    position: sticky;
+                    top: 0;
+                    width : 100%;
+                    z-index : 1;
+                }
+    `]
 })
 export class MenuBarComponent implements OnInit {
     profileFileId!: string
@@ -61,16 +72,16 @@ export class MenuBarComponent implements OnInit {
                 ]
             },
             {
-                label : 'Article',
-                routerLink : '/article'
+                label: 'Article',
+                routerLink: '/article'
             },
             {
-                label : 'Event',
-                routerLink : '/event'
+                label: 'Event',
+                routerLink: '/event'
             },
             {
-                label : 'Course',
-                routerLink : '/course'
+                label: 'Course',
+                routerLink: '/course'
             }
         ];
 
@@ -80,6 +91,18 @@ export class MenuBarComponent implements OnInit {
                 label: 'Profile',
                 icon: 'pi pi-fw pi-user',
                 //routerLink: '/user/profile'
+            },
+            {
+
+                label: 'My Bookmark',
+                icon: 'pi pi-fw pi-bookmark-fill',
+                routerLink: '/post/my-bookmark'
+            },
+            {
+
+                label: 'My Like',
+                icon: 'pi pi-fw pi-heart-fill',
+                routerLink: '/post/my-like'
             },
             {
                 label: 'Logout',

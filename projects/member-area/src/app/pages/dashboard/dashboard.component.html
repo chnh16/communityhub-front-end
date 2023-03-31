@@ -198,7 +198,8 @@
                             <div class="col-12" *ngIf="p.isAnswered">
                                 <div class="mb-2">
                                     <div *ngFor="let a of p.pollingAnswer; let j = index">
-                                        <app-progressbar [label]="a.choiceContent" [value]="a.percent"></app-progressbar>
+                                        <app-progressbar [label]="a.choiceContent" [value]="a.percent">
+                                        </app-progressbar>
                                     </div>
                                 </div>
                                 <app-text-button label="Undo" (click)="onRemovePollingAnswer(p.isAnswered.id, i)">

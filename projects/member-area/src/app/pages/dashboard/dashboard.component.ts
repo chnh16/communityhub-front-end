@@ -42,7 +42,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   pollingButton: boolean = false
   categories: CategoryGetAllRes[] = []
   pollingAnswer: PollingAnswerGetCountRes[] = []
-  detail : any
+  detail: any
   edit: any = null
 
   showMore = false;
@@ -98,13 +98,13 @@ export class DashboardComponent implements OnInit, OnDestroy {
     })
   }
 
-  onInsertPostDetail(i : number){
-    const data : PostDetailInsertReq = {
-      postId : this.post[i].id,
-      detailContent : this.detail.value
+  onInsertPostDetail(i: number) {
+    const data: PostDetailInsertReq = {
+      postId: this.post[i].id,
+      detailContent: this.detail.value
     }
     this.postDetail$ = this.postService.insertPostDetail(data).subscribe(res => {
-        this.detail.reset()
+      this.detail.reset()
     })
   }
 
@@ -221,9 +221,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     })
   }
 
-  onInsertPostDetail() {
 
-  }
 
   onDislike(postId: string, i: number): void {
     this.postLike$ = this.postService.onDislike(postId).subscribe(res => {

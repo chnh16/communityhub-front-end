@@ -10,6 +10,7 @@ import { PostBookmarkReq } from 'projects/common/src/app/pojo/post/PostBookmarkR
 import { PostGetAllRes } from 'projects/common/src/app/pojo/post/PostGetAllRes';
 import { PostInsertReq } from 'projects/common/src/app/pojo/post/PostInsertReq';
 import { PostLikeReq } from 'projects/common/src/app/pojo/post/PostLikeReq';
+import { PostDetailInsertReq } from 'projects/common/src/app/pojo/postdetail/PostDetailInsertReq';
 import { ProfileGetReq } from 'projects/common/src/app/pojo/user/ProfileGetReq';
 import { CategoryService } from 'projects/common/src/app/service/category.service';
 import { PostService } from 'projects/common/src/app/service/post.service';
@@ -109,8 +110,14 @@ export class BookmarkPostComponent implements OnInit, OnDestroy {
         })
     }
 
-    onInsertPostDetail() {
-
+    onInsertPostDetail(i: number) {
+        const data: PostDetailInsertReq = {
+            postId: this.post[i].id,
+            detailContent: this.detail.value
+        }
+        this.postDetail$ = this.postService.insertPostDetail(data).subscribe(res => {
+            this.detail.reset()
+        })
     }
 
     onDislike(postId: string, i: number): void {

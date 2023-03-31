@@ -10,6 +10,7 @@ import { LoginRes } from "../pojo/user/LoginRes";
 import { ProfileGetReq } from "../pojo/user/ProfileGetReq";
 import { ProfileInsertReq } from "../pojo/user/ProfileInsertReq";
 import { RegisterReq } from "../pojo/user/RegisterReq";
+import { UserVerificationReq } from "../pojo/user/UserVerificationReq";
 
 @Injectable({
     providedIn: 'root'
@@ -29,6 +30,10 @@ export class UserService {
     
     regisMember(data: RegisterReq): Observable<RegisterReq> {
         return this.http.post<RegisterReq>(`${BASE_URL}/users/regis`, data, { headers: { 'skip': 'true' } });
+    }
+
+    verify(data : UserVerificationReq) : Observable<UpdateRes>{
+        return this.http.put<UpdateRes>(`${BASE_URL}/users/verify`, data)
     }
 
     getProfile() : Observable<ProfileGetReq>{

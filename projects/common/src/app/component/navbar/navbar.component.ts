@@ -7,7 +7,18 @@ import { UserService } from "../../service/user.service";
 
 @Component({
     selector: 'app-navbar',
-    templateUrl: './navbar.component.html'
+    templateUrl: './navbar.component.html',
+    styles: [`
+                :host ::ng-deep .p-menubar {
+                 height: 50px;
+                }
+                .menubar-head {
+                    position: sticky;
+                    top: 0;
+                    width : 100%;
+                    z-index : 1;
+                }
+    `]
 })
 export class MenuBarComponent implements OnInit {
     profileFileId!: string

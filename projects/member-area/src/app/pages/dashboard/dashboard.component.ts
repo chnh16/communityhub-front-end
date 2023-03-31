@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { MenuItem } from 'primeng/api';
 import { CategoryGetAllRes } from 'projects/common/src/app/pojo/category/CategoryGetAllRes';
@@ -10,6 +10,7 @@ import { PostBookmarkReq } from 'projects/common/src/app/pojo/post/PostBookmarkR
 import { PostGetAllRes } from 'projects/common/src/app/pojo/post/PostGetAllRes';
 import { PostInsertReq } from 'projects/common/src/app/pojo/post/PostInsertReq';
 import { PostLikeReq } from 'projects/common/src/app/pojo/post/PostLikeReq';
+import { PostDetailInsertReq } from 'projects/common/src/app/pojo/postdetail/PostDetailInsertReq';
 import { ProfileGetReq } from 'projects/common/src/app/pojo/user/ProfileGetReq';
 import { CategoryService } from 'projects/common/src/app/service/category.service';
 import { PostService } from 'projects/common/src/app/service/post.service';
@@ -41,6 +42,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   pollingButton: boolean = false
   categories: CategoryGetAllRes[] = []
   pollingAnswer: PollingAnswerGetCountRes[] = []
+  detail : any
   edit: any = null
 
   showMore = false;
@@ -53,8 +55,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
     file: this.fb.array([]),
     polling: this.fb.array([])
   })
-
-  detail = new FormGroup('', Validators.required)
 
   POST_LIMIT: number = 3
   PAGE: number = 1
@@ -91,9 +91,20 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   onShowAddDetail(i: number) {
+    this.detail = new FormControl('', Validators.required)
     this.post[i].showComment = !this.post[i].showComment
     this.postDetail$ = this.postService.getPostDetail(this.post[i].id).subscribe(res => {
       this.post[i].postDetail = res
+    })
+  }
+
+  onInsertPostDetail(i : number){
+    const data : PostDetailInsertReq = {
+      postId : this.post[i].id,
+      detailContent : this.detail.value
+    }
+    this.postDetail$ = this.postService.insertPostDetail(data).subscribe(res => {
+        this.detail.reset()
     })
   }
 

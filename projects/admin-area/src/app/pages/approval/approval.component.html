@@ -7,8 +7,7 @@
             </pre>
             <div class="mt-4 card">
                 <div class="flex flex-wrap align-items-center justify-content-center">
-                    <p-table styleClass="p-datatable-striped" [value]="resCourseTransaction"
-                        [tableStyle]="{'min-width': '80rem'}">
+                    <p-table styleClass="p-datatable-striped" [value]="resCourseTransaction" [tableStyle]="{'min-width': '80rem'}">
                         <ng-template pTemplate="header">
                             <tr>
                                 <th>No</th>
@@ -26,17 +25,14 @@
                                 <td>{{item.fullName}}</td>
                                 <td>{{item.itemName}}</td>
                                 <td>{{item.grandTotal}}</td>
-                                <td><a href="http://192.168.10.73:8080/files/{{item.fileId}}" target="_blank"><button
+                                <td><a href="http://192.168.10.124:8080/files/{{item.fileId}}" target="_blank"><button
                                             pButton pRipple type="button" label="Bukti Pembayaran"
                                             class="p-button-outlined p-button-rounded p-button-success"></button></a>
                                 </td>
                                 <td>{{item.statusTransaction}}</td>
                                 <td *ngIf="item.statusTransaction=='Pending'">
-                                    <button pButton pRipple type="submit" icon="pi pi-check"
-                                        class="p-button-rounded p-button-success mx-2"
-                                        (click)="onApprove(item.id)"></button>
-                                    <button pButton pRipple type="submit" icon="pi pi-times"
-                                        class="p-button-rounded p-button-danger" (click)="onRejected(item.id)"></button>
+                                    <button pButton pRipple type="submit" icon="pi pi-check" class="p-button-rounded p-button-success mx-2" (click)="onApprove(item.id)"></button>
+                                    <button pButton pRipple type="submit" icon="pi pi-times" class="p-button-rounded p-button-danger" (click)="onRejected(item.id)"></button>
                                 </td>
                                 <td *ngIf="item.statusTransaction!='Pending'">
                                     <span>-</span>
@@ -53,8 +49,7 @@
             </pre>
             <div class="mt-4 card">
                 <div class="flex flex-wrap align-items-center justify-content-center">
-                    <p-table styleClass="p-datatable-striped" [value]="resEventTransaction"
-                        [tableStyle]="{'min-width': '80rem'}">
+                    <p-table styleClass="p-datatable-striped" [value]="resEventTransaction" [tableStyle]="{'min-width': '80rem'}">
                         <ng-template pTemplate="header">
                             <tr>
                                 <th>No</th>
@@ -73,16 +68,13 @@
                                 <td>{{item.itemName}}</td>
                                 <td>{{item.grandTotal}}</td>
                                 <td>{{item.statusTransaction}}</td>
-                                <td><a href="http://192.168.10.73:8080/files/{{item.fileId}}" target="_blank"><button
+                                <td><a href="http://192.168.10.124:8080/files/{{item.fileId}}" target="_blank"><button
                                             pButton pRipple type="button" label="Bukti Pembayaran"
                                             class="p-button-outlined p-button-rounded p-button-success"></button></a>
                                 </td>
                                 <td *ngIf="item.statusTransaction=='Pending'">
-                                    <button pButton pRipple type="submit" icon="pi pi-check"
-                                        class="p-button-rounded p-button-success mx-2"
-                                        (click)="onApprove(item.id)"></button>
-                                    <button pButton pRipple type="submit" icon="pi pi-times"
-                                        class="p-button-rounded p-button-danger" (click)="onRejected(item.id)"></button>
+                                    <button pButton pRipple type="submit" icon="pi pi-check" class="p-button-rounded p-button-success mx-2" (click)="onApprove(item.id)"></button>
+                                    <button pButton pRipple type="submit" icon="pi pi-times" class="p-button-rounded p-button-danger" (click)="onRejected(item.id)"></button>
                                 </td>
                                 <td *ngIf="item.statusTransaction!='Pending'">
                                     <span>-</span>
@@ -99,8 +91,7 @@
             </pre>
             <div class="mt-4 card">
                 <div class="flex flex-wrap align-items-center justify-content-center">
-                    <p-table styleClass="p-datatable-striped" [value]="resMembershipTransaction"
-                        [tableStyle]="{'min-width': '80rem'}">
+                    <p-table styleClass="p-datatable-striped" [value]="resMembershipTransaction" [tableStyle]="{'min-width': '80rem'}">
                         <ng-template pTemplate="header">
                             <tr>
                                 <th>No</th>
@@ -119,7 +110,7 @@
                                 <td>{{item.itemName}}</td>
                                 <td>{{item.grandTotal}}</td>
                                 <td>{{item.statusTransaction}}</td>
-                                <td><a href="http://192.168.10.73:8080/files/{{item.fileId}}" target="_blank"><button
+                                <td><a href="http://192.168.10.124:8080/files/{{item.fileId}}" target="_blank"><button
                                             pButton pRipple type="button" label="Bukti Pembayaran"
                                             class="p-button-outlined p-button-rounded p-button-success"></button></a>
                                 </td>

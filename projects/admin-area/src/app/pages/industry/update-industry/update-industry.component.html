@@ -1,7 +1,9 @@
 <pre>
     {{data.value | json}}
 </pre>
-
+<div class="flex align-item-start justify-content-start  ml-4">
+    <p-button label="Kembali" styleClass="p-button-link" icon="pi pi-backward" class="text-pink-500" routerLink="/industry"></p-button>
+</div>
 <div class="flex flex-wrap align-items-center justify-content-center">
     <div class="mt-6">
         <h2>UPDATE INDUSTRY</h2>
@@ -9,16 +11,14 @@
 </div>
 <div class="flex flex-wrap align-items-center justify-content-center">
     <div class="mt-2">
-        <p-card class=" card-body p-4 flex align-items-center justify-content-center"
-            [style]=" {width: '500px' , height:'100%'}" styleClass="p-card-shadow">
+        <p-card class=" card-body p-4 flex align-items-center justify-content-center" [style]=" {width: '500px' , height:'100%'}" styleClass="p-card-shadow">
             <form [formGroup]="data" (ngSubmit)="onUpdate()">
 
                 <div class="mt-4">
                     <div class="field grid">
                         <label for="industryName" class="col-fixed" style="width:200px">Industry Name</label>
                         <div class="col">
-                            <input id="industryName" formControlName="industryName" type="text"
-                                class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary">
+                            <input id="industryName" formControlName="industryName" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary">
                         </div>
                     </div>
                 </div>

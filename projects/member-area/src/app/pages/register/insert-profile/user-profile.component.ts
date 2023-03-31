@@ -25,7 +25,7 @@ export class ProfileMemberComponent implements OnInit, OnDestroy {
     positions! : PositionGetAllRes[]
     data = this.fb.group({
         email : ['', Validators.required],
-        passwordUser :['', Validators.required], 
+        passwordUser :['', Validators.required]
     })
     profile = this.fb.group ({
         fullName : ['', Validators.required],
@@ -37,27 +37,19 @@ export class ProfileMemberComponent implements OnInit, OnDestroy {
         company : ['', Validators.required],
         positionId : ['', Validators.required],
         industryId : ['', Validators.required],
-        file : this.fb.group ({
-            fileName : ['', Validators.required],
-            fileContent : ['', Validators.required],
-            fileExtension : ['', Validators.required]
-        })
     })
+    file : any
 
     constructor(
         private fb: FormBuilder,
         private userService: UserService,
         private industryService: IndustryService,
         private positionService: PositionService,
-        private activatedRoute: ActivatedRoute
+        private activatedRoute: ActivatedRoute,
+        private router : Router
     ) { }
 
     onSubmit(){
-        const file : FileInsertReq = {
-            fileContent : this.profile.value.file?.fileContent!,
-            fileName : this.profile.value.file?.fileName!,
-            fileExtension : this.profile.value.file?.fileExtension!
-        }
 
         const profile : ProfileInsertReq = {
             fullName : this.profile.value.fullName!,
@@ -69,7 +61,15 @@ export class ProfileMemberComponent implements OnInit, OnDestroy {
             positionId : this.profile.value.positionId!,
             industryId : this.profile.value.industryId!,
             company : this.profile.value.company!,
-            file : file
+            file : this.file
+        }
+
+        if(this.file){
+            profile.file = {
+                fileContent : this.file.value.fileContent,
+                fileExtension : this.file.value.fileExtension,
+                fileName : this.file.value.fileName
+            }
         }
 
         const register : RegisterReq = {
@@ -78,12 +78,17 @@ export class ProfileMemberComponent implements OnInit, OnDestroy {
             profile : profile
         }
         this.userService.regisMember(register).subscribe(result => {
-
+            this.router.navigateByUrl("/user-verification")
         })
-
     }
 
     uploadFile(event:any) {
+        this.file = this.fb.group ({
+            fileName : ['', Validators.required],
+            fileContent : ['', Validators.required],
+            fileExtension : ['', Validators.required]
+        })
+
         const toBase64 = (file : File) => new Promise<string>((resolve, reject) => {
             const reader = new FileReader();
             reader.readAsDataURL(file);
@@ -97,14 +102,10 @@ export class ProfileMemberComponent implements OnInit, OnDestroy {
             toBase64(file).then(result => {
                 const resultBase64 = result.substring(result.indexOf(",") + 1, result.length)
                 const resultExtension = file.name.substring(file.name.indexOf(".") + 1, file.name.length)
-                console.log(resultBase64)
-                console.log(resultExtension)
-                this.profile.patchValue({
-                        file : ({
+                this.file.patchValue({
                             fileName : file.name,
                             fileContent : resultBase64,
                             fileExtension : resultExtension
-                        })
                 })
             })
         }
@@ -113,7 +114,6 @@ export class ProfileMemberComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.activatedRoute.queryParams.subscribe(res => {
             this.registerData = JSON.parse(atob(res['data']))
-            console.log(this.registerData.email)
             this.data.patchValue({
                 email : this.registerData.email,
                 passwordUser : this.registerData.passwordUser

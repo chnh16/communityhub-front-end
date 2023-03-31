@@ -25,6 +25,6 @@ const registerMemberRoutes: Routes = [
     ]
 })
 
-export class MembershipRouting {
+export class RegisterMemberRouting {
 
 }

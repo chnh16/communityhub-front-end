@@ -11,12 +11,12 @@ export class AuthLoginGuard implements CanActivate {
 
   canActivate(
     route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree>  {
       try {
         this.userService.token
-        return true
-      } catch (error) {
         return false
+      } catch (error) {
+        return true
       }
       console.log(state)    
   }

@@ -1,0 +1,33 @@
+<div class="article-header">
+    <div class="grid">
+        <div class="col-12 flex justify-content-center align-item-center mt-8">
+            <h1>ARTICLE</h1>
+        </div>
+    </div>
+</div>
+<div class="col-12 grid flex justify-content-center mt-4">
+
+    <p-card *ngFor="let d of resArticle" class="col-8 mx-4 grid flex justify-content-center">
+        <h4>{{d.articleTitle}}</h4>
+        <div>
+            <p>{{d.createdAt}}</p>
+        </div>
+        <div class=" grid">
+            <div class="col-3 flex justify-content-start">
+                <img src="http://192.168.10.124:8080/files/{{d.photoId}}" width="150" height="150" alt="">
+            </div>
+            <div class="col-9">
+                <div class="col-9 flex align-items-center justify-content-center w-full">
+                    <span [innerHTML]="d.articleContent">            
+                        </span>
+                </div>
+                <div class="col-9 flex justify-content-start w-full">
+                    <a href="" routerLink="/article/detail/{{d.id}}">Detail</a>
+                </div>
+            </div>
+        </div>
+        <div class="mt-2">
+            <p>penulis : {{d.createdBy}}</p>
+        </div>
+    </p-card>
+</div>

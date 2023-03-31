@@ -61,16 +61,16 @@ export class MenuBarComponent implements OnInit {
                 ]
             },
             {
-                label : 'Article',
-                routerLink : '/article'
+                label: 'Article',
+                routerLink: '/article'
             },
             {
-                label : 'Event',
-                routerLink : '/event'
+                label: 'Event',
+                routerLink: '/event'
             },
             {
-                label : 'Course',
-                routerLink : '/course'
+                label: 'Course',
+                routerLink: '/course'
             }
         ];
 
@@ -80,6 +80,18 @@ export class MenuBarComponent implements OnInit {
                 label: 'Profile',
                 icon: 'pi pi-fw pi-user',
                 //routerLink: '/user/profile'
+            },
+            {
+
+                label: 'My Bookmark',
+                icon: 'pi pi-fw pi-bookmark-fill',
+                routerLink: '/post/my-bookmark'
+            },
+            {
+
+                label: 'My Like',
+                icon: 'pi pi-fw pi-heart-fill',
+                routerLink: '/post/my-like'
             },
             {
                 label: 'Logout',

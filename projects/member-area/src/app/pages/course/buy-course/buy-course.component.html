@@ -3,13 +3,13 @@
 </pre>
 
 
-<div class="flex flex-wrap align-items-center justify-content-center">
+<div class="block col-12 my-2 md:flex flex-wrap align-items-center justify-content-center">
     <div class="mt-2">
         <app-text-button label="Kembali" routerLink="../../"></app-text-button>
         <p-card class=" card-body p-4 flex align-items-center justify-content-center"
             [style]=" {width: '500px' , height:'100%'}" styleClass="p-card-shadow">
             <div class="flex flex-wrap align-items-center justify-content-center">
-                <div class="mb-6">
+                <div class="mb-2">
                     <h2>BUY COURSE</h2>
                 </div>
             </div>
@@ -38,7 +38,7 @@
                         <span>:</span>
                     </div>
                     <div class="col">
-                        <span>{{getByCourseId?.startDate}} - {{getByCourseId?.endDate}}</span>
+                        <span>{{getByCourseId?.startDate | date}} - {{getByCourseId?.endDate | date}}</span>
                     </div>
                 </div>
                 <div class="grid">

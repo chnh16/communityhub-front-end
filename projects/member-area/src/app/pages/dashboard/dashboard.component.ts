@@ -44,7 +44,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   pollingButton: boolean = false
   categories: CategoryGetAllRes[] = []
   pollingAnswer: PollingAnswerGetCountRes[] = []
-  detail : any
+  detail: any
   edit: any = null
   imageOptions: ImageOption[] = [
     {
@@ -142,7 +142,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
       detailContent : this.detail.value
     }
     this.postDetail$ = this.postService.insertPostDetail(data).subscribe(res => {
-        this.detail.reset()
+      this.detail.reset()
     })
   }
 
@@ -259,9 +259,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     })
   }
 
-  onInsertPostDetail() {
 
-  }
 
   onDislike(postId: string, i: number): void {
     this.postLike$ = this.postService.onDislike(postId).subscribe(res => {

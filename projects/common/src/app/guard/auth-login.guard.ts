@@ -17,8 +17,7 @@ export class AuthLoginGuard implements CanActivate {
         return false
       } catch (error) {
         return true
-      }
-      console.log(state)    
+      }    
   }
   
 }

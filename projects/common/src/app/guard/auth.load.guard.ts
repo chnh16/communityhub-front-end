@@ -11,7 +11,6 @@ export class AuthLoadGuard implements CanLoad {
   canLoad(
     route: Route,
     segments: UrlSegment[]): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      console.log(route)
       try {
         this.userService.token;
         return true

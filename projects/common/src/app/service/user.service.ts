@@ -45,6 +45,14 @@ export class UserService {
 
     }
 
+    get userId() : string{
+        const data = localStorage.getItem('dataLogin')
+        if (data) {
+            return JSON.parse(data).idUser;
+        }
+        throw new Error('Token is empty')
+    }
+
     get token(): string {
         const data = localStorage.getItem('dataLogin')
         if (data) {

@@ -4,6 +4,7 @@ import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
 import { ImageOption } from 'projects/common/src/app/component/image/post-image.component';
+import { BASE_URL } from 'projects/common/src/app/constant/BaseUrl';
 import { CategoryGetAllRes } from 'projects/common/src/app/pojo/category/CategoryGetAllRes';
 import { FileInsertReq } from 'projects/common/src/app/pojo/file/FileInsertReq';
 import { PollingAnswerGetCountRes } from 'projects/common/src/app/pojo/pollinganswer/PollingAnswerGetCountRes';
@@ -25,6 +26,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './dashboard.component.html'
 })
 export class DashboardComponent implements OnInit, OnDestroy {
+  baseUrl : string = BASE_URL
   items!: MenuItem[]
   dashboard$?: Subscription
   dashboardCategory$?: Subscription
@@ -307,15 +309,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.items = [
-      {
-        label: 'Ubah'
-        //command : ((postId) => this.onEdit(postId))
-      },
-      {
-        label: 'Hapus'
-      }
-    ]
     this.init()
     this.dashboardCategory$ = this.categoryService.getAll().subscribe(res => {
       this.categories = res

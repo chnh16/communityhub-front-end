@@ -236,7 +236,7 @@ export class ListCourseComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy(): void {
-        //  this.getCourse$?.unsubscribe()
+        this.getCourse$?.unsubscribe()
     }
 
 }

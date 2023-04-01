@@ -1,43 +1,42 @@
+<pre>{{data.value | json}}</pre>
 <div class="col-10 flex justify-content-center align-item-center mt-8 ml-8 mr-8">
     <div class="justify-content-center">
     </div>
     <p-card>
         <div class="col-12 flex align-item-center justify-content-center">
-            <h2 class="align-item-center justify-content-center">REPORT</h2>
+            <h2 class="align-item-center justify-content-center">Report</h2>
         </div>
-        <div class="col-12 flex align-item-center justify-content-start">
-            <div class="mt-3">
-                <div class="field grid">
-                    <label for="expiredDate" class="col-fixed" style="width:200px">Jenis Report</label>
-                    <div class="col">
-                        <p-dropdown placeholder="Select" optionLabel="name"></p-dropdown>
+        <div [formGroup]="data">
+            <div class="col-12 flex align-item-center justify-content-center">
+                <div class="mt-2">
+                    <div class="field grid">
+                        <label for="expiredDate" class="col-fixed" style="width:200px">Dari Tanggal</label>
+                        <div class="col">
+                            <p-calendar formControlName="startDate" id="expiredDate" [showIcon]="true" inputId="expiredDate"></p-calendar>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-12 flex align-item-center justify-content-center">
-            <div class="mt-2">
-                <div class="field grid">
-                    <label for="expiredDate" class="col-fixed" style="width:200px">Tanggal Mulai</label>
-                    <div class="col">
-                        <p-calendar id="expiredDate" [showIcon]="true" inputId="expiredDate"></p-calendar>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 flex align-item-center justify-content-center">
-            <div class="mt-2">
-                <div class="field grid">
-                    <label for="expiredDate" class="col-fixed" style="width:200px">Tanggal Berakhir</label>
-                    <div class="col">
-                        <p-calendar id="expiredDate" [showIcon]="true" inputId="expiredDate"></p-calendar>
+            <div class="col-12 flex align-item-center justify-content-center">
+                <div class="mt-2">
+                    <div class="field grid">
+                        <label for="expiredDate" class="col-fixed" style="width:200px">Sampai Tanggal</label>
+                        <div class="col">
+                            <p-calendar formControlName="endDate" id="expiredDate" [showIcon]="true" inputId="expiredDate"></p-calendar>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="mt-2">
             <div class="col-12 flex justify-content-end">
-                <app-submit-button label="Search" clasz="p-button-rounded mr-2 flex justify-content-end"></app-submit-button>
+                <button pButton class="p-button-primary p-button-rounded">
+                    <a style="text-decoration: none; color: white;" href="{{baseUrl}}/report/income-member/{{userId}}?startDate={{data.value.startDateLocal}}&endDate={{data.value.endDateLocal}}" target="_blank">Download Report Income</a>
+                </button>
+                <button pButton class="p-button-primary p-button-rounded">
+                    <a style="text-decoration: none; color: white;" href="{{baseUrl}}/report/participant-member/{{userId}}?startDate={{data.value.startDateLocal}}&endDate={{data.value.endDateLocal}}" target="_blank">Download Report Participant</a>
+                </button>
+                <!-- <app-submit-button label="Download Report" clasz="p-button-rounded mr-2 flex justify-content-end"></app-submit-button> -->
             </div>
         </div>
     </p-card>

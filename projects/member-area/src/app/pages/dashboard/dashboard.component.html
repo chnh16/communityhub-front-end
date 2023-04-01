@@ -1,6 +1,6 @@
-<pre>{{data.value | json}}</pre>
-<pre>{{post | json}}</pre>
-<div class="grid grid-nogutter my-3">
+<!-- <pre>{{data.value | json}}</pre>
+<pre>{{post | json}}</pre> -->
+<div class="grid grid-nogutter">
     <div *ngIf="profile" class="hidden lg:block col-3 px-3">
         <div class="justify-content-start">
             <h3><i class="pi pi-user"></i> Profil Saya</h3>
@@ -8,7 +8,7 @@
         <div class="align-item-center">
             <p-card class="align-items-center flex-wrap" styleClass="p-card-shadow">
                 <p-avatar class="grid align-items-center justify-content-center" styleClass="mr-2" size="xlarge"
-                    shape="circle" image="http://192.168.10.124:8080/files/{{profile.file}}"
+                    shape="circle" image="{{baseUrl}}/files/{{profile.file}}"
                     [style]="{'background-color':'#2196F3', 'color': '#ffffff'}"></p-avatar>
                 <h3 class="grid my-1 align-items-center justify-content-center">{{profile.fullName}}</h3>
                 <span class="grid my-1 align-items-center justify-content-center">{{profile.industryId}}</span>
@@ -34,7 +34,7 @@
                 </div>
                 <p-divider></p-divider>
                 <div class="align-item-center">
-                    <app-routing-button label="Edit Profil" link="/profile/{{profile.id}}"></app-routing-button>
+                    <!-- <app-routing-button label="Edit Profil" link="/profile/{{profile.id}}"></app-routing-button> -->
                 </div>
             </p-card>
         </div>
@@ -61,9 +61,8 @@
                 </div>
                 <p-divider></p-divider>
                 <div class="align-item-center">
-                    <button pButton [disabled]="true" class="p-button-primary">Edit Profil</button>
+                    <!-- <button pButton [disabled]="true" class="p-button-primary">Edit Profil</button> -->
                 </div>
-
             </p-card>
         </div>
     </div>
@@ -71,7 +70,7 @@
         <div class="justify-content-start">
             <h3><i class="pi pi-home"></i> Aktivitas Saya</h3>
         </div>
-        <p-card *ngIf="!edit" class="mb-2">
+        <p-card class="mb-2">
             <form [formGroup]="data" (ngSubmit)="onSubmit()">
                 <div class="mb-1">
                     <input class="col-12" type="text" pInputText placeholder="Judul Post" formControlName="postTitle" />
@@ -130,45 +129,32 @@
                 </div>
             </form>
         </p-card>
-        <p-card *ngIf="edit" class="mb-2">
-            <form [formGroup]="data" (ngSubmit)="onSubmit()">
-                <div class="mb-1">
-                    <input class="col-12" type="text" pInputText placeholder="Judul Post" formControlName="postTitle" />
-                </div>
-                <div class="mb-1">
-                    <textarea class="col-12" [style]="{'resize' : 'none'}" [rows]="5" [autoResize]="true"
-                        formControlName="postContent" placeholder="Tulis sesuatu" pInputTextarea>
-                    </textarea>
-                </div>
-                <div class="mb-1">
-                    <p-dropdown [options]="categories" optionLabel="categoryName" formControlName="categoryId"
-                        optionValue="id"></p-dropdown>
-                </div>
-                <div class="grid mt-2">
-                    <div class="col-auto mx-2">
-                        <app-submit-button [disabled]="!this.data.valid" label="Ubah Post"></app-submit-button>
-                    </div>
-                </div>
-            </form>
-        </p-card>
         <div infinite-scroll (scrolled)="onScroll()">
             <div *ngFor="let p of post; let i = index" class="col-12 block align-items-center flex-wrap p-0">
-                <p-card class="grid block col-12 m-0 mt-2 p-0">
-                    <div class="grid align-items-center mx-2">
-                        <div class="grid align-items-center col-1 mr-2 p-0">
-                            <p-avatar image="http://192.168.10.124:8080/files/{{p.userFileId}}" styleClass="mr-2"
-                                size="xlarge" shape="circle"></p-avatar>
+                <p-card class="block col-12 m-0 mt-2 p-0">
+                    <div class="align-items-center mx-2">
+                        <div class="grid align-items-center p-0">
+                            <div class="col-1 mr-2">
+                                <p-avatar image="{{baseUrl}}/files/{{p.userFileId}}" styleClass="mr-2"
+                                    size="xlarge" shape="circle"></p-avatar>
+                            </div>
+                            <div class="col">
+                                <div class="mx-0">
+                                    <h4>{{p.fullName}}</h4>
+                                </div>
+                                <div class="mx-0">
+                                    <span>{{p.postedAt | timeAgo}}</span>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <p-chip label="{{p.categoryName}}"></p-chip>
+                            </div>
                         </div>
                         <div class="block align-items-center col-7 p-0">
-                            <div class="grid">
-                                <h4 class="col">{{p.fullName}}</h4>
-                            </div>
-                            <div class="grid">
-                                <span class="col">{{p.postedAt | timeAgo}}</span>
-                            </div>
+                            
                         </div>
                         <div class="align-items-end col-3">
-                            <app-category-button label="{{p.categoryName}}"></app-category-button>
+                            
                         </div>
                     </div>
                     <div class="grid mx-2">
@@ -255,7 +241,7 @@
                     <div *ngIf="p.showComment">
                         <div *ngFor="let d of p.postDetail" class="flex">
                             <div class="col-1 grid align-items-center justify-content-center m-0 p-0">
-                                <p-avatar image="http://192.168.10.124:8080/files/{{d.userFileId}}" size="large"
+                                <p-avatar image="{{baseUrl}}/files/{{d.userFileId}}" size="large"
                                     shape="circle"></p-avatar>
                             </div>
                             <div class="col-11">

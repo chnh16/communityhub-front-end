@@ -7,7 +7,7 @@ import { Subscription } from "rxjs";
 
 @Component({
     selector: 'app-article',
-    templateUrl: './list-article.component.html',
+    templateUrl: './list-article-member.component.html',
     styles: [`
                 :host ::ng-deep .article-header {
                  height: 300px;
@@ -19,7 +19,7 @@ import { Subscription } from "rxjs";
                 }
     `]
 })
-export class ListArticleComponent implements OnInit, OnDestroy {
+export class ListArticleMemberComponent implements OnInit, OnDestroy {
     resArticle: ArticleGetAllRes[] = []
     article$?: Subscription
     articleDelete$?: Subscription

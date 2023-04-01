@@ -6,9 +6,9 @@ import { ActivatedRoute, Router } from "@angular/router";
 
 @Component ({
     selector : 'app-article',
-    templateUrl : './report-admin.component.html'
+    templateUrl : './report-member.component.html'
 })
-export class ReportAdminComponent implements OnInit{
+export class ReportMemberComponent implements OnInit{
    
 
    constructor(

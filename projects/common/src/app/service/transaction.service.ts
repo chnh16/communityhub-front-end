@@ -11,6 +11,7 @@ import { TransactionInsertReq } from "../pojo/transaction/TransactionInsertReq";
 import { TransactionGetByEventsIdRes } from "../pojo/transaction/TransactionGetByEventIdRes";
 import { TransactionGetByMembershipIdRes } from "../pojo/transaction/TransactionGetByMembershipIdRes";
 import { UpdateTransactionReq } from "../pojo/transaction/UpdateTransactionReq";
+import { TransactionGetReportRes } from "../pojo/transaction/TransactionGetReportRes";
 
 
 @Injectable({
@@ -45,8 +46,13 @@ export class TransactionService {
         return this.http.get<TransactionGetAllRes>(`${BASE_URL}/transaction/${id}`)
     }
 
-
     insert(data: TransactionInsertReq): Observable<InsertRes> {
         return this.http.post<InsertRes>(`${BASE_URL}/transaction/add`, data)
     }
+
+    getCourseReport(startDate: string, endDate: string): Observable<TransactionGetReportRes> {
+        return this.http.get<TransactionGetReportRes>(`${BASE_URL}/transaction`)
+    }
+
+
 }

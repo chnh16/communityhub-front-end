@@ -11,17 +11,21 @@ import { ImageModule } from "primeng/image";
 import { MenubarModule } from "primeng/menubar";
 import { ButtonModule } from "projects/common/src/app/component/button/button.module";
 import { MenuBarComponent } from "projects/common/src/app/component/navbar/navbar.component";
+import { AuthLoginGuard } from "projects/common/src/app/guard/auth-login.guard";
+import { AuthLoadGuard } from "projects/common/src/app/guard/auth.load.guard";
 import { SharedModule } from "projects/common/src/app/shared.module";
 import { ProfileAdminComponent } from "./pages/admin-profile/admin-profile.component";
 import { CodeAdminComponent } from "./pages/code-register/code-admin.component";
 import { LoginAdminComponent } from "./pages/login/login-admin.component";
 import { RegisterAdminComponent } from "./pages/register/register-admin.component";
+import { ReportAdminComponent } from "./pages/report/report-admin.component";
 
 
 export const adminRouter: Routes = [
     {
         path: 'login',
-        component: LoginAdminComponent
+        component: LoginAdminComponent,
+        canActivate: [AuthLoginGuard]
     },
     {
         path: 'register',
@@ -36,39 +40,52 @@ export const adminRouter: Routes = [
         component: CodeAdminComponent
     },
     {
+        path: 'report-admin',
+        loadChildren: () => import('./pages/report/report.module').then(c => c.ReportModule),
+        component: MenuBarComponent,
+        canLoad : [AuthLoadGuard]
+    },
+    {
         path: 'voucher',
         loadChildren: () => import('./pages/voucher/voucher.module').then(c => c.VoucherModule),
-        component: MenuBarComponent
+        component: MenuBarComponent,
+        canLoad : [AuthLoadGuard]
     },
     {
         path: 'category',
         loadChildren: () => import('./pages/category/category.module').then(c => c.CategoryModule),
-        component: MenuBarComponent
+        component: MenuBarComponent,
+        canLoad : [AuthLoadGuard]
     },
     {
         path: 'industry',
         loadChildren: () => import('./pages/industry/industry.module').then(c => c.IndustryModule),
-        component: MenuBarComponent
+        component: MenuBarComponent,
+        canLoad : [AuthLoadGuard]
     },
     {
         path: 'position',
         loadChildren: () => import('./pages/position/position.module').then(c => c.PositionModule),
-        component: MenuBarComponent
+        component: MenuBarComponent,
+        canLoad : [AuthLoadGuard]
     },
     {
         path: 'membership',
         loadChildren: () => import('./pages/membership/membership.module').then(c => c.MembershipModule),
-        component: MenuBarComponent
+        component: MenuBarComponent,
+        canLoad : [AuthLoadGuard]
     },
     {
         path: 'article',
         loadChildren: () => import('./pages/article/article.module').then(c => c.ArticleModule),
-        component: MenuBarComponent
+        component: MenuBarComponent,
+        canLoad : [AuthLoadGuard]
     },
     {
         path: 'approval',
         loadChildren: () => import('./pages/approval/approval.module').then(c => c.ApprovalModule),
-        component: MenuBarComponent
+        component: MenuBarComponent,
+        canLoad : [AuthLoadGuard]
     }
 
 ];

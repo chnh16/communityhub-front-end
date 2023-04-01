@@ -32,12 +32,20 @@ export class CourseService {
         return this.http.get<CourseGetAllRes>(`${BASE_URL}/courses/${id}`)
     }
 
+    getByUserId(id: string, price: string, limit: number, offset: number): Observable<CourseGetAllRes[]> {
+        return this.http.get<CourseGetAllRes[]>(`${BASE_URL}/courses/user-course?category=${id}&price=${price}&limit=${limit}&offset=${offset}`)
+    }
+
+    getUserCourse(id: string, price: string, limit: number, offset: number): Observable<CourseGetAllRes[]> {
+        return this.http.get<CourseGetAllRes[]>(`${BASE_URL}/courses/my-course?category=${id}&price=${price}&limit=${limit}&offset=${offset}`)
+    }
+
     update(data: CourseUpdateReq): Observable<UpdateRes> {
-        return this.http.put<UpdateRes>(`${BASE_URL}/courses`, data)
+        return this.http.put<UpdateRes>(`${BASE_URL} / courses`, data)
     }
 
     delete(id: string): Observable<DeleteRes> {
-        return this.http.delete<DeleteRes>(`${BASE_URL}/courses/${id}`)
+        return this.http.delete<DeleteRes>(`${BASE_URL} / courses / ${id}`)
     }
 
 }

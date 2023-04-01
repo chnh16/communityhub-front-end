@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
+import { Title } from "@angular/platform-browser";
 import { Route, Router } from "@angular/router";
 import { CategoryGetAllRes } from "projects/common/src/app/pojo/category/CategoryGetAllRes";
 import { EventInsertReq } from "projects/common/src/app/pojo/event/EventInsertReq";
@@ -41,8 +42,11 @@ export class CreateEventComponent implements OnInit, OnDestroy {
         private fb: FormBuilder,
         private categoryService: CategoryService,
         private eventService: EventService,
-        private router: Router
-    ) { }
+        private router: Router,
+        private title : Title
+    ) {
+        this.title.setTitle('Buat Event')
+     }
 
 
 

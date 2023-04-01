@@ -1,12 +1,23 @@
-<div class="flex justify-content-center">
-    <p-card class="mt-8 absolute flex flex-wrap align-items-center">
-        <div class="flex justify-content-start">
-            <h2>VERIFICATION CODE</h2>
+<pre>{{verificationData.value | json}}</pre>
+<div class="grid grid-nogutter justify-content-center">
+    <p-card class="col-12 mt-6 md:col-8 lg:col-8">
+        <div class="grid justify-content-center">
+            <h2>Verifikasi Akun</h2>
         </div>
-        <span class="mt-5 p-float-label w-25rem">
-        <input class="w-25rem border-round m-2" id="email" type="text" pInputText > 
-        <label  for="float-input">Enter your verification code</label>
-    </span>
-        <app-routing-button clasz="mt-2 w-27rem p-button-rounded bg-blue-400" label="Register"></app-routing-button>
+        <div>
+            <form [formGroup]="verificationData">
+                <div class="grid mt-2 justify-content-center">
+                    <div class="col-12 m-0 p-0 md:col-12 lg:col-6">
+                        <div class="grid justify-content-center">
+                            <input formControlName="verificationCode" type="text" class="grid m-0" pInputText/>
+                            <small class="grid mt-1">Masukkan kode verifikasi yang telah kami kirim ke email anda.</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid mt-2 justify-content-center">
+                    <button pButton class="mt-2 p-button-rounded bg-blue-400" (click)="verify()">Verifikasi</button>
+                </div>
+            </form>
+        </div>
     </p-card>
 </div>

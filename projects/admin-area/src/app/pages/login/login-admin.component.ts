@@ -14,15 +14,12 @@ import { Subscription } from "rxjs";
     templateUrl : './login-admin.component.html',
 })
 export class LoginAdminComponent implements OnDestroy {
-
-    showButton = true
+    login$? : Subscription
 
     login = this.fb.group({
         email : ['', Validators.required],
         passwordUser : ['', Validators.required]
     })
-
-    private login$? : Subscription
 
     constructor (
         private fb  : FormBuilder,
@@ -46,14 +43,10 @@ export class LoginAdminComponent implements OnDestroy {
                 const roleCode = this.userService.roleCode
                 console.log(roleCode)
                 if(roleCode == roles[1][1]) {
-                    console.log(this.userService.token);
-                    this.adminView()
+                    this.router.navigate(['/category'])
                 }
             })
         }
-    }
-    adminView() {
-        this.router.navigate(['/category'])
     }
 
     ngOnDestroy(): void {

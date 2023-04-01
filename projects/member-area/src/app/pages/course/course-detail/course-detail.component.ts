@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { Title } from "@angular/platform-browser";
 import { ActivatedRoute } from "@angular/router";
 import { CourseGetAllRes } from "projects/common/src/app/pojo/course/CourseGetAllRes";
 import { CourseService } from "projects/common/src/app/service/course.service";
@@ -19,7 +20,8 @@ export class CourseDetailComponent {
     constructor(
         private courseService: CourseService,
         private router: ActivatedRoute,
-        private userService: UserService
+        private userService: UserService,
+        private title : Title
 
     ) {
 
@@ -30,6 +32,7 @@ export class CourseDetailComponent {
 
             this.getCourseDetail$ = this.courseService.getByCourseId(result1['id']).subscribe(result => {
                 this.getByCourseId = result
+                this.title.setTitle(result.courseName)
             })
         })
     }

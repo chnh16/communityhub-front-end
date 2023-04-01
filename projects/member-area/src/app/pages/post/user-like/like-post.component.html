@@ -69,92 +69,13 @@
     </div>
     <div class="col lg:px-3">
         <div class="justify-content-start">
-            <h3><i class="pi pi-home"></i> Aktivitas Saya</h3>
+            <h3><i class="pi pi-home"></i> My Like</h3>
         </div>
-        <p-card *ngIf="!edit" class="mb-2">
-            <form [formGroup]="data" (ngSubmit)="onSubmit()">
-                <div class="mb-1">
-                    <input class="col-12" type="text" pInputText placeholder="Judul Post" formControlName="postTitle" />
-                </div>
-                <div class="mb-1">
-                    <textarea class="col-12" [style]="{'resize' : 'none'}" [rows]="5" [autoResize]="true"
-                        formControlName="postContent" placeholder="Tulis sesuatu" pInputTextarea>
-                    </textarea>
-                </div>
-                <div class="mb-1">
-                    <p-dropdown [options]="categories" optionLabel="categoryName" formControlName="categoryId"
-                        optionValue="id"></p-dropdown>
-                </div>
-                <div *ngIf="profile?.premiumUntil" class="mb-1">
-                    <label>Premium</label>
-                    <p-inputSwitch formControlName="isPremium">Premium</p-inputSwitch>
-                </div>
-                <div *ngIf="showImageUpload" class="grid mb-1">
-                    <p-fileUpload [multiple]="true" accept="image/*" [showUploadButton]="false"
-                        (onSelect)="onSelect($event)" (onRemove)="onRemove($event)" (onClear)="onClear()"
-                        (maxFileSize)="1000000">
-                    </p-fileUpload>
-                </div>
-                <div formArrayName="polling" *ngIf="showInsertPolling" class="mb-1">
-                    <div *ngFor="let p of pollingData.controls; let i = index" [formGroupName]="i" class="grid">
-                        <div class="col-2">
-                            <label>Pilihan <sup class="text-red-500" *ngIf="i < 2">*</sup></label>
-                        </div>
-                        <div class="col-4">
-                            <input class="col" formControlName="choiceContent" type="text" pInputText />
-                        </div>
-                        <div class="col" *ngIf="i > 1">
-                            <button pButton class="p-button-text text-red-500" (click)="removePollingChoice(i)">Hapus
-                                Pilihan</button>
-                        </div>
-                    </div>
-                    <div class="grid">
-                        <button pButton type="button" class="p-button-text" [disabled]="pollingData.length > 3"
-                            (click)="addPollingChoice()">Tambah Pilihan</button>
-                    </div>
-                </div>
-                <div class="grid mt-2">
-                    <div class="col-auto mx-1">
-                        <button pButton pRipple type="button" label="Image" icon="pi pi-image"
-                            (click)="onShowImageUpload()" [disabled]="imageButton"
-                            class="p-button-outlined p-button-rounded"></button>
-                    </div>
-                    <div class="col-auto mx-1">
-                        <button pButton pRipple type="button" label="Polling" icon="pi pi-chart-bar"
-                            (click)="onShowInsertPolling()" [disabled]="pollingButton"
-                            class="p-button-outlined p-button-rounded"></button>
-                    </div>
-                    <div class="col-auto mx-1">
-                        <app-submit-button label="Post"></app-submit-button>
-                    </div>
-                </div>
-            </form>
-        </p-card>
-        <p-card *ngIf="edit" class="mb-2">
-            <form [formGroup]="data" (ngSubmit)="onSubmit()">
-                <div class="mb-1">
-                    <input class="col-12" type="text" pInputText placeholder="Judul Post" formControlName="postTitle" />
-                </div>
-                <div class="mb-1">
-                    <textarea class="col-12" [style]="{'resize' : 'none'}" [rows]="5" [autoResize]="true"
-                        formControlName="postContent" placeholder="Tulis sesuatu" pInputTextarea>
-                    </textarea>
-                </div>
-                <div class="mb-1">
-                    <p-dropdown [options]="categories" optionLabel="categoryName" formControlName="categoryId"
-                        optionValue="id"></p-dropdown>
-                </div>
-                <div class="grid mt-2">
-                    <div class="col-auto mx-2">
-                        <app-submit-button [disabled]="!this.data.valid" label="Ubah Post"></app-submit-button>
-                    </div>
-                </div>
-            </form>
-        </p-card>
+
         <div infinite-scroll (scrolled)="onScroll()">
             <div *ngFor="let p of post; let i = index" class="col-12 block align-items-center flex-wrap p-0">
                 <p-card class="grid block col-12 m-0 mt-2 p-0">
-                    <div class="grid align-items-center mx-2">
+                    <div class="grid  align-items-center mx-2">
                         <div class="grid align-items-center col-1 mr-2 p-0">
                             <p-avatar image="http://192.168.10.124:8080/files/{{p.userFileId}}" styleClass="mr-2"
                                 size="xlarge" shape="circle"></p-avatar>
@@ -164,13 +85,13 @@
                                 <h4 class="col">{{p.fullName}}</h4>
                             </div>
                             <div class="grid">
-                                <span class="col">{{p.postedAt | timeAgo}}</span>
+                                <span class="col">{{p.postedAt | date}}</span>
                             </div>
                         </div>
-                        <div class="align-items-end col-3">
+                        <div class="grid align-items-end col-3">
                             <app-category-button label="{{p.categoryName}}"></app-category-button>
                         </div>
-                        <div class="align-items-end col-1">
+                        <div class="grid align-items-end col-1">
                             <app-icon-button icon="pi pi-chevron-down" clasz="p-button-text p-button-secondary"
                                 (click)="menu.toggle($event)"></app-icon-button>
                             <p-tieredMenu #menu [model]="items" [popup]="true"></p-tieredMenu>
@@ -179,37 +100,25 @@
                     <div class="grid mx-2">
                         <div class="my-2">
                             <h3>{{p.postTitle}}</h3>
-                            <span *ngIf="!p.isPremium" style="white-space: pre-line;">{{p.postContent}}</span>
-                            <div *ngIf="p.isPremium">
-                                <div *ngIf="p.isShown">
-                                    <span style="white-space: pre-line;">{{p.postContent}}</span>
-                                </div>
-                                <div *ngIf="!p.isShown">
-                                    <span style="white-space: pre-line;">{{p.postContent | truncate : 100 :
-                                        false}}</span>
-                                    <button pButton class="p-button-text m-0 p-0" type="button" (click)="onShowPremiumContent(i)">See more</button>
-                                </div>
-                            </div>
+
+                            <span style="white-space: pre-line;">{{p.postContent}}</span>
                         </div>
                     </div>
                     <div class="grid mx-2">
                         <div *ngIf="p.fileId">
-                            <app-post-image [imagesId]="p.fileId" imageHost="192.168.10.124"
-                                [imageOptions]="imageOptions"></app-post-image>
+                            <img class="m-1" style="width: 250px;" *ngFor="let img of p.fileId; let j = index"
+                                src="http://192.168.10.124:8080/files/{{img}}" alt="img">
                         </div>
-                        <div class="col-12 mt-2" *ngIf="p.pollingChoice">
-                            <div class="col-12" *ngIf="!p.isAnswered">
+                        <div *ngIf="p.pollingChoice">
+                            <div *ngIf="!p.isAnswered">
                                 <div *ngFor="let c of p.pollingChoice; let j = index">
                                     <app-text-button label="{{c.choiceContent}}"
                                         (click)="onInsertPollingAnswer(c.pollingChoiceId, i)"></app-text-button>
                                 </div>
                             </div>
-                            <div class="col-12" *ngIf="p.isAnswered">
+                            <div *ngIf="p.isAnswered">
                                 <div class="mb-2">
-                                    <div *ngFor="let a of p.pollingAnswer; let j = index">
-                                        <app-progressbar [label]="a.choiceContent"
-                                            [value]="a.percent"></app-progressbar>
-                                    </div>
+
                                 </div>
                                 <app-text-button label="Undo" (click)="onRemovePollingAnswer(p.isAnswered.id, i)">
                                 </app-text-button>
@@ -239,20 +148,20 @@
                                 clasz="p-button-text p-button-primary" label="Bookmark"
                                 (click)="onRemoveBookmark(p.isBookmarked.id, i)"></app-text-icon-button>
                         </div>
+                        <p-divider></p-divider>
                     </div>
                     <div *ngIf="p.showComment">
-                        <p-divider></p-divider>
                         <div class="grid">
-                            <input [formControl]="detail" pInputText type="text" placeholder="Tulis komentar"
+                            <input pInputText type="text" placeholder="Tulis komentar"
                                 class="col-12 mx-1 mb-2 p-inputtext-sm">
                         </div>
                         <div class="grid mt-1">
                             <div class="mx-1">
-                                <app-text-button label="Post" (click)="onInsertPostDetail(i)"></app-text-button>
+                                <app-submit-button label="Post"></app-submit-button>
+
                             </div>
                         </div>
                     </div>
-                    <p-divider></p-divider>
                     <div *ngIf="p.detailCount > 3">
                         <button pButton type="button" class="p-button-text">Lebih banyak komentar (detailCount)</button>
                     </div>

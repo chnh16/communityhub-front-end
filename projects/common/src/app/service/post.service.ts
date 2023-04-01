@@ -14,54 +14,62 @@ import { PostDetailInsertReq } from "../pojo/postdetail/PostDetailInsertReq";
 
 
 @Injectable({
-    providedIn : 'root'
+    providedIn: 'root'
 })
-export class PostService{
+export class PostService {
     constructor(
-       private http : HttpClient
-    ){}
+        private http: HttpClient
+    ) { }
 
-    getPost(limit : number, offset : number) : Observable<PostGetAllRes[]> {
+    getPost(limit: number, offset: number): Observable<PostGetAllRes[]> {
         return this.http.get<PostGetAllRes[]>(`${BASE_URL}/post/list-post?limit=${limit}&offset=${offset}`)
     }
-    
-    getPostById(postId : string) : Observable<PostGetAllRes>{
+
+    getPostById(postId: string): Observable<PostGetAllRes> {
         return this.http.get<PostGetAllRes>(`${BASE_URL}/post/${postId}`)
     }
 
-    insertPost(data : PostInsertReq) : Observable<InsertRes>{
+    insertPost(data: PostInsertReq): Observable<InsertRes> {
         return this.http.post<InsertRes>(`${BASE_URL}/post`, data)
     }
 
-    onLike(data : PostLikeReq) : Observable<InsertRes>{
+    onLike(data: PostLikeReq): Observable<InsertRes> {
         return this.http.post<InsertRes>(`${BASE_URL}/post/like`, data)
     }
 
-    onDislike(postId : string) : Observable<DeleteRes>{
+    onDislike(postId: string): Observable<DeleteRes> {
         return this.http.delete<DeleteRes>(`${BASE_URL}/post/like/${postId}`)
     }
 
-    onBookmark(data : PostBookmarkReq) : Observable<InsertRes>{
+    onBookmark(data: PostBookmarkReq): Observable<InsertRes> {
         return this.http.post<InsertRes>(`${BASE_URL}/post/bookmark`, data)
     }
 
-    onRemoveBookmark(postId : string) : Observable<DeleteRes>{
+    getPostBookmark(limit: number, offset: number): Observable<PostGetAllRes[]> {
+        return this.http.get<PostGetAllRes[]>(`${BASE_URL}/post/post-bookmark?limit=${limit}&offset=${offset}`)
+    }
+
+    getPostLike(limit: number, offset: number): Observable<PostGetAllRes[]> {
+        return this.http.get<PostGetAllRes[]>(`${BASE_URL}/post/post-like?limit=${limit}&offset=${offset}`)
+    }
+
+    onRemoveBookmark(postId: string): Observable<DeleteRes> {
         return this.http.delete<DeleteRes>(`${BASE_URL}/post/bookmark/${postId}`)
     }
 
-    getPollingAnswer(postId : string) : Observable<PollingAnswerGetCountRes[]>{
+    getPollingAnswer(postId: string): Observable<PollingAnswerGetCountRes[]> {
         return this.http.get<PollingAnswerGetCountRes[]>(`${BASE_URL}/post/polling/${postId}`)
     }
 
-    onInsertPollingAnswer(pollingChoiceId : string) : Observable<InsertRes>{
+    onInsertPollingAnswer(pollingChoiceId: string): Observable<InsertRes> {
         return this.http.post<InsertRes>(`${BASE_URL}/post/polling/${pollingChoiceId}`, {})
     }
 
-    onRemovePollingAnswer(pollingAnswerId : string) : Observable<DeleteRes>{
+    onRemovePollingAnswer(pollingAnswerId: string): Observable<DeleteRes> {
         return this.http.delete<DeleteRes>(`${BASE_URL}/post/polling/${pollingAnswerId}`)
     }
 
-    getPostDetail(postId : string) : Observable<PostDetailGetAllRes[]>{
+    getPostDetail(postId: string): Observable<PostDetailGetAllRes[]> {
         return this.http.get<PostDetailGetAllRes[]>(`${BASE_URL}/post/detail/${postId}`)
     }
 

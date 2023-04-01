@@ -26,6 +26,9 @@ import { PasswordModule } from 'primeng/password';
 import { SkeletonModule } from 'primeng/skeleton';
 import { ProgressBarComponent } from "./component/progressbar/app-progressbar.component";
 import { CalendarModule } from "primeng/calendar";
+import { PostImageComponent } from "./component/image/post-image.component";
+import { DateFormatPipe } from "./pipe/date-format.pipe";
+import { TimeAgoPipe } from "./pipe/time-ago.pipe";
 
 
 @NgModule({
@@ -59,6 +62,8 @@ import { CalendarModule } from "primeng/calendar";
         SkeletonModule,
         ProgressBarComponent,
         CalendarModule
+        PostImageComponent,
+        DateFormatPipe
     ],
     exports: [
         ButtonModule,
@@ -87,6 +92,8 @@ import { CalendarModule } from "primeng/calendar";
         SkeletonModule,
         ProgressBarComponent,
         CalendarModule
+        PostImageComponent,
+        DateFormatPipe
     ]
 })
 

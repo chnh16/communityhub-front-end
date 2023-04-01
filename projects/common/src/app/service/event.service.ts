@@ -31,6 +31,14 @@ export class EventService {
         return this.http.get<EventGetAllRes>(`${BASE_URL}/events/${id}`)
     }
 
+    getByUserId(id: string, price: string, limit: number, offset: number): Observable<EventGetAllRes[]> {
+        return this.http.get<EventGetAllRes[]>(`${BASE_URL}/events/user-event?category=${id}&price=${price}&limit=${limit}&offset=${offset}`)
+    }
+
+    getUserEvent(id: string, price: string, limit: number, offset: number): Observable<EventGetAllRes[]> {
+        return this.http.get<EventGetAllRes[]>(`${BASE_URL}/events/my-event?category=${id}&price=${price}&limit=${limit}&offset=${offset}`)
+    }
+
     update(data: EventUpdateReq): Observable<UpdateRes> {
         return this.http.put<UpdateRes>(`${BASE_URL}/events`, data)
     }

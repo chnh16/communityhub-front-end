@@ -1,7 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
+import { ImageOption } from 'projects/common/src/app/component/image/post-image.component';
 import { CategoryGetAllRes } from 'projects/common/src/app/pojo/category/CategoryGetAllRes';
 import { FileInsertReq } from 'projects/common/src/app/pojo/file/FileInsertReq';
 import { PollingAnswerGetCountRes } from 'projects/common/src/app/pojo/pollinganswer/PollingAnswerGetCountRes';
@@ -42,8 +44,37 @@ export class DashboardComponent implements OnInit, OnDestroy {
   pollingButton: boolean = false
   categories: CategoryGetAllRes[] = []
   pollingAnswer: PollingAnswerGetCountRes[] = []
-  detail : any
+  detail: any
   edit: any = null
+  imageOptions: ImageOption[] = [
+    {
+      len: 1,
+      imageItem: [
+        { class: 'w-full h-30rem' }
+      ]
+    },
+    {
+      len: 2,
+      imageItem: [
+        { class: 'w-6' }, { class: 'w-6' }
+      ]
+    },
+    {
+      len: 3,
+      imageItem: [
+        { class: 'w-full h-30rem' }, { class: 'w-6' }, { class: 'w-6' }
+      ]
+    },
+    {
+      len: 4,
+      imageItem: [
+        { class: 'w-full h-15rem' }, { class: 'w-4 h-15rem' }, { class: 'w-4 h-15rem' }, { class: 'w-4 h-15rem' }
+      ]
+    }
+  ]
+
+
+  showMore = false;
 
   data = this.fb.group({
     postTitle: ['', [Validators.required, Validators.minLength(5)]],
@@ -63,10 +94,11 @@ export class DashboardComponent implements OnInit, OnDestroy {
     private postService: PostService,
     private userService: UserService,
     private routerService : RouterService,
-    private title : Title
+    private title : Title,
+    private router : Router
   ) {
     this.title.setTitle("Beranda")
-   }
+  }
 
   get imageData() {
     return this.data.get('file') as FormArray
@@ -75,7 +107,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   get pollingData() {
     return this.data.get('polling') as FormArray
   }
-  
+
   onScroll(): void {
     this.dashboard$ = this.postService.getPost(this.POST_LIMIT, this.PAGE++).subscribe(res => {
       if (res) {
@@ -96,13 +128,21 @@ export class DashboardComponent implements OnInit, OnDestroy {
     })
   }
 
+  onShowPremiumContent(i : number){
+    if(!this.profile?.premiumUntil){
+      this.router.navigateByUrl('/memberships')
+    } else {
+      this.post[i].isShown = !this.post[i].isShown
+    }
+  }
+
   onInsertPostDetail(i : number){
     const data : PostDetailInsertReq = {
       postId : this.post[i].id,
       detailContent : this.detail.value
     }
     this.postDetail$ = this.postService.insertPostDetail(data).subscribe(res => {
-        this.detail.reset()
+      this.detail.reset()
     })
   }
 
@@ -218,6 +258,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
       }
     })
   }
+
+
 
   onDislike(postId: string, i: number): void {
     this.postLike$ = this.postService.onDislike(postId).subscribe(res => {

@@ -1,63 +1,46 @@
-<pre>
-    {{login.value | json}}
-</pre>
-
-<!-- <div class="card">
-    <p-card class="mt-4 ml-6 mr-6 flex flex-wrap align-items-center justify-content-center">
-        <div class="grid">
-            <div class="col-8 flex justify-content-start">
-                <div class="col-2 flex justify-content-start">
-                    <div class="w-35rem pl-0">
-                        <p-image src="../../../assets/img/undraw_Welcoming_re_x0qo.png" alt="Image" height="500"
-                            width="600" class="justify-content-start pl-0"></p-image>
-                    </div>
+<pre>{{login.value | json}}</pre>
+<div class="card">
+    <p-card class="grid grid-nogutter align-items-center justify-content-center">
+        <div class="grid m-0 p-0 w-auto">
+            <div class="grid m-0 p-0 lg:col align-items-center justify-content-center">
+                <div>
+                    <p-image src="../../../assets/img/undraw_Welcoming_re_x0qo.png" alt="Image" width="250"></p-image>
                 </div>
-
             </div>
-
-
-            <div class="col-2">
-                <div class="col-4 flex align-items-center justify-content-center">
+            <div class="hidden md:block col-1 lg:block col-1">
+                <p-divider layout="vertical"></p-divider>
+            </div>
+            <div class="grid lg:col align-items-center justify-content-center">
+                <form [formGroup]="login" (ngSubmit)="onLogin()">
                     <div class="pl-5 p-fluid">
-                        <form [formGroup]="login" (ngSubmit)="onLogin()">
-                            <div class="pt-2 align-items-center justify-content-center">
-                                <h3>LOGIN</h3>
-                            </div>
-                            <div class="pt-4 field col-4 md:col-12">
-                                <label for="email">Email</label>
-                                <input pInputText id="email" type="text" formControlName="email"
-                                    class="text-base text-color surface-overlay p-2 border-3 border-solid surface-border border-blue-400 border-round appearance-none outline-none focus:border-primary w-full" />
-                            </div>
-                            <div class="field col-4 md:col-12">
-                                <label for="password">Password</label>
-                                <input pInputText id="password" type="password" formControlName="passwordUser"
-                                    class="text-base text-color surface-overlay p-2 border-3 border-solid surface-border border-blue-400 border-round appearance-none outline-none focus:border-primary w-full" />
-                            </div>
-                            <app-submit-button clasz="w-27rem p-button-rounded bg-blue-400" label="LOGIN">
-                            </app-submit-button>
-
-                            <app-routing-button clasz="mt-2 w-27rem p-button-rounded bg-blue-400" label="Sign Up"
-                                link="/register">
-                            </app-routing-button>
-                            <p class="mt-1 underline text-center">Forget password</p>
-                        </form>
+                        <div class="pt-2 align-items-center justify-content-center">
+                            <h3>Login</h3>
+                        </div>
+                        <div class="pt-4 field">
+                            <label for="email">Email</label>
+                            <input formControlName="email" pInputText id="email" type="email" />
+                        </div>
+                        <div class="field">
+                            <label for="password">Password</label>
+                            <p-password formControlName="passwordUser" [toggleMask]="true" [feedback]="false">
+                            </p-password>
+                        </div>
+                        <app-submit-button clasz="w-auto p-button-rounded bg-blue-400 mx-1" label="Login"
+                            [disabled]="!login.valid"></app-submit-button>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </p-card>
-</div> -->
-
-<pre>{{login.value | json}}</pre>
-<div class="card">
+</div>
+<!-- <div class="card">
     <p-card class="mt-8 flex flex-wrap align-items-center justify-content-center ">
-
         <div class="grid">
             <div class="col-5 flex align-items-center justify-content-center">
                 <form [formGroup]="login" (ngSubmit)="onLogin()">
                     <div class="pl-5 p-fluid">
                         <div class="pt-2 align-items-center justify-content-center">
-                            <h3>LOGIN</h3>
+                            <h3>Login</h3>
                         </div>
                         <div class="pt-4 field">
                             <label for="email">Email</label>
@@ -76,7 +59,6 @@
                     </div>
                 </form>
             </div>
-
             <div class="col-2">
                 <p-divider layout="vertical">
                     <b></b>
@@ -89,85 +71,4 @@
             </div>
         </div>
     </p-card>
-</div>
-
-
-<!-- <div class="card">
-    <div class="flex justify-content-start">
-        <div class="absolute top-0 left-0 bg-blue-400 w-25rem h-full">
-            <div class="flex align-items-stretch flex-wrap card-container blue-container">
-                <div class="flex align-items-center justify-content-center text-white border-round m-2 w-25rem h-full">Welcome Back</div>
-            </div>
-        </div>
-    </div>
 </div> -->
-
-<!-- <div class="card">
-    <div class="flex justify-content-start">
-        <div class="absolute top-0 left-0 bg-blue-400 w-25rem h-full">
-            <div class="flex align-items-stretch flex-wrap card-container blue-container">
-                <div class="flex align-items-center justify-content-center text-white border-round m-2 w-25rem h-full">Welcome Back</div>
-            </div>
-        </div>
-    </div>
-</div> -->
-
-<!-- <div class="flex justify-content-start">
-    <div class="absolute top-0 left-0 bg-blue-400 w-25rem h-full">
-        <div class="relative">
-            <h2 class="text-center text-white">WELCOME BACK!</h2>
-        </div>
-    </div>
-</div>
-
-
-<p-card class="mt-8 absolute left-50 flex flex-wrap align-items-center justify-content-center ">
-    <div class="flex justify-content-center">
-        <h2>SIGN IN</h2>
-    </div>
-    <div class="flex justify-content-center">
-        <h4>To Access The Portal</h4>
-    </div>
-    <span class="mt-5 p-float-label w-25rem">
-        <input class="w-25rem border-round m-2" id="email" type="text" pInputText > 
-        <label  for="float-input">Enter email here</label>
-    </span>
-    <span class="mt-1 p-float-label w-25rem">
-        <input class="w-25rem border-round m-2" id="pass" type="password" pInputText> 
-        <label for="float-input">Enter password here</label>
-    </span>
-    <app-routing-button clasz="mt-2 w-27rem p-button-rounded bg-blue-400" label="Login"></app-routing-button>
-    <p class="mt-1 underline text-center">Forget password</p>
-
-</p-card> -->
-
-
-
-<!-- <div class="flex justify-content-start">
-    <div class="absolute top-0 left-0 bg-blue-400 w-25rem h-full">
-        <div class="relative">
-            <h2 class="text-center text-white">WELCOME BACK!</h2>
-        </div>
-    </div>
-</div>
-
-
-<p-card class="mt-8 absolute left-50 flex flex-wrap align-items-center justify-content-center ">
-    <div class="flex justify-content-center">
-        <h2>SIGN IN</h2>
-    </div>
-    <div class="flex justify-content-center">
-        <h4>To Access The Portal</h4>
-    </div>
-    <span class="mt-5 p-float-label w-25rem">
-        <input class="w-25rem border-round m-2" id="email" type="text" pInputText > 
-        <label  for="float-input">Enter email here</label>
-    </span>
-    <span class="mt-1 p-float-label w-25rem">
-        <input class="w-25rem border-round m-2" id="pass" type="password" pInputText> 
-        <label for="float-input">Enter password here</label>
-    </span>
-    <app-routing-button clasz="mt-2 w-27rem p-button-rounded bg-blue-400" label="Login"></app-routing-button>
-    <p class="mt-1 underline text-center">Forget password</p>
-
-</p-card> -->

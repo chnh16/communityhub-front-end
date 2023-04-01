@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
+import { Title } from "@angular/platform-browser";
 import { Router } from "@angular/router";
 import { roles } from "projects/common/src/app/constant/UserRole";
 import { LoginReq } from "projects/common/src/app/pojo/user/LoginReq";
@@ -22,8 +23,11 @@ export class LoginMemberComponent implements OnDestroy {
     constructor(
         private fb: FormBuilder,
         private userService: UserService,
-        private router: Router
-    ) { }
+        private router: Router,
+        private title : Title
+    ) {
+        this.title.setTitle("Login")
+     }
 
     onLogin() {
         if (this.data.valid) {
@@ -38,7 +42,6 @@ export class LoginMemberComponent implements OnDestroy {
                 this.router.navigateByUrl('/dashboard')
                 // if(roleCode == roles[3][1]){
                 //     console.log(this.userService.token)
-
                 // }
             })
         }

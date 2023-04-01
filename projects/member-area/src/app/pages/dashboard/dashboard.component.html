@@ -67,7 +67,7 @@
             </p-card>
         </div>
     </div>
-    <div class="col lg:px-3">
+    <div *ngIf="post" class="col lg:px-3">
         <div class="justify-content-start">
             <h3><i class="pi pi-home"></i> Aktivitas Saya</h3>
         </div>
@@ -170,11 +170,6 @@
                         <div class="align-items-end col-3">
                             <app-category-button label="{{p.categoryName}}"></app-category-button>
                         </div>
-                        <div class="align-items-end col-1">
-                            <app-icon-button icon="pi pi-chevron-down" clasz="p-button-text p-button-secondary"
-                                (click)="menu.toggle($event)"></app-icon-button>
-                            <p-tieredMenu #menu [model]="items" [popup]="true"></p-tieredMenu>
-                        </div>
                     </div>
                     <div class="grid mx-2">
                         <div class="my-2">
@@ -187,7 +182,8 @@
                                 <div *ngIf="!p.isShown">
                                     <span style="white-space: pre-line;">{{p.postContent | truncate : 100 :
                                         false}}</span>
-                                    <button pButton class="p-button-text m-0 p-0" type="button" (click)="onShowPremiumContent(i)">See more</button>
+                                    <button pButton class="p-button-text m-0 p-0" type="button"
+                                        (click)="onShowPremiumContent(i)">See more</button>
                                 </div>
                             </div>
                         </div>
@@ -266,6 +262,77 @@
                                 <h5 class="grid align-items-start m-0">{{d.fullName}}</h5>
                                 <span class="grid align-items-end m-0">{{d.detailContent}}</span>
                             </div>
+                        </div>
+                    </div>
+                </p-card>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="!post" class="col lg:px-3">
+        <div class="justify-content-start">
+            <h3><i class="pi pi-home"></i> Aktivitas Saya</h3>
+        </div>
+        <div>
+            <div *ngFor="let p of post; let i = index" class="col-12 block align-items-center flex-wrap p-0">
+                <p-card class="grid block col-12 m-0 mt-2 p-0">
+                    <div class="grid align-items-center mx-2">
+                        <div class="grid align-items-center col-1 mr-2 p-0">
+                            <p-skeleton shape="circle" size="5rem"></p-skeleton>
+                        </div>
+                        <div class="block align-items-center col-7 p-0">
+                            <div class="grid">
+                                <p-skeleton width="20rem" styleClass="mb-2" borderRadius="16px"></p-skeleton>
+                            </div>
+                            <div class="grid">
+                                <p-skeleton width="10rem" styleClass="mb-2" borderRadius="16px"></p-skeleton>
+                            </div>
+                        </div>
+                        <div class="align-items-end col-3">
+                            <p-skeleton height="2rem" styleClass="mb-2" borderRadius="16px"></p-skeleton>
+                        </div>
+                        <div class="align-items-end col-1">
+                            <app-icon-button icon="pi pi-chevron-down" clasz="p-button-text p-button-secondary"
+                                (click)="menu.toggle($event)"></app-icon-button>
+                            <p-tieredMenu #menu [model]="items" [popup]="true"></p-tieredMenu>
+                        </div>
+                    </div>
+                    <div class="grid mx-2">
+                        <div class="my-2">
+                            <p-skeleton styleClass="mb-2" borderRadius="16px"></p-skeleton>
+                            <p-skeleton width="10rem" styleClass="mb-2" borderRadius="16px"></p-skeleton>
+                            <p-skeleton width="5rem" styleClass="mb-2" borderRadius="16px"></p-skeleton>
+                            <p-skeleton width="5rem" styleClass="mb-2" borderRadius="16px"></p-skeleton>
+                            <div *ngIf="p.isPremium">
+                                <div *ngIf="p.isShown">
+                                    <span style="white-space: pre-line;">{{p.postContent}}</span>
+                                </div>
+                                <div *ngIf="!p.isShown">
+                                    <span style="white-space: pre-line;">{{p.postContent | truncate : 100 :
+                                        false}}</span>
+                                    <button pButton class="p-button-text m-0 p-0" type="button"
+                                        (click)="onShowPremiumContent(i)">See more</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid mx-2">
+                        <p-skeleton width="100%" height="150px"></p-skeleton>
+                    </div>
+                    <div class="grid m-2">
+                        <p-skeleton width="5rem" styleClass="mb-2" borderRadius="16px"></p-skeleton>
+                    </div>
+                    <div class="m-0 p-0">
+                        <p-divider></p-divider>
+                        <div class="grid">
+                            <app-text-icon-button icon="pi pi-heart"
+                                clasz="p-button-text p-button-secondary" label="Suka">
+                            </app-text-icon-button>
+                            <p-divider layout="vertical"></p-divider>
+                            <app-text-icon-button icon="pi pi-comments" clasz="p-button-text p-button-secondary" label="Komentar(0)"></app-text-icon-button>
+                            <p-divider layout="vertical"></p-divider>
+                            <app-text-icon-button icon="pi pi-bookmark"
+                                clasz="p-button-text p-button-secondary" label="Bookmark">
+                            </app-text-icon-button>
                         </div>
                     </div>
                 </p-card>

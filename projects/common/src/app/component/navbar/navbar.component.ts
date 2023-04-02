@@ -1,9 +1,9 @@
-import { style } from "@angular/animations";
 import { Component, Input, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { MenuItem } from "primeng/api";
 import { Subscription } from "rxjs";
 import { UserService } from "../../service/user.service";
+import { roles } from "../../constant/UserRole";
 
 @Component({
     selector: 'app-navbar',
@@ -21,34 +21,72 @@ import { UserService } from "../../service/user.service";
     `]
 })
 export class MenuBarComponent implements OnInit {
+    balance! : number
     profileFileId!: string
+    roleCode! : string
     dashboard$?: Subscription
 
     constructor(
         private router: Router,
         private userService: UserService
     ) {
+        this.roleCode = userService.roleCode
     }
 
     items!: MenuItem[];
     itemsEnd!: MenuItem[]
 
+    isSuperAdmin() : boolean {
+        if(this.roleCode == roles[0][1]){
+            return true
+        } else {
+            return false
+        }
+    }
+
+    isAdmin() : boolean{
+        if(this.roleCode == roles[1][1]){
+            return true
+        } else {
+            return false
+        }
+    }
+
+    isMember() : boolean {
+        if(this.roleCode == roles[3][1]){
+            return true
+        } else {
+            return false
+        }
+    }
 
     onLogout() {
+        const roleCode = this.userService.roleCode
         localStorage.clear()
-        this.router.navigateByUrl('/login')
+        if(roleCode == roles[3][1]){
+            this.router.navigateByUrl('/login-member')
+        } else if(roleCode == 'SPR' || roleCode == 'ADM'){
+            this.router.navigateByUrl('/login')
+        } else {
+            return
+        }
     }
 
     ngOnInit() {
+
         this.dashboard$ = this.userService.getProfile().subscribe(res => {
             this.profileFileId = res.file
+            this.balance = res.balance
         })
+
         this.items = [
             {
-                label: 'Home', routerLink: '/dashboard'
+                label: 'Home', routerLink: '/dashboard',
+                visible : this.isMember()
             },
             {
-                label: 'Article', routerLink: '/article'
+                label: 'Article', routerLink: '/article',
+                visible : this.isAdmin()
             },
             {
                 label: 'Transaction',
@@ -56,10 +94,12 @@ export class MenuBarComponent implements OnInit {
                     { label: 'Membership', routerLink: '/memberships' },
                     { label: 'Course', routerLink: '/course' },
                     { label: 'Events', routerLink: '/event' }
-                ]
+                ],
+                visible : this.isAdmin()
             },
             {
-                label: 'Approval', routerLink: '/approval'
+                label: 'Approval', routerLink: '/approval',
+                visible : this.isAdmin()
             },
             {
                 label: 'Master Data',
@@ -69,23 +109,44 @@ export class MenuBarComponent implements OnInit {
                     { label: 'Membership', routerLink: '/membership' },
                     { label: 'Position', routerLink: '/position' },
                     { label: 'Voucher', routerLink: '/voucher' }
-                ]
+                ],
+                visible : this.isSuperAdmin()
             },
             {
                 label: 'Article',
-                routerLink: '/article'
+                routerLink: '/article-member',
+                visible : this.isMember()
             },
             {
                 label: 'Event',
-                routerLink: '/event'
+                routerLink: '/event',
+                visible : this.isMember()
             },
             {
                 label: 'Course',
-                routerLink: '/course'
+                routerLink: '/course',
+                visible : this.isMember()
+            },
+            {
+                label : 'Report',
+                routerLink : '/report-member',
+                visible : this.isMember()
+            },
+            {
+                label : 'Report',
+                routerLink : '/report-admin',
+                visible : this.isSuperAdmin()
             }
         ];
 
         this.itemsEnd = [
+            {
+                label : `Saldo ${this.balance}`,
+                icon: 'pi pi-fw pi-wallet'
+            },
+            {
+                separator : true
+            },
             {
 
                 label: 'Profile',

@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { FormBuilder } from "@angular/forms";
+import { Title } from "@angular/platform-browser";
 import { ActivatedRoute, Router } from "@angular/router";
 import { TransactionRole } from "projects/common/src/app/constant/TransactionRole";
 import { TransactionGetAllRes } from "projects/common/src/app/pojo/transaction/TransactionGetAllRes";
@@ -38,8 +39,11 @@ export class ApprovalComponent implements OnInit, OnDestroy {
         private transactionService: TransactionService,
         private fb: FormBuilder,
         private activatedRouter: ActivatedRoute,
-        private router: Router
-    ) { }
+        private router: Router,
+        private title : Title
+    ) {
+        this.title.setTitle("Aprroval Transaksi")
+     }
 
     approve = this.fb.group({
         id: [''],

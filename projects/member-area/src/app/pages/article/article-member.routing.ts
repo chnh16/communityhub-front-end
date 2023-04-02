@@ -10,13 +10,7 @@ const appRouter: Routes = [
     {
         path : '',
         component : ListArticleMemberComponent, 
-    },
-
-    // {
-    //     path: 'detail/:id',
-    //     component: ArticleDetailComponent
-    // },
- 
+    }
 ];
 
 @NgModule({

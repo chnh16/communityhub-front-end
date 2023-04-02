@@ -5,7 +5,8 @@
             <p-image class="flex ml-5" alt="Logo" src="https://github.com/mraAdmin110/rofa-food/blob/4ddde1ad98db04492d33367c41c1a9571b327cd6/logo.png?raw=true" width="100" height="50"></p-image>
         </ng-template>
         <ng-template pTemplate="end">
-            <p-avatar class="flex mr-5" image="http://192.168.10.124:8080/files/{{profileFileId}}" styleClass="mr-2" size="small" shape="circle" (click)="menu.toggle($event)"></p-avatar>
+            <p-avatar *ngIf="!profileFileId" class="flex mr-5" image="https://cdn-icons-png.flaticon.com/512/6386/6386976.png" styleClass="mr-2" size="small" shape="circle" (click)="menu.toggle($event)"></p-avatar>
+            <p-avatar *ngIf="profileFileId" class="flex mr-5" image="http://192.168.10.124:8080/files/{{profileFileId}}" styleClass="mr-2" size="small" shape="circle" (click)="menu.toggle($event)"></p-avatar>
             <p-tieredMenu #menu [model]="itemsEnd" [popup]="true"></p-tieredMenu>
         </ng-template>
     </p-menubar>

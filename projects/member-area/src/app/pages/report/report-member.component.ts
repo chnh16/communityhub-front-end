@@ -1,14 +1,10 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
 import { Title } from "@angular/platform-browser";
-import { ActivatedRoute, Router } from "@angular/router";
 import { BASE_URL } from "projects/common/src/app/constant/BaseUrl";
-import { ProfileGetReq } from "projects/common/src/app/pojo/user/ProfileGetReq";
 import { UserService } from "projects/common/src/app/service/user.service";
 import { convertUTCToLocalDateISO } from "projects/common/src/app/util/date.util";
 import { Subscription } from "rxjs";
-
-
 
 @Component({
     selector: 'app-article',
@@ -53,9 +49,5 @@ export class ReportMemberComponent implements OnInit, OnDestroy {
                 endDateLocal : convertUTCToLocalDateISO(res)
             })
         })
-    }
-
-    getReport() {
-        console.log(this.data)
     }
 }

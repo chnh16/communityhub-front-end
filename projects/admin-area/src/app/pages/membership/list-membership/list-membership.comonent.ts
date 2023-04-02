@@ -4,6 +4,7 @@ import { LazyLoadEvent } from "primeng/api";
 import { MembershipService } from "projects/common/src/app/service/membership.service";
 import { Subscription } from "rxjs";
 import { MembershipGetAllRes } from "../../../../../../common/src/app/pojo/membership/MembershipGetAllRes";
+import { Title } from "@angular/platform-browser";
 
 
 @Component({
@@ -20,8 +21,11 @@ export class ListMembershipComponent implements OnInit, OnDestroy {
     totalData: number = 0
 
     constructor(
-        private membershipService: MembershipService
-    ) { }
+        private membershipService: MembershipService,
+        private title : Title
+    ) {
+        this.title.setTitle("Membership")
+     }
 
     deleteMembership(membership: MembershipGetAllRes) {
         console.log("Delete")

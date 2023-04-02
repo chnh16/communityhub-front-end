@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
+import { Title } from "@angular/platform-browser";
 import { Router } from "@angular/router";
 import { LazyLoadEvent } from "primeng/api";
 import { CategoryGetAllRes } from "projects/common/src/app/pojo/category/CategoryGetAllRes";
@@ -22,8 +23,11 @@ export class ListCategoryComponent implements OnInit, OnDestroy {
 
 
     constructor(
-        private categoryService: CategoryService
-    ) { }
+        private categoryService: CategoryService,
+        private title : Title
+    ) { 
+        this.title.setTitle("Category")
+    }
 
     deleteCategory(category: CategoryGetAllRes) {
         console.log("Delete")

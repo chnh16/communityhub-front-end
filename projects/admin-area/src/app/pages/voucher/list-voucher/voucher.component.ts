@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
+import { Title } from "@angular/platform-browser";
 import { Router } from "@angular/router";
 import { LazyLoadEvent } from "primeng/api";
 import { VoucherGetAllRes } from "projects/common/src/app/pojo/voucher/VoucherGetAllRes";
@@ -22,8 +23,11 @@ export class VoucherComponent implements OnInit, OnDestroy {
 
 
     constructor(
-        private voucherService: VoucherService
-    ) { }
+        private voucherService: VoucherService,
+        private title : Title
+    ) {
+        this.title.setTitle("Voucher")
+     }
 
     deleteVoucher(voucher: VoucherGetAllRes) {
         console.log("Delete")

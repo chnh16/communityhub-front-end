@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { FormBuilder, FormControl, Validators } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
+import { UpdateVerificationReq } from "projects/common/src/app/pojo/user/UpdateVerificationReq";
 import { UserVerificationReq } from "projects/common/src/app/pojo/user/UserVerificationReq";
 import { UserService } from "projects/common/src/app/service/user.service";
 import { Subscription } from "rxjs";
@@ -43,6 +44,13 @@ export class UserVerificationComponent implements OnInit, OnDestroy {
         this.userVerification$ = this.userService.verify(data).subscribe(res => {
             this.router.navigateByUrl('/dashboard')
         })
+    }
+
+    resendVerification(){
+        const data : UpdateVerificationReq = {
+            email : this.verificationData.value.email!
+        }
+        this.userVerification$ = this.userService.resend(data).subscribe()
     }
 
     ngOnDestroy(): void {

@@ -7,7 +7,8 @@
         </div>
         <div class="align-item-center">
             <p-card class="align-items-center flex-wrap" styleClass="p-card-shadow">
-                <p-avatar class="grid align-items-center justify-content-center" styleClass="mr-2" size="xlarge"
+                <p-avatar *ngIf="!profile.file" class="grid align-items-center justify-content-center" styleClass="mr-2" size="xlarge" shape="circle" image="https://cdn-icons-png.flaticon.com/512/6386/6386976.png"></p-avatar>
+                <p-avatar *ngIf="profile.file" class="grid align-items-center justify-content-center" styleClass="mr-2" size="xlarge"
                     shape="circle" image="{{baseUrl}}/files/{{profile.file}}"
                     [style]="{'background-color':'#2196F3', 'color': '#ffffff'}"></p-avatar>
                 <h3 class="grid my-1 align-items-center justify-content-center">{{profile.fullName}}</h3>
@@ -22,8 +23,28 @@
                         <p class="grid">{{profile.email}}</p>
                     </div>
                     <div class="mb-2">
-                        <span class="grid mb-1"><i class="pi pi-mobile mr-1"></i>No. Telp</span>
+                        <span class="grid mb-1"><i class="pi pi-phone mr-1"></i>No. Telp</span>
                         <p class="grid">{{profile.phoneNumber}}</p>
+                    </div>
+                    <div class="mb-2">
+                        <span class="grid mb-1"><i class="pi pi-building mr-1"></i>Kota</span>
+                        <p class="grid">{{profile.city}}</p>
+                    </div>
+                    <div class="mb-2">
+                        <span class="grid mb-1"><i class="pi pi-mobile mr-1"></i>Provinsi</span>
+                        <p class="grid">{{profile.province}}</p>
+                    </div>
+                    <div class="mb-2">
+                        <span class="grid mb-1"><i class="pi pi-flag mr-1"></i>Negara</span>
+                        <p class="grid">{{profile.country}}</p>
+                    </div>
+                    <div class="mb-2">
+                        <span class="grid mb-1"><i class="pi pi-mobile mr-1"></i>Kode Pos</span>
+                        <p class="grid">{{profile.postalCode}}</p>
+                    </div>
+                    <div class="mb-2">
+                        <span class="grid mb-1"><i class="pi pi-wallet mr-1"></i>Saldo</span>
+                        <p class="grid">{{profile.balance | currency}}</p>
                     </div>
                     <div *ngIf="!profile.premiumUntil" class="mb-2">
                         <div class="grid">
@@ -176,7 +197,7 @@
                     </div>
                     <div class="grid mx-2">
                         <div *ngIf="p.fileId">
-                            <app-post-image [imagesId]="p.fileId" imageHost="192.168.10.124"
+                            <app-post-image [imagesId]="p.fileId" imageHost="localhost"
                                 [imageOptions]="imageOptions"></app-post-image>
                         </div>
                         <div class="col-12 mt-2" *ngIf="p.pollingChoice">
@@ -240,9 +261,9 @@
                     </div>
                     <div *ngIf="p.showComment">
                         <div *ngFor="let d of p.postDetail" class="flex">
-                            <div class="col-1 grid align-items-center justify-content-center m-0 p-0">
-                                <p-avatar image="{{baseUrl}}/files/{{d.userFileId}}" size="large"
-                                    shape="circle"></p-avatar>
+                            <div class="col-1 align-items-center justify-content-center m-0 p-0">
+                                <p-avatar *ngIf="!d.userFileId" image="https://cdn-icons-png.flaticon.com/512/6386/6386976.png" size="large" shape="circle"></p-avatar>
+                                <p-avatar *ngIf="d.userFileId" image="{{baseUrl}}/files/{{d.userFileId}}" size="large" shape="circle"></p-avatar>
                             </div>
                             <div class="col-11">
                                 <h5 class="grid align-items-start m-0">{{d.fullName}}</h5>

@@ -14,6 +14,8 @@ export class EventDetailComponent {
 
     private geEventDetail$?: Subscription
     getByEventId?: EventGetAllRes
+
+    event: EventGetAllRes | undefined
     eventDelete$?: Subscription
     userId = this.userService.getidUser()
 

@@ -12,23 +12,24 @@ import { Subscription } from "rxjs";
 })
 export class CreateIndustryComponent implements OnInit, OnDestroy {
     data = this.fb.group({
-        industryCode: ['', Validators.required],
+
         industryName: ['', Validators.required]
     })
     createIndustry$?: Subscription
 
     constructor(
         private industryService: IndustryService,
-        private fb: FormBuilder
+        private fb: FormBuilder,
+        private router: Router
     ) { }
 
     submit() {
         const insert: IndustryInsertReq = {
-            industryCode: this.data.value.industryCode!,
+
             industryName: this.data.value.industryName!
         }
         this.createIndustry$ = this.industryService.insert(insert).subscribe(res => {
-
+            this.router.navigateByUrl('/industry')
         })
     }
     ngOnInit(): void {

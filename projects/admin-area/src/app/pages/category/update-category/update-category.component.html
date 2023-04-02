@@ -1,36 +1,36 @@
-<pre>
-    {{resCategoryId | json}}
-    <!-- {{data.value | json}} -->
-</pre>
 <div class="flex align-item-start justify-content-start  ml-4">
-    <p-button label="Kembali" styleClass="p-button-link" icon="pi pi-backward" class="text-pink-500" routerLink="/category"></p-button>
+    <p-button label="Kembali" styleClass="p-button-link" icon="pi pi-backward" class="text-pink-500"
+        routerLink="/category"></p-button>
 </div>
 
-<div class="flex flex-wrap align-items-center justify-content-center">
-    <div class="mt-6">
-        <h2>UPDATE CATEGORY</h2>
-    </div>
-</div>
+
 <div class="flex flex-wrap align-items-center justify-content-center">
     <div class="mt-2">
-        <p-card class=" card-body p-4 flex align-items-center justify-content-center" [style]=" {width: '500px' , height:'100%'}" styleClass="p-card-shadow">
+        <p-card class=" card-body p-4 flex align-items-center justify-content-center"
+            [style]=" {width: '500px' , height:'100%'}" styleClass="p-card-shadow">
+
+            <div class="flex flex-wrap align-items-center justify-content-center">
+                <div>
+                    <h2>UPDATE CATEGORY</h2>
+                </div>
+            </div>
+
+
+
+            <p-divider></p-divider>
             <form [formGroup]="data" (ngSubmit)="onUpdate()">
                 <div class="field grid">
                     <!-- <div class="col">
                     <input name="id" id="id" formControlName="id" type="hidden" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary">
                 </div> -->
                 </div>
-                <div class="field grid">
-                    <label for="categoryCode" class="col-fixed" style="width:200px">Category Code</label>
-                    <div class="col">
-                        <input name="categoryCode" id="categoryCode" formControlName="categoryCode" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary">
-                    </div>
-                </div>
+
                 <div class="mt-4">
                     <div class="field grid">
                         <label for="categoryName" class="col-fixed" style="width:200px">Category Name</label>
                         <div class="col">
-                            <input name="categoryName" id="categoryName" formControlName="categoryName" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary">
+                            <input name="categoryName" id="categoryName" formControlName="categoryName" type="text"
+                                class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary">
                         </div>
                     </div>
                 </div>

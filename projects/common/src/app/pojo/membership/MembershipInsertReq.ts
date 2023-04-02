@@ -1,6 +1,6 @@
-export interface MembershipInsertReq{
-    membershipCode : string
-    membershipName : string
-    duration : number
-    amount : number
+export interface MembershipInsertReq {
+
+    membershipName: string
+    duration: number
+    amount: number
 }

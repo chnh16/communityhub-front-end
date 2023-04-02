@@ -18,6 +18,8 @@ import { AppModule } from "../../app.module";
 import { UpdateCategoryComponent } from "./update-category/update-category.component";
 import { PaginatorModule } from 'primeng/paginator';
 
+import { DividerModule } from 'primeng/divider';
+
 
 @NgModule({
     declarations: [
@@ -26,7 +28,7 @@ import { PaginatorModule } from 'primeng/paginator';
     imports: [
         CategoryRouting, CommonModule, TableModule, ButtonModule, ToolbarModule,
         AvatarModule, AvatarGroupModule, MenubarModule, ReactiveFormsModule, bm,
-        HttpClientModule, CardModule, PaginatorModule
+        HttpClientModule, CardModule, PaginatorModule, DividerModule
     ]
 })
 export class CategoryModule { }

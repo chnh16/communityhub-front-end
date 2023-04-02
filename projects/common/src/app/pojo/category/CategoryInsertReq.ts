@@ -1,4 +1,3 @@
-export interface CategoryInsertReq{
-    categoryCode : string
-    categoryName : string
+export interface CategoryInsertReq {
+    categoryName: string
 }

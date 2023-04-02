@@ -1,29 +1,32 @@
-<pre>
-    {{data.value | json}}
-</pre>
 <div class="flex align-item-start justify-content-start  ml-4">
-    <p-button label="Kembali" styleClass="p-button-link" icon="pi pi-backward" class="text-pink-500" routerLink="/voucher"></p-button>
+    <p-button label="Kembali" styleClass="p-button-link" icon="pi pi-backward" class="text-pink-500"
+        routerLink="/voucher"></p-button>
 </div>
-<div class="flex flex-wrap align-items-center justify-content-center">
-    <div class="mt-6">
-        <h2>UPDATE VOUCHER</h2>
-    </div>
-</div>
+
 <div class="flex flex-wrap align-items-center justify-content-center">
     <div class="mt-2">
-        <p-card class=" card-body p-4 flex align-items-center justify-content-center" [style]=" {width: '500px' , height:'100%'}" styleClass="p-card-shadow">
+        <p-card class=" card-body p-4 flex align-items-center justify-content-center"
+            [style]=" {width: '500px' , height:'100%'}" styleClass="p-card-shadow">
+            <div class="flex flex-wrap align-items-center justify-content-center">
+                <div>
+                    <h2>UPDATE VOUCHER</h2>
+                </div>
+            </div>
+            <p-divider></p-divider>
             <form [formGroup]="data" (ngSubmit)="onUpdate()">
                 <div class="field grid">
                     <label for="voucherCode" class="col-fixed" style="width:200px">Code Voucher</label>
                     <div class="col">
-                        <input id="voucherCode" formControlName="voucherCode" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary">
+                        <input id="voucherCode" formControlName="voucherCode" type="text"
+                            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary">
                     </div>
                 </div>
                 <div class="mt-4">
                     <div class="field grid">
                         <label for="expiredDate" class="col-fixed" style="width:200px">Expired Date</label>
                         <div class="col">
-                            <p-calendar id="expiredDate" formControlName="expiredDate" [showIcon]="true" inputId="expiredDate"></p-calendar>
+                            <p-calendar id="expiredDate" formControlName="expiredDate" [showIcon]="true"
+                                inputId="expiredDate"></p-calendar>
                         </div>
                     </div>
                 </div>

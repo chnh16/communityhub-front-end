@@ -6,29 +6,28 @@ import { CategoryService } from "projects/common/src/app/service/category.servic
 import { Subscription } from "rxjs";
 
 
-@Component ({
-    selector : 'app-create-category',
-    templateUrl : './create-category.component.html'
+@Component({
+    selector: 'app-create-category',
+    templateUrl: './create-category.component.html'
 })
 export class CreateCategoryComponent implements OnInit, OnDestroy {
     data = this.fb.group({
-        categoryCode : ['', Validators.required],
-        categoryName : ['', Validators.required]
+        categoryName: ['', Validators.required]
     })
-    createCategory$? : Subscription
+    createCategory$?: Subscription
 
     constructor(
-        private categoryService : CategoryService,
-        private fb : FormBuilder
-    ){}
+        private categoryService: CategoryService,
+        private fb: FormBuilder,
+        private router: Router
+    ) { }
 
-    submit(){
-        const insert : CategoryInsertReq = {
-            categoryCode : this.data.value.categoryCode!,
-            categoryName : this.data.value.categoryName!
+    submit() {
+        const insert: CategoryInsertReq = {
+            categoryName: this.data.value.categoryName!
         }
         this.createCategory$ = this.categoryService.insert(insert).subscribe(res => {
-            
+            this.router.navigateByUrl('/category')
         })
     }
 

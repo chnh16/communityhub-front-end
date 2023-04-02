@@ -5,31 +5,33 @@ import { VoucherService } from "projects/common/src/app/service/voucher.service"
 import { Subscription } from "rxjs";
 import { VoucherInsertReq } from "projects/common/src/app/pojo/voucher/VoucherInsertReq";
 
-@Component ({
-    selector : 'app-create-voucher',
-    templateUrl : './create-voucher.component.html'
+@Component({
+    selector: 'app-create-voucher',
+    templateUrl: './create-voucher.component.html'
 })
 export class CreateVoucherComponent implements OnInit, OnDestroy {
     data = this.fb.group({
-        voucherCode : ['', Validators.required],
-        expiredDate : [null, Validators.required],
-        amount : [null, Validators.required]
+        voucherCode: ['', Validators.required],
+        expiredDate: [null, Validators.required],
+        amount: [null, Validators.required]
     })
-    createVoucher$? : Subscription
+    createVoucher$?: Subscription
 
     constructor(
-        private voucherService : VoucherService,
-        private fb : FormBuilder
-    ){}
+        private voucherService: VoucherService,
+        private fb: FormBuilder,
+        private router: Router
+
+    ) { }
 
     submit() {
-        const insert : VoucherInsertReq = {
-            voucherCode : this.data.value.voucherCode!,
-            expiredDate : this.data.value.expiredDate!,
-            amount : this.data.value.amount!
+        const insert: VoucherInsertReq = {
+            voucherCode: this.data.value.voucherCode!,
+            expiredDate: this.data.value.expiredDate!,
+            amount: this.data.value.amount!
         }
         this.createVoucher$ = this.voucherService.insert(insert).subscribe(res => {
-
+            this.router.navigateByUrl('/voucher')
         })
     }
 

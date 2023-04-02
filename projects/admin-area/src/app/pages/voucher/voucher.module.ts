@@ -17,6 +17,7 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { CalendarModule } from 'primeng/calendar';
 import { ReactiveFormsModule } from "@angular/forms";
 import { UpdateVoucherComponent } from "./update-voucher/update-voucher.component";
+import { DividerModule } from "primeng/divider";
 
 @NgModule({
     declarations: [
@@ -25,7 +26,7 @@ import { UpdateVoucherComponent } from "./update-voucher/update-voucher.componen
     imports: [
         VoucherRouting, CommonModule, TableModule, ButtonModule, ToolbarModule, ToastModule,
         AvatarModule, AvatarGroupModule, MenubarModule, bm, InputNumberModule, CalendarModule,
-        ReactiveFormsModule, CardModule
+        ReactiveFormsModule, CardModule, DividerModule
     ]
 })
 export class VoucherModule { }

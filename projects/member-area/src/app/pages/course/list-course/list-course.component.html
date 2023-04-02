@@ -112,7 +112,7 @@
                                 <h4><i class="pi pi-key"></i> By Category</h4>
                                 <p-dropdown [options]="categorys" placeholder=" Select a Category"
                                     optionLabel="categoryName" [showClear]="true" optionValue="id"
-                                    formControlName="category">
+                                    formControlName="category" [style]="{'width': '200px'}">
                                 </p-dropdown>
 
                             </div>
@@ -124,7 +124,7 @@
                                                             </p-dropdown> -->
 
                                 <p-dropdown [options]="sortOptions" optionLabel="label" placeholder=" Select"
-                                    optionValue="value" formControlName="price">
+                                    optionValue="value" formControlName="price" [style]="{'width': '200px'}">
                                 </p-dropdown>
 
 
@@ -186,7 +186,7 @@
                 </div>
             </p-tabPanel>
 
-            <p-tabPanel header="My Create Course">
+            <p-tabPanel header="My Create Course" *ngIf="role=='MBR'">
                 <div class="grid">
                     <div class="col-12 md:inline-block md:col-3" [formGroup]="reqParamsMy">
                         <p-card class=" card-body p-2 flex align-items-center justify-content-center"
@@ -204,7 +204,7 @@
                                 <h4><i class="pi pi-key"></i> By Category</h4>
                                 <p-dropdown [options]="categorys" placeholder=" Select a Category"
                                     optionLabel="categoryName" [showClear]="true" optionValue="id"
-                                    formControlName="category">
+                                    formControlName="category" [style]="{'width': '200px'}">
                                 </p-dropdown>
 
                             </div>
@@ -216,7 +216,7 @@
                                                                         </p-dropdown> -->
 
                                 <p-dropdown [options]="sortOptions" optionLabel="label" placeholder=" Select"
-                                    optionValue="value" formControlName="price">
+                                    optionValue="value" formControlName="price" [style]="{'width': '200px'}">
                                 </p-dropdown>
 
 

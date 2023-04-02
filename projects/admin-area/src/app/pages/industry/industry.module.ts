@@ -14,6 +14,7 @@ import { ListIndustryComponent } from "./list-industry/list-industry.component";
 import { ButtonModule as bm } from "projects/common/src/app/component/button/button.module";
 import { ReactiveFormsModule } from "@angular/forms";
 import { UpdateIndustryComponent } from "./update-industry/update.industry.component";
+import { DividerModule } from "primeng/divider";
 
 @NgModule({
     declarations: [
@@ -21,7 +22,7 @@ import { UpdateIndustryComponent } from "./update-industry/update.industry.compo
     ],
     imports: [
         IndustryRouting, CommonModule, TableModule, ButtonModule, ToolbarModule, ToastModule,
-        AvatarModule, AvatarGroupModule, MenubarModule, bm, ReactiveFormsModule, CardModule
+        AvatarModule, AvatarGroupModule, MenubarModule, bm, ReactiveFormsModule, CardModule, DividerModule
     ]
 })
 export class IndustryModule { }

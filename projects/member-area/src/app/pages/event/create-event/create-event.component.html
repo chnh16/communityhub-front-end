@@ -1,15 +1,19 @@
 <pre>{{data.value | json}}</pre>
 
 <div class="m-3">
-    <div class="flex flex-wrap align-items-center justify-content-center">
-        <div class="mt-6">
-            <h2>CREATE EVENT</h2>
-        </div>
-    </div>
+
 
     <div>
         <p-card class=" card-body p-4 flex align-items-center justify-content-center"
             [style]=" {width: '500px' , height:'100%'}" styleClass="p-card-shadow">
+
+            <div class="flex flex-wrap align-items-center justify-content-center">
+                <div>
+                    <h2>CREATE EVENT</h2>
+                </div>
+            </div>
+
+            <p-divider></p-divider>
             <form [formGroup]="data" (ngSubmit)="createEvent()">
                 <div class="field grid">
                     <label for="eventName" class="col-fixed" style="width:200px">Event Name</label>

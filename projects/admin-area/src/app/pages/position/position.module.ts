@@ -14,6 +14,7 @@ import { PositionRouting } from "./position.routing";
 import { ButtonModule as bm } from "projects/common/src/app/component/button/button.module";
 import { ReactiveFormsModule } from "@angular/forms";
 import { UpdatePositionComponent } from "./update-position/update-position.component";
+import { DividerModule } from "primeng/divider";
 
 
 @NgModule({
@@ -22,7 +23,7 @@ import { UpdatePositionComponent } from "./update-position/update-position.compo
     ],
     imports: [
         PositionRouting, CommonModule, TableModule, ButtonModule, ToolbarModule, ToastModule,
-        AvatarModule, AvatarGroupModule, MenubarModule, bm, ReactiveFormsModule, CardModule
+        AvatarModule, AvatarGroupModule, MenubarModule, bm, ReactiveFormsModule, CardModule, DividerModule
     ]
 })
 export class PositionModule { }

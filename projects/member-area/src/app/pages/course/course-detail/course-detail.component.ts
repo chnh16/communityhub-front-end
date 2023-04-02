@@ -15,6 +15,8 @@ export class CourseDetailComponent {
     private getCourseDetail$?: Subscription
     getByCourseId?: CourseGetAllRes
     courseDelete$?: Subscription
+
+
     userId = this.userService.getidUser()
 
     constructor(

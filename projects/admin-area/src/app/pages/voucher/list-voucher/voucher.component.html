@@ -1,7 +1,3 @@
-<pre>
-    {{resVoucher | json}}
-</pre>
-
 <div class="mt-8 card">
     <p-toolbar styleClass="min-w-20 mb-4 gap-2">
         <ng-template pTemplate="left">
@@ -28,7 +24,7 @@
                 <tr>
                     <td>{{i + 1}}</td>
                     <td>{{data.voucherCode}}</td>
-                    <td>{{data.expiredDate}}</td>
+                    <td>{{data.expiredDate | date}}</td>
                     <td>{{data.amount}}</td>
                     <td>
                         <button pButton pRipple type="button" icon="pi pi-file-edit"

@@ -1,4 +1,4 @@
-export interface IndustryInsertReq{
-    industryCode : string
-    industryName : string
+export interface IndustryInsertReq {
+
+    industryName: string
 }

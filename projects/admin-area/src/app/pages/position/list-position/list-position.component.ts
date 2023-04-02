@@ -4,6 +4,7 @@ import { LazyLoadEvent } from "primeng/api";
 import { PositionService } from "projects/common/src/app/service/position.service";
 import { Subscription } from "rxjs";
 import { PositionGetAllRes } from "../../../../../../common/src/app/pojo/position/PositionGetAllRes";
+import { Title } from "@angular/platform-browser";
 
 
 @Component({
@@ -21,8 +22,11 @@ export class ListPositionComponent implements OnInit, OnDestroy {
     totalData: number = 0
 
     constructor(
-        private positionService: PositionService
-    ) { }
+        private positionService: PositionService,
+        private title : Title
+    ) {
+        this.title.setTitle("Position")
+     }
 
     deletePosition(position: PositionGetAllRes) {
         console.log("Delete")

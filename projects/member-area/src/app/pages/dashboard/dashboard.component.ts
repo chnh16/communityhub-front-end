@@ -89,6 +89,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   POST_LIMIT: number = 3
   PAGE: number = 1
+  DETAIL_LIMIT : number = 3
+  DETAIL_PAGE : number = 1
 
   constructor(
     private fb: FormBuilder,
@@ -246,6 +248,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     }
     this.postService.insertPost(insertPost).subscribe(res => {
       this.data.reset()
+      this.imageData.clear()
     })
   }
 
@@ -260,8 +263,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
       }
     })
   }
-
-
 
   onDislike(postId: string, i: number): void {
     this.postLike$ = this.postService.onDislike(postId).subscribe(res => {
@@ -299,6 +300,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
         id: res.id,
         choiceId: pollingChoiceId
       }
+      this.pollingAnswer$ = this.postService.getPollingAnswer(this.post[i].id).subscribe(res => {
+        this.post[i].pollingAnswer = res
+      })
     })
   }
 
@@ -317,11 +321,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
       })
     })
 
-    setTimeout(() => {
-      this.dashboardProfile$ = this.userService.getProfile().subscribe(res => {
-        this.profile = res
-      })
-    }, 1000)
+    this.dashboardProfile$ = this.userService.getProfile().subscribe(res => {
+      this.profile = res
+    })
   }
 
   ngOnDestroy(): void {

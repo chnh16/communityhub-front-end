@@ -52,7 +52,6 @@ export class ProfileMemberComponent implements OnInit, OnDestroy {
     })
 
     onSubmit(){
-
         const profile : ProfileInsertReq = {
             fullName : this.profile.value.fullName!,
             country : this.profile.value.country!,

@@ -39,10 +39,18 @@ export class LoginMemberComponent implements OnDestroy {
             this.loginMember$ = this.userService.login(data).subscribe(res => {
                 this.userService.setData(res)
                 const roleCode = this.userService.roleCode
-                this.router.navigateByUrl('/dashboard')
-                // if(roleCode == roles[3][1]){
-                //     console.log(this.userService.token)
-                // }
+                
+                if(roleCode == roles[3][1]){
+                    if(this.userService.isVerified){
+                        this.router.navigateByUrl('/dashboard')
+                    } else if (!this.userService.isVerified){
+                        this.router.navigate(['/user-verification'], {queryParams : {data : btoa(JSON.stringify(this.data.value.email))}})
+                    } else {
+                        return
+                    }
+                } else {
+                    return
+                }
             })
         }
     }

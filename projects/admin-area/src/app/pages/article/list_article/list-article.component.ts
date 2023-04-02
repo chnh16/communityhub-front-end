@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
+import { Title } from "@angular/platform-browser";
 import { Router } from "@angular/router";
 import { ArticleGetAllRes } from "projects/common/src/app/pojo/article/ArticleGetAllRes";
 import { ArticleService } from "projects/common/src/app/service/article.service";
@@ -26,8 +27,11 @@ export class ListArticleComponent implements OnInit, OnDestroy {
 
 
     constructor(
-        private articleService: ArticleService
-    ) { }
+        private articleService: ArticleService,
+        private title : Title
+    ) {
+        this.title.setTitle("Artikel")
+     }
 
     deleteArticle(article: ArticleGetAllRes) {
         console.log("Delete")

@@ -1,5 +1,6 @@
 import { Component, OnDestroy } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
+import { Title } from "@angular/platform-browser";
 import { Router } from "@angular/router";
 import { UserService } from "projects/common/src/app/service/user.service";
 import { Subscription } from "rxjs";
@@ -20,8 +21,11 @@ export class RegisterAdminComponent implements OnDestroy {
     constructor(
         private fb : FormBuilder,
         private userService : UserService,
-        private router : Router
-    ){}
+        private router : Router,
+        private title : Title
+    ){
+        this.title.setTitle("Register Admin")
+    }
 
     onRegister(){
         if(this.data.valid){

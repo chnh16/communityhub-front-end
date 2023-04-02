@@ -4,6 +4,7 @@ import { LazyLoadEvent } from "primeng/api";
 import { IndustryService } from "projects/common/src/app/service/industry.service";
 import { Subscription } from "rxjs";
 import { IndustryGetAllRes } from "../../../../../../common/src/app/pojo/industry/IndustryGetAllRes";
+import { Title } from "@angular/platform-browser";
 
 
 @Component({
@@ -21,8 +22,11 @@ export class ListIndustryComponent implements OnInit, OnDestroy {
     totalData: number = 0
 
     constructor(
-        private industryService: IndustryService
-    ) { }
+        private industryService: IndustryService,
+        private title : Title
+    ) { 
+        this.title.setTitle("Industry")
+    }
 
     deleteIndustry(industry: IndustryGetAllRes) {
         console.log("Delete")

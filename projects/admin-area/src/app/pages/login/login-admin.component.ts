@@ -42,7 +42,9 @@ export class LoginAdminComponent implements OnDestroy {
 
                 const roleCode = this.userService.roleCode
                 console.log(roleCode)
-                if(roleCode == roles[1][1]) {
+                if(roleCode == roles[3][1]) {
+                    return
+                } else {
                     this.router.navigate(['/category'])
                 }
             })

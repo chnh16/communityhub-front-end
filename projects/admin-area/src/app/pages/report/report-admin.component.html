@@ -1,4 +1,4 @@
-<div class="col-10 flex justify-content-center align-item-center mt-6 ml-8 mr-8">
+<!-- <div class="col-10 flex justify-content-center align-item-center mt-6 ml-8 mr-8">
     <div class="justify-content-center">
     </div>
     <p-card>
@@ -38,6 +38,47 @@
         <div class="mt-2">
             <div class="col-12 flex justify-content-end ">
                 <app-submit-button label="Search" clasz="p-button-rounded mr-2 flex justify-content-end"></app-submit-button>
+            </div>
+        </div>
+    </p-card>
+</div> -->
+<div class="col-10 flex justify-content-center align-item-center mt-8 ml-8 mr-8">
+    <div class="justify-content-center">
+    </div>
+    <p-card>
+        <div class="col-12 flex align-item-center justify-content-center">
+            <h2 class="align-item-center justify-content-center">Report</h2>
+        </div>
+        <div [formGroup]="data">
+            <div class="col-12 flex align-item-center justify-content-center">
+                <div class="mt-2">
+                    <div class="field grid">
+                        <label for="expiredDate" class="col-fixed" style="width:200px">Dari Tanggal</label>
+                        <div class="col">
+                            <p-calendar formControlName="startDate" id="expiredDate" [showIcon]="true" inputId="expiredDate"></p-calendar>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 flex align-item-center justify-content-center">
+                <div class="mt-2">
+                    <div class="field grid">
+                        <label for="expiredDate" class="col-fixed" style="width:200px">Sampai Tanggal</label>
+                        <div class="col">
+                            <p-calendar formControlName="endDate" id="expiredDate" [showIcon]="true" inputId="expiredDate"></p-calendar>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mt-2">
+            <div class="col-12 flex justify-content-end">
+                <button pButton class="p-button-primary p-button-rounded">
+                    <a style="text-decoration: none; color: white;" href="{{baseUrl}}/report/income-super-admin/?startDate={{data.value.startDateLocal}}&endDate={{data.value.endDateLocal}}" target="_blank">Download Report Income</a>
+                </button>
+                <button pButton class="p-button-primary p-button-rounded">
+                    <a style="text-decoration: none; color: white;" href="{{baseUrl}}/report/participant-super-admin/?startDate={{data.value.startDateLocal}}&endDate={{data.value.endDateLocal}}" target="_blank">Download Report Participant</a>
+                </button>
             </div>
         </div>
     </p-card>

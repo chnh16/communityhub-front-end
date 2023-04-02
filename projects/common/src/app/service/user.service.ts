@@ -11,6 +11,7 @@ import { ProfileGetReq } from "../pojo/user/ProfileGetReq";
 import { ProfileInsertReq } from "../pojo/user/ProfileInsertReq";
 import { RegisterReq } from "../pojo/user/RegisterReq";
 import { UserVerificationReq } from "../pojo/user/UserVerificationReq";
+import { UpdateVerificationReq } from "../pojo/user/UpdateVerificationReq";
 
 @Injectable({
     providedIn: 'root'
@@ -34,6 +35,10 @@ export class UserService {
 
     verify(data : UserVerificationReq) : Observable<UpdateRes>{
         return this.http.put<UpdateRes>(`${BASE_URL}/users/verify`, data, { headers: { 'skip': 'true' } })
+    }
+
+    resend(data : UpdateVerificationReq) : Observable<UpdateRes>{
+        return this.http.patch<UpdateRes>(`${BASE_URL}/users/verify/generate`, data, { headers: { 'skip': 'true' } })
     }
 
     getProfile() : Observable<ProfileGetReq>{
@@ -66,9 +71,16 @@ export class UserService {
         if (data) {
             return JSON.parse(data).roleCode
         }
-        throw new Error('Role Code')
+        throw new Error('Role Code is empty')
     }
 
+    get isVerified() : boolean{
+        const data = localStorage.getItem('dataLogin')
+        if (data) {
+            return JSON.parse(data).isVerified
+        }
+        throw new Error('Role Code')
+    }
 
     getidUser() {
         const data = localStorage.getItem('dataLogin')

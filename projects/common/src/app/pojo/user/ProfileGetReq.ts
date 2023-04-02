@@ -13,4 +13,5 @@ export interface ProfileGetReq{
     premiumUntil : Date | null
     file : string
     ver : number
+    balance : number
 }
